@@ -1,0 +1,65 @@
+\documentclass[11pt,fleqn,twoside]{article}
+\usepackage{makeidx}
+\makeindex
+\usepackage{palatino} %or {times} etc
+\usepackage{plain} %bibliography style 
+\usepackage{amsmath} %math fonts - just in case
+\usepackage{amsfonts} %math fonts
+\usepackage{amssymb} %math fonts
+\usepackage{lastpage} %for footer page numbers
+\usepackage{fancyhdr} %header and footer package
+\usepackage{mmp} 
+\usepackage{url}
+\usepackage{cite}
+
+\begin{document}
+
+\name{Your Name}
+\userid{xyz}
+\projecttitle{Your project title: Which can be longer when it is displayed on the front page of the document}
+\projecttitlememoir{Your project title (shorter form, if necessary)} %same as the project title or abridged version for page header
+\reporttitle{Outline Project Specification}
+\version{0.1}
+\docstatus{Draft}
+\modulecode{CS39440}
+\supervisor{Supervisor Name} % e.g. Neil Taylor
+\supervisorid{abc}
+
+%optional - comment out next line to use current date for the document
+%\documentdate{26th October 2011} 
+\mmp
+
+\setcounter{tocdepth}{3} %set required number of level in table of contents
+
+
+%==============================================================================
+\section{Project description}
+%==============================================================================
+Two or three reasonably detailed paragraphs describing what the project is about. Make clear the main substance of the project, those aspects of it that are essential in making it worthwhile, and the end-goals of the project. You might provide some citations. 
+
+%==============================================================================
+\section{Work to be tackled}
+%==============================================================================
+This should summarise the tasks that will form the major part of the work. If there is lots of research reading to be done you can say so here. If there are coding techniques to learn or APIs to wrestle with then you can say that too.
+
+%==============================================================================
+\section{Project deliverables}
+%==============================================================================
+This should list everything you expect to produce. This should normally include specified items of working software, any reviews (of technology etc...) that you see as of fundamental importance to the project, documentation for requirements, design and testing, and of course the progress report and the final report. 
+
+This list should include more than just the items that have been noted in the lecture slides. You must focus on the items that you will produce for your project and it might be different for your project than for another project. The list might change as you continue to work on your project. This is a statement of your current expectations.  
+
+%==============================================================================
+\section{Initial bibliography}
+%==============================================================================
+This should list things that you expect to read to help with your project. For example, your supervisor may provide you with some references that give essential background to your project and you are likely to need to do some preliminary reading of the scientific literature, text books, and internet material.
+
+The purpose of the section is to understand what sources you are looking at and expect to be looking at.  For this document, a list of items is sufficient. You might go further and make use of bibliographic tools, e.g. BibTeX in a LaTeX document, could be used to provide citations, for example \cite{NumericalRecipes}\cite{MarksPaper}\cite{FailBlog}\cite{kittenpic_ref}.  The bibliographic tools are not a requirement in this document, but you are welcome to use them.  
+
+% example of including
+\bibliographystyle{plain}
+\renewcommand{\refname}{}  % if you put text into the final {} on this line, you will get an extra title, e.g. References. This isn't necessary for the outline project specification. 
+\bibliography{mmp} % References file
+
+
+\end{document}

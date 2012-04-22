@@ -1,0 +1,108 @@
+\documentclass[11pt,fleqn,twoside]{article}
+\usepackage{makeidx}
+\makeindex
+\usepackage{palatino} %or {times} etc
+\usepackage{plain} %bibliography style 
+\usepackage{amsmath} %math fonts - just in case
+\usepackage{amsfonts} %math fonts
+\usepackage{amssymb} %math fonts
+\usepackage{lastpage} %for footer page numbers
+\usepackage{fancyhdr} %header and footer package
+\usepackage{mmpv2} 
+\usepackage{url}
+\usepackage{cite}
+
+\begin{document}
+
+\name{Your Name}
+\userid{xyz}
+\projecttitle{Your project title: Which can be longer when it is displayed on the front page of the document}
+\projecttitlememoir{Your project title (shorter form, if necessary)} %same as the project title or abridged version for page header
+\reporttitle{Progress Report}
+\version{0.1}
+\docstatus{Draft}
+\modulecode{CS39440}
+\supervisor{Supervisor Name} % e.g. Neil Taylor
+\supervisorid{abc}
+\wordcount{4500}
+
+%optional - comment out next line to use current date for the document
+%\documentdate{26th October 2011} 
+\mmp
+
+\setcounter{tocdepth}{3} %set required number of level in table of contents
+\tableofcontents
+
+\newpage
+
+%==============================================================================
+\section{Project Summary}
+%==============================================================================
+This section should introduce your project and provide an overall summary of what your project is about and why you find it interesting, challenging and worthwhile. You should briefly note how this project relates to your particular degree scheme.
+
+%==============================================================================
+\section{Background}
+%==============================================================================
+This section should describe any significant examples of similar or related work done and by whom, or what similar products exist, and what you can learn from these in relation to your project. This section must refer extensively to your bibliography (see below).
+
+%==============================================================================
+\section{Goals and Objectives}
+%==============================================================================
+This section should explain in detail what your finished software (or hardware, e.g. for a robotics project) will do. What will be the inputs and outputs for the system? What will be its limitations? How will you evaluate its success?  
+
+%==============================================================================
+\section{Current Progress}
+%==============================================================================
+This section should report on the progress that you have made so far into the project. You should arrange your content into the following three sub-sections.
+
+%==============================================================================
+\subsection{Technical Challenges}
+%==============================================================================
+This section should explain in reasonable detail the technical problems you have identified. Explain how you propose to solve them or how you are attempting to find solutions.
+
+%==============================================================================
+\subsection{Outline Design}
+%==============================================================================
+This section should present an outline design for the structure of your software (and hardware if applicable - e.g. a robotics project). This should consist of diagrams and descriptive text. It should present the major modules, their relationship to one another, and their interfaces.
+
+%==============================================================================
+\subsection{Implementation Options and Choices}
+%==============================================================================
+This section should describe in reasonable detail the specific algorithms, languages, APIs, packages etc. that you could use in your project, which of them you have selected for use, and why you have selected them.
+
+%==============================================================================
+\section{Project Planning}
+%==============================================================================
+This section should deal with your planning for the project. You must include the following sub-sections.
+
+
+%==============================================================================
+\subsection{Process Model}
+%==============================================================================
+This section should describe the process model that you have chosen to follow and explain why you selected this approach.
+
+%==============================================================================
+\subsection{Weekly Plan for the Project}
+%==============================================================================
+This section should provide a reasonably detailed plan of what you need to do in each remaining week of the project period, including specific major achievements at the appropriate points.
+
+%==============================================================================
+\subsection{Demonstration Plan}
+%==============================================================================
+This section should discuss what you will need to do to prepare for a demonstration and the end of the project. Are there any special requirements, e.g. you must demonstrate some hardware outside, or you need to be in a dark room to demonstrate a particular image analysis technique?
+
+%==============================================================================
+\section*{Annotated Bibliography}
+%==============================================================================
+
+This should list things that you expect to read to help with your project. For example, your supervisor may provide you with some references that give essential background to your project and you are likely to need to do some preliminary reading of the scientific literature, text books, and internet material.
+
+The purpose of the section is to understand what sources you are looking at and expect to be looking at.  For this document, a list of items is sufficient. You might go further and make use of bibliographic tools, e.g. BibTeX in a LaTeX document, could be used to provide citations, for example \cite{NumericalRecipes}\cite{MarksPaper}\cite{FailBlog}\cite{kittenpic_ref}.  The bibliographic tools are not a requirement in this document, but you are welcome to use them.  
+
+% example of including
+\bibliographystyle{plain}
+\renewcommand{\refname}{}  % if you put text into the final {} on this line, you will get an extra title, e.g. References. This isn't necessary for the outline project specification. 
+\bibliography{mmp} % References file
+
+
+\end{document}

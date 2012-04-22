@@ -1,0 +1,45 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.7)
+The top-level auxiliary file: MMP_OutlineProjectSpecification_example.aux
+The style file: plain.bst
+Database file #1: mmp.bib
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            528 strings with 4858 characters,
+and the built_in function-call counts, 1231 in all, are:
+= -- 122
+> -- 50
+< -- 1
++ -- 20
+- -- 16
+* -- 61
+:= -- 203
+add.period$ -- 15
+call.type$ -- 4
+change.case$ -- 18
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 49
+empty$ -- 108
+format.name$ -- 16
+if$ -- 271
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 3
+newline$ -- 25
+num.names$ -- 8
+pop$ -- 33
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 39
+stack$ -- 0
+substring$ -- 52
+swap$ -- 14
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 14
+warning$ -- 0
+while$ -- 11
+width$ -- 5
+write$ -- 48

@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{kittenpic_ref}
+Sylvia Duckworth.
+\newblock {A picture of a kitten at Hellifield Peel}.
+\newblock \url{http://www.geograph.org.uk/photo/640959}, 2007.
+\newblock Copyright Sylvia Duckworth and licensed for reuse under a Creative
+  Commons Attribution-Share Alike 2.0 Generic Licence. Accessed August 2011.
+
+\bibitem{MarksPaper}
+Mark Neal, Jan Feyereisl, Rosario Rascun\`{a}, and Xiaolei Wang.
+\newblock {Don't touch me, I'm fine: Robot autonomy using an artificial innate
+  immune system}.
+\newblock In {\em Proceedings of the 5th International Conference on Artificial
+  Immune Systems}, pages 349--361. Springer, 2006.
+
+\bibitem{NumericalRecipes}
+W.H. Press et~al.
+\newblock {\em {Numerical recipes in C}}.
+\newblock Cambridge University Press Cambridge, 1992.
+
+\bibitem{FailBlog}
+Various.
+\newblock Fail blog.
+\newblock \url{http://www.failblog.org/}, August 2011.
+\newblock Accessed August 2011.
+
+\end{thebibliography}
