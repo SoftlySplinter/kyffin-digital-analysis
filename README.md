@@ -8,6 +8,7 @@ Current state of the Major Project.
 * Gesture Magnitude Recognition
 * Gaming Agents (minecraft or similar).
 * Laser-targeted testing.
+* Android: Location and motion based automation.
 
 
 ###OSGi Concurrency, Memory and Security Management
@@ -44,9 +45,20 @@ Creating agents which would be able to play a game (e.g. Minecraft) intelligentl
 
 Potential problems: Goal functions. Interfacing with the game. Graphics processing. Real-time processing.
 
+
 ###Laser-targeted testing
 Suggested by Mark Woolley.
 
 Specifically for z/OS.
 
 Potential problems: IBM Patents/Confidentiality.
+
+
+###Android: Location and motion based automation
+Suggested by myself.
+
+Use Android to automate home systems based on location and motion sensors.
+
+Potential problems: testing Android motion.
+
+
