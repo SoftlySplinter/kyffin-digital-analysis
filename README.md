@@ -9,9 +9,9 @@ Current state of the Major Project.
 * Gaming Agents (minecraft or similar).
 * Laser-targeted testing.
 * Android: Location and motion based automation.
+* CICS API mocking framework
 
-
-###OSGi Concurrency, Memory and Security Management
+###OSGi Concurrency, Memory and Secaurity Management
 Suggested by Mark Richards.
 
 Concurrecny Management will involve having a thread manager (OSGi already has a Thread Pool Manager). Bundles are then able to specify that they need their own thread pools (for example Java EE frameworks have a set threadpool they can use) or can blacklist themselves, limiting the number of threads they can access.
