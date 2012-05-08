@@ -3,14 +3,15 @@
 Current state of the Major Project.
 
 ##Current Ideas:
-* OSGi Concurrency, Memory and Security Management.
-* Multiple-language OSGi framework (Java & C++).
-* Gesture Magnitude Recognition
-* Gaming Agents (minecraft or similar).
+* ~~OSGi Concurrency, Memory and Security Management.~~ Too difficult to seperate new code from existing.
+* ~~Multiple-language OSGi framework (Java & C++).~~ Too difficult.
+* [Gesture Magnitude Recognition](../wiki/Gesture-Recognition)
+* ~~Gaming Agents (minecraft or similar).~~
 * Laser-targeted testing.
-* Android: Location and motion based automation.
-* CICS API mocking framework
+* ~~Android: Location and motion based automation.~~
+* ~~CICS API mocking framework~~
 
+<!--
 ###OSGi Concurrency, Memory and Secaurity Management
 Suggested by Mark Richards.
 
@@ -28,7 +29,7 @@ Suggested by Mark Richards.
 OSGi is growing and there are similar frameworks starting to exist for C++. However there is no current bridge between the two.
 
 Potential problems: Very complex. Probably a PhD topic.
-
+-->
 
 ###Gesture Magnitude Recognition
 Suggested by myself/Melanie Hopper.
@@ -37,14 +38,14 @@ Gesture recognition is now fairly well researched now-a-days. One thing that has
 
 Potential problems: Confidentiality.
 
-
+<!--
 ###Gaming Agents
 Suggested by Craig Lomax.
 
 Creating agents which would be able to play a game (e.g. Minecraft) intelligently.
 
 Potential problems: Goal functions. Interfacing with the game. Graphics processing. Real-time processing.
-
+-->
 
 ###Laser-targeted testing
 Suggested by Mark Woolley.
@@ -53,12 +54,12 @@ Specifically for z/OS.
 
 Potential problems: IBM Patents/Confidentiality.
 
-
+<!--
 ###Android: Location and motion based automation
 Suggested by myself.
 
 Use Android to automate home systems based on location and motion sensors.
 
 Potential problems: testing Android motion.
-
+-->
 
