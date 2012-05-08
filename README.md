@@ -5,7 +5,7 @@ Current state of the Major Project.
 ##Current Ideas:
 * ~~OSGi Concurrency, Memory and Security Management.~~ Too difficult to seperate new code from existing.
 * ~~Multiple-language OSGi framework (Java & C++).~~ Too difficult.
-* [Gesture Magnitude Recognition](../wiki/Gesture-Recognition)
+* [Gesture Magnitude Recognition](../../wiki/Gesture-Recognition)
 * ~~Gaming Agents (minecraft or similar).~~
 * Laser-targeted testing.
 * ~~Android: Location and motion based automation.~~
