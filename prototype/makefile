@@ -7,8 +7,9 @@ SRC=src
 BIN=bin
 EXE=prototype
 
-CC=gcc
+CC=clang
 CFLAGS=-Wall
+SDLFLAGS=-lSDL
 
 # Build all modules
 all: mkdirs compile_all
@@ -20,7 +21,8 @@ mkdirs:
 compile_all: visualisation
 
 visualisation:
-	echo "Halp!"
+	echo Compiling with SDL
+	${CC} ${CFLAGS} ${SRC}/visualisation/gui.c -o ${EXE} ${SDLFLAGS}
 	
 
 # Remove the binaries directory
