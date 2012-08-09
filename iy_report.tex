@@ -1,0 +1,178 @@
+\documentclass[a4paper,11pt]{report}
+
+\usepackage{fullpage}
+\usepackage{glossaries}
+\usepackage{hyperref}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newacronym{apar}{APAR}{Authorized Program Analysis Report}
+\newacronym{apt}{APT}{APAR Polling Tool}
+
+\newacronym{cics}{CICS}{Customer Information Control System}
+
+\newacronym{edt}{EDT}{Explorer Delivery Tool}
+
+\newacronym{fmt}{FMT}{Fix Metadata Toolkit}
+\newacronym{fv}{FV}{Functional Verification}
+
+\newacronym{gbs}{GBS}{Global Business Servicess}
+\newacronym{gts}{GTS}{Global Technology Services}
+
+
+\newacronym{ibm}{IBM}{International Business Machines Corporation}
+\newacronym{it}{IT}{Industrial Trainee}
+\newacronym{itd}{ITD}{Intergrated Technology Delivery}
+
+\newacronym{mq}{MQ}{IBM WebSphere MQ}
+
+\newacronym{osgi}{OSGi}{Open Services Gateway Initative framework}
+
+\newacronym{plx}{PL/X}{Programming Language/Cross System}
+\newacronym{pmr}{PMR}{Problem Management Request}
+\newacronym{ptf}{PTF}{Program Temporary Fix}
+
+\newacronym{retr}{RETAIN}{Remoth Technical Assistance Information Network}
+\newacronym{rtc}{RTC}{Rational Team Concert}
+
+\newacronym{stg}{STG}{Systems and Technologies Group}
+\newacronym{swg}{SWG}{Software Group}
+
+\newacronym{uk}{UK}{United Kingdom}
+\newacronym{us}{US}{United States of America}
+
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+
+
+% Upper part of the page
+
+\textsc{\Large Industrial Year Report}\\[0.5cm]
+
+
+% Title
+\HRule \\[0.4cm]
+{ \huge \bfseries IBM Level 3 CICS Service Engineer}\\[0.4cm]
+
+\HRule \\[1.5cm]
+
+% Author and supervisor
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Alexander \textsc{Brown}
+\end{flushleft}
+\end{minipage}
+
+\vfill
+
+% Bottom of the page
+{\large \today}
+
+\end{center}
+
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Organisational Environment}
+
+\Gls{ibm} is an American multinational technology and consulting corporation, with it's headquaters
+in New York, America. \Gls{ibm} sell a wide range of technical products, both hardware and
+software, in areas ranging from mainframe computing to nanotechnology. As well as technical 
+products \gls{ibm} also offer a range of consulting, hosting and infastructure services.
+
+\Gls{ibm} are also know for innovation; holding the largest number of \gls{us} patents, building
+new technologies such as \gls{ibm} Watson and pushing corporate initatives like Smart Planet.
+
+\Gls{ibm} is split into several different business areas which are listed below:
+
+\begin{itemize}
+\item \Gls{gbs}
+\item \Gls{gts}
+\item \Gls{swg}
+\item \Gls{stg}
+\item Sales \& Distribution
+\item \Gls{itd}
+\item Intergrated Managed Business Process Services
+\item \Gls{ibm} Global Financing
+\end{itemize}
+
+I was employed under the \gls{it} scheme in \gls{swg}{United Kingdom}. Based at the Hursley site in 
+Hampshire, the main \gls{swg} site in the \gls{uk}.
+
+\Gls{swg}\footnote{\gls{ibm} is such a large company, it would take over 5,000 words to explain the
+whole structure, so I shall focus on my specific working areas.} is split into five brands: DB2, 
+Lotus, Tivoli, WebSphere and Rational. \Gls{swg} in Hursley is largely WebSphere-based.
+
+\Gls{cics} Transaction Server\footnote{\Gls{cics} Transaction Server is typically shortened to CICS
+internally} is a part of the WebSphere brand. Like many products in \gls{swg} \gls{cics} has 
+several different deparments: development, test (\gls{fv} test, system test, etc.) and service.
+
+All service departments in \gls{ibm} are split into three distinct levels:
+
+\begin{description}
+\item[Level 1 Service] Are the first point of contact for customers. They deal with basic problems
+with the product and have a general understanding of the product. If the problem can't be solved by
+Level 1, it is elevated to Level 2. All problems reported to Level 1 are raised as a \gls{pmr} and
+are tracked by \gls{retr}.
+\item[Level 2 Service] Have a good working knowledge of the product and are typically able to 
+diagnose and solve customer problems. If Level 2 are unable to diagnose the problem the \gls{pmr}
+is elevated to Level 3 or, if the diagnosis reveals a problem with the product an \gls{apar} is
+raised against Level 3. 
+\item[Level 3 Service] Have a very good knowledge of diagnosing problems with the product and of
+the internals of the product and are authorised to make changes to the source code of the product
+to fix problems raised by \gls{apar}s. The majority of Level 3 work involves handling \gls{apar}s,
+however some specialist members of the team handle \gls{pmr}s.
+\end{description}
+
+Due to the specialist knowledge required to work in the \gls{cics} Level 3 Service team I was not
+expected to deal with either \gls{apar}s or \gls{pmr}s\footnote{It can take graduates up to a year
+and a half to work without constant supervision.}. My main role in the team was to maintain 
+existing tooling and to develop new tooling which would benefit the team.
+
+At the start of the year my main responsibilities were to maintain a tool which would gather 
+statistics on \gls{pmr}s and \gls{apar}s in \gls{retr} and a system named ``SPA'', a z/OS based
+working environment specific to \gls{cics} Level 3 service. However, due to a process change about
+a year before I joined \gls{ibm}, a new working environment; \gls{rtc} was being used for all new
+releases of \gls{cics}.
+
+I was initially tasked with intergrating this environment into the 
+statistics tooling, or vice versa as \gls{rtc} could potentially provide management and statisics
+gathering by default.
+
+After some changes to the team I was asked to change my focus to maintaining a large tool which
+pulled \gls{apar}s from \gls{retr} into \gls{rtc}. This tool was also designed to perform other
+functionality such as delivering fixes for the Eclipse-based suite of tools for \gls{cics} to
+update sites and \gls{ibm}'s central fix management site - Fix Central.
+
+Due to consistent issues and a lack of knowledge with this tooling, it was eventually decided to
+switch from this tooling to \gls{apt} a tool built and maintained by the \gls{mq} Level 3 Service 
+team and which was being considered being supported by the lab-wide build team.
+
+This left a hole for the automation of delivering fixes for the suite of Eclipse-based tools 
+\gls{cics} has. I was asked to develop a solution, \gls{edt}\footnote{Explorer is a shortening of 
+\gls{cics} Explorer; the main Eclipse-based tool for \gls{cics}}, which had to be resilient to the
+problems which had plagued the old tooling.
+
+Developing this tooling also increased my exposure to the team's \gls{rtc} environment and lead to
+me being partly responsible for maintaining the structure of work items (representations of 
+\gls{apar}s and other associated tasks the team required to follow the service process).
+
+Towards the end of my year I was also picked as part of a small team to plan and run the inductions
+for the \gls{swg}-based \gls{it}s for 2012-13. As well as this I was a member of the main team for
+Smart Cursor, a side project to continue the Extreme Blue project of the same name
+(\href{http://www.bbc.co.uk/news/technology-14859157}{BBC News Article}).
+
+\chapter{Technical and Application Environments}
+
+Most systems I worked with in \gls{ibm} were mainframe z/OS or z/Linux systems. \gls{retr} and SPA
+were both applications for z/OS systems\footnote{\gls{retr} is actually a \gls{cics} application.}.
+
+
+
+\end{document}
