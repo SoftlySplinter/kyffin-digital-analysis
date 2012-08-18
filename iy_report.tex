@@ -7,9 +7,13 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
 \newacronym{apar}{APAR}{Authorized Program Analysis Report}
+\newacronym{api}{API}{Application Programming Interface}
 \newacronym{apt}{APT}{APAR Polling Tool}
 
 \newacronym{cics}{CICS}{Customer Information Control System}
+
+\newacronym{db2}{DB2}{IBM DB2}
+\newacronym{db2luw}{DB2 for LUW}{IBM DB2 for Linux, UNIX and Windows}
 
 \newacronym{edt}{EDT}{Explorer Delivery Tool}
 
@@ -19,20 +23,27 @@
 \newacronym{gbs}{GBS}{Global Business Servicess}
 \newacronym{gts}{GTS}{Global Technology Services}
 
-
 \newacronym{ibm}{IBM}{International Business Machines Corporation}
 \newacronym{it}{IT}{Industrial Trainee}
 \newacronym{itd}{ITD}{Intergrated Technology Delivery}
+
+\newacronym{j2ee}{Java EE}{Java Platform, Enterprise Edition}
+\newacronym{jsp}{JSP}{JavaSever Pages} 
+
+\newacronym{ldap}{LDAP}{Lightweight Directory Access Protocol}
 
 \newacronym{mq}{MQ}{IBM WebSphere MQ}
 
 \newacronym{osgi}{OSGi}{Open Services Gateway Initative framework}
 
+\newacronym{pcomm}{PComm}{IBM Personal Communications}
+\newacronym{pdm}{PDM}{Personal Development Manager}
 \newacronym{plx}{PL/X}{Programming Language/Cross System}
 \newacronym{pmr}{PMR}{Problem Management Request}
 \newacronym{ptf}{PTF}{Program Temporary Fix}
 
 \newacronym{retr}{RETAIN}{Remoth Technical Assistance Information Network}
+\newacronym{rhel}{RHEL}{Red Hat Enterprise Linux}
 \newacronym{rtc}{RTC}{Rational Team Concert}
 
 \newacronym{stg}{STG}{Systems and Technologies Group}
@@ -41,6 +52,7 @@
 \newacronym{uk}{UK}{United Kingdom}
 \newacronym{us}{US}{United States of America}
 
+\newacronym{was}{WAS}{IBM WebSphere Application Server}
 
 \begin{document}
 
@@ -170,9 +182,57 @@ Smart Cursor, a side project to continue the Extreme Blue project of the same na
 
 \chapter{Technical and Application Environments}
 
-Most systems I worked with in \gls{ibm} were mainframe z/OS or z/Linux systems. \gls{retr} and SPA
-were both applications for z/OS systems\footnote{\gls{retr} is actually a \gls{cics} application.}.
+Most systems I worked with in \gls{ibm} were either mainframe (z/OS or z/Linux systems), \gls{retr}
+and SPA were both being z/OS application\footnote{Interesting point: \gls{retr} is a \gls{cics} 
+application}; or Linux servers, typically \gls{rhel}.
+
+Because \gls{cics} is almost entirely mainframe-based the department has access to several of the
+on-site mainframes. However, with the introduction of \gls{rtc} the department has also required
+the use of Linux servers to host the \gls{rtc} server on and to run build engines that hook into
+\gls{rtc} and perform useful tasks, such as building \gls{cics} or polling \gls{apar}s into 
+\gls{rtc} Work Items. Some of these were virtualised machines maintained by the Infastructure team
+in Hursley, whilst others were physical machines the department maintained.
+
+The statsitics tools I was responsible for were hosted on two different systems; the Java-based
+tool ran on a \gls{rhel} CentOS 5 server running \gls{was}, \gls{mq} and \gls{db2}. Whilst the 
+other was a Windows XP machine running Lotus Notes 8.5 and \gls{pcomm} sessions into \gls{retr} and
+SPA.
+
+For \gls{rtc} build engines, the department had access to several virtualised servers; one 
+\gls{rhel} CentOS 4 server (winlnx0u.hursley.ibm.com) which was removed towards the end of my year
+due to CentOS 4 going out of \gls{ibm} support and was replaced with two \gls{rhel} CentOS 6 
+servers (cicspoller1.hursley.ibm.com and cicspoller2.hursley.ibm.com). All these servers ran 
+\gls{rtc} 3.1.0.1 Build Engines which accessed the main departmental \gls{rtc} servers
+(jazz104.hursley.ibm.com and jazz114.hursley.ibm.com). Another machine, local to the department
+(hsm.hursley.ibm.com) was used as a back-up Build Engine machine, in case the server running the
+virtualised servers should go down. HSM was also used as a testing environment for new releases of
+\gls{rtc}.
 
 
+\chapter{My role in IBM}
+
+When I first join I started with a two day induction in the North Harbour office in Portsmouth 
+which covered the general environment I would be working, Health and Safety and the Business 
+Conduct Guidelines. As well as some information about what I could do during the year. I received
+my work laptop and met with my \gls{pdm}.
+
+On the third day I started properly in the Hursley office and joined the \gls{cics} Level 3 Service
+team. The team was formed of around 20-25 members including several Graduates and a another 
+\gls{it} coming to the end of his year at \gls{ibm}.
+
+The current \gls{it}, Abul, assisted me with the set-up of my laptop and with settling into the 
+role of maintaining the team's Java-based statistics tool which run on \gls{was}. This tool would 
+poll \gls{retr} for \gls{pmr}s and \gls{apar}s on an hourly basis and also connected to SPA using 
+\gls{mq}. This information was collected into a \gls{db2} database.
+
+Every day a report would be generated for the previous day's reciepts of \gls{pmr}s \gls{apar}s 
+from the data in the database which was sent to the team leaders and the appropriate 
+1\textsuperscript{st} and 2\textsuperscript{nd} Line Managers. It would also use the database to
+create a similar report monthly, as well as performing a backup of data.
+
+Finally, using \gls{j2ee} the tool provided a \gls{jsp} website which could be accessed by any 
+member of the \gls{cics} Level 3 Service BlueGroup\footnote{Effectively an \gls{ldap} Group}.
+
+I started out fixing some minor issues with this tool and learning the \gls{rtc} \gls{api}
 
 \end{document}
