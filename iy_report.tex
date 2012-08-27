@@ -233,6 +233,22 @@ create a similar report monthly, as well as performing a backup of data.
 Finally, using \gls{j2ee} the tool provided a \gls{jsp} website which could be accessed by any 
 member of the \gls{cics} Level 3 Service BlueGroup\footnote{Effectively an \gls{ldap} Group}.
 
-I started out fixing some minor issues with this tool and learning the \gls{rtc} \gls{api}
+I started out fixing some minor issues with this tool and learning the \gls{rtc} Client \gls{api}
+in the effort to pull \gls{apar} data from the \gls{db2} database across to a view in the \gls{rtc}
+eclipse client.
+
+A few months into this I was asked to help maintain the team's \gls{apar} Poller; a large tool 
+which polled \gls{apar}s in \gls{retr}, creating them as a work item in \gls{rtc} if the \gls{apar}
+didn't already exist in the \gls{rtc} server or updating the existing work item with any changes
+which had been made in \gls{retr}. This was originally designed to be a two-way bridge (changes in
+the \gls{rtc} \gls{apar} work item could update the \gls{retr} \gls{apar}. However as permissions
+for the \gls{rtc} work item were less secure as the ones in \gls{retr} so this bridge had been 
+disabled).
+
+The \gls{apar} Poller ran on a \gls{rtc} Build Engine; this build engine would connect into a 
+\gls{rtc} server, which would hand the engine tasks to perform depending on build definitions on
+the \gls{rtc} server.
+
+
 
 \end{document}
