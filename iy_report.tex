@@ -237,6 +237,17 @@ I started out fixing some minor issues with this tool and learning the \gls{rtc}
 in the effort to pull \gls{apar} data from the \gls{db2} database across to a view in the \gls{rtc}
 eclipse client.
 
+Soon after Abul left I was also given charge of a Lotus Notes-based statistics tool which collected
+similar information as the aforementioned statistics tool. This one, however, was more manual and
+required the maintainer to run a scan at least once per day. This tool directly interfaced with 
+four \gls{pcomm} sessions, two of which connected to \gls{retr} and two to UKCPSG.
+
+The \gls{retr} sessions handled \gls{pmr} and \gls{apar} polling. Collecting full information on
+\gls{pmr} data, and basic data on \gls{apar} data. One of the UKCPSG sessions connected into SPA 
+and gathered data on the current progress of \gls{apar}s, whilst the other ran an internal routine 
+called QA which collated \gls{apar} information from different SPA sub-sections for a more full
+report on the \gls{apar} in question.
+
 A few months into this I was asked to help maintain the team's \gls{apar} Poller; a large tool 
 which polled \gls{apar}s in \gls{retr}, creating them as a work item in \gls{rtc} if the \gls{apar}
 didn't already exist in the \gls{rtc} server or updating the existing work item with any changes
