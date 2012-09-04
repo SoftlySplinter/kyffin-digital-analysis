@@ -21,6 +21,7 @@
 \newacronym{fv}{FV}{Functional Verification}
 
 \newacronym{gbs}{GBS}{Global Business Servicess}
+\newacronym{gnu}{GNU}{GNU's Not Unix}
 \newacronym{gts}{GTS}{Global Technology Services}
 
 \newacronym{ibm}{IBM}{International Business Machines Corporation}
@@ -38,6 +39,7 @@
 
 \newacronym{pcomm}{PComm}{IBM Personal Communications}
 \newacronym{pdm}{PDM}{Personal Development Manager}
+\newacronym{pe}{PE}{Programming Error}
 \newacronym{plx}{PL/X}{Programming Language/Cross System}
 \newacronym{pmr}{PMR}{Problem Management Request}
 \newacronym{ptf}{PTF}{Program Temporary Fix}
@@ -49,6 +51,7 @@
 \newacronym{stg}{STG}{Systems and Technologies Group}
 \newacronym{swg}{SWG}{Software Group}
 
+\newacronym{uhl}{UHL}{Unit History Log}
 \newacronym{uk}{UK}{United Kingdom}
 \newacronym{us}{US}{United States of America}
 
@@ -260,6 +263,52 @@ The \gls{apar} Poller ran on a \gls{rtc} Build Engine; this build engine would c
 \gls{rtc} server, which would hand the engine tasks to perform depending on build definitions on
 the \gls{rtc} server.
 
+My main role in maintaining this was to keep it working as some of the internal libraries it used
+updated regularly and, contrary to guidelines, sometimes broke backwards-compatability. This 
+proved to be difficult with the sheer size of the application and the way in which it was invoked.
+
+The application was invoked using Apache Ant; an open source tool similar to GNU Make, but designed
+for Java applications. Whilst this in itself was a good design descision, the readability of the 
+Ant scripts was less than desirable. To add to this some of the variables were taken from the 
+Build Engine Definition on the \gls{rtc} server, some from the Build, some from flat files and some
+hardcoded into the Ant scripts. This made it nearly impossible to debug.
+
+Mark Richards, a fellow member of the \gls{cics} Level 3 Service team also charged with maintaining
+the poller, and I both raised our concerns for the maintainability of the Poller in the long run.
+With these concerns aboard a number of meetings were set up with the /gls{mq} Level 3 Service team
+to discuss their solution, \gls{apt}.
+
+\gls{apt} performed very similar function as the \gls{apar} Poller did; however it was a lot more
+simplistic. Despite this it was being considered by the Hursley Build Team as a lab-wide solution
+which they could maintain easily. Due to this the \gls{cics} Level 3 Service team had a vested
+interest in this solution and, after a fair few meetings, came up with a list of requirements we
+would need to be added to \gls{apt} for us to replace the poller with.
+
+With this came another problem. In the \gls{cics} Explorer and associated Eclipse-based tools 
+branch of the poller code was a mechanism to deliver \gls{apar} fixes to the \gls{ibm} 
+update-sites and to Fix Central; the centralised location for the majority of fix packs. Due to the
+nature of \gls{cics} this site was only used for the eclipse-based tools\footnote{A fix for 
+\gls{cics} are released as a \gls{ptf}; a common mechanism for z/OS applications.}.
+
+This functionality was a useful step for the few memebers of the team who worked with the 
+Eclipse-based tools in the delivery of fixes. Mark Richards was the one to request that I re-write
+a more maintainable version of this code using \gls{osgi} and following good practices for Java,
+\gls{osgi} and the IBM guidelines. I worked with him closely whilst designing the system and to 
+help fix problems once I had started to write the code.
+
+During this time I was also given another piece of work which reguarded the documentation of trace
+messages in one of the \gls{cics} domains. I was set-up with read-only access to the \gls{cics} 
+3.1, 3.2 and 4.1 source code on SPA and tasked with checking the difference between the source code
+definitions of trace codes and the documented versions on the \gls{ibm} information centre to check
+for inconsistencies (i.e. added or removed entries and entires with incorrect parameters) and note
+down the correct version to be sent to UTD, the department which handles documentation.
+
+Almost immediately after completing this work I was asked to create a small eclipse-plugin to print
+the team's \gls{uhl} \gls{rtc} work items in a similar form to the old version done by SPA. The 
+\gls{uhl} is a report of all the work which goes into diagnosing and fixing an \gls{apar} and are
+used heavily in the \gls{apar} reviews. They are also used if an \gls{apar} goes \gls{pe}, where
+the fix causes a problem, to identify why the \gls{apar} went \gls{pe} and how the process can be
+changed to prevent such action happening again.
 
 
 \end{document}
