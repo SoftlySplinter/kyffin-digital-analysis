@@ -6,6 +6,7 @@
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
+\newacronym{ai}{AI}{Artificial Intelligence}
 \newacronym{apar}{APAR}{Authorized Program Analysis Report}
 \newacronym{api}{API}{Application Programming Interface}
 \newacronym{apt}{APT}{APAR Polling Tool}
@@ -400,8 +401,77 @@ due to the Eclipse-based nature of \gls{rtc} they were already designed to be in
 
 However, when it came to intergrate Fix Central's libraries into \gls{edt}, I started running into
 dependency problems. The problem had occurred as the Fix Central Library had dependencies on
-certain external libraries which contained different versions of fairly common libraries. 
+certain external libraries which contained different versions of fairly common libraries. Due to
+the way \gls{osgi} performs class loading it resolved these dependencies in a different order to
+the way standard Java would.
 
+With Mark's help I was eventually able to resolve this and slowly learn the Fix Central library and
+finally use it to create the required metadata and upload fixes to a testing server. A futher part
+of this was the ability to upload in preview mode and then to unset the preview flag. This took a
+lot more time due to the convelated way Fix Central works. \\
+
+During this I was constantly testing making sure each module would intergrate correctly with other
+modules. This combined with complex libraries meant the whole project took a lot long than first
+anticipated. Eventually I started to do some proper project planning on the request of my team 
+leader. \\
+
+
+
+Around the release of new versions of the \gls{cics} Eclipse-based tools I was asked to moderate
+and record the skills transfer sessions for these new versions. These skills transfer sessions were
+designed to bring Service teams, both Level 2 and 3, up to speed on the new features of the product
+and how they are designed to work.
+
+Most of these sessions were delivered by foriegn teams so my role could be difficult at time
+working with due to the language barrier. However all these sessions ran fairly smoothly, where
+the only problems came from the software we were using to record. \\
+
+
+
+\gls{ibm} has a scheme known as ``giveback'' which provides oppertunities to help with community
+events both within \gls{ibm} and externally. All \gls{it}s are pushed by their managers to 
+participate in giveback.
+
+The first piece of giveback I participated in was teaching Java to my peers. These gls{it}s had a
+good knowledge of the C programming language so the main focus for this was teaching the principals
+of object-orientation and then some of the differences in syntax. To help with this we were given a
+mentor who had a good knowledge of teaching and lecturing.
+
+This piece of giveback laster around 3 months with a session a week and by the end of it the 
+\gls{it}s in the group knew Java well enough to use it in their own day jobs.
+
+Having heard about these sessions some of my team registered thier own interest in learning Java
+and as such I set up a couple of sessions to teach them too. \\
+
+
+
+Having followed Extreme Blue (a summer internship program \gls{ibm} runs world-wide) with interest
+due to some friends being in that year's intake I jumped at the chance to get involve with the 
+continuation of one of these projects; the Smart Mouse project.
+
+The Smart Mouse project is a hardware and software project designed to allow disabled users to map
+mouse movements to gestures from a 9-degrees of freedom sensor they could wear on any part of their
+body.
+
+The prototype the Extreme Blue students had produced in their 8 week internship was very simplistic
+and would only work with certain gestures. Our aim was to allow users to use any gesture they 
+wanted (after training the system) along with the ability to attach multiple sensors or other
+periperals such as pupil tracking or microphones.
+
+I joined what was known as the ``A-Team'' (Algorithm Team) and got involved with designing and 
+building the base for this project, including a 3D visualisation program which would be used to 
+debug the actual \gls{ai} sections of the project. \\
+
+
+
+Another large piece of giveback both graduates and \gls{it}s are pushed to do is an event called
+``Blue Fusion''; an event which coincides with national science week, with the aim to teach school
+children concepts of science and technology. I joined a team of 6 to create one of the games for
+this event which was also going to be used for the grande finale.
+
+Most of my work on this game was the 2D graphics for the front-end of the game. I also spent a lot
+of time testing the performance of the game to ensure it ran well enough for the low-end hardware
+we would be given for the event.
 
 
 \end{document}
