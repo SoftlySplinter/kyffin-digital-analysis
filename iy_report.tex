@@ -29,6 +29,7 @@
 \newacronym{itd}{ITD}{Intergrated Technology Delivery}
 
 \newacronym{j2ee}{Java EE}{Java Platform, Enterprise Edition}
+\newacronym{json}{JSON}{JavaScript Object Notation}
 \newacronym{jsp}{JSP}{JavaSever Pages} 
 
 \newacronym{ldap}{LDAP}{Lightweight Directory Access Protocol}
@@ -42,14 +43,17 @@
 \newacronym{pe}{PE}{Programming Error}
 \newacronym{plx}{PL/X}{Programming Language/Cross System}
 \newacronym{pmr}{PMR}{Problem Management Request}
+\newacronym{pojo}{POJO}{Plain Old Java Object}
 \newacronym{ptf}{PTF}{Program Temporary Fix}
 
 \newacronym{retr}{RETAIN}{Remoth Technical Assistance Information Network}
 \newacronym{rhel}{RHEL}{Red Hat Enterprise Linux}
 \newacronym{rtc}{RTC}{Rational Team Concert}
 
+\newacronym{scm}{SCM}{Source Code Management}
 \newacronym{stg}{STG}{Systems and Technologies Group}
 \newacronym{swg}{SWG}{Software Group}
+\newacronym{swt}{SWT}{Standard Widget Toolkit}
 
 \newacronym{uhl}{UHL}{Unit History Log}
 \newacronym{uk}{UK}{United Kingdom}
@@ -102,7 +106,9 @@ software, in areas ranging from mainframe computing to nanotechnology. As well a
 products \gls{ibm} also offer a range of consulting, hosting and infastructure services.
 
 \Gls{ibm} are also know for innovation; holding the largest number of \gls{us} patents, building
-new technologies such as \gls{ibm} Watson and pushing corporate initatives like Smart Planet.
+new technologies such as \gls{ibm} Watson and pushing corporate initatives like Smart Planet. \\
+
+
 
 \Gls{ibm} is split into several different business areas which are listed below:
 
@@ -122,7 +128,9 @@ Hampshire, the main \gls{swg} site in the \gls{uk}.
 
 \Gls{swg}\footnote{\gls{ibm} is such a large company, it would take over 5,000 words to explain the
 whole structure, so I shall focus on my specific working areas.} is split into five brands: DB2, 
-Lotus, Tivoli, WebSphere and Rational. \Gls{swg} in Hursley is largely WebSphere-based.
+Lotus, Tivoli, WebSphere and Rational. \Gls{swg} in Hursley is largely WebSphere-based. \\
+
+
 
 \Gls{cics} Transaction Server\footnote{\Gls{cics} Transaction Server is typically shortened to CICS
 internally} is a part of the WebSphere brand. Like many products in \gls{swg} \gls{cics} has 
@@ -148,7 +156,9 @@ however some specialist members of the team handle \gls{pmr}s.
 Due to the specialist knowledge required to work in the \gls{cics} Level 3 Service team I was not
 expected to deal with either \gls{apar}s or \gls{pmr}s\footnote{It can take graduates up to a year
 and a half to work without constant supervision.}. My main role in the team was to maintain 
-existing tooling and to develop new tooling which would benefit the team.
+existing tooling and to develop new tooling which would benefit the team. \\
+
+
 
 At the start of the year my main responsibilities were to maintain a tool which would gather 
 statistics on \gls{pmr}s and \gls{apar}s in \gls{retr} and a system named ``SPA'', a z/OS based
@@ -158,7 +168,9 @@ releases of \gls{cics}.
 
 I was initially tasked with intergrating this environment into the 
 statistics tooling, or vice versa as \gls{rtc} could potentially provide management and statisics
-gathering by default.
+gathering by default. \\
+
+
 
 After some changes to the team I was asked to change my focus to maintaining a large tool which
 pulled \gls{apar}s from \gls{retr} into \gls{rtc}. This tool was also designed to perform other
@@ -167,7 +179,9 @@ update sites and \gls{ibm}'s central fix management site - Fix Central.
 
 Due to consistent issues and a lack of knowledge with this tooling, it was eventually decided to
 switch from this tooling to \gls{apt} a tool built and maintained by the \gls{mq} Level 3 Service 
-team and which was being considered being supported by the lab-wide build team.
+team and which was being considered being supported by the lab-wide build team. \\
+
+
 
 This left a hole for the automation of delivering fixes for the suite of Eclipse-based tools 
 \gls{cics} has. I was asked to develop a solution, \gls{edt}\footnote{Explorer is a shortening of 
@@ -176,7 +190,9 @@ problems which had plagued the old tooling.
 
 Developing this tooling also increased my exposure to the team's \gls{rtc} environment and lead to
 me being partly responsible for maintaining the structure of work items (representations of 
-\gls{apar}s and other associated tasks the team required to follow the service process).
+\gls{apar}s and other associated tasks the team required to follow the service process). \\
+
+
 
 Towards the end of my year I was also picked as part of a small team to plan and run the inductions
 for the \gls{swg}-based \gls{it}s for 2012-13. As well as this I was a member of the main team for
@@ -194,12 +210,16 @@ on-site mainframes. However, with the introduction of \gls{rtc} the department h
 the use of Linux servers to host the \gls{rtc} server on and to run build engines that hook into
 \gls{rtc} and perform useful tasks, such as building \gls{cics} or polling \gls{apar}s into 
 \gls{rtc} Work Items. Some of these were virtualised machines maintained by the Infastructure team
-in Hursley, whilst others were physical machines the department maintained.
+in Hursley, whilst others were physical machines the department maintained. \\
+
+
 
 The statsitics tools I was responsible for were hosted on two different systems; the Java-based
 tool ran on a \gls{rhel} CentOS 5 server running \gls{was}, \gls{mq} and \gls{db2}. Whilst the 
 other was a Windows XP machine running Lotus Notes 8.5 and \gls{pcomm} sessions into \gls{retr} and
-SPA.
+SPA. \\
+
+
 
 For \gls{rtc} build engines, the department had access to several virtualised servers; one 
 \gls{rhel} CentOS 4 server (winlnx0u.hursley.ibm.com) which was removed towards the end of my year
@@ -217,11 +237,13 @@ virtualised servers should go down. HSM was also used as a testing environment f
 When I first join I started with a two day induction in the North Harbour office in Portsmouth 
 which covered the general environment I would be working, Health and Safety and the Business 
 Conduct Guidelines. As well as some information about what I could do during the year. I received
-my work laptop and met with my \gls{pdm}.
+my work laptop and met with my \gls{pdm}. \\
+
+
 
 On the third day I started properly in the Hursley office and joined the \gls{cics} Level 3 Service
 team. The team was formed of around 20-25 members including several Graduates and a another 
-\gls{it} coming to the end of his year at \gls{ibm}.
+\gls{it} coming to the end of his year at \gls{ibm}
 
 The current \gls{it}, Abul, assisted me with the set-up of my laptop and with settling into the 
 role of maintaining the team's Java-based statistics tool which run on \gls{was}. This tool would 
@@ -238,7 +260,9 @@ member of the \gls{cics} Level 3 Service BlueGroup\footnote{Effectively an \gls{
 
 I started out fixing some minor issues with this tool and learning the \gls{rtc} Client \gls{api}
 in the effort to pull \gls{apar} data from the \gls{db2} database across to a view in the \gls{rtc}
-eclipse client.
+eclipse client. \\
+
+
 
 Soon after Abul left I was also given charge of a Lotus Notes-based statistics tool which collected
 similar information as the aforementioned statistics tool. This one, however, was more manual and
@@ -249,7 +273,9 @@ The \gls{retr} sessions handled \gls{pmr} and \gls{apar} polling. Collecting ful
 \gls{pmr} data, and basic data on \gls{apar} data. One of the UKCPSG sessions connected into SPA 
 and gathered data on the current progress of \gls{apar}s, whilst the other ran an internal routine 
 called QA which collated \gls{apar} information from different SPA sub-sections for a more full
-report on the \gls{apar} in question.
+report on the \gls{apar} in question. \\
+
+
 
 A few months into this I was asked to help maintain the team's \gls{apar} Poller; a large tool 
 which polled \gls{apar}s in \gls{retr}, creating them as a work item in \gls{rtc} if the \gls{apar}
@@ -261,7 +287,9 @@ disabled).
 
 The \gls{apar} Poller ran on a \gls{rtc} Build Engine; this build engine would connect into a 
 \gls{rtc} server, which would hand the engine tasks to perform depending on build definitions on
-the \gls{rtc} server.
+the \gls{rtc} server. \\
+
+
 
 My main role in maintaining this was to keep it working as some of the internal libraries it used
 updated regularly and, contrary to guidelines, sometimes broke backwards-compatability. This 
@@ -282,7 +310,9 @@ to discuss their solution, \gls{apt}.
 simplistic. Despite this it was being considered by the Hursley Build Team as a lab-wide solution
 which they could maintain easily. Due to this the \gls{cics} Level 3 Service team had a vested
 interest in this solution and, after a fair few meetings, came up with a list of requirements we
-would need to be added to \gls{apt} for us to replace the poller with.
+would need to be added to \gls{apt} for us to replace the poller with. \\
+
+
 
 With this came another problem. In the \gls{cics} Explorer and associated Eclipse-based tools 
 branch of the poller code was a mechanism to deliver \gls{apar} fixes to the \gls{ibm} 
@@ -294,14 +324,18 @@ This functionality was a useful step for the few memebers of the team who worked
 Eclipse-based tools in the delivery of fixes. Mark Richards was the one to request that I re-write
 a more maintainable version of this code using \gls{osgi} and following good practices for Java,
 \gls{osgi} and the IBM guidelines. I worked with him closely whilst designing the system and to 
-help fix problems once I had started to write the code.
+help fix problems once I had started to write the code. \\
+
+
 
 During this time I was also given another piece of work which reguarded the documentation of trace
 messages in one of the \gls{cics} domains. I was set-up with read-only access to the \gls{cics} 
 3.1, 3.2 and 4.1 source code on SPA and tasked with checking the difference between the source code
 definitions of trace codes and the documented versions on the \gls{ibm} information centre to check
 for inconsistencies (i.e. added or removed entries and entires with incorrect parameters) and note
-down the correct version to be sent to UTD, the department which handles documentation.
+down the correct version to be sent to UTD, the department which handles documentation. \\
+
+
 
 Almost immediately after completing this work I was asked to create a small eclipse-plugin to print
 the team's \gls{uhl} \gls{rtc} work items in a similar form to the old version done by SPA. The 
@@ -309,6 +343,65 @@ the team's \gls{uhl} \gls{rtc} work items in a similar form to the old version d
 used heavily in the \gls{apar} reviews. They are also used if an \gls{apar} goes \gls{pe}, where
 the fix causes a problem, to identify why the \gls{apar} went \gls{pe} and how the process can be
 changed to prevent such action happening again.
+
+This UHL Printer Plug-in used the \gls{swt} Printer libraries, along with the \gls{rtc} 
+Plain-client libraries, to gather information from the currently selected \gls{uhl} \gls{rtc} work
+item, build it into a document tree and finally parse this tree and print it straight to the 
+printer. From this I then generated an Update-Site and associated elements and hosted it on one of
+the departmental servers for the team to easily access. \\
+
+
+
+After completing this I had a lot of time to work on \gls{edt}. To start with I had a lot of 
+discussions with Mark about the best structure for the application. From there we decided
+\gls{osgi} was the best way forward due to it's focus on modularity; if one section broke due to
+updating libraries it would remain isolated to that section of the application without affecting
+any other features.
+
+With this decision in place we then began coming up with the a decent structure for the application
+which would leverage \gls{osgi}. We also discussed how we would handle auditing and object 
+serialisation in a readable format. To this end we decided to use Jackson, an Open Source library
+under the Apache License produced by Codehaus, which serialised Java Objects into \gls{json} files
+through the use of Java annotations. \\
+
+
+
+The first part of the process was to generate documentation for the fix to be delivered. To do this
+we turned to another Open Source library; Apache Velocity. This library acts as a templating engine
+allowing Java values to be passed into a predefined template with relative ease. Again this is
+licensed under the Apache License.
+
+To do this a set of \gls{pojo}s were also defined, these would be the objects which Jackson would
+serialises and deserialise to \gls{json} files. \\
+
+
+
+With this complete I demonstrated the workings to both my Task Manager and Team Leader. With their
+approval I continued the project and ended up with weekly progress meetings with them. \\
+
+
+
+The next part was adding functionality to store files to a \gls{scm} system. This would allow 
+auditing on all items in the application. Because of the heavy reliance on \gls{rtc} in the whole
+department and due to some issues with connectors to other \gls{scm} systems, it was decided to use
+\gls{rtc} as the \gls{scm} system.
+
+At this time I also decided to write the connector to the work item side of \gls{rtc}. This worked
+slightly different from the code in the \gls{uhl} Printer so I chose to write it from scratch to
+make it cleaner and more maintainable. This work item module read certain types of work item on the
+server and would populate the correct \gls{pojo} with information from this work item. \\
+
+
+
+Up until this point I hadn't had any problems intergrating libraries into the application, both
+Jackson and Velocity were contained in single jar files. The \gls{rtc} libraries were large, but
+due to the Eclipse-based nature of \gls{rtc} they were already designed to be intergrated into 
+\gls{osgi}.
+
+However, when it came to intergrate Fix Central's libraries into \gls{edt}, I started running into
+dependency problems. The problem had occurred as the Fix Central Library had dependencies on
+certain external libraries which contained different versions of fairly common libraries. 
+
 
 
 \end{document}
