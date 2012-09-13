@@ -235,6 +235,10 @@ virtualised servers should go down. HSM was also used as a testing environment f
 
 \chapter{My role in IBM}
 
+\section{Day Job}
+
+
+\subsection{Inductions and Joining the CICS Level 3 Service Team}
 When I first join I started with a two day induction in the North Harbour office in Portsmouth 
 which covered the general environment I would be working, Health and Safety and the Business 
 Conduct Guidelines. As well as some information about what I could do during the year. I received
@@ -278,6 +282,8 @@ report on the \gls{apar} in question. \\
 
 
 
+\subsection{APAR Poller}
+
 A few months into this I was asked to help maintain the team's \gls{apar} Poller; a large tool 
 which polled \gls{apar}s in \gls{retr}, creating them as a work item in \gls{rtc} if the \gls{apar}
 didn't already exist in the \gls{rtc} server or updating the existing work item with any changes
@@ -314,29 +320,16 @@ interest in this solution and, after a fair few meetings, came up with a list of
 would need to be added to \gls{apt} for us to replace the poller with. \\
 
 
+\subsection{CICS Trace Entries}
 
-With this came another problem. In the \gls{cics} Explorer and associated Eclipse-based tools 
-branch of the poller code was a mechanism to deliver \gls{apar} fixes to the \gls{ibm} 
-update-sites and to Fix Central; the centralised location for the majority of fix packs. Due to the
-nature of \gls{cics} this site was only used for the eclipse-based tools\footnote{A fix for 
-\gls{cics} are released as a \gls{ptf}; a common mechanism for z/OS applications.}.
-
-This functionality was a useful step for the few members of the team who worked with the 
-Eclipse-based tools in the delivery of fixes. Mark Richards was the one to request that I re-write
-a more maintainable version of this code using \gls{osgi} and following good practices for Java,
-\gls{osgi} and the IBM guidelines. I worked with him closely whilst designing the system and to 
-help fix problems once I had started to write the code. \\
-
-
-
-Dooring this time I was also given another piece of work which regarded the documentation of trace
+During this time I was also given another piece of work which regarded the documentation of trace
 messages in one of the \gls{cics} domains. I was set-up with read-only access to the \gls{cics} 
 3.1, 3.2 and 4.1 source code on SPA and tasked with checking the difference between the source code
 definitions of trace codes and the documented versions on the \gls{ibm} information centre to check
 for inconsistencies (i.e. added or removed entries and entires with incorrect parameters) and note
 down the correct version to be sent to UTD, the department which handles documentation. \\
 
-
+\subsection{UHL Printer Plug-in}
 
 Almost immediately after completing this work I was asked to create a small eclipse plug-in to print
 the team's \gls{uhl} \gls{rtc} work items in a similar form to the old version done by SPA. The 
@@ -352,12 +345,21 @@ printer. From this I then generated an Update-Site and associated elements and h
 the departmental servers for the team to easily access. \\
 
 
+\subsection{Explorer Delivery Tool}
 
-After completing this I had a lot of time to work on \gls{edt}. To start with I had a lot of 
-discussions with Mark about the best structure for the application. From there we decided
-\gls{osgi} was the best way forward due to it's focus on modularity; if one section broke due to
-updating libraries it would remain isolated to that section of the application without affecting
-any other features.
+With this came another problem. In the \gls{cics} Explorer and associated Eclipse-based tools 
+branch of the poller code was a mechanism to deliver \gls{apar} fixes to the \gls{ibm} 
+update-sites and to Fix Central; the centralised location for the majority of fix packs. Due to the
+nature of \gls{cics} this site was only used for the eclipse-based tools\footnote{A fix for 
+\gls{cics} are released as a \gls{ptf}; a common mechanism for z/OS applications.}.
+
+This functionality was a useful step for the few members of the team who worked with the 
+Eclipse-based tools in the delivery of fixes. Mark Richards was the one to request that I re-write
+a more maintainable version of this code using \gls{osgi} and following good practices for Java,
+\gls{osgi} and the IBM guidelines. To start with I had a lot of discussions with Mark about the 
+best structure for the application. From there we decided \gls{osgi} was the best way forward due 
+to it's focus on modularity; if one section broke due to updating libraries it would remain 
+isolated to that section of the application without affecting any other features.
 
 With this decision in place we then began coming up with a decent structure for the application
 which would leverage \gls{osgi}. We also discussed how we would handle auditing and object 
@@ -365,7 +367,7 @@ serialisation in a readable format. To this end we decided to use Jackson, an Op
 under the Apache License produced by Codehaus, which serialised Java Objects into \gls{json} files
 through the use of Java annotations. \\
 
-
+\subsubsection{EDT Document Generation}
 
 The first part of the process was to generate documentation for the fix to be delivered. To do this
 we turned to another Open Source library; Apache Velocity. This library acts as a templating engine
@@ -380,7 +382,7 @@ serialises and de-serialise to \gls{json} files. \\
 With this complete I demonstrated the workings to both my Task Manager and Team Leader. With their
 approval I continued the project and ended up with weekly progress meetings with them. \\
 
-
+\subsubsection{EDT RTC Interaction}
 
 The next part was adding functionality to store files to a \gls{scm} system. This would allow 
 auditing on all items in the application. Because of the heavy reliance on \gls{rtc} in the whole
@@ -392,7 +394,7 @@ slightly different from the code in the \gls{uhl} Printer so I chose to write it
 make it cleaner and more maintainable. This work item module read certain types of work item on the
 server and would populate the correct \gls{pojo} with information from this work item. \\
 
-
+\subsubsection{EDT Fix Central Interaction}
 
 Up until this point I hadn't had any problems integrating libraries into the application, both
 Jackson and Velocity were contained in single jar files. The \gls{rtc} libraries were large, but
@@ -410,12 +412,12 @@ finally use it to create the required metadata and upload fixes to a testing ser
 of this was the ability to upload in preview mode and then to unset the preview flag. This took a
 lot more time due to the convoluted way Fix Central works. \\
 
-Dooring this I was constantly testing making sure each module would integrate correctly with other
+During this I was constantly testing making sure each module would integrate correctly with other
 modules. This combined with complex libraries meant the whole project took a lot long than first
 anticipated. Eventually I started to do some proper project planning on the request of my team 
 leader. \\
 
-
+\subsection{CICS Eclipse-based Tools Skills Transfer}
 
 Around the release of new versions of the \gls{cics} Eclipse-based tools I was asked to moderate
 and record the skills transfer sessions for these new versions. These skills transfer sessions were
@@ -426,11 +428,13 @@ Most of these sessions were delivered by foreign teams so my role could be diffi
 working with due to the language barrier. However all these sessions ran fairly smoothly, where
 the only problems came from the software we were using to record. \\
 
-
+\section{Giveback}
 
 \gls{ibm} has a scheme known as ``giveback'' which provides opportunities to help with community
 events both within \gls{ibm} and externally. All \gls{it}s are pushed by their managers to 
 participate in giveback.
+
+\subsection{Java Teaching}
 
 The first piece of giveback I participated in was teaching Java to my peers. These gls{it}s had a
 good knowledge of the C programming language so the main focus for this was teaching the principals
@@ -443,7 +447,7 @@ This piece of giveback lasted around 3 months with a session a week and by the e
 Having heard about these sessions some of my team registered their own interest in learning Java
 and as such I set up a couple of sessions to teach them too. \\
 
-
+\subsection{Smart Cursor}
 
 Having followed Extreme Blue (a summer internship program \gls{ibm} runs world-wide) with interest
 due to some friends being in that year's intake I jumped at the chance to get involve with the 
@@ -462,7 +466,7 @@ I joined what was known as the ``A-Team'' (Algorithm Team) and got involved with
 building the base for this project, including a 3D visualisation program which would be used to 
 debug the actual \gls{ai} sections of the project. \\
 
-
+\subsection{Blue Fusion}
 
 Another large piece of giveback both graduates and \gls{it}s are pushed to do is an event called
 ``Blue Fusion''; an event which coincides with national science week, with the aim to teach school
@@ -474,10 +478,13 @@ of time testing the performance of the game to ensure it ran well enough for the
 we would be given for the event. I also helped to write some of the \gls{ai} behaviour for the 
 game.
 
-Dooring the project I acted as the team's 2\textsuperscript{nd} in command, standing in for the team
+During the project I acted as the team's 2\textsuperscript{nd} in command, standing in for the team
 leader in the weekly check-up meetings and keeping the team on task while he was away on vacation.
 On request of my task manager I also gave a quick demo of the game to the rest of the \gls{cics}
 level 3 team, which was a useful experience to get opinions on the game from an impartial audience.
+\\
+
+
 
 As a developer I had to host a session for the ``Bright Sparks'' event; a single day ran just
 before Blue Fusion for a younger audience which acts as a final test where most problems can be
@@ -485,12 +492,39 @@ caught and fixed. I spent the morning of Bright Sparks hosting the game and the 
 performing some simple bug fixing in preparation for the finale. All-in-all the day was a little
 ropey, but all things considered ran well.
 
-Dooring Blue Fusion I spent a lot of time doing minor bug fixes and making sure all the data files 
+During Blue Fusion I spent a lot of time doing minor bug fixes and making sure all the data files 
 were correct for the finale. I also hosted one of the other games for a day due to a shortage of
 volunteers. For the majority of the event our game was stable and the only issues occurred due to
-some problems with the Java 2D libraries.
+some problems with the Java 2D libraries. \\
 
 
+
+\subsection{Java Masterclass at Swanmore College of Technology}
+
+Having done a lot of Java teaching in the first part of my year, I responded to an advertisement
+looking for helpers to run Java teaching sessions in a local school. This led to me both running
+and organising these sessions. Contacting the teacher who'd requested these sessions we organised
+a taster session just before the Easter holidays to work out the levels of interest so the main
+sessions could begin after the Easter break.
+
+All the sessions were run in a similar format; a quick presentation for 5-15 minutes followed by a
+practical worksheet the students could work through with any help from me or one of the other 
+helpers.
+
+For these sessions I spent a fair amount of time beforehand trying to find helpers for the sessions
+and checking through the content for the session to make sure the practical sessions would work 
+well or shortening the presentations. \\
+
+
+
+\subsection{2012-13 IT Inductions}
+
+Towards the end of my employment at \gls{ibm} I was asked to organise the \gls{it} inductions for
+the 2012-13 intake of \gls{it}s. The team for this consisted of myself and two other \gls{it}s, 
+supervised by Sarah Churchard, one of the three Hursley \gls{it} managers; and Ed Moffat, the lead
+manager for the Hursley \gls{it}s.
+
+We quickly formulated a timetable for the typical 2 day 
 
 
 \end{document}
