@@ -1,3 +1,4 @@
+% IY Report for Alexander Brown
 \documentclass[a4paper,11pt]{report}
 
 \usepackage{fullpage}
@@ -6,6 +7,7 @@
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
+\newacronym{ai}{AI}{Artificial Intelligence}
 \newacronym{apar}{APAR}{Authorized Program Analysis Report}
 \newacronym{api}{API}{Application Programming Interface}
 \newacronym{apt}{APT}{APAR Polling Tool}
@@ -100,13 +102,13 @@ Alexander \textsc{Brown}
 
 \chapter{Organisational Environment}
 
-\Gls{ibm} is an American multinational technology and consulting corporation, with it's headquaters
+\Gls{ibm} is an American multinational technology and consulting corporation, with it's headquarters
 in New York, America. \Gls{ibm} sell a wide range of technical products, both hardware and
 software, in areas ranging from mainframe computing to nanotechnology. As well as technical 
-products \gls{ibm} also offer a range of consulting, hosting and infastructure services.
+products \gls{ibm} also offer a range of consulting, hosting and infrastructure services.
 
 \Gls{ibm} are also know for innovation; holding the largest number of \gls{us} patents, building
-new technologies such as \gls{ibm} Watson and pushing corporate initatives like Smart Planet. \\
+new technologies such as \gls{ibm} Watson and pushing corporate initiatives like Smart Planet. \\
 
 
 
@@ -119,7 +121,7 @@ new technologies such as \gls{ibm} Watson and pushing corporate initatives like 
 \item \Gls{stg}
 \item Sales \& Distribution
 \item \Gls{itd}
-\item Intergrated Managed Business Process Services
+\item Integrated Managed Business Process Services
 \item \Gls{ibm} Global Financing
 \end{itemize}
 
@@ -134,7 +136,7 @@ Lotus, Tivoli, WebSphere and Rational. \Gls{swg} in Hursley is largely WebSphere
 
 \Gls{cics} Transaction Server\footnote{\Gls{cics} Transaction Server is typically shortened to CICS
 internally} is a part of the WebSphere brand. Like many products in \gls{swg} \gls{cics} has 
-several different deparments: development, test (\gls{fv} test, system test, etc.) and service.
+several different departments: development, test (\gls{fv} test, system test, etc.) and service.
 
 All service departments in \gls{ibm} are split into three distinct levels:
 
@@ -166,8 +168,8 @@ working environment specific to \gls{cics} Level 3 service. However, due to a pr
 a year before I joined \gls{ibm}, a new working environment; \gls{rtc} was being used for all new
 releases of \gls{cics}.
 
-I was initially tasked with intergrating this environment into the 
-statistics tooling, or vice versa as \gls{rtc} could potentially provide management and statisics
+I was initially tasked with integrating this environment into the 
+statistics tooling, or vice versa as \gls{rtc} could potentially provide management and statistics
 gathering by default. \\
 
 
@@ -209,12 +211,12 @@ Because \gls{cics} is almost entirely mainframe-based the department has access 
 on-site mainframes. However, with the introduction of \gls{rtc} the department has also required
 the use of Linux servers to host the \gls{rtc} server on and to run build engines that hook into
 \gls{rtc} and perform useful tasks, such as building \gls{cics} or polling \gls{apar}s into 
-\gls{rtc} Work Items. Some of these were virtualised machines maintained by the Infastructure team
+\gls{rtc} Work Items. Some of these were virtualised machines maintained by the Infrastructure team
 in Hursley, whilst others were physical machines the department maintained. \\
 
 
 
-The statsitics tools I was responsible for were hosted on two different systems; the Java-based
+The statistics tools I was responsible for were hosted on two different systems; the Java-based
 tool ran on a \gls{rhel} CentOS 5 server running \gls{was}, \gls{mq} and \gls{db2}. Whilst the 
 other was a Windows XP machine running Lotus Notes 8.5 and \gls{pcomm} sessions into \gls{retr} and
 SPA. \\
@@ -234,6 +236,10 @@ virtualised servers should go down. HSM was also used as a testing environment f
 
 \chapter{My role in IBM}
 
+\section{Day Job}
+
+
+\subsection{Inductions and Joining the CICS Level 3 Service Team}
 When I first join I started with a two day induction in the North Harbour office in Portsmouth 
 which covered the general environment I would be working, Health and Safety and the Business 
 Conduct Guidelines. As well as some information about what I could do during the year. I received
@@ -250,7 +256,7 @@ role of maintaining the team's Java-based statistics tool which run on \gls{was}
 poll \gls{retr} for \gls{pmr}s and \gls{apar}s on an hourly basis and also connected to SPA using 
 \gls{mq}. This information was collected into a \gls{db2} database.
 
-Every day a report would be generated for the previous day's reciepts of \gls{pmr}s \gls{apar}s 
+Every day a report would be generated for the previous day's receipts of \gls{pmr}s \gls{apar}s 
 from the data in the database which was sent to the team leaders and the appropriate 
 1\textsuperscript{st} and 2\textsuperscript{nd} Line Managers. It would also use the database to
 create a similar report monthly, as well as performing a backup of data.
@@ -277,6 +283,8 @@ report on the \gls{apar} in question. \\
 
 
 
+\subsection{APAR Poller}
+
 A few months into this I was asked to help maintain the team's \gls{apar} Poller; a large tool 
 which polled \gls{apar}s in \gls{retr}, creating them as a work item in \gls{rtc} if the \gls{apar}
 didn't already exist in the \gls{rtc} server or updating the existing work item with any changes
@@ -292,18 +300,18 @@ the \gls{rtc} server. \\
 
 
 My main role in maintaining this was to keep it working as some of the internal libraries it used
-updated regularly and, contrary to guidelines, sometimes broke backwards-compatability. This 
+updated regularly and, contrary to guidelines, sometimes broke backwards-compatibility. This 
 proved to be difficult with the sheer size of the application and the way in which it was invoked.
 
 The application was invoked using Apache Ant; an open source tool similar to GNU Make, but designed
-for Java applications. Whilst this in itself was a good design descision, the readability of the 
+for Java applications. Whilst this in itself was a good design decision, the readability of the 
 Ant scripts was less than desirable. To add to this some of the variables were taken from the 
 Build Engine Definition on the \gls{rtc} server, some from the Build, some from flat files and some
-hardcoded into the Ant scripts. This made it nearly impossible to debug.
+hard coded into the Ant scripts. This made it nearly impossible to debug.
 
 Mark Richards, a fellow member of the \gls{cics} Level 3 Service team also charged with maintaining
 the poller, and I both raised our concerns for the maintainability of the Poller in the long run.
-With these concerns aboard a number of meetings were set up with the /gls{mq} Level 3 Service team
+With these concerns aboard a number of meetings were set up with the \gls{mq} Level 3 Service team
 to discuss their solution, \gls{apt}.
 
 \gls{apt} performed very similar function as the \gls{apar} Poller did; however it was a lot more
@@ -313,31 +321,18 @@ interest in this solution and, after a fair few meetings, came up with a list of
 would need to be added to \gls{apt} for us to replace the poller with. \\
 
 
+\subsection{CICS Trace Entries}
 
-With this came another problem. In the \gls{cics} Explorer and associated Eclipse-based tools 
-branch of the poller code was a mechanism to deliver \gls{apar} fixes to the \gls{ibm} 
-update-sites and to Fix Central; the centralised location for the majority of fix packs. Due to the
-nature of \gls{cics} this site was only used for the eclipse-based tools\footnote{A fix for 
-\gls{cics} are released as a \gls{ptf}; a common mechanism for z/OS applications.}.
-
-This functionality was a useful step for the few memebers of the team who worked with the 
-Eclipse-based tools in the delivery of fixes. Mark Richards was the one to request that I re-write
-a more maintainable version of this code using \gls{osgi} and following good practices for Java,
-\gls{osgi} and the IBM guidelines. I worked with him closely whilst designing the system and to 
-help fix problems once I had started to write the code. \\
-
-
-
-During this time I was also given another piece of work which reguarded the documentation of trace
+During this time I was also given another piece of work which regarded the documentation of trace
 messages in one of the \gls{cics} domains. I was set-up with read-only access to the \gls{cics} 
 3.1, 3.2 and 4.1 source code on SPA and tasked with checking the difference between the source code
 definitions of trace codes and the documented versions on the \gls{ibm} information centre to check
 for inconsistencies (i.e. added or removed entries and entires with incorrect parameters) and note
 down the correct version to be sent to UTD, the department which handles documentation. \\
 
+\subsection{UHL Printer Plug-in}
 
-
-Almost immediately after completing this work I was asked to create a small eclipse-plugin to print
+Almost immediately after completing this work I was asked to create a small eclipse plug-in to print
 the team's \gls{uhl} \gls{rtc} work items in a similar form to the old version done by SPA. The 
 \gls{uhl} is a report of all the work which goes into diagnosing and fixing an \gls{apar} and are
 used heavily in the \gls{apar} reviews. They are also used if an \gls{apar} goes \gls{pe}, where
@@ -351,20 +346,29 @@ printer. From this I then generated an Update-Site and associated elements and h
 the departmental servers for the team to easily access. \\
 
 
+\subsection{Explorer Delivery Tool}
 
-After completing this I had a lot of time to work on \gls{edt}. To start with I had a lot of 
-discussions with Mark about the best structure for the application. From there we decided
-\gls{osgi} was the best way forward due to it's focus on modularity; if one section broke due to
-updating libraries it would remain isolated to that section of the application without affecting
-any other features.
+With this came another problem. In the \gls{cics} Explorer and associated Eclipse-based tools 
+branch of the poller code was a mechanism to deliver \gls{apar} fixes to the \gls{ibm} 
+update-sites and to Fix Central; the centralised location for the majority of fix packs. Due to the
+nature of \gls{cics} this site was only used for the eclipse-based tools\footnote{A fix for 
+\gls{cics} are released as a \gls{ptf}; a common mechanism for z/OS applications.}.
 
-With this decision in place we then began coming up with the a decent structure for the application
+This functionality was a useful step for the few members of the team who worked with the 
+Eclipse-based tools in the delivery of fixes. Mark Richards was the one to request that I re-write
+a more maintainable version of this code using \gls{osgi} and following good practices for Java,
+\gls{osgi} and the IBM guidelines. To start with I had a lot of discussions with Mark about the 
+best structure for the application. From there we decided \gls{osgi} was the best way forward due 
+to it's focus on modularity; if one section broke due to updating libraries it would remain 
+isolated to that section of the application without affecting any other features.
+
+With this decision in place we then began coming up with a decent structure for the application
 which would leverage \gls{osgi}. We also discussed how we would handle auditing and object 
 serialisation in a readable format. To this end we decided to use Jackson, an Open Source library
 under the Apache License produced by Codehaus, which serialised Java Objects into \gls{json} files
 through the use of Java annotations. \\
 
-
+\subsubsection{EDT Document Generation}
 
 The first part of the process was to generate documentation for the fix to be delivered. To do this
 we turned to another Open Source library; Apache Velocity. This library acts as a templating engine
@@ -372,14 +376,14 @@ allowing Java values to be passed into a predefined template with relative ease.
 licensed under the Apache License.
 
 To do this a set of \gls{pojo}s were also defined, these would be the objects which Jackson would
-serialises and deserialise to \gls{json} files. \\
+serialises and de-serialise to \gls{json} files. \\
 
 
 
 With this complete I demonstrated the workings to both my Task Manager and Team Leader. With their
 approval I continued the project and ended up with weekly progress meetings with them. \\
 
-
+\subsubsection{EDT RTC Interaction}
 
 The next part was adding functionality to store files to a \gls{scm} system. This would allow 
 auditing on all items in the application. Because of the heavy reliance on \gls{rtc} in the whole
@@ -391,17 +395,211 @@ slightly different from the code in the \gls{uhl} Printer so I chose to write it
 make it cleaner and more maintainable. This work item module read certain types of work item on the
 server and would populate the correct \gls{pojo} with information from this work item. \\
 
+\subsubsection{EDT Fix Central Interaction}
 
-
-Up until this point I hadn't had any problems intergrating libraries into the application, both
+Up until this point I hadn't had any problems integrating libraries into the application, both
 Jackson and Velocity were contained in single jar files. The \gls{rtc} libraries were large, but
-due to the Eclipse-based nature of \gls{rtc} they were already designed to be intergrated into 
+due to the Eclipse-based nature of \gls{rtc} they were already designed to be integrated into 
 \gls{osgi}.
 
-However, when it came to intergrate Fix Central's libraries into \gls{edt}, I started running into
+However, when it came to integrate Fix Central's libraries into \gls{edt}, I started running into
 dependency problems. The problem had occurred as the Fix Central Library had dependencies on
-certain external libraries which contained different versions of fairly common libraries. 
+certain external libraries which contained different versions of fairly common libraries. Due to
+the way \gls{osgi} performs class loading it resolved these dependencies in a different order to
+the way standard Java would.
+
+With Mark's help I was eventually able to resolve this and slowly learn the Fix Central library and
+finally use it to create the required metadata and upload fixes to a testing server. A further part
+of this was the ability to upload in preview mode and then to unset the preview flag. This took a
+lot more time due to the convoluted way Fix Central works. \\
+
+During this I was constantly testing making sure each module would integrate correctly with other
+modules. This combined with complex libraries meant the whole project took a lot long than first
+anticipated. Eventually I started to do some proper project planning on the request of my team 
+leader. \\
+
+\subsection{CICS Eclipse-based Tools Skills Transfer}
+
+Around the release of new versions of the \gls{cics} Eclipse-based tools I was asked to moderate
+and record the skills transfer sessions for these new versions. These skills transfer sessions were
+designed to bring Service teams, both Level 2 and 3, up to speed on the new features of the product
+and how they are designed to work.
+
+Most of these sessions were delivered by foreign teams so my role could be difficult at time
+working with due to the language barrier. However all these sessions ran fairly smoothly, where
+the only problems came from the software we were using to record. \\
+
+\section{Giveback}
+
+\gls{ibm} has a scheme known as ``giveback'' which provides opportunities to help with community
+events both within \gls{ibm} and externally. All \gls{it}s are pushed by their managers to 
+participate in giveback.
+
+\subsection{Java Teaching}
+
+The first piece of giveback I participated in was teaching Java to my peers. These gls{it}s had a
+good knowledge of the C programming language so the main focus for this was teaching the principals
+of object-orientation and then some of the differences in syntax. To help with this we were given a
+mentor who had a good knowledge of teaching and lecturing.
+
+This piece of giveback lasted around 3 months with a session a week and by the end of it the 
+\gls{it}s in the group knew Java well enough to use it in their own day jobs.
+
+Having heard about these sessions some of my team registered their own interest in learning Java
+and as such I set up a couple of sessions to teach them too. \\
+
+\subsection{Smart Cursor}
+
+Having followed Extreme Blue (a summer internship program \gls{ibm} runs world-wide) with interest
+due to some friends being in that year's intake I jumped at the chance to get involve with the 
+continuation of one of these projects; the Smart Mouse project.
+
+The Smart Mouse project is a hardware and software project designed to allow disabled users to map
+mouse movements to gestures from a 9-degrees of freedom sensor they could wear on any part of their
+body.
+
+The prototype the Extreme Blue students had produced in their 8 week internship was very simplistic
+and would only work with certain gestures. Our aim was to allow users to use any gesture they 
+wanted (after training the system) along with the ability to attach multiple sensors or other
+peripherals such as pupil tracking or microphones.
+
+I joined what was known as the ``A-Team'' (Algorithm Team) and got involved with designing and 
+building the base for this project, including a 3D visualisation program which would be used to 
+debug the actual \gls{ai} sections of the project. \\
+
+\subsection{Blue Fusion}
+
+Another large piece of giveback both graduates and \gls{it}s are pushed to do is an event called
+``Blue Fusion''; an event which coincides with national science week, with the aim to teach school
+children concepts of science and technology. I joined a team of 6 to create one of the games for
+this event which was also going to be used for the grand finale.
+
+Most of my work on this game was the 2D graphics for the front-end of the game. I also spent a lot
+of time testing the performance of the game to ensure it ran well enough for the low-end hardware
+we would be given for the event. I also helped to write some of the \gls{ai} behaviour for the 
+game.
+
+During the project I acted as the team's 2\textsuperscript{nd} in command, standing in for the team
+leader in the weekly check-up meetings and keeping the team on task while he was away on vacation.
+On request of my task manager I also gave a quick demo of the game to the rest of the \gls{cics}
+level 3 team, which was a useful experience to get opinions on the game from an impartial audience.
+\\
 
 
 
+As a developer I had to host a session for the ``Bright Sparks'' event; a single day ran just
+before Blue Fusion for a younger audience which acts as a final test where most problems can be
+caught and fixed. I spent the morning of Bright Sparks hosting the game and the afternoon 
+performing some simple bug fixing in preparation for the finale. All-in-all the day was a little
+ropey, but all things considered ran well.
+
+During Blue Fusion I spent a lot of time doing minor bug fixes and making sure all the data files 
+were correct for the finale. I also hosted one of the other games for a day due to a shortage of
+volunteers. For the majority of the event our game was stable and the only issues occurred due to
+some problems with the Java 2D libraries. \\
+
+
+
+\subsection{Java Masterclass at Swanmore College of Technology}
+
+Having done a lot of Java teaching in the first part of my year, I responded to an advertisement
+looking for helpers to run Java teaching sessions in a local school. This led to me both running
+and organising these sessions. Contacting the teacher who'd requested these sessions we organised
+a taster session just before the Easter holidays to work out the levels of interest so the main
+sessions could begin after the Easter break.
+
+All the sessions were run in a similar format; a quick presentation for 5-15 minutes followed by a
+practical worksheet the students could work through with any help from me or one of the other 
+helpers.
+
+For these sessions I spent a fair amount of time beforehand trying to find helpers for the sessions
+and checking through the content for the session to make sure the practical sessions would work 
+well or shortening the presentations. \\
+
+
+
+\subsection{2012-13 IT Inductions}
+
+Towards the end of my employment at \gls{ibm} I was asked to organise the \gls{it} inductions for
+the 2012-13 intake of \gls{it}s. The team for this consisted of myself and two other \gls{it}s, 
+supervised by Sarah Churchard, one of the three Hursley \gls{it} managers; and Ed Moffat, the lead
+manager for the Hursley \gls{it}s.
+
+We quickly formulated a timetable for the typical 2 day induction and started finding and booking
+speakers to run some of the sessions we had planned. These speakers included: the Hursley 
+Laboratory Manager, two Senior Inventors (\gls{ibm}ers with several patents filed), several of the 
+2011-12 \gls{it}s and some graduates from different product areas.
+
+As well as this we also needed to book rooms and food for the event. Alongside this we requested
+laptops for each new intake which we then set-up to make the first few days easier for the 
+\gls{it}s. 
+
+Being one of the more technical of the three, I was responsible for this set-up. With some help I
+added Hard-disk passwords to every laptop; changed the Windows and Lotus Notes passwords to a 
+default so the owner could easily set their own; changed to the regional options to be the UK
+locale; enabled the replication settings on Lotus Notes; created an internal ID for the owner and
+linked it to a wireless account.
+
+During the day I was on hand to greet and introduce speakers, answer any questions, guide the 
+\gls{it}s around the site and fix any laptop problems which arose during the set-up sessions.
+The first two inductions ran very successfully and due to limited numbers of people in the final
+induction I gave a half-day induction to a single new \gls{it}, which again ran smoothly.
+
+Due to our efforts on the induction we were thanked by Derek Tregus; the aforementioned Hursley 
+Lab Manager and by Ed and Sarah. \\
+
+
+
+\chapter{Critical Evaluation}
+
+Having been invited to several reviews as part of the Level 3 \gls{cics} Service team I was 
+surprised at the level of detail put into each review no matter how many lines of code had been
+changed. For example: one of the reviews I attended was for two trivial lines of code and yet every
+single possibility was run through; how it might affect any other modules, what would happen with
+other versions, etc. It was even decided that development should also approve the fix before it was
+released due to some unknowns.
+
+Therefore, it was a little surprising that a lot of the side-products for \gls{cics} didn't undergo
+the same standards in their reviews (possibly due to the fact that they couldn't go \gls{pe}). It
+also seemed a lot of these products were coded without following the \gls{ibm} coding guidelines or
+the guidelines for the language they were written in. It also seemed like there was a dangerous
+misconception over the use of Open Source Software, despite there being lawyers to ensure 
+otherwise. \\
+
+One thing that really impressed me with \gls{ibm} was that there was never any prejudice based on
+my position as an \gls{it}. The only thing which affected my work was the limited amount of time I
+had in \gls{ibm}. Most of the time fellow employees would mistake me for a graduate, even those 
+inside my own team. \\
+
+Technically I learned a lot over the course of the year. As I have maintained to some of the new
+\gls{it}s; I came in with 2 years knowledge of Java and came out with a single year of solid use 
+of Java. I also spent a lot of time learning the \gls{osgi} framework and have come to appreciate
+being able to produce highly-modular Java applications when necessary. \\
+
+Having worked with mainframes for a year I have definitely learnt a lot about z/OS and associated
+operating systems and plan to take the z/OS Mastery Qualification, as well as a Java 7 
+qualification too. \\
+
+One of the most important skills I have improved over the course of this year is the ability to
+learn an external library quickly despite the state of it's documentation. Hand-in-hand with this
+I have also significantly improved my ability to debug programs, especially with the in-built 
+eclipse graphics debugger. \\
+
+Presenting is a big part of working in \gls{ibm}. Over the year I have ended up doing a lot of 
+presenting, from teaching to explaining the technical workings of my projects. I also took the
+opportunity to attend a presentation workshop with a member of the executive briefing centre and
+feel a lot more confident giving presentations. \\
+
+Having spent a lot of time in teams I feel my teamwork has improved and whilst I still don't feel
+entirely confident leading a team, I am more willing to throw in more opinions regardless of my
+place within the team. \\
+
+I also had some great learning opportunities to learn a great deal more about \gls{cics} and other
+\gls{ibm} products, as well as interesting topics like virtualisation and machine learning. As well
+as being able to do some of my own teaching and presenting. I actually ended up doing part of a
+\gls{cics} seminar along with some of the other \gls{cics} \gls{it}s. \\
+
+All-in-all this year at \gls{ibm} has boosted my confidence, both with technology and 
+communication. I also have a much greater appreciation for what it's like to work in a large 
+software (and hardware) company.
 \end{document}
