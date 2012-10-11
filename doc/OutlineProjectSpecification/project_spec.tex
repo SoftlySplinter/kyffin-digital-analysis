@@ -14,7 +14,10 @@
 \usepackage{glossaries}
 
 \newacronym{opencv}{OpenCV}{Open Source Computer Vision}
-\newacronym{gsl}{GSL}{GNU Scientific Library}
+\newacronym{fiji}{FIJI}{FIJI Is Just ImageJ}
+\newacronym{vxl}{VXL}{Vision X Library}
+\newacronym{ivt}{IVT}{Intergrating Vision Toolkit}
+\newacronym{sip}{SIP}{Scillab Image Processing}
 
 \begin{document}
 
@@ -51,13 +54,24 @@ Temporal analysis will be the focus of this project as it allows for a diverse r
 %This should summarise the tasks that will form the major part of the work. If there is lots of research reading to be done you can say so here. If there are coding techniques to learn or APIs to wrestle with then you can say that too.
 
 \subsection{Library and Language Decisions}
-The \gls{opencv} library contains a lot of useful methods for image processing and therefore makes it an important library to research and, probably, include as part of this project. It has C, C++, Python and Java interfaces so some work will also need to be done researching the use of it with each of these languages to decide which would be the best to use with this project. 
+There are quite a few image processing/computer vision libraries available to use, including:
 
-Currently I have a very good working knowledge of Java and a basic knowledge of C, C++ and Python. However other maths- or science-based libraries; such as NumPy, \gls{gsl} or JAMA; may also affect the decision made.
+\begin{itemize}
+\item AForge.net
+\item \gls{fiji}
+\item \gls{ivt}
+\item \gls{opencv}
+\item \gls{sip}
+\item \gls{vxl}
+\end{itemize}
 
-\subsection{Research into Image Processing}
-Having done very little image processing or computer vision I will need to research the topic in a good level of detail to be able to actually complete this project. Some of the simpler areas such as RGB Statistical Analysis don't require this research to be complete so can be in progress at the same time as this.
+Some analysis of these libraries needs to be performed before a proper choice is made. This analysis should take into account certain aspects such as cross-platform compatibility, ease of use and install, features available, etc.
 
+
+
+%The \gls{opencv} library contains a lot of useful methods for image processing and therefore makes it an important library to research and, probably, include as part of this project. It has C, C++, Python and Java interfaces so some work will also need to be done researching the use of it with each of these languages to decide which would be the best to use with this project. 
+
+%Currently I have a very good working knowledge of Java and a basic knowledge of C, C++ and Python. However other maths- or science-based libraries; such as NumPy, \gls{gsl} or JAMA; may also affect the decision made.
 
 
 %==============================================================================
