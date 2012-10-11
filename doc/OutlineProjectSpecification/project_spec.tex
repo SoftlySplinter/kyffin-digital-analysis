@@ -11,10 +11,14 @@
 \usepackage{mmp} 
 \usepackage{url}
 \usepackage{cite}
+\usepackage{glossaries}
+
+\newacronym{opencv}{OpenCV}{Open Source Computer Vision}
+\newacronym{gsl}{GSL}{GNU Scientific Library}
 
 \begin{document}
 
-\name{Alexander David Brown}
+\name{Alexander D. Brown}
 \userid{adb9}
 \projecttitle{Kyffin Williams: Digital Image Analysis}
 \projecttitlememoir{Kyffin Williams: Digital Image Analysis} %same as the project title or abridged version for page header
@@ -22,7 +26,7 @@
 \version{0.1}
 \docstatus{Draft}
 \modulecode{CS39440}
-\supervisor{Hannah Dee} % e.g. Neil Taylor
+\supervisor{Hannah M. Dee} % e.g. Neil Taylor
 \supervisorid{hmd1}
 
 %optional - comment out next line to use current date for the document
@@ -36,12 +40,24 @@
 \section{Project description}
 %==============================================================================
 %Two or three reasonably detailed paragraphs describing what the project is about. Make clear the main substance of the project, those aspects of it that are essential in making it worthwhile, and the end-goals of the project. You might provide some citations.
-Sir John ``Kyffin'' Williams was a Welsh Landscape Painter, widely regarded as the defining artist of Wales during the 20\textsuperscript{th} Century\cite[p.957]{davies08}
+Sir John ``Kyffin'' Williams was a Welsh Landscape Painter, widely regarded as the defining artist of Wales during the 20\textsuperscript{th} Century\cite[p.957-958]{davies08}. His work, and associated metadata collected by the National Library of Wales, allows for some interesting analysis; particularly that of temporal or geological %FIXME is this the right word?
+data for a given painting.
+
+Temporal analysis will be the focus of this project as it allows for a diverse range of techniques; from statistical analysis of RGB values of the paintings to looking at the length and style of paintbrush strokes. The ultimate aim of this being to accurately place the year of a given painting which has no metadata collected.
 
 %==============================================================================
 \section{Work to be tackled}
 %==============================================================================
 %This should summarise the tasks that will form the major part of the work. If there is lots of research reading to be done you can say so here. If there are coding techniques to learn or APIs to wrestle with then you can say that too.
+
+\subsection{Library and Language Decisions}
+The \gls{opencv} library contains a lot of useful methods for image processing and therefore makes it an important library to research and, probably, include as part of this project. It has C, C++, Python and Java interfaces so some work will also need to be done researching the use of it with each of these languages to decide which would be the best to use with this project. 
+
+Currently I have a very good working knowledge of Java and a basic knowledge of C, C++ and Python. However other maths- or science-based libraries; such as NumPy, \gls{gsl} or JAMA; may also affect the decision made.
+
+\subsection{Research into Image Processing}
+Having done very little image processing or computer vision I will need to research the topic in a good level of detail to be able to actually complete this project. Some of the simpler areas such as RGB Statistical Analysis don't require this research to be complete so can be in progress at the same time as this.
+
 
 
 %==============================================================================
