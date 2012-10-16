@@ -76,8 +76,30 @@ For the long term viability of the project this needs to be completed before any
 I intend to use Hannah and other staff members of the Computer Science Department to aid with this as there is a wealth of knowledge existing there.
 
 
-\subsection{Design}
+\subsection{Base System}
+As with any software project, a strong base will allow for a good overall whole. The base for this system will need to allow the running of different analysis techniques on lists of images and for the output of this to be passed into a machine learning module in a form which allows for the classification of a single image using the given technique.
 
+The difficulty of this will be passing the techniques around in this fashion. C allows method pointers, any Object Orientated language can do this with help from inheritance, etc.
+
+\subsection{Techniques}
+The main focus of this project is on the Techniques to analyse the paintings. So creating these techniques will have to be a large piece of work.
+
+Part of this will be coming up with the ideas for these techniques; there are currently a few ideas for these techniques:
+
+\begin{itemize}
+\item RGB Statistical Analysis (Mean, Standard Deviation, Range, etc.)
+\item Histogram Comparison
+\item Texture Analysis
+\item Brush stroke Analysis
+\end{itemize}
+
+The more of these techniques there are the better the analysis can be and the more likely the project is to be able to accurately predict the age of a painting.
+
+
+\subsection{Machine Learning}
+The final required part of this is to be able to ``Learn'' the age of paintings given the analysis performed upon it, map a function which matches all learned information from this information and be able to infer the age of a new painting.
+
+This part is potentially the most difficult as such systems can be fairly difficult to create. However there may be some libraries which include Machine Learning packages. I will need to explore these libraries and find out if they are suitable for use.
 
 
 %==============================================================================
@@ -86,6 +108,8 @@ I intend to use Hannah and other staff members of the Computer Science Departmen
 %This should list everything you expect to produce. This should normally include specified items of working software, any reviews (of technology etc...) that you see as of fundamental importance to the project, documentation for requirements, design and testing, and of course the progress report and the final report. 
 
 %This list should include more than just the items that have been noted in the lecture slides. You must focus on the items that you will produce for your project and it might be different for your project than for another project. The list might change as you continue to work on your project. This is a statement of your current expectations.  
+
+
 
 %==============================================================================
 \section{Initial bibliography}
