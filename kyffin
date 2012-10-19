@@ -1,0 +1,23 @@
+#! /usr/bin/env python
+
+VERSION_FILE = 'VERSION.txt'
+
+def main():
+	"""Main entry method to the Kyffin project."""
+	print "Kyffin ({0})".format(loadVersion())
+
+def loadVersion():
+	"""Loads Version information from the file defined by VERSION_FILE"""
+	version = 'Unkown Version'
+	try:
+		with open(VERSION_FILE, 'r') as vFile:
+			version = vFile.readline().rstrip('\n')
+	except IOError as e:
+		print "Unable to load version file: {0}\nReason: {1}".format(VERSION_FILE, e)
+	return version
+	
+
+if __name__ == '__main__':
+	main();
+else:
+	print 'Needs to be run as an entry point.'
