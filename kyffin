@@ -1,10 +1,28 @@
 #! /usr/bin/env python
+import sys
+sys.path.append('./src/')
+
+import statistical
+from optparse import OptionParser 
+import unittest
 
 VERSION_FILE = 'VERSION.txt'
 
 def main():
 	"""Main entry method to the Kyffin project."""
-	print "Kyffin ({0})".format(loadVersion())
+	(options, args) = parse()
+
+	if options.test_flag:
+		from test.statistical_test import StatisticalTest
+		suite = unittest.TestLoader().loadTestsFromTestCase(StatisticalTest)
+		unittest.TextTestRunner(verbosity=2).run(suite)
+	else :
+		print "Kyffin ({0})".format(loadVersion())
+
+def parse():
+	parser = OptionParser()
+	parser.add_option('-t', '--test', default=False, action='store_true', dest='test_flag', help='Run tests and nothing else')
+	return parser.parse_args()
 
 def loadVersion():
 	"""Loads Version information from the file defined by VERSION_FILE"""
