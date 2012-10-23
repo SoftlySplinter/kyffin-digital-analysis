@@ -2,6 +2,7 @@
 
 import cv
 import csv
+import matplotlib.pyplot as plot
 
 DATA_DIR = 'data/'
 
@@ -22,8 +23,18 @@ class Analyser:
 					averages[row[1]] = [avg]
 				else:
 					averages[row[1]].append(avg)
+		x = []
+		y = []
 		for (k,v) in averages.items():
-			print '{0}: {1}'.format(k, v)
+			for ((r,g,b,i), std) in v:
+				try:
+					year = int(k)
+					x.append(year)
+					y.append(r)
+				except BaseException as e:
+					continue
+		plot.plot(x,y,'ro')
+		plot.show()
 
 	def analyseRow(self, row):
 		'''Analyse a row in the CSV file.
