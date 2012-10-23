@@ -2,7 +2,6 @@
 
 import cv
 import csv
-import analysis
 
 DATA_DIR = 'data/'
 

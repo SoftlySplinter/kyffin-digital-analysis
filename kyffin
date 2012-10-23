@@ -5,7 +5,7 @@ import sys
 sys.path.append('./src/')
 
 from analyser import Analyser
-from statistical import StatisticalAnalysis
+from analysis.statistical import StatisticalAnalysis
 
 from optparse import OptionParser 
 import unittest
