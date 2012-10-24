@@ -23,17 +23,21 @@ class Analyser:
 					averages[row[1]] = [avg]
 				else:
 					averages[row[1]].append(avg)
+		rY = []
+		bY = []
+		gY = []
 		x = []
-		y = []
 		for (k,v) in averages.items():
 			for ((r,g,b,i), std) in v:
 				try:
 					year = int(k)
 					x.append(year)
-					y.append(r)
+					rY.append(r)
+					bY.append(b)
+					gY.append(g)
 				except BaseException as e:
 					continue
-		plot.plot(x,y,'ro')
+		plot.plot(x,rY,'ro', x, bY,'bo', x, gY, 'go')
 		plot.show()
 
 	def analyseRow(self, row):
