@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import cv
+import numpy
 import csv
 import matplotlib.pyplot as plot
 
@@ -23,21 +24,35 @@ class Analyser:
 					averages[row[1]] = [avg]
 				else:
 					averages[row[1]].append(avg)
-		rY = []
-		bY = []
-		gY = []
+
+		averaged = dict()
+
 		x = []
+		yR = []
+		yG = []
+		yB = []
+
 		for (k,v) in averages.items():
+			mR = 0
+			mG = 0
+			mB = 0
 			for ((r,g,b,i), std) in v:
-				try:
-					year = int(k)
-					x.append(year)
-					rY.append(r)
-					bY.append(b)
-					gY.append(g)
-				except BaseException as e:
-					continue
-		plot.plot(x,rY,'ro', x, bY,'bo', x, gY, 'go')
+				mR += r
+				mG += g
+				mB += b
+			mR /= len(v)
+			mG /= len(v)
+			mB /= len(v)
+		
+			try :	
+				x.append(int(k))
+			except BaseException:
+				continue
+			yR.append(mR)
+			yG.append(mG)
+			yB.append(mB)
+
+		plot.plot(x,yR,'rx',x,yG,'gx',x,yB,'bx')
 		plot.show()
 
 	def analyseRow(self, row):
