@@ -1,10 +1,7 @@
 #! /usr/bin/env python
 
 import cv
-import numpy
 import csv
-import matplotlib.pyplot as plot
-import mpl_toolkits.mplot3d.axes3d as p3d
 
 DATA_DIR = 'data/'
 
