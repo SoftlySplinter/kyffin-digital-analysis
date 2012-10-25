@@ -4,6 +4,7 @@ import cv
 import numpy
 import csv
 import matplotlib.pyplot as plot
+import mpl_toolkits.mplot3d.axes3d as p3d
 
 DATA_DIR = 'data/'
 
@@ -11,9 +12,11 @@ class Analyser:
 	def __init__(self, technique):
 		self.technique = technique
 
+	
+
 	def analyse(self, data):
 		'''Analyse a CSV file which contains the data for a set of images'''
-		averages = dict()
+		averages = {}
 		with open (data, 'r') as csvFile:
 			dataReader = csv.reader(csvFile, delimiter=',', quotechar='"')
 			for row in dataReader:
@@ -25,14 +28,20 @@ class Analyser:
 				else:
 					averages[row[1]].append(avg)
 
-		averaged = dict()
+		averaged = {}
 
 		x = []
 		yR = []
 		yG = []
 		yB = []
 
-		for (k,v) in averages.items():
+		keys = averages.keys()
+		keys = sorted(keys)
+
+		for k in keys:
+			v = averages[k]
+
+
 			mR = 0
 			mG = 0
 			mB = 0
@@ -52,7 +61,11 @@ class Analyser:
 			yG.append(mG)
 			yB.append(mB)
 
-		plot.plot(x,yR,'rx',x,yG,'gx',x,yB,'bx')
+		fig = plot.figure()
+		ax = p3d.Axes3D(fig)
+		ax.scatter(yR, yG, yB)
+
+#		plot.plot(x,yR,'r-',x,yG,'g-',x,yB,'b-')
 		plot.show()
 
 	def analyseRow(self, row):
