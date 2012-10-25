@@ -6,6 +6,7 @@ sys.path.append('./src/')
 
 from analyser import Analyser
 from analysis.statistical import StatisticalAnalysis
+import gui.guiFactory as guiFactory
 
 from optparse import OptionParser 
 import unittest
@@ -23,8 +24,8 @@ def main():
 	else :
 		print "Kyffin ({0})".format(loadVersion())
 		if options.csv is not None:
-			analyser = Analyser(StatisticalAnalysis())
-			analyser.analyse(options.csv)
+			analyser = Analyser(StatisticalAnalysis(), guiFactory.getGUI(options.gui))
+			analyser.run(options.csv)
 		else:
 			raise BaseException('No data file specified')
 
@@ -32,6 +33,7 @@ def parse():
 	parser = OptionParser()
 	parser.add_option('-t', '--test', default=False, action='store_true', dest='test_flag', help='Run tests and nothing else')
 	parser.add_option("-d", "--csv", dest="csv", help="Statistically analyse CSV file", metavar="CSV")
+	parser.add_option('-g', '--gui', dest='gui', help='Set GUI Type (defaults to text-based')
 	return parser.parse_args()
 
 def loadVersion():
