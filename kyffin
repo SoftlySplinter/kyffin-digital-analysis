@@ -6,6 +6,7 @@ sys.path.append('./src/')
 
 from analyser import Analyser
 from analysis.statistical import StatisticalAnalysis
+from analysis.histogram import HistogramAnalysis
 import gui.guiFactory as guiFactory
 
 from optparse import OptionParser 
@@ -24,7 +25,7 @@ def main():
 	else :
 		print "Kyffin ({0})".format(loadVersion())
 		if options.csv is not None:
-			analyser = Analyser(StatisticalAnalysis(), guiFactory.getGUI(options.gui))
+			analyser = Analyser(HistogramAnalysis(), guiFactory.getGUI(options.gui))
 			analyser.run(options.csv)
 		else:
 			raise BaseException('No data file specified')
