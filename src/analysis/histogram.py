@@ -22,6 +22,7 @@ class HistogramAnalysis(Analysis):
                 cv.Split(image, r_plane, g_plane, b_plane, None)
                 planes = [r_plane, g_plane, b_plane]
 
+		# Generate histograms with uniform bins.
 		hist = cv.CreateHist(self.bins, cv.CV_HIST_ARRAY, ranges, 1)
 		cv.CalcHist([cv.GetImage(i) for i in planes], hist)
 		return hist

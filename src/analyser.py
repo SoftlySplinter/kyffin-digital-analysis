@@ -26,7 +26,6 @@ class Analyser:
 					analysedData[row[1]] = [avg]
 				else:
 					analysedData[row[1]].append(avg)
-				break
 		return analysedData
 		
 
