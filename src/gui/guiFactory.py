@@ -1,10 +1,10 @@
 from gui import TextGUI, GraphGUI
 
-def getGUI(name='text'):
+def getGUI(name='text', dataType='default'):
 	print('Using {0}-based GUI'.format(name))
 	if name == 'text':
-		return TextGUI() 
+		return TextGUI(dataType) 
 	if name == 'graph':
-		return GraphGUI()
+		return GraphGUI(dataType)
 
-	return TextGUI()
+	return TextGUI(dataType)
