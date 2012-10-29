@@ -25,7 +25,7 @@ def main():
 	else :
 		print "Kyffin ({0})".format(loadVersion())
 		if options.csv is not None:
-			analyser = Analyser(HistogramAnalysis(), guiFactory.getGUI(options.gui))
+			analyser = Analyser(HistogramAnalysis([30,30,30]), guiFactory.getGUI(options.gui))
 			analyser.run(options.csv)
 		else:
 			raise BaseException('No data file specified')
