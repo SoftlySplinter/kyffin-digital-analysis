@@ -10,18 +10,18 @@ class GUI:
 		raise NotImplementedError('Should be implemented in sub-classes')
 
 class TextGUI(GUI):
-
 	def render(self, data):
+		print self.dataType
                 for key in sorted(data.keys()):
                         for value in data[key]:
-	        	        if self.dataType is 'histogram':
+	        	        if self.dataType == 'histogram':
        		         		self.renderHistogram(value)
-				elif self.dataType is 'rgb':
+				elif self.dataType == 'rgb':
 					print '{0}: {1}\n'.format(key, value)
-				elif self.dataType is 'default':
+				elif self.dataType == 'default':
 					print 'Nothing to do.'
 				else:
-					raise 'No type specified'
+					raise Exception( 'No type specified')
 
 	def renderHistogram(self, data):
                 (r,g,b) = cv.GetDims(data.bins)
