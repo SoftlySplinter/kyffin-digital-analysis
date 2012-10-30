@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 
-from analysis import Analysis
+from technique import Technique
 import cv
 
-class StatisticalAnalysis( Analysis ):
+class StatisticalAnalysis( Technique ):
 	def Analyse(self, image):
 		'''Performs analysis using basic statistical techniques.
 
