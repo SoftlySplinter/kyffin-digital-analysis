@@ -79,34 +79,38 @@ class GraphGUI(GUI):
 				self.renderIndividualHist(key, value)
 
 	def renderIndividualHist(self, key, data):
-#		cv.NormalizeHist(data, 255.0)
-#		cv.ThreshHist(data, 0.1)
-
-		(r,g,b) = cv.GetDims(data.bins)
 		height = 500
 		width = 500
+		(r,g,b) = cv.GetDims(data.bins)
+
+		(_,tallest,_,_) = cv.GetMinMaxHistValue(data)
+		scale = height/tallest
+		if scale > 1:
+			scale = 1
+
 		histImage = cv.CreateImage((width,height), 8, 3)
 		prev = -1
 
-		rvals = []
-		for i in range(r):
-			val = cv.QueryHistValue_3D(data, i, 0, 0)
-			rvals.append(val)
-	
-		gvals = []
-		for i in range(g):
-			val = cv.QueryHistValue_3D(data, 0, i, 0)
-			gvals.append(val)
-		
-		bvals = []
-		for i in range(b):
-			val = cv.QueryHistValue_3D(data, 0, 0, i)
-			bvals.append(val)
-		plot.hist(rvals, r, histtype='barstacked', color='r')
+		cv.Rectangle(histImage, (0,0), (width, height), cv.CV_RGB(0,0,0), cv.CV_FILLED)
 
-		plot.xlabel('Bin')
-		plot.ylabel('Intensity')
+		step = width/(r*g*b)
+		cur = 0
+		for (i,j,k) in iter3D(range(r), range(g), range(b)):
+			intensity = cv.QueryHistValue_3D(data, i, j, k)
+			color = cv.CV_RGB(int((255/r)*i), int((255/g)*j), int((255/b)*k))
+			x1 = cur
+			cur+=step
+			x2 = x1 + step 
+			cv.Rectangle(histImage, (int(x1), height), (int(x2), height - int(intensity * scale)), color, cv.CV_FILLED)
 
-		plot.title(key)
+		cv.NamedWindow("Histogram")
+		cv.ShowImage("Histogram", histImage)
+		cv.WaitKey(0)
 
-		plot.show()
+
+
+def iter3D(aList, bList, cList):
+	for a in range(len(aList)):
+		for b in range(len(bList)):
+			for c in range(len(cList)):
+				yield(aList[a], bList[b], cList[c])
