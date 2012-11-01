@@ -4,7 +4,7 @@ import sys
 # Use local imports relative to ./src/ for convinience
 sys.path.append('./src/')
 
-import analysis.analyserFactory as analyserFactory
+import techniques.techniqueFactory as techniqueFactory
 import gui.guiFactory as guiFactory
 
 from analyser import Analyser
@@ -24,7 +24,7 @@ def main():
 	else :
 		print "Kyffin ({0})".format(loadVersion())
 		if options.csv is not None:
-			analyser = Analyser(analyserFactory.getTechnique(options.analyser), guiFactory.getGUI(options.gui, options.analyser))
+			analyser = Analyser(techniqueFactory.getTechnique(options.technique), guiFactory.getGUI(options.gui, options.technique))
 			analyser.run(options.csv)
 		else:
 			raise BaseException('No data file specified')
@@ -32,7 +32,7 @@ def main():
 def parse():
 	parser = OptionParser()
 	parser.add_option('-t', '--test', default=False, action='store_true', dest='test_flag', help='Run tests and nothing else.')
-	parser.add_option('-a', '--analyser', default='rgb', dest='analyser', help='Set Analyser type.')
+	parser.add_option('-a', '--technique', default='rgb', dest='technique', help='Set Technique type.')
 	parser.add_option("-d", "--csv", dest="csv", help="Analyse CSV file.", metavar="CSV")
 	parser.add_option('-g', '--gui', dest='gui', help='Set GUI type (defaults to text-based.')
 	return parser.parse_args()

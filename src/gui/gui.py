@@ -66,10 +66,10 @@ class GraphGUI(GUI):
 	def renderHist(self, data):
 		for key in sorted(data.keys()):
 			for value in data[key]:
-				self.renderIndividualHist(value)
+				self.renderIndividualHist(key, value)
 
-	def renderIndividualHist(self, data):
-		cv.NormalizeHist(data, 255.0 * 3)
+	def renderIndividualHist(self, key, data):
+#		cv.NormalizeHist(data, 255.0)
 #		cv.ThreshHist(data, 0.1)
 
 		(r,g,b) = cv.GetDims(data.bins)
@@ -77,18 +77,26 @@ class GraphGUI(GUI):
 		width = 500
 		histImage = cv.CreateImage((width,height), 8, 3)
 		prev = -1
-		cv.NamedWindow("Histogram", 1)
 
+		rvals = []
 		for i in range(r):
-			for j in range(g):
-				for k in range(b):
-					cur = cv.QueryHistValue_1D(data,i)
-					cv.Rectangle(histImage, 
-						(j*(width/g), k*(height/b)), 
-						((j+1)*(width/g), (k+1)*(height/b)), 
-						cv.RGB(i * cur * (255/r), j * cur * (255/g), k * cur * (255/b)), 
-						cv.CV_FILLED)
-			cv.WaitKey(50)
-			cv.ShowImage("Histogram", histImage)
+			val = cv.QueryHistValue_3D(data, i, 0, 0)
+			rvals.append(val)
+	
+		gvals = []
+		for i in range(g):
+			val = cv.QueryHistValue_3D(data, 0, i, 0)
+			gvals.append(val)
+		
+		bvals = []
+		for i in range(b):
+			val = cv.QueryHistValue_3D(data, 0, 0, i)
+			bvals.append(val)
+		plot.hist(rvals, r, histtype='barstacked', color='r')
 
-		cv.WaitKey(0)
+		plot.xlabel('Bin')
+		plot.ylabel('Intensity')
+
+		plot.title(key)
+
+		plot.show()

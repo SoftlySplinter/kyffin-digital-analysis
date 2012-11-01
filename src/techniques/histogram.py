@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 import sys
 import cv
-from analysis import Analysis
+from technique import Technique
 
-class HistogramAnalysis(Analysis):
+class HistogramAnalysis(Technique):
         def __init__(self, bins = [255,255,255]):
 		self.bins = bins
 
