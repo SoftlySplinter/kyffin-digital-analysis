@@ -16,7 +16,7 @@ class TextGUI(GUI):
                         for value in data[key]:
 	        	        if self.dataType == 'histogram':
        		         		self.renderHistogram(value)
-				elif self.dataType == 'rgb':
+				elif self.dataType in ['rgb', 'hsv']:
 					print '{0}: {1}\n'.format(key, value)
 				elif self.dataType == 'default':
 					print 'Nothing to do.'
@@ -36,7 +36,7 @@ class GraphGUI(GUI):
 	def render(self, data):
 		if self.dataType == 'histogram':
 			self.renderHist(data)
-                elif self.dataType == 'rgb':
+                elif self.dataType in ['rgb', 'hsv']:
 			self.renderGraph(data)
 		elif self.dataType == 'default':
 			print 'Nothing to do.'
@@ -47,8 +47,14 @@ class GraphGUI(GUI):
 		gR = []
 		gG = []
 		gB = []
+		years = []
 		for key in sorted(data.keys()):
 			mR, mG, mB = 0,0,0
+			try:
+				year = int(key)
+				years.append(year)
+			except ValueError:
+				continue
 			for ((r,g,b,a),(x)) in data[key]:
 				mR += r
 				mG += g
@@ -56,10 +62,14 @@ class GraphGUI(GUI):
 			gR.append(mR / len(data[key]))
 			gG.append(mG / len(data[key]))
 			gB.append(mB / len(data[key]))
-		fig = plot.figure()
-		axes = p3d.Axes3D(fig)
-		axes.scatter(gR,gG,gB)
-		
+		r = plot.plot(years, gR, 'c', label='Hue')
+		g = plot.plot(years, gG, 'm', label='Saturation')
+		b = plot.plot(years, gB, 'y', label='Value')
+
+		plot.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+
+		plot.xlabel('Year')
+		plot.ylabel('Value')
 		plot.show()
 		
 

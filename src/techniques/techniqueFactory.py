@@ -1,9 +1,12 @@
-from statistical import StatisticalAnalysis
+from statistical import RGBAnalysis
+from statistical import HSVAnalysis
 from histogram import HistogramAnalysis
 
 def getTechnique(name):
 	if name == 'rgb':
-		return StatisticalAnalysis()
+		return RGBAnalysis()
+	if name == 'hsv':
+		return HSVAnalysis()
 	elif name == 'histogram':
 		return HistogramAnalysis([50,50,50])
 	else:
