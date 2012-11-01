@@ -79,18 +79,29 @@ class GraphGUI(GUI):
 				self.renderIndividualHist(key, value)
 
 	def renderIndividualHist(self, key, data):
-		(r,g,b) = cv.GetDims(data.bins)
 		height = 500
 		width = 500
+		(r,g,b) = cv.GetDims(data.bins)
+
+		(_,tallest,_,_) = cv.GetMinMaxHistValue(data)
+		scale = height/tallest
+		if scale > 1:
+			scale = 1
+
 		histImage = cv.CreateImage((width,height), 8, 3)
 		prev = -1
 
+		cv.Rectangle(histImage, (0,0), (width, height), cv.CV_RGB(0,0,0), cv.CV_FILLED)
+
+		step = width/(r*g*b)
+		cur = 0
 		for (i,j,k) in iter3D(range(r), range(g), range(b)):
 			intensity = cv.QueryHistValue_3D(data, i, j, k)
-			color = cv.CV_RGB((255/r)*i, (255/g)*j, (255/b)*k)
-			x1 = (width/(r*g*b))*i
-			x2 = (width/(r*g*b))*i+1
-			cv.Rectangle(histImage, (x1, 0), (x2, intensity), color, cv.CV_FILLED)
+			color = cv.CV_RGB(int((255/r)*i), int((255/g)*j), int((255/b)*k))
+			x1 = cur
+			cur+=step
+			x2 = x1 + step 
+			cv.Rectangle(histImage, (int(x1), height), (int(x2), height - int(intensity * scale)), color, cv.CV_FILLED)
 
 		cv.NamedWindow("Histogram")
 		cv.ShowImage("Histogram", histImage)

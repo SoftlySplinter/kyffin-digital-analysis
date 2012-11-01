@@ -8,6 +8,6 @@ def getTechnique(name):
 	if name == 'hsv':
 		return HSVAnalysis()
 	elif name == 'histogram':
-		return HistogramAnalysis([50,50,50])
+		return HistogramAnalysis([5,5,5])
 	else:
 		raise Exception('Unknown technique {0}'.format(name))
