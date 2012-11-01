@@ -12,6 +12,8 @@
 \usepackage{url}
 \usepackage{cite}
 
+\usepackage{array}
+
 \usepackage{mversion}
 \increaseBuild
 
@@ -78,6 +80,64 @@ Sir John ``Kyffin'' Williams is a Welsh landscape painter, also active in Patago
 %This section should describe in reasonable detail the specific algorithms, languages, APIs, packages etc. that you could use in your project, which of them you have selected for use, and why you have selected them.
 
 %==============================================================================
+\subsubsection{Computer Vision \& Image Processing Library Decision}
+%==============================================================================
+%Describing the pros and cons of the available image processing libraries.
+% OpenCV - Difficult to install. Fairly standard for CV.
+% FIJI - Large, easy to use, difficult to use as an API.
+% IVT - Difficult to install. Difficult to include as part of a project. Relatively large.
+
+Aside from directly reading pixel values using built-in language features or a simple image or 
+graphics library, there are a variety of computer vision and image processing libraries. Each of
+which have numerous functions to manipulate and process images.
+
+\textbf{OpenCV (Open Source Computer Vision} (\url{http://opencv.org/}) is one of the more popular 
+choices for Computer Vision libraries, boasting C, C++, Python and Java interfaces for several of 
+the common platforms, including mobile devices. OpenCV leverages multicore processing and 
+optimized C/C++ code to be able to handle real-time systems.
+
+\textbf{FIJI (FIJI Is Just ImageJ)} (\url{http://fiji.sc/}) is Java-based image processing package,
+is akin to a distribution, packaging ImageJ, Java3D and a lot of other useful features to provide
+a coherent user interface for the packaged image libraries.
+
+\textbf{IVT (Integrating Vision Toolkit} (\url{http://ivt.sourceforge.net/}) aims to provide an
+easy to use, stand-alone C++ computer vision toolkit. It's features include camera interfaces and
+fast implementations of computer vision techniques as well as mathematical data structures and 
+functions.
+
+%TODO - Explore more CV libraries.
+
+
+\begin{table}[p]
+\begin{tabular}{| p{6em} | p{6em} | p{6em} | p{6em} | p{6em} | p{6em} | p{6em} |}
+\hline
+\textbf{Library} & \textbf{License} & \textbf{Language Support} & \textbf{Platform Support} & 
+\textbf{Installation} & \textbf{Usage}\\ \hline
+
+OpenCV & BSD & C, C++, Python, Java & Windows, Mac, Linux, Android, iOS & Medium & Easy - Fair. \\ \hline
+
+FIJI & GPL \newline Individual per plug-in & Java & ? & Easy - Fair & Medium \\ \hline
+
+IVT & Modified BSD & C++ & Windows, Mac, Linux & Medium & Medium \\ \hline
+
+\hline
+\end{tabular}
+\caption{Details of Computer Vision Libraries}
+\end{table}
+
+\begin{table}[p]
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+\textbf{Library} & \textbf{Image Filtering} & \textbf{Transformations} & \textbf{Histograms} & \textbf{Structural Analysis} \\ \hline
+
+OpenCV 	& \checkmark	& \checkmark	& \checkmark	& \checkmark 	\\ \hline
+FIJI	& 		&		&		&		\\ \hline
+IVT	&		&		&		&		\\ \hline
+\end{tabular}
+\caption{Features of Computer Vision Libraries}
+\end{table}
+
+%==============================================================================
 \section{Project Planning}
 %==============================================================================
 %This section should deal with your planning for the project. You must include the following sub-sections.
@@ -111,5 +171,6 @@ Sir John ``Kyffin'' Williams is a Welsh landscape painter, also active in Patago
 \renewcommand{\refname}{}  % if you put text into the final {} on this line, you will get an extra title, e.g. References. This isn't necessary for the outline project specification. 
 \bibliography{mmp} % References file
 
+\listoftables
 
 \end{document}
