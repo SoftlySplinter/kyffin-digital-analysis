@@ -81,7 +81,23 @@ the project.
 After basic statistical analysis, the next step is to create histograms for each image in both 
 colour spaces and use these to analyse the values these contain.
 
+Part of the analysis will need to include a way of measuring the distance of two outputs from the
+associated technique.
 
+\begin{figure}[p]
+\label{eq:manhattan}
+\[
+d = \sum^X_{x=0}{|a_x - b_x|}
+\]
+
+\(X\): All dimensions present in both \(a\) and \(b\).
+
+\(a\): The first point.
+
+\(b\): The second point.
+
+\caption{Manhattan Distance}
+\end{figure}
 
 
 %==============================================================================
