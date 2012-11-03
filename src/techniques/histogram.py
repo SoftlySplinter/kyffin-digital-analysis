@@ -7,7 +7,14 @@ class HistogramAnalysis(Technique):
         def __init__(self, bins = [255,255,255]):
 		self.bins = bins
 
-	def Analyse(self, image):
+	def Analyse(self, painting):
+		image = None
+		try:
+			image = cv.LoadImageM( painting.filePath )
+		except IOError as e:
+			print 'Unable to load {0}: {1}'.format(painting.title, e)
+			return
+
                 r_range = [0,255]
                 g_range = [0,255]
                 b_range = [0,255]
@@ -25,5 +32,5 @@ class HistogramAnalysis(Technique):
 		# Generate histograms with uniform bins.
 		hist = cv.CreateHist(self.bins, cv.CV_HIST_ARRAY, ranges, 1)
 		cv.CalcHist([cv.GetImage(i) for i in planes], hist)
-		return hist
+		painting.data = hist
 

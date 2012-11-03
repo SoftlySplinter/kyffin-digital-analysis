@@ -6,6 +6,7 @@ sys.path.append('./src/')
 
 import techniques.techniqueFactory as techniqueFactory
 import gui.guiFactory as guiFactory
+import ml.mlFactory as mlFactory
 
 from analyser import Analyser
 from optparse import OptionParser 
@@ -24,7 +25,10 @@ def main():
 	else :
 		print "Kyffin ({0})".format(loadVersion())
 		if options.csv is not None:
-			analyser = Analyser(techniqueFactory.getTechnique(options.technique), guiFactory.getGUI(options.gui, options.technique))
+			tech = techniqueFactory.getTechnique(options.technique)
+			gui = guiFactory.getGUI(options.gui, options.technique)
+			ml = mlFactory.getML(options.ml, tech)
+			analyser = Analyser(tech, gui, ml)
 			analyser.run(options.csv)
 		else:
 			raise BaseException('No data file specified')
@@ -35,6 +39,7 @@ def parse():
 	parser.add_option('-a', '--technique', default='rgb', dest='technique', help='Set Technique type.')
 	parser.add_option("-d", "--csv", dest="csv", help="Analyse CSV file.", metavar="CSV")
 	parser.add_option('-g', '--gui', dest='gui', help='Set GUI type (defaults to text-based.')
+	parser.add_option('-m', '--ml', dest='ml', help='Set Machine Learning type (defaults to kNN.')
 	return parser.parse_args()
 
 def loadVersion():
