@@ -12,6 +12,16 @@ class RGBAnalysis( Technique ):
 		except IOError as e:
 			print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
 
+	def distance( self, a, b ):
+		if b is None:
+			return float('inf')
+
+		distance = 0
+		for i in range(len(a)):
+			for j in range(len(a[i])):
+				distance += abs(a[i][j] - b[i][j])
+		return distance
+
 class HSVAnalysis( Technique ):
 	def Analyse( self, painting ):
 		try:
