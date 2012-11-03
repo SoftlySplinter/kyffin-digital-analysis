@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
-import cv
 import csv
+import painting as paint
 
 DATA_DIR = 'data/'
 
@@ -9,40 +9,27 @@ class Analyser:
 	def __init__(self, technique, gui):
 		self.technique = technique
 		self.gui = gui
+		self.paintings = []
 
 	def run(self, data):
-		self.gui.render(self.analyse(data))
+		self.loadPaintings( data )
+		self.analyse()
+		self.gui.render(self.paintings)
 
-	def analyse(self, data):
-		'''Analyse a CSV file which contains the data for a set of images'''
-		analysedData = {}
-		with open (data, 'r') as csvFile:
-			dataReader = csv.reader(csvFile, delimiter=',', quotechar='"')
-			for row in dataReader:
-				avg = self.analyseRow(row)
-				if avg is None:
-					continue
-				if row[1] not in analysedData:
-					analysedData[row[1]] = [avg]
-				else:
-					analysedData[row[1]].append(avg)
-		return analysedData
+	def analyse(self):
+		for painting in self.paintings:
+			self.technique.Analyse(painting)
 		
 
-	def analyseRow(self, row):
-		'''Analyse a row in the CSV file.
-		The format of these fils is as follows:
-	
-		0) Title
-		1) Year
-		2) Type
-		3) Collection
-		4) File'''
-		try:
-			image = cv.LoadImageM(DATA_DIR + row[4])
-			return self.technique.Analyse(image)
-		except IOError:
-			return None
+	def loadPaintings( self, data ):
+		with open( data, 'r' ) as csvFile:
+			dataReader = csv.reader(csvFile, delimiter=',', quotechar='"')
+			for row in dataReader:
+				try:
+					self.paintings.append(paint.load(row, DATA_DIR))
+				except IOError:
+					continue
+				
 
 if __name__ == '__main__':
 	raise ImportWarning('Intended as a library, not as a main class.')
