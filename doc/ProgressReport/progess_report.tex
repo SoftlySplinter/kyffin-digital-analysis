@@ -39,6 +39,8 @@
 
 \setcounter{tocdepth}{3} %set required number of level in table of contents
 \tableofcontents
+\listoffigures
+\listoftables
 
 \newpage
 
@@ -70,6 +72,8 @@ regarded as the defining artist of Wales in the 20\textsuperscript{th} century.
 %==============================================================================
 \subsection{Analysis Goals}
 %==============================================================================
+
+\subsubsection{Statistical Analysis}
 The first goal for the analysis section of the Kyffin Williams Project is to statistical analyse
 colour space values of the pixels of an image. Typically taking the mean and standard deviation
 over a whole painting.
@@ -81,23 +85,57 @@ the project.
 After basic statistical analysis, the next step is to create histograms for each image in both 
 colour spaces and use these to analyse the values these contain.
 
+\subsubsection{Distance Measures}
 Part of the analysis will need to include a way of measuring the distance of two outputs from the
-associated technique.
+associated technique; for points in space distance measures such as Manhattan Distance 
+(Figure~\ref{eq:manhattan}) or Euclidean Distance (Figure~\ref{eq:euclidean}). For more complex
+forms, such as histograms, specialised distance measures will be needed.
 
 \begin{figure}[p]
-\label{eq:manhattan}
 \[
 d = \sum^X_{x=0}{|a_x - b_x|}
 \]
 
-\(X\): All dimensions present in both \(a\) and \(b\).
-
-\(a\): The first point.
-
+\(X\): All dimensions present in both \(a\) and \(b\).\\
+\(a\): The first point.\\
 \(b\): The second point.
 
 \caption{Manhattan Distance}
+\label{eq:manhattan}
 \end{figure}
+
+\begin{figure}[p]
+\[
+d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
+\]
+
+\(X\): All dimensions present in both \(a\) and \(b\).\\
+\(a\): The first point.\\
+\(b\): The second point.
+\caption{Euclidean Distance}
+\label{eq:euclidean}
+\end{figure}
+
+\subsubsection{Brushstroke Analysis}
+After these techniques are implemented there is a lot of space to develop new techniques specific 
+to both painting analysis and to Kyffin Williams. One very interesting technique is to analyse the
+brush strokes the artist made on the painting. It is clear from looking at his work that he 
+dramatically reduces the number of brush strokes he makes as time goes on. 
+
+According to the \textsc{authentic} project ``The digital extraction of brushstrokes proceeds in 
+two steps: (I) contour enhancement, and (II) quantification of brushstroke 
+shape''\cite{citeulike:11446581}. They perform contour enhancement by applying a circular filter to
+the image, this filter picks out the characteristic parallel contours of brushstrokes. For the 
+works of Kyffin Williams this may not work as well as he typically used a pallet knife %FIXME was this the right tool?
+to paint with, instead of a regular paintbrush.
+
+Once these contours are enhanced you can then fill a closed area for each brushstroke, reduce this 
+to a thin line and finally fit some form of polynomial function to this line. Again, for the Kyffin
+Williams project the third part of this may not be applicable as the \textsc{authentic} project
+specialises in ensuring the authenticity of a painting and does so by verifying that the 
+brushstrokes in one painting match the style of Van Gogh. Even looking at the number of visible
+brushstrokes in Kyffin Williams' work may be enough to classify a painting.
+
 
 
 %==============================================================================
@@ -150,7 +188,7 @@ is akin to a distribution, packaging ImageJ, Java3D and a lot of other useful fe
 a coherent user interface for the packaged image libraries.
 
 \textbf{IVT (Integrating Vision Toolkit} (\url{http://ivt.sourceforge.net/}) aims to provide an
-easy to use, stand-alone C++ computer vision toolkit. It's features include camera interfaces and
+easy to use, stand-alone C++ computer vision tool kit. It's features include camera interfaces and
 fast implementations of computer vision techniques as well as mathematical data structures and 
 functions.
 
@@ -236,6 +274,5 @@ IVT	&		&		&		&		\\ \hline
 
 \bibliography{mmp} % References file
 
-\listoftables
 
 \end{document}
