@@ -199,9 +199,9 @@ Where:\\
 	\State $cur \gets distance(a, x)$
 	\For{$k = 1 \to K$}
 		\If{$cur < kBest[k]$}
-			\State $temp \Gets kBest[k]$
-			\State $kBest[k] \Gets cur$
-			\State $cur \Gets temp$
+			\State $temp \gets kBest[k]$
+			\State $kBest[k] \gets cur$
+			\State $cur \gets temp$
 		\EndIf
 	\EndFor
 \EndFor
@@ -213,6 +213,8 @@ $K$ is the number of nearest neighbours to check.
 \caption{K-Nearest Neighbour}
 \label{fig:k-nn}
 \end{figure}
+
+
 
 %==============================================================================
 \section{Current Progress}
