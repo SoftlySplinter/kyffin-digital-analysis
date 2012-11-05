@@ -13,6 +13,7 @@
 \usepackage{cite}
 
 \usepackage{array}
+\usepackage{algpseudocode}
 
 \usepackage{mversion}
 \increaseBuild
@@ -67,6 +68,18 @@ which has no metadata collected.
 %This section should describe any significant examples of similar or related work done and by whom,
 % or what similar products exist, and what you can learn from these in relation to your project.
 % This section must refer extensively to your bibliography (see below).
+There are many papers which look into the digital or computerized analysis of paintings, many of 
+these focus on the authentication of paintings by a given artist. Many others go into the analysis
+of (brush) stroke detection or classification of the painting tool used to make strokes.
+
+The idea of classifying the year of a piece of art has been researched before, however it seems to
+focus around the method of printing the work, or providing a very general answer for old pieces of
+work.
+
+The \textsc{authentic} project\cite{citeulike:11446581} deals with the computerized authentication
+of paintings and defines a useful method for analysing the brush strokes of Vincent Van Gogh.
+
+
 
 %==============================================================================
 \section{Goals and Objectives}
@@ -142,7 +155,64 @@ specialises in ensuring the authenticity of a painting and does so by verifying 
 brushstrokes in one painting match the style of Van Gogh. Even looking at the number of visible
 brushstrokes in Kyffin Williams' work may be enough to classify a painting.
 
+%==============================================================================
+\subsection{Machine Learning Goals}
+%==============================================================================
+The Machine Learning (ML) module is designed to classify analysed paintings to the training 
+examples in order to get the approximate year the were created.
 
+Machine Learning on it's own is a large and complex field, so the techniques used here may be
+simple to ensure the project completes on deadline.
+
+\subsubsection{K-Nearest Neighbour Classification}
+The simplest solution to the classification problem is to take the nearest neighbour of a given,
+analysed, painting and set the year of the new example to the one of the existing example. This
+is highly dependant on the type of analysis, noise in the training examples, etc.
+
+It is, however, very simple to implement (see Figure~\ref{fig:1-nn}), with simple modification
+one can easily change 1-Nearest Neighbour to K-Nearest Neighbour (see Figure~\ref{fig:k-nn}) and
+approach with different values for K to give a potentially more accurate answer. K-Nearest 
+Neighbour also has options for interpreting the result, by taking the modal result or a mean of all
+the results.
+
+\begin{figure}
+\begin{algorithmic}
+\State $bestDistance \gets \infty$
+\For{$x = 1 \to X$}
+	\If{$distance(a, x) < bestDistance$}
+		\State $bestDistance \gets distance(a, x)$
+	\EndIf
+\EndFor
+\end{algorithmic}
+
+Where:\\
+\(a\) is the example to classify.\\
+\(X\) is the list of all training examples.
+\caption{1-Nearest Neighbour}
+\label{fig:1-nn}
+\end{figure}
+
+\begin{figure}
+\begin{algorithmic}
+\State $kBest \gets []$
+\For{$x = 1 \to X$}
+	\State $cur \gets distance(a, x)$
+	\For{$k = 1 \to K$}
+		\If{$cur < kBest[k]$}
+			\State $temp \Gets kBest[k]$
+			\State $kBest[k] \Gets cur$
+			\State $cur \Gets temp$
+		\EndIf
+	\EndFor
+\EndFor
+\end{algorithmic}
+Where:\\
+$a$ is the example to classify.\\
+$X$ is the list of all training examples.
+$K$ is the number of nearest neighbours to check.
+\caption{K-Nearest Neighbour}
+\label{fig:k-nn}
+\end{figure}
 
 %==============================================================================
 \section{Current Progress}
