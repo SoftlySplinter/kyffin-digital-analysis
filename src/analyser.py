@@ -3,6 +3,9 @@
 import csv
 import painting as paint
 import random, re
+import os.path
+
+import logging
 
 DATA_DIR = 'data/'
 
@@ -23,16 +26,34 @@ class Analyser:
 
 		self.gui.render(self.paintings)
 
-		if re.match('^\d\d\d\d$', toClassify.year) is not None:
-			print 'Known year of {0} is {1}'.format(toClassify.title, toClassify.year)
-		elif re.match('^\d\d\d\d-\d\d\d\d$', toClassify.year) is not None:
-			print 'Known year range of {0} is {1}'.format(toClassify.title, toClassify.year)
-		else:
-			print 'Year of {0} is unknown'.format(toClassify.title)
-
+		knownYear = toClassify.year
 		self.ml.classify( toClassify, self.paintings )
 
-		print 'Classified date is: {0}'.format(toClassify.year)
+		if re.match('^\d\d\d\d$', knownYear) is not None:
+			print 'Known year of {0} is {1}'.format(toClassify.title, knownYear)
+			classifiedYear = int(toClassify.year)
+			actualYear = int(knownYear)
+			error = abs(actualYear - classifiedYear)
+			print 'Classified date is: {0} (Error of {1})'.format(toClassify.year, error)
+		elif re.match('^\d\d\d\d-\d\d\d\d$', knownYear) is not None:
+			print 'Known year range of {0} is {1}'.format(toClassify.title, knownYear)
+			yearRange = knownYear.split('-')
+			fromYear = int(yearRange[0])
+			toYear = int(yearRange[1])
+			classifiedYear = int(toClassify.year)
+
+			error = 0
+			if classifiedYear > toYear:
+				error = abs(toYear - classifiedYear)
+			elif classifiedYear < fromYear:
+				error = abs(fromYear - classifiedYear)
+
+			print 'Classified date is: {0} (Error of {1})'.format(toClassify.year, error)
+		else:
+			print 'Year of {0} is unknown'.format(toClassify.title)
+			print 'Classified date is: {0}'.format(toClassify.year)
+
+
 
 	def analyse(self):
 		for painting in self.paintings:
@@ -44,7 +65,11 @@ class Analyser:
 			dataReader = csv.reader(csvFile, delimiter=',', quotechar='"')
 			for row in dataReader:
 				try:
-					self.paintings.append(paint.load(row, DATA_DIR))
+					painting = paint.load(row, DATA_DIR)
+					if os.path.isfile(painting.filePath):
+						self.paintings.append(painting)
+					else:
+						logging.warning('Unable to load {0}: File {1} does not exist'.format(painting.title, painting.filePath))
 				except IOError:
 					continue
 				
