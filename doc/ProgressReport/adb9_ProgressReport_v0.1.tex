@@ -133,14 +133,17 @@ example to the example to be classified and classify the year of this example wi
 nearest example (see figure~\ref{fig:1-nn}).
 
 This simple algorithm can be expanded to be a K-Nearest Neighbour algorithm without too much effort
-(see figure~\ref{fig:k-nn}). 
+(see figure~\ref{fig:k-nn}).
 
 
 \subsubsection{Distance Measures}
-Part of the analysis needed to include a way of measuring the distance of two outputs from the
-associated technique; for points in space distance measures such as Manhattan distance 
-(figure~\ref{eq:manhattan}) or euclidean distance (figure~\ref{eq:euclidean}). This distance 
-measure is then used by the machine learning module
+Working out the ``Nearest'' example(s) to a given painting requires some way of measuring distance
+between the two.
+
+One very simple way of doing this is Manhattan distance (figure~\ref{eq:manhattan}). This distance
+measure can be improved further to euclidean distance (figure~\ref{eq:euclidea}) without too much
+effort.
+
 
 \begin{figure}[p]
 \[
@@ -166,46 +169,6 @@ d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
 \caption{Euclidean Distance}
 \label{eq:euclidean}
 \end{figure}
-
-\subsubsection{Brushstroke Analysis}
-After these techniques are implemented there is a lot of space to develop new techniques specific 
-to both painting analysis and to Kyffin Williams. One very interesting technique is to analyse the
-brush strokes the artist made on the painting. It is clear from looking at his work that he 
-dramatically reduces the number of brush strokes he makes as time goes on. 
-
-According to the \textsc{authentic} project ``The digital extraction of brushstrokes proceeds in 
-two steps: (I) contour enhancement, and (II) quantification of brushstroke 
-shape''\cite{citeulike:11446581}. They perform contour enhancement by applying a circular filter to
-the image, this filter picks out the characteristic parallel contours of brushstrokes. For the 
-works of Kyffin Williams this may not work as well as he typically used a pallet knife %FIXME was this the right tool?
-to paint with, instead of a regular paintbrush.
-
-Once these contours are enhanced you can then fill a closed area for each brushstroke, reduce this 
-to a thin line and finally fit some form of polynomial function to this line. Again, for the Kyffin
-Williams project the third part of this may not be applicable as the \textsc{authentic} project
-specialises in ensuring the authenticity of a painting and does so by verifying that the 
-brushstrokes in one painting match the style of Van Gogh. Even looking at the number of visible
-brushstrokes in Kyffin Williams' work may be enough to classify a painting.
-
-%==============================================================================
-\subsection{Machine Learning Goals}
-%==============================================================================
-The Machine Learning (ML) module is designed to classify analysed paintings to the training 
-examples in order to get the approximate year the were created.
-
-Machine Learning on it's own is a large and complex field, so the techniques used here may be
-simple to ensure the project completes on deadline.
-
-\subsubsection{K-Nearest Neighbour Classification}
-The simplest solution to the classification problem is to take the nearest neighbour of a given,
-analysed, painting and set the year of the new example to the one of the existing example. This
-is highly dependant on the type of analysis, noise in the training examples, etc.
-
-It is, however, very simple to implement (see Figure~\ref{fig:1-nn}), with simple modification
-one can easily change 1-Nearest Neighbour to K-Nearest Neighbour (see Figure~\ref{fig:k-nn}) and
-approach with different values for K to give a potentially more accurate answer. K-Nearest 
-Neighbour also has options for interpreting the result, by taking the modal result or a mean of all
-the results.
 
 \begin{figure}
 \begin{algorithmic}
