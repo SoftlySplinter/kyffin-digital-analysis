@@ -77,7 +77,7 @@ arguments, or later a GUI front-end, will be used to specify which techniques sh
 The GUI elements depicted are used for visualising the analysed data or results of the machine
 learning algorithms.
 
-\begin{figure}[p!]
+\begin{figure}[p]
 \includegraphics[scale=0.5]{img/design.png}
 \caption{Initial Design}
 \label{fig:init-class}
@@ -92,9 +92,10 @@ The most common colour space used is RGB (Red, Green, Blue), where each pixel ho
 intensities, one for each colour with a value of 0 to 255.
 
 Using this analysis I plotted a graph of all paintings with a known year against the different 
-intensities (see figure~\ref{fig:mean-rgb-by-year}).
+intensities (see figure~\ref{fig:mean-rgb-by-year}). As can be seen from this graph, the RGB values
+tend to fluctuate without much correlation between year.
 
-\begin{figure}[p!]
+\begin{figure}[p]
 \includegraphics[scale=0.5]{img/kyffin-rgp-avg.png}
 \caption{Mean RGB intensities by year.}
 \label{fig:mean-rgb-by-year}
@@ -108,11 +109,22 @@ so that it would analyse HSV values instead.
 I also decided it would be an improvement to average all values in the same year together to help
 show changes as time goes on (see figure~\ref{fig:mean-hsv-by-year}).
 
-\begin{figure}[p!]
+\begin{figure}[p]
 \includegraphics[scale=0.5]{img/hsv-legend-12-11-01.png}
 \caption{Mean HSV intensities by year.}
 \label{fig:mean-hsv-by-year}
 \end{figure}
+
+
+\subsection{Histogram Analysis}
+With colour-space analysis complete, the next sensible step was to start generating colour 
+histograms from Kyffin Williams paintings.
+
+A histogram is a nice way of displaying the distribution of colour in a given image and is 
+therefore a more useful representation of a painting than colour-space averages.
+
+As with before, histograms can be taken from different colour spaces, currently 
+
 
 \subsubsection{Distance Measures}
 Part of the analysis needed to include a way of measuring the distance of two outputs from the
@@ -120,7 +132,7 @@ associated technique; for points in space distance measures such as Manhattan di
 (figure~\ref{eq:manhattan}) or euclidean distance (figure~\ref{eq:euclidean}). This distance 
 measure is then used by the machine learning module
 
-\begin{figure}[p!]
+\begin{figure}[p]
 \[
 d = \sum^X_{x=0}{|a_x - b_x|}
 \]
