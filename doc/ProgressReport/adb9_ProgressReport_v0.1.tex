@@ -13,6 +13,9 @@
 
 \usepackage{graphicx}
 \usepackage{algpseudocode}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{float}
 
 % the following packages are used for citations - You only need to include one. 
 %
@@ -69,19 +72,164 @@ expensive technique.
 \section{Current Progress}
 %==============================================================================
 
+\subsection{Library and Language Research}
+The first step in the project was to research into the numerous image processing/computer vision
+libraries available for use with the aim to find the most suitable library to use constantly for 
+the rest of the project. Because of this the library had to be easy to install and use, as well as
+having all the necessary features which would be used in this project.
+
+The choice of library would also have a knock-on affect on the choice of language this project 
+would be written in. To this end I downloaded each of the libraries in turn, created a simple 
+application to perform blur on a simple image to test their use and documentation. From this I
+gained a good insight into how easy that library would be to perform more complex tasks and how
+confident I felt with the language(s) the library had bindings for.
+
+Table~\ref{tab:libraries-overview} shows an overview of all the libraries I have currently 
+considered and experimented with.
+
+\begin{table}[h]
+\begin{tabular}{| c | c | c | c | c | c | c |}
+								  \hline
+\multirow{2}{*}{\textbf{Library}}	& \multicolumn{4}{|c|}{\textbf{Platform}}			& \multirow{2}{*}{\textbf{Language(s)}}	& \textbf{Example}	\\\cline{2-5}
+					&  Windows	& Mac 		& Linux 	& Android	&					&			\\\hline
+OpenCV					& \checkmark	& \checkmark	& \checkmark	& \checkmark	& C, C++, Python			& Figure~\ref{fig:opencv}\\\hline
+FIJI					& \checkmark	& \checkmark	& \checkmark	& 		& Java					& Figure~\ref{fig:fiji}	\\\hline
+IVT					& \checkmark	& \checkmark	& \checkmark	& 		& C++					& Figure~\ref{fig:ivt}	\\\hline
+VXL					& \checkmark	& \checkmark	& \checkmark	& 		& C++					& Figure~\ref{fig:vxt}	\\\hline
+\end{tabular}
+\caption{Comparison of image processing/computer vision libraries.}
+\label{tab:libraries-overview}
+\end{table}
+
+Of these libraries OpenCV was the easiest to work with. OpenCV also boasts a wide range of 
+features, all of which are well documented. FIJI provided a lot of high-level functionality, but
+for use as a library it quickly became unwieldy and was difficult to find the correct classes just 
+for the simple task of blurring an image. On a side note, I only managed to get the blurring 
+outputting a greyscale image in the short period of time I spent using FIJI.
+
+IVT was somewhat similar to FIJI in that it had a good range of high-level features, but was less
+impressive as a library. Despite following the example code I struggled to compile my own example
+and eventually gave up trying to get a working binary due to time constraints.
+
+%TODO Actually use VXL and then write about it.
+
+Having decided to go with OpenCV I was then faced with a choice of languages. OpenCV runs natively
+with C++ and has bindings for Python. Of these two languages I am slightly more familiar with C++. 
+I am also used to the syntax from programming Java continually for three years. 
+
+However, I wanted to take a rapid prototyping approach with this project; constantly adding new 
+modules each week to build up a better and better system. C++ seemed too heavyweight for this 
+approach, whilst Python seemed designed for it.
+
+Another consideration I had was that the results of any analysis could take any form at all, from
+an array of numbers to a complex data structure returned by OpenCV. Trying to work around this with
+a statically typed language such as C++ could end up being difficult, especially when trying to 
+keep a object-orientated approach.
+
+With a dynamically typed language such as Python it's a lot easier to pass these sorts of objects
+so long as the functions you pass to are expecting the right sort of object. There may be some 
+parts of the project which I might consider writing in C++ after prototyping in Python. An example
+of this would be if I wrote an algorithm which located strokes across the painting, as it may be
+used in other projects, not just my own.
+
+
+\begin{figure}[p]
+\begin{lstlisting}[language=Python]
+import cv
+
+im = cv.LoadImageM("tux.png")
+blur = cv.CreateMat(im.rows, im.cols, im.type)
+cv.Smooth(im, blur, cv.CV_BLUR, 9)
+cv.SaveImage("tux_blurred_opencv.png", blur)
+\end{lstlisting}
+\caption{Using OpenCV to blur an image}
+\label{fig:opencv}
+\end{figure}
+
+\begin{figure}[p]
+\begin{lstlisting}[language=Java]
+package fiji;
+
+import ij.IJ;
+import ij.io.FileSaver;
+import imagescience.feature.Smoother;
+import imagescience.image.ColorImage;
+import imagescience.image.Image;
+
+public final class Blur {
+	public static final String IMG_PATH = "tux.png";
+	public static final String OUTPUT_PATH = "tux_fiji.png";
+
+	public static void main(String[] args) {
+		final Image image = new ColorImage(IJ.openImage(IMG_PATH));
+		final Smoother s = new Smoother();
+		final Image blurred = s.gauss(image, 9f);
+		final FileSaver fs = new FileSaver(blurred.imageplus());
+		fs.saveAsPng(OUTPUT_PATH);
+	}
+}
+\end{lstlisting}
+\caption{Using FIJI to blur an image}
+\label{fig:fiji}
+\end{figure}
+
+\begin{figure}[p]
+\begin{lstlisting}[language=C++]
+#include <stdio.h>
+#include "Image/ByteImage.h"
+#include "Image/ImageProcessor.h"
+
+int main(int argc, char **argv) {
+	if(argc != 2) {
+		fprintf(stderr, "Usage: ivt input output\n");
+		return 1;
+	}
+
+	CByteImage in;
+	CByteImage out;
+
+	if(!in.LoadFromFile(argv[0])) {
+		fprintf(stderr, "Unable to load file %s\n", argv[0]);
+		return 2;
+	}
+
+	out = CByteImage(in);
+	ImageProcessor::GaussianSmooth(&in, &out, 1.0f, 3);
+	if(!out.SaveToFile(argv[1])) {
+		fprintf(stderr, "Unable to save to file %s\n", argv[1]);
+	}
+}
+\end{lstlisting}
+\caption{Using IVT to blur an image}
+\label{fig:ivt}
+\end{figure}
+
+\begin{figure}[p]
+\caption{Using VXT to blur an image}
+\label{fig:vxt}
+\end{figure}
+
+\subsection{Other Tools}
+Having used git for several personal projects I was keen to continue using it for my version 
+control. GitHub was a convenient hosting company to go with as they provide students with free 
+private repositories and have very high uptime. It also means I am able to easily work on any 
+system without difficulty but with the assurance of security. This is preferable to hosting my own
+repositories and running the risk of losing a lot of work.
+
 \subsection{Design}
+\begin{figure}[H]
+\includegraphics[scale=0.5]{img/design.png}
+\caption{Initial Design}
+\label{fig:init-class}
+\end{figure}
+
 An initial UML class diagram is depicted by figure~\ref{fig:init-class}. This design will allow 
 additional techniques, both analysis and machine learning based, to be added easily. Command line
 arguments, or later a GUI front-end, will be used to specify which techniques should be used.
 
 The GUI elements depicted are used for visualising the analysed data or results of the machine
-learning algorithms.
-
-\begin{figure}[p]
-\includegraphics[scale=0.5]{img/design.png}
-\caption{Initial Design}
-\label{fig:init-class}
-\end{figure}
+learning algorithms. An example of this is a graphical representation of the colour space averages
+(see figure~\ref{fig:mean-hsv-by-year}).
 
 \subsection{Colour Space Statistical Analysis}
 With the design solidified, I begun to work on the statistical analysis of digital images. The 
@@ -135,41 +283,7 @@ nearest example (see figure~\ref{fig:1-nn}).
 This simple algorithm can be expanded to be a K-Nearest Neighbour algorithm without too much effort
 (see figure~\ref{fig:k-nn}).
 
-
-\subsubsection{Distance Measures}
-Working out the ``Nearest'' example to a given painting requires some way of measuring distance
-between the two.
-
-One very simple way of doing this is Manhattan distance (figure~\ref{eq:manhattan}). This distance
-measure can be improved further to euclidean distance (figure~\ref{eq:euclidea}) without too much
-effort.
-
-\begin{figure}[p]
-\[
-d = \sum^X_{x=0}{|a_x - b_x|}
-\]
-
-\(X\): All dimensions present in both \(a\) and \(b\).\\
-\(a\): The first point.\\
-\(b\): The second point.
-
-\caption{Manhattan Distance}
-\label{eq:manhattan}
-\end{figure}
-
-\begin{figure}[p]
-\[
-d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
-\]
-
-\(X\): All dimensions present in both \(a\) and \(b\).\\
-\(a\): The first point.\\
-\(b\): The second point.
-\caption{Euclidean Distance}
-\label{eq:euclidean}
-\end{figure}
-
-\begin{figure}
+\begin{figure}[h]
 \begin{algorithmic}
 \State $bestDistance \gets \infty$
 \For{$x = 1 \to X$}
@@ -186,7 +300,7 @@ Where:\\
 \label{fig:1-nn}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \begin{algorithmic}
 \State $kBest \gets []$
 \For{$x = 1 \to X$}
@@ -208,13 +322,69 @@ $K$ is the number of nearest neighbours to check.
 \label{fig:k-nn}
 \end{figure}
 
+
+\subsection{Distance Measures}
+Working out the ``Nearest'' example to a given painting requires some way of measuring distance
+between the two.
+
+One very simple way of doing this is Manhattan distance (figure~\ref{eq:manhattan}). This distance
+measure can be improved further to euclidean distance (figure~\ref{eq:euclidean}) without too much
+effort. There are numerous other methods of measuring the distance of points in space, including
+those which focus on the distance between colour histograms.
+
+\begin{figure}[h]
+\[
+d = \sum^X_{x=0}{|a_x - b_x|}
+\]
+
+\(X\): All dimensions present in both \(a\) and \(b\).\\
+\(a\): The first point.\\
+\(b\): The second point.
+
+\caption{Manhattan Distance}
+\label{eq:manhattan}
+\end{figure}
+
+\begin{figure}[h]
+\[
+d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
+\]
+
+\(X\): All dimensions present in both \(a\) and \(b\).\\
+\(a\): The first point.\\
+\(b\): The second point.
+\caption{Euclidean Distance}
+\label{eq:euclidean}
+\end{figure}
+
+
+\subsection{Meetings with Gareth Lloyd Roderick}
+At current I have had one meeting with both Lloyd and Hannah to discuss the current progress of 
+the project and where we see the project progressing to. Lloyd was impressed by the current state
+of the project and was looking forward to see where it was leading to.
+
+We also discussed the potential of getting a paper published out of this project.
+
+\subsection{Research into Stroke Analysis}
+Stroke analysis is one of the main goals for this project. It is quite apparent from looking at 
+Kyffin Williams' paintings that his brushstrokes change over time, his early work having lots of
+smaller strokes over the canvas to large bold strokes in his later work.
+
+The first paper I found relating to the analysis of brushstrokes involved moving a circular filter
+across the whole painting to find the ridges of strokes, then to fill any unbroken areas. They then
+shrunk these areas to a single pixel line and fitted a $n^{\text{th}}$ order polynomial to this
+line\cite{Berezhnoy2005Authentic}. This method seems fairly simplistic, but could be an interesting
+first step, but as it is more focused on authenticating paintings it may be of limited use.
+
+
+
+
 %==============================================================================
 \section{Planning}
 %==============================================================================
 
-%
-% Start to comment out / remove the following lines. They are only provided for instruction for this example template.  You don't need the following section title, because it will be added as part of the bibliography section. 
-%
+
+
 %==============================================================================
 \section*{Your Bibliography - REMOVE for final version}
 %==============================================================================

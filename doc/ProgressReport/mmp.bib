@@ -1,67 +1,104 @@
-
-% This is an example of a string: this is the way you do variables in BiBTex
-% @string{variable_name="string the variable_name refers to"}
-@string{aij= "Artificial Intelligence"}
-
-
-% This is an example of a book. By putting the title in {{ double brackets,
-% capitalisation is preserved.
-
-@book{NumericalRecipes,
-  title={{Numerical recipes in C}},
-  author={Press, W.H. and others},
-  year={1992},
-  publisher={Cambridge University Press Cambridge},
-  isbn={0123456789},
-  pages = {349--361},
-  annote={This is my annotation. I can add in comments that are in \textbf{bold} and \em{italics} and then other content.},
+@article{Li2012Rhythmic,
+    abstract = {Art historians have long observed the highly characteristic brushstroke styles of Vincent van Gogh and have relied on discerning these styles for authenticating and dating his works. In our work, we compared van Gogh with his contemporaries by statistically analyzing a massive set of automatically extracted brushstrokes. A novel extraction method is developed by exploiting an integration of edge detection and clustering-based segmentation. Evidence substantiates that van Gogh's brushstrokes are strongly rhythmic. That is, regularly shaped brushstrokes are tightly arranged, creating a repetitive and patterned impression. We also found that the traits that distinguish van Gogh's paintings in different time periods of his development are all different from those distinguishing van Gogh from his peers. This study confirms that the combined brushwork features identified as special to van Gogh are consistently held throughout his French periods of production (1886-1890).},
+    author = {Li, Jia and Yao, Lei and Hendriks, E. and Wang, J. Z.},
+    citeulike-article-id = {11621633},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1109/TPAMI.2011.203},
+    citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6042878},
+    doi = {10.1109/TPAMI.2011.203},
+    institution = {Dept. of Stat., Pennsylvania State Univ., University Park, PA, USA},
+    issn = {0162-8828},
+    journal = {Pattern Analysis and Machine Intelligence, IEEE Transactions on},
+    month = jun,
+    number = {6},
+    pages = {1159--1176},
+    posted-at = {2012-11-06 13:30:24},
+    priority = {5},
+    publisher = {IEEE},
+    title = {Rhythmic Brushstrokes Distinguish van Gogh from His Contemporaries: Findings via Automated Brushstroke Extraction},
+    url = {http://dx.doi.org/10.1109/TPAMI.2011.203},
+    volume = {34},
+    year = {2012}
 }
 
-
-% This is an example of a conference paper. Note the accented character in the 
-% author list.  Again, capitalisation of the title is important so it is in
-% double brackets 
-@INPROCEEDINGS{MarksPaper,
-    author = {Mark Neal and Jan Feyereisl and Rosario Rascun\`{a} and Xiaolei Wang},
-    title = {{Don't touch me, I'm fine: Robot autonomy using an artificial innate immune system}}, 
-    booktitle = {Proceedings of the 5th International Conference on Artificial Immune Systems},
-    year = {2006},
-    pages = {349--361},
-    publisher = {Springer},
-    annote={This paper...}
+@article{Stork2007Computer,
+    author = {Stork, David and Duarte, Marco},
+    citeulike-article-id = {11616348},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1109/MMUL.2007.6},
+    comment = {Defines a useful method of region analysis.},
+    doi = {10.1109/MMUL.2007.6},
+    issn = {1070-986X},
+    journal = {IEEE Multimedia},
+    number = {1},
+    pages = {14--18},
+    posted-at = {2012-11-05 11:37:27},
+    priority = {2},
+    title = {Computer Vision, Image Analysis, and Master Art: Part 3},
+    url = {http://dx.doi.org/10.1109/MMUL.2007.6},
+    volume = {14},
+    year = {2007}
 }
 
-% This is an example of a journal article. We use the variable defined at the
-% top here - by typing aij, we get Artificial Intelligence journal title 
-% without having to type it out
-@article{HannahsPaper,
- author={Dee, H. M. and Hogg, D. C.},
- title={Navigational strategies in behaviour modelling},
- year=2009,
- journal=aij, 
- volume={173(2)}, 
- pages={329-342},
-  annote={This is my annotation. I should add in a description here.}
+@incollection{Stork2009Computer,
+    address = {Berlin, Heidelberg},
+    author = {Stork, David G.},
+    chapter = {2},
+    citeulike-article-id = {11616305},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1007/978-3-642-03767-2_2},
+    citeulike-linkout-1 = {http://www.springerlink.com/content/87r5k63g75606632},
+    comment = {Notes a lot of useful literature to look at and some useful terminology and ideas for analysis techniques too.},
+    doi = {10.1007/978-3-642-03767-2_2},
+    editor = {Jiang, Xiaoyi and Petkov, Nicolai},
+    isbn = {978-3-642-03766-5},
+    pages = {9--24},
+    posted-at = {2012-11-05 11:06:51},
+    priority = {3},
+    publisher = {Springer Berlin / Heidelberg},
+    series = {Lecture Notes in Computer Science},
+    title = {Computer Vision and Computer Graphics Analysis of Paintings and Drawings: An Introduction to the Literature Computer Analysis of Images and Patterns},
+    url = {http://dx.doi.org/10.1007/978-3-642-03767-2_2},
+    volume = {5702},
+    year = {2009}
 }
 
-% This is an example of a URL reference
-% Note you should try to identify authorship of web resources
-% Also note you should include the date you last accessed the page.
-@MISC{FailBlog,
-author = {Various},
-title = {Fail Blog},
-month = Aug,
-year = {2011},
-howpublished={\url{http://www.failblog.org/}},
-note={Accessed August 2011},
-annote={This is my annotation. I should add in a description here.}
+@book{Prince2012Computer,
+    abstract = {"This modern treatment of computer vision focuses on learning and inference in probabilistic models as a unifying theme. It shows how to use training data to learn the relationships between the observed image data and the aspects of the world that we wish to estimate, such as the {3D} structure or the object class, and how to exploit these relationships to make new inferences about the world from new image data. With minimal prerequisites, the book starts from the basics of probability and model fitting and works up to real examples that the reader can implement and modify to build useful vision systems. Primarily meant for advanced undergraduate and graduate students, the detailed methodological presentation will also be useful for practitioners of computer vision. [bullet] Covers cutting-edge techniques, including graph cuts, machine learning and multiple view geometry [bullet] A unified approach shows the common basis for solutions of important computer vision problems, such as camera calibration, face recognition and object tracking [bullet] More than 70 algorithms are described in sufficient detail to implement [bullet] More than 350 full-color illustrations amplify the text [bullet] The treatment is self-contained, including all of the background mathematics [bullet] Additional resources at www.computervisionmodels.com"--},
+    author = {Prince, Simon J. D.},
+    citeulike-article-id = {11602517},
+    citeulike-linkout-0 = {http://www.computervisionmodels.com/},
+    citeulike-linkout-1 = {http://www.worldcat.org/isbn/9781107011793},
+    citeulike-linkout-2 = {http://books.google.com/books?vid=ISBN9781107011793},
+    citeulike-linkout-3 = {http://www.amazon.com/gp/search?keywords=9781107011793&index=books&linkCode=qs},
+    citeulike-linkout-4 = {http://www.librarything.com/isbn/9781107011793},
+    citeulike-linkout-5 = {http://www.worldcat.org/oclc/779264830},
+    comment = {Reference for Computer Vision and Machine Learning.},
+    isbn = {9781107011793},
+    posted-at = {2012-11-02 11:26:08},
+    priority = {5},
+    publisher = {Cambridge University Press},
+    title = {Computer vision : models, learning, and inference},
+    url = {http://www.computervisionmodels.com/},
+    year = {2012}
 }
 
-@misc{kittenpic_ref,
-  author="Sylvia Duckworth",
- title={{A picture of a kitten at Hellifield Peel}},
- howpublished={\url{http://www.geograph.org.uk/photo/640959}},
- year=2007,
- note={Copyright Sylvia Duckworth and licensed for reuse under a Creative Commons Attribution-Share Alike 2.0 Generic Licence. Accessed August 2011},
-  annote={This is my annotation. I should add in a description here.}
+@inproceedings{Berezhnoy2005Authentic,
+    abstract = {The paper provides insights into our efforts to develop techniques for the analysis of visual art. The {AUTHENTIC} project aims at creating a collection of software tools to support art experts in their assessments of the authenticity of paintings. We describe our progress on the automatic analysis of the visual texture of the paintings of Vincent van Gogh. The texture-analysis technique reveals two main clusters of brushstroke shapes used in the paintings by Van Gogh. These qualifying results lead us to conclude that the use of advanced digital analysis techniques will change the way in which the authentication of visual art is performed},
+    author = {Berezhnoy, I. E. and Postma, E. O. and van den Herik, H. J.},
+    booktitle = {Multimedia and Expo, 2005. ICME 2005. IEEE International Conference on},
+    citeulike-article-id = {11446581},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1109/ICME.2005.1521739},
+    citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1521739},
+    comment = {(private-note)Defines a useful strategy for performing brush stroke analysis. Some parts may not be applicable to the temporal analysis but it could provide a useful base to expand upon.},
+    doi = {10.1109/ICME.2005.1521739},
+    institution = {Inst. for Knowledge \& Agent Technol., Maastricht Univ.},
+    isbn = {0-7803-9331-7},
+    keywords = {analysis, brushstroke},
+    month = jul,
+    pages = {1586--1588},
+    posted-at = {2012-10-12 14:14:57},
+    priority = {4},
+    publisher = {IEEE},
+    title = {Authentic: Computerized Brushstroke Analysis},
+    url = {http://dx.doi.org/10.1109/ICME.2005.1521739},
+    year = {2005}
 }
+

@@ -1,0 +1,69 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{Berezhnoy2005Authentic}
+\BIBentryALTinterwordspacing
+I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``Authentic:
+  Computerized brushstroke analysis,'' in \emph{Multimedia and Expo, 2005. ICME
+  2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, July 2005, pp. 1586--1588. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/ICME.2005.1521739}
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{Li2012Rhythmic}
+\BIBentryALTinterwordspacing
+J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
+  van gogh from his contemporaries: Findings via automated brushstroke
+  extraction,'' \emph{Pattern Analysis and Machine Intelligence, IEEE
+  Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
+  Available: \url{http://dx.doi.org/10.1109/TPAMI.2011.203}
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{Prince2012Computer}
+\BIBentryALTinterwordspacing
+S.~J.~D. Prince, \emph{Computer vision : models, learning, and
+  inference}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge University
+  Press, 2012. [Online]. Available: \url{http://www.computervisionmodels.com/}
+  9781107011793.
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{Stork2007Computer}
+\BIBentryALTinterwordspacing
+D.~Stork and M.~Duarte, ``Computer vision, image analysis, and master art: Part
+  3,'' \emph{IEEE Multimedia}, vol.~14, no.~1, pp. 14--18, 2007. [Online].
+  Available: \url{http://dx.doi.org/10.1109/MMUL.2007.6}
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{Stork2009Computer}
+\BIBentryALTinterwordspacing
+D.~G. Stork, ``Computer vision and computer graphics analysis of paintings and
+  drawings: An introduction to the literature computer analysis of images and
+  patterns,'' ser. Lecture Notes in Computer Science, X.~Jiang and N.~Petkov,
+  Eds.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg: Springer
+  Berlin / Heidelberg, 2009, vol. 5702, ch.~2, pp. 9--24. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/978-3-642-03767-2_2}
+\BIBentrySTDinterwordspacing
+
+
+\end{thebibliography}
