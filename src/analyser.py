@@ -4,6 +4,8 @@ import csv
 import painting as paint
 import random, re
 import matplotlib.pyplot as plot
+import os.path
+import logging
 
 DATA_DIR = 'data/'
 
@@ -66,6 +68,11 @@ class Analyser:
 					painting = paint.load(row, DATA_DIR)
 					if re.match('^\d\d\d\d$', painting.year):
 						self.paintings.append(painting)
+
+					if os.path.isfile(painting.filePath):
+						self.paintings.append(painting)
+					else:
+						logging.warning('Unable to load {0}: File {1} does not exist'.format(painting.title, painting.filePath))
 				except IOError:
 					continue
 				
