@@ -25,8 +25,8 @@ class KNearestNeighbour:
 
 		# Iterate through all experience and work out the distance
 		for expMeta in experience:
-			if re.match('^\d\d\d\d$', expMeta.year) is None:
-				continue
+#			if re.match('^\d\d\d\d$', expMeta.year) is None:
+#				continue
 			curDist = self.technique.distance(meta.data, expMeta.data)
 			curYear = expMeta.year
 			for i in range(self.k):
