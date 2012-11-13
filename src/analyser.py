@@ -3,6 +3,7 @@
 import csv
 import painting as paint
 import random, re
+import matplotlib.pyplot as plot
 
 DATA_DIR = 'data/'
 
@@ -18,21 +19,39 @@ class Analyser:
 		self.loadPaintings( data )
 		self.analyse()
 
-		randIndex = random.randint(0, len(self.paintings)-1)
-		toClassify = self.paintings.pop(randIndex)
+		actual = []
+		classified = []
 
-		self.gui.render(self.paintings)
+		for i in range(len(self.paintings)):
+			toClassify = self.paintings.pop(i)
+			actualY = toClassify.year
 
-		if re.match('^\d\d\d\d$', toClassify.year) is not None:
-			print 'Known year of {0} is {1}'.format(toClassify.title, toClassify.year)
-		elif re.match('^\d\d\d\d-\d\d\d\d$', toClassify.year) is not None:
-			print 'Known year range of {0} is {1}'.format(toClassify.title, toClassify.year)
-		else:
-			print 'Year of {0} is unknown'.format(toClassify.title)
+#			self.gui.render(self.paintings)
 
-		self.ml.classify( toClassify, self.paintings )
+#		if re.match('^\d\d\d\d$', toClassify.year) is not None:
+#			print 'Known year of {0} is {1}'.format(toClassify.title, toClassify.year)
+#		elif re.match('^\d\d\d\d-\d\d\d\d$', toClassify.year) is not None:
+#			print 'Known year range of {0} is {1}'.format(toClassify.title, toClassify.year)
+#		else:
+#			print 'Year of {0} is unknown'.format(toClassify.title)
 
-		print 'Classified date is: {0}'.format(toClassify.year)
+			self.ml.classify( toClassify, self.paintings )
+
+			classifiedY = toClassify.year
+
+			toClassify.year = actualY
+			self.paintings.insert(i, toClassify)
+
+			actual.append(actualY)
+			classified.append(classifiedY)
+
+
+		plot.plot(actual, classified, 'x')
+		plot.xlabel('Actual Year')
+		plot.ylabel('Classified Year')
+		plot.show()
+
+#		print 'Classified date is: {0}'.format(toClassify.year)
 
 	def analyse(self):
 		for painting in self.paintings:
@@ -44,7 +63,9 @@ class Analyser:
 			dataReader = csv.reader(csvFile, delimiter=',', quotechar='"')
 			for row in dataReader:
 				try:
-					self.paintings.append(paint.load(row, DATA_DIR))
+					painting = paint.load(row, DATA_DIR)
+					if re.match('^\d\d\d\d$', painting.year):
+						self.paintings.append(painting)
 				except IOError:
 					continue
 				

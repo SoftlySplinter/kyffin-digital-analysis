@@ -1,5 +1,10 @@
+import os.path
+
 def load(row, directory):
-	return Painting( row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], directory + row[13], row[14] )
+	if os.path.isfile(directory + row[13]):
+		return Painting( row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], directory + row[13], row[14] )
+	else:
+		raise IOError
 
 class Painting:
 	def __init__( self, author, title, year, genre, collection, location, latitude, longitude, width, height, area, image, imageURL, filePath, notes ):
