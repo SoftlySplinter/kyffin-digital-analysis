@@ -54,21 +54,24 @@
 \section{Project Summary}
 %==============================================================================
 Sir John ``Kyffin'' Williams was a landscape painter from Wales whose work was predominantly based 
-in Wales and Patagonia. His work, with associated metadata collected by Gareth Lloyd Roderick and 
-the National Library of Wales, allows for some interesting analysis; particularly that of temporal 
-or geological data for a given painting.
+in Wales and Patagonia. Gareth Lloyd Roderick, with the help of the National Library of Wales, has
+collected data, such as the date or location, of these paintings. This data allows for some 
+interesting analysis; particularly that of temporal or geological classification of a given 
+painting. That is being able to take a painting and decide the year or location in which it was
+painted from a database of existing, known, works by Kyffin Williams.
 
 Temporal analysis will be the focus of this project as it allows for a diverse range of techniques;
-from statistical analysis of RGB values of the paintings to looking at the length and style of 
-paintbrush strokes. 
+from statistical analysis of colour values of the paintings to looking at the length and style of 
+paintbrush strokes. Geological analysis would likely be very difficult, especially as the locations
+depicted were often sketched on-site then painted in a studio.
 
 Whilst it would be nice to be able to predict the age of a painting with no known year, it is far
-more interesting to try to guess the year of paintings where the date is known. This allows for
-cross-validation of the techniques employed to guess the year. This project will use leave-one-out
-cross-validation for simplicity as the data set is small enough to allow this computationally 
-expensive technique.
+more interesting to try to guess the year of paintings for which the date is known. This project 
+will use leave-one-out cross-validation to help measure the effectiveness and validity of the 
+analysis techniques employed in this project. Leave-one-out validation can be used with this 
+project as the data set is small enough not to incur large performance overheads and the overall
+speed of the program is irrelevant so long as it completes within a decent amount of time.
 
-This cross-validation allows for a measure the success to be applied to each analysis technique. 
 One major limitation with this is it also includes the technique used for classification, some
 techniques might work better with K-Nearest Neighbour whilst other might benefit from more complex
 methods of classification.
@@ -83,11 +86,11 @@ libraries available for use with the aim to find the most suitable library to us
 the rest of the project. Because of this the library had to be easy to install and use, as well as
 having all the necessary features which would be used in this project.
 
-The choice of library would also have a knock-on affect on the choice of language this project 
-would be written in. To this end I downloaded each of the libraries in turn, created a simple 
-application to perform blur on a simple image to test their use and documentation. From this I
-gained a good insight into how easy that library would be to perform more complex tasks and how
-confident I felt with the language(s) the library had bindings for.
+The choice of library also has a knock-on affect on the choice of language this project would be 
+written in. To this end I downloaded each of the libraries in turn, created a simple application to
+ perform blur on a single image to test their use and documentation. From this I gained a good 
+insight into how easy that library would be to perform more complex tasks and how confident I felt 
+with the language(s) the library has bindings for.
 
 Table~\ref{tab:libraries-overview} shows an overview of all the libraries I have currently 
 considered and experimented with.
@@ -118,9 +121,16 @@ and eventually gave up trying to get a working binary due to time constraints.
 
 %TODO Actually use VXL and then write about it.
 
+Having weighed up these libraries I it became fairly apparent that OpenCV would be the best choice,
+not only did it act as an easy to use library, it is also seems that is is one of the most 
+prevalent libraries for Computer Vision. For the Kyffin Williams project OpenCV provides a lot of
+pre-built helpers which allow for very rapid production of the early elements of the project. For
+example it is able to handle loading images in different colour spaces, generating histograms of
+images and even comes with it's own machine learning libraries.
+
 Having decided to go with OpenCV I was then faced with a choice of languages. OpenCV runs natively
-with C++ and has bindings for Python. Of these two languages I am slightly more familiar with C++. 
-I am also used to the syntax from programming Java continually for three years. 
+with C++ and has bindings for Python. Of these two languages I am slightly more familiar with C++ 
+and I am also used to the syntax from programming Java continually for three years. 
 
 However, I wanted to take a rapid prototyping approach with this project; constantly adding new 
 modules each week to build up a better and better system. C++ seemed too heavyweight for this 
@@ -129,13 +139,13 @@ approach, whilst Python seemed designed for it.
 Another consideration I had was that the results of any analysis could take any form at all, from
 an array of numbers to a complex data structure returned by OpenCV. Trying to work around this with
 a statically typed language such as C++ could end up being difficult, especially when trying to 
-keep a object-orientated approach.
+keep a object-orientated approach. With a dynamically typed language such as Python it's a lot 
+easier to pass these sorts of objects so long as the functions you pass to are expecting the right 
+sort of object.
 
-With a dynamically typed language such as Python it's a lot easier to pass these sorts of objects
-so long as the functions you pass to are expecting the right sort of object. There may be some 
-parts of the project which I might consider writing in C++ after prototyping in Python. An example
-of this would be if I wrote an algorithm which located strokes across the painting, as it may be
-used in other projects, not just my own.
+There may be some parts of the project which I might consider writing in C++ after prototyping in 
+Python. An example of this would be if I wrote an algorithm which located strokes across the 
+painting, as it may be used in other projects, not just my own.
 
 
 \begin{figure}[p]
@@ -216,10 +226,14 @@ int main(int argc, char **argv) {
 
 \subsection{Other Tools}
 Having used git for several personal projects I was keen to continue using it for my version 
-control. GitHub was a convenient hosting company to go with as they provide students with free 
-private repositories and have very high uptime. It also means I am able to easily work on any 
+control system. GitHub was a convenient hosting company to go with as they provide students with 
+free private repositories and have very high uptime. It also means I am able to easily work on any 
 system without difficulty but with the assurance of security. This is preferable to hosting my own
 repositories and running the risk of losing a lot of work.
+
+Git is one of the nicer version control programs I have used and has some nice extensions (shell
+integration with zsh, git-flow for helping with the development process) and it's decentralised 
+nature allows me to easily work where-ever I feel most comfortable.
 
 \subsection{Design}
 \begin{figure}[H]
@@ -286,7 +300,10 @@ example to the example to be classified and classify the year of this example wi
 nearest example (see figure~\ref{fig:1-nn}).
 
 This simple algorithm can be expanded to be a K-Nearest Neighbour algorithm without too much effort
-(see figure~\ref{fig:k-nn}).
+(see figure~\ref{fig:k-nn}). Instead of storing a single nearest neighbour you can simply store an
+list of them (making 1-Nearest Neighbour still work without issue) and then have some small amount
+of processing at the end to get a hold of the best neighbour. This processing will likely take the
+form of a simple statistic method such as the mean or the modal year.
 
 \begin{figure}[h]
 \begin{algorithmic}
@@ -369,6 +386,21 @@ the project and where we see the project progressing to. Lloyd was impressed by 
 of the project and was looking forward to see where it was leading to.
 
 We also discussed the potential of getting a paper published out of this project.
+
+\subsection{Leave-one-out Cross Validation}
+The idea of leave-one-out cross validation is to take the entire training set, remove a single 
+example and then to classify this example against the rest of the training set. You can then do
+this for every example in the training set and be able to plot a graph of the actual year against
+the classified year, aiming for the line $x=y$, an example of this is showing in 
+figure~\ref{fig:validation-rgb-1nn}. With this information we can also work out the correlation 
+between the two and have a decent measure of how each analysis technique performs.
+
+\begin{figure}
+\includegraphics[scale=0.5]{img/validation-rgb-1nn.png}
+\caption{Leave-one-out cross validation of actual year against classified year using RGB statistical analysis and
+1-nearest neighbour classification.}
+\label{fig:validation-rgb-1nn}
+\end{figure}
 
 \subsection{Research into Stroke Analysis}
 Stroke analysis is one of the main goals for this project. It is quite apparent from looking at 
