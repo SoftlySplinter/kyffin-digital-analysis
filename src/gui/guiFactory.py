@@ -1,4 +1,4 @@
-from gui import TextGUI, GraphGUI
+from gui import GUI, TextGUI, GraphGUI
 
 def getGUI(name='text', dataType='default'):
 	print('Using {0}-based GUI'.format(name))
@@ -7,4 +7,4 @@ def getGUI(name='text', dataType='default'):
 	if name == 'graph':
 		return GraphGUI(dataType)
 
-	return TextGUI(dataType)
+	return GUI(dataType)

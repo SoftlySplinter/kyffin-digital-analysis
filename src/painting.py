@@ -25,3 +25,6 @@ class Painting:
 		self.notes = notes
 
 		self.data = None
+
+	def __repr__(self):
+		return self.year
