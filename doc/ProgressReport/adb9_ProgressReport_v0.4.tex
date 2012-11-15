@@ -16,6 +16,8 @@
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
 
 % the following packages are used for citations - You only need to include one. 
 %
@@ -32,7 +34,7 @@
 \projecttitle{Kyffin Williams: Digital Analysis of Paintings}
 \projecttitlememoir{Kyffin Williams: Digital Analysis of Paintings} %same as the project title or abridged version for page header
 \reporttitle{Progress Report}
-\version{0.3}
+\version{0.4}
 \docstatus{Draft}
 \modulecode{CS39440}
 \supervisor{Hannah M. Dee} % e.g. Neil Taylor
@@ -50,19 +52,20 @@
 
 \newpage
 
+\clearpage
 %==============================================================================
 \section{Project Summary}
 %==============================================================================
 Sir John ``Kyffin'' Williams was a landscape painter from Wales whose work was predominantly based 
-in Wales and Patagonia. Gareth Lloyd Roderick, with the help of the National Library of Wales, has
-collected data, such as the date or location, of these paintings. This data allows for some 
-interesting analysis; particularly that of temporal or geological classification of a given 
+in Wales and Patagonia. Gareth Lloyd Roderick, a PhD student in the National Library of Wales, has
+collected data such as the date or location, of these paintings. This data allows for some 
+interesting analysis; particularly that of temporal or geographical classification of a given 
 painting. That is being able to take a painting and decide the year or location in which it was
 painted from a database of existing, known, works by Kyffin Williams.
 
 Temporal analysis will be the focus of this project as it allows for a diverse range of techniques;
 from statistical analysis of colour values of the paintings to looking at the length and style of 
-paintbrush strokes. Geological analysis would likely be very difficult, especially as the locations
+paintbrush strokes. Geographical analysis would likely be very difficult, especially as the locations
 depicted were often sketched on-site then painted in a studio.
 
 Whilst it would be nice to be able to predict the age of a painting with no known year, it is far
@@ -74,13 +77,116 @@ speed of the program is irrelevant so long as it completes within a decent amoun
 
 One major limitation with this is it also includes the technique used for classification, some
 techniques might work better with K-Nearest Neighbour whilst other might benefit from more complex
-methods of classification.
+methods of classification. This means I will either have to stick with a single classification
+algorithm and hope it's a good one for all techniques. Or I could find the best machine learning
+technique for each individual analysis technique, then perform comparison. This does assume that
+the best machine learning technique for every analysis technique exists within the scope of the
+project.
 
+As there has been a lot of research into this topic there is an introductory paper to the 
+literature\cite{Stork2009Computer}
+%TODO Key Papers
+
+Some examples of Kyffin Williams' work show the changes in his style over time; his early work as
+shown in figure~\ref{fig:kyffin-early} often contained a lot of strokes and quite a lot of bright
+colour. Comparing it to the work in around the middle of his career show in figure~\ref{fig:kyffin-mid}, there are visible differences;
+the colours used are a lot darker and the strokes on the canvas are a lot more confident, leading
+to a more ``blocky'' feel. His later work, shown in figure~\ref{fig:kyffin-late} retains this 
+``blocky'' feel and the darker colours, but has a lot more detail like some of the paintings from
+his earlier period.
+
+There is also a period in 1969 where Kyffin Williams visited Patagonia and did quite a few works
+in that area; these are visually very distinct as they use a lot of orange colours not common to
+Welsh landscapes. Some of this work is shown in figure~\ref{fig:kyffin-patagonia}.
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/acnmw_acnmw_da006778_02_large.jpg}
+  \caption{Snowdon from Llyn Nantle (1945)}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/nwm_oym_1_90_624x544.jpg}
+  \caption{Swtan (1947)}
+\end{subfigure}
+\caption{Early works by Kyffin Williams}
+\label{fig:kyffin-early}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/gac_gac_13839_large.jpg}
+  \caption{Nant Ffrancon from Llandegfan (1970)}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/nlw_nlw_gcf02283_large.jpg}
+  \caption{Farm, Llanfairynghornwy (1974)}
+\end{subfigure}
+\caption{Works by Kyffin Williams in the middle of his career}
+\label{fig:kyffin-mid}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/nlw_nlw_gcf06690_large.jpg}
+  \caption{Pengwyryd (1999)}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/nlw_nlw_gcf08104_large.jpg}
+  \caption{Sunset, Anglesey (2004)}
+\end{subfigure}
+\caption{Works by Kyffin Williams towards the end of his career}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/nlw_nlw_kwf00325_large.jpg}
+  \caption{Paith, Patagonia (1969)}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{img/nlw_nlw_kwf00103_large.jpg}
+  \caption{Patagonian Landscape (1969)}
+\end{subfigure}
+\caption{Works by Kyffin Williams from his trip to Patagonia}
+\label{fig:kyffin-patagonia}
+\end{figure}
+
+At current I have had one meeting with both Lloyd and Hannah to discuss the current progress of 
+the project and where we see the project progressing to. Lloyd was impressed by the current state
+of the project and was looking forward to see where it was leading to.
+
+We also discussed the potential of getting a paper published out of this project.
+
+\clearpage
 %==============================================================================
 \section{Current Progress}
 %==============================================================================
 
-\subsection{Library and Language Research}
+At current, there are three main areas in which progress has been made:
+
+\begin{itemize}
+\item Research into tools.
+\item Research into related work.
+\item Progress in development and experimentation.
+\end{itemize}
+
+\clearpage
+%==============================================================================
+\subsection{Research into tools}
+%==============================================================================
+
+\subsubsection{Library and Language Research}
 The first step in the project was to research into the numerous image processing/computer vision
 libraries available for use with the aim to find the most suitable library to use constantly for 
 the rest of the project. Because of this the library had to be easy to install and use, as well as
@@ -126,7 +232,7 @@ not only did it act as an easy to use library, it is also seems that is is one o
 prevalent libraries for Computer Vision. For the Kyffin Williams project OpenCV provides a lot of
 pre-built helpers which allow for very rapid production of the early elements of the project. For
 example it is able to handle loading images in different colour spaces, generating histograms of
-images and even comes with it's own machine learning libraries.
+images and even comes with its own machine learning libraries.
 
 Having decided to go with OpenCV I was then faced with a choice of languages. OpenCV runs natively
 with C++ and has bindings for Python. Of these two languages I am slightly more familiar with C++ 
@@ -195,24 +301,15 @@ public final class Blur {
 #include "Image/ImageProcessor.h"
 
 int main(int argc, char **argv) {
-	if(argc != 2) {
-		fprintf(stderr, "Usage: ivt input output\n");
-		return 1;
-	}
-
 	CByteImage in;
 	CByteImage out;
+	char* from = "tux.png";
+	char* to = "tux_ivt.png";
 
-	if(!in.LoadFromFile(argv[0])) {
-		fprintf(stderr, "Unable to load file %s\n", argv[0]);
-		return 2;
-	}
-
+	in.LoadFromFile(from)
 	out = CByteImage(in);
 	ImageProcessor::GaussianSmooth(&in, &out, 1.0f, 3);
-	if(!out.SaveToFile(argv[1])) {
-		fprintf(stderr, "Unable to save to file %s\n", argv[1]);
-	}
+	out.SaveToFile(to)
 }
 \end{lstlisting}
 \caption{Using IVT to blur an image}
@@ -224,7 +321,7 @@ int main(int argc, char **argv) {
 \label{fig:vxt}
 \end{figure}
 
-\subsection{Other Tools}
+\subsubsection{Other Tools}
 Having used git for several personal projects I was keen to continue using it for my version 
 control system. GitHub was a convenient hosting company to go with as they provide students with 
 free private repositories and have very high uptime. It also means I am able to easily work on any 
@@ -232,10 +329,36 @@ system without difficulty but with the assurance of security. This is preferable
 repositories and running the risk of losing a lot of work.
 
 Git is one of the nicer version control programs I have used and has some nice extensions (shell
-integration with zsh, git-flow for helping with the development process) and it's decentralised 
+integration with zsh, git-flow for helping with the development process) and its decentralised 
 nature allows me to easily work where-ever I feel most comfortable.
 
-\subsection{Design}
+\clearpage
+%==============================================================================
+\subsection{Research into Existing Work}
+%==============================================================================
+
+\subsubsection{Research into Stroke Analysis}
+Stroke analysis is one of the main goals for this project. It is quite apparent from looking at 
+Kyffin Williams' paintings that his brushstrokes change over time, his early work having lots of
+smaller strokes over the canvas to large bold strokes in his later work.
+
+The first paper I found relating to the analysis of brushstrokes involved moving a circular filter
+across the whole painting to find the ridges of strokes, then to fill any unbroken areas. They then
+shrunk these areas to a single pixel line and fitted a $n^{\text{th}}$ order polynomial to this
+line\cite{Berezhnoy2005Authentic}. This method seems fairly simplistic, but could be an interesting
+first step, but as it is more focused on authenticating paintings it may be of limited use.
+
+Another method for stroke analysis has been published in the IEEE Transactions on Pattern Analysis
+and Machine Learning journal. This method is far more complex, but is able to extract and label
+individual brushstrokes. An interesting part of their findings was the ability to date some of Van
+Gogh's paintings to a known period in his career\cite{Li2012Rhythmic}.
+
+\clearpage
+%==============================================================================
+\subsection{Progress in Development and Experimentation}
+%==============================================================================
+
+\subsubsection{Design}
 \begin{figure}[H]
 \includegraphics[scale=0.5]{img/design.png}
 \caption{Initial Design}
@@ -250,8 +373,8 @@ The GUI elements depicted are used for visualising the analysed data or results 
 learning algorithms. An example of this is a graphical representation of the colour space averages
 (see figure~\ref{fig:mean-hsv-by-year}).
 
-\subsection{Colour Space Statistical Analysis}
-With the design solidified, I begun to work on the statistical analysis of digital images. The 
+\subsubsection{Colour Space Statistical Analysis}
+With the design solidified, I began to work on the statistical analysis of digital images. The 
 easiest of these techniques is to read the image pixel by pixel, taking the various intensities at
 that pixel, then averaging them out over the whole image.
 
@@ -283,24 +406,24 @@ show changes as time goes on (see figure~\ref{fig:mean-hsv-by-year}).
 \end{figure}
 
 
-\subsection{Histogram Analysis}
+\subsubsection{Histogram Analysis}
 With colour-space analysis complete, the next sensible step was to start generating colour 
 histograms from Kyffin Williams paintings.
 
-A histogram is a nice way of displaying the distribution of colour in a given image and is 
-therefore a more useful representation of a painting than colour-space averages.
+A histogram is a nice way of representing the distribution of colour in a given image and is 
+therefore a richer representation of a painting than colour-space averages.
 
 As with before, histograms can be taken from different colour spaces, currently only the program
 can only generate RGB histograms, but it is trivial to include HSV histograms too.
 
-\subsection{Nearest Neighbour Classification}
-Having finished the analysis techniques, then next part was to create a simple classification 
-algorithm. The simplest of which is 1-Nearest Neighbour, that is; take the ``Nearest'' training
-example to the example to be classified and classify the year of this example with the year of the
-nearest example (see figure~\ref{fig:1-nn}).
+\subsubsection{Nearest Neighbour Classification}
+Having looked at different representations of colour in paintings, the next part was to create a 
+simple classification algorithm. The simplest of which is 1-Nearest Neighbour, that is; take the 
+``Nearest'' training example to the example to be classified and classify the year of this example 
+with the year of the nearest example (see figure~\ref{fig:1-nn}).
 
 This simple algorithm can be expanded to be a K-Nearest Neighbour algorithm without too much effort
-(see figure~\ref{fig:k-nn}). Instead of storing a single nearest neighbour you can simply store an
+(see figure~\ref{fig:k-nn}). Instead of storing a single nearest neighbour you can simply store a
 list of them (making 1-Nearest Neighbour still work without issue) and then have some small amount
 of processing at the end to get a hold of the best neighbour. This processing will likely take the
 form of a simple statistic method such as the mean or the modal year.
@@ -345,14 +468,15 @@ $K$ is the number of nearest neighbours to check.
 \end{figure}
 
 
-\subsection{Distance Measures}
+\subsubsection{Distance Measures}
 Working out the ``Nearest'' example to a given painting requires some way of measuring distance
 between the two.
 
-One very simple way of doing this is Manhattan distance (figure~\ref{eq:manhattan}). This distance
-measure can be improved further to euclidean distance (figure~\ref{eq:euclidean}) without too much
+One very simple way of doing this is Manhattan distance (equation~\ref{eq:manhattan}). This distance
+measure can be improved further to Euclidean distance (equation~\ref{eq:euclidean}) without too much
 effort. There are numerous other methods of measuring the distance of points in space, including
-those which focus on the distance between colour histograms.
+those which focus on the distance between colour histograms, however Euclidean and Manhattan 
+distance are both good starting points.
 
 \begin{figure}[h]
 \[
@@ -380,14 +504,8 @@ d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
 \end{figure}
 
 
-\subsection{Meetings with Gareth Lloyd Roderick}
-At current I have had one meeting with both Lloyd and Hannah to discuss the current progress of 
-the project and where we see the project progressing to. Lloyd was impressed by the current state
-of the project and was looking forward to see where it was leading to.
 
-We also discussed the potential of getting a paper published out of this project.
-
-\subsection{Leave-one-out Cross Validation}
+\subsubsection{Leave-one-out Cross Validation}
 \begin{figure}[h]
 \includegraphics[scale=0.5]{img/validation-rgb-1nn.png}
 \caption{Leave-one-out cross validation of actual year against classified year using RGB statistical analysis and
@@ -398,25 +516,9 @@ We also discussed the potential of getting a paper published out of this project
 The idea of leave-one-out cross validation is to take the entire training set, remove a single 
 example and then to classify this example against the rest of the training set. You can then do
 this for every example in the training set and be able to plot a graph of the actual year against
-the classified year, aiming for the line $x=y$, an example of this is showing in 
+the classified year, aiming for the line $x=y$, an example of this is shown in 
 figure~\ref{fig:validation-rgb-1nn}. With this information we can also work out the correlation 
-between the two and have a decent measure of how each analysis technique performs.
-
-\subsection{Research into Stroke Analysis}
-Stroke analysis is one of the main goals for this project. It is quite apparent from looking at 
-Kyffin Williams' paintings that his brushstrokes change over time, his early work having lots of
-smaller strokes over the canvas to large bold strokes in his later work.
-
-The first paper I found relating to the analysis of brushstrokes involved moving a circular filter
-across the whole painting to find the ridges of strokes, then to fill any unbroken areas. They then
-shrunk these areas to a single pixel line and fitted a $n^{\text{th}}$ order polynomial to this
-line\cite{Berezhnoy2005Authentic}. This method seems fairly simplistic, but could be an interesting
-first step, but as it is more focused on authenticating paintings it may be of limited use.
-
-Another method for stroke analysis has been published in the IEEE Transactions on Pattern Analysis
-and Machine Learning journal. This method is far more complex, but is able to extract and label
-individual brushstrokes. An interesting part of their findings was the ability to date some of Van
-Gogh's paintings to a known period in his career\cite{Li2012Rhythmic}.
+between the two and have an indication of how each analysis technique performs.
 
 
 \subsection{Technical Issues}
@@ -424,12 +526,12 @@ Having engineered software before I know that the biggest issue with developing 
 is working with external APIs. With this project I can currently get away with only having to work
 with a few APIs; OpenCV being the main candidate. I have had some struggles trying to understand
 exactly what the API wants as inputs and returns as outputs, but that is more due to a slight lack
-in the area of computer vision and image processing rather than the API being complex.
+of knowledge in the area of computer vision and image processing rather than the API being complex.
 
-I am currently reading up on image processing and computer vision, current I'm only using free,
+I am currently reading up on image processing and computer vision, using free,
 online resources\cite{Prince2012Computer} and knowledge within the department.
 
-OpenCV seems like a good library to work with at current, though I have yet to use it for any
+OpenCV seems like a good library to work with, though I have yet to use it for any
 specialised image processing (i.e. I have only used built-in methods OpenCV provides by default).
 I currently don't see any issue as the python bindings for OpenCV use numpy in the background. Both
 of these libraries are widely used and open source. If I do happen to have any problems with either
@@ -449,26 +551,39 @@ be necessary to only hold the analysis data for the current example to classify 
 example for which we are currently measuring the distance to. This would not be a difficult change
 to make, but may slow the program down as a whole.
 
+\clearpage
 %==============================================================================
 \section{Planning}
 %==============================================================================
 
 \subsection{Methodology}
 The methodology I am taking as part of this project is a mix of iterative development with rapid
-prototyping. This approach works well for this project as it is built up of a lot of small, 
-isolated modules which perform discrete tasks.
+prototyping. I think this approach will work well for this project as it is built up of a lot of 
+small, isolated modules which perform discrete tasks.
 
 Other models of development would likely slow the development of each of these modules down and are
 therefore less appropriate for this project. Some agile methodologies may also be a good approach,
 but as most agile methodologies are designed for teams rather than individual projects they are
 inappropriate.
 
+Figure~\ref{fig:gantt} depicts the Gantt chart I am going to try to follow for the course of this
+project.
+
+
 \clearpage
 \newpage
 \subsection{Gantt Chart}
+\begin{figure}[H]
 \includegraphics[scale=0.45, angle=90]{img/gantt.png}
+\caption{Gantt Chart for the Kyffin Williams project}
+\label{fig:gantt}
+\end{figure}
 
+\clearpage
 \subsection{Mid-term Demonstration}
+For the mid-term demonstration I aim to be able to demonstrate
+%TODO
+
 
 %
 %You need to include an annotated bibliography. This should list all relevant web pages, books, journals etc. that you have consulted in researching your project. Each reference should include an annotation. 
