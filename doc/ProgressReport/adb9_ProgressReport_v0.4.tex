@@ -384,8 +384,9 @@ The most common colour space used is RGB (Red, Green, Blue), where each pixel ho
 intensities, one for each colour with a value of 0 to 255.
 
 Using this analysis I plotted a graph of all paintings with a known year against the different 
-intensities (see figure~\ref{fig:mean-rgb-by-year}). As can be seen from this graph, the RGB values
-tend to fluctuate without much correlation between year.
+intensities (see figure~\ref{fig:mean-rgb-by-year}). Whilst the RGB values do all slowly increase
+over time and particularly the Red and Green values, the change may not be enough to classify new
+examples due to the fluctuations in the data. 
 
 \begin{figure}[p]
 \includegraphics[scale=0.5]{img/kyffin-rgp-avg.png}
@@ -398,8 +399,13 @@ variations in colour, saturation and brightness separately (unlike RGB where all
 affected by changes in brightness). It was a simple matter of changing the existing code for RGB
 so that it would analyse HSV values instead.
 
-I also decided it would be an improvement to average all values in the same year together to help
-show changes as time goes on (see figure~\ref{fig:mean-hsv-by-year}).
+Figure~\ref{fig:mean-hsv-by-year} shows a similar graph to the one in
+figure~\ref{fig:mean-rgb-by-year} only with HSV colour space instead of RGB. With this the Hue 
+stays roughly the same throughout, whilst the saturation slowly declines and the value increases.
+
+It's also quite interesting that both of these graphs has a dip during the Patagonia period, though
+both do have quite a high variance, meaning classification will tend to be unreliable. HSV does 
+seem slightly less so than RGB.
 
 \begin{figure}[p]
 \includegraphics[scale=0.5]{img/hsv-legend-12-11-01.png}
