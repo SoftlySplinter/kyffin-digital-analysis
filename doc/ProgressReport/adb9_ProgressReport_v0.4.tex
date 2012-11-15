@@ -401,7 +401,10 @@ so that it would analyse HSV values instead.
 
 Figure~\ref{fig:mean-hsv-by-year} shows a similar graph to the one in
 figure~\ref{fig:mean-rgb-by-year} only with HSV colour space instead of RGB. With this the Hue 
-stays roughly the same throughout, whilst the saturation slowly declines and the value increases.
+stays roughly the same throughout, whilst the saturation slowly declines and the value increases;
+this would make the colours brighter but with less colour to them. Whilst the reduction of colour
+over time is fairly obvious looking at Kyffin Williams' work, the increase in brightness was not
+something I would have necessarily have picked up on.
 
 It's also quite interesting that both of these graphs has a dip during the Patagonia period, though
 both do have quite a high variance, meaning classification will tend to be unreliable. HSV does 
@@ -409,7 +412,8 @@ seem slightly less so than RGB.
 
 \begin{figure}[p]
 \includegraphics[scale=0.5]{img/hsv-legend-12-11-01.png}
-\caption{Mean HSV intensities by year.}
+\caption{Mean HSV intensities by year. Note: value increases as time progresses showing Kyffin
+Williams' paintings became brighter as time went on.}
 \label{fig:mean-hsv-by-year}
 \end{figure}
 
@@ -422,7 +426,18 @@ A histogram is a nice way of representing the distribution of colour in a given 
 therefore a richer representation of a painting than colour-space averages.
 
 As with before, histograms can be taken from different colour spaces, currently only the program
-can only generate RGB histograms, but it is trivial to include HSV histograms too.
+can only generate RGB histograms (shown in figure~\ref{fig:histogram}), but it is trivial to 
+include HSV histograms too.
+
+\begin{figure}[h]
+\includegraphics[scale=0.5]{img/histogram.png}
+\caption{Example of an RGB Histogram.}
+\end{figure}
+
+From looking at the RGB histograms it becomes very apparent that Red is a very rare colour in 
+isolation, except during the Patagonia period. Similarly green in isolation appears infrequently,
+where it is visible it's usually more of a teal colour. Very bright colours are also rare except
+in paintings with a lot of (Welsh) sky.
 
 \subsubsection{Nearest Neighbour Classification}
 Having looked at different representations of colour in paintings, the next part was to create a 
