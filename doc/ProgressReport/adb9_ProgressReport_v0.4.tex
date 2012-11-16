@@ -57,7 +57,11 @@
 \section{Project Summary}
 %==============================================================================
 Sir John ``Kyffin'' Williams was a landscape painter from Wales whose work was predominantly based 
-in Wales and Patagonia. Gareth Lloyd Roderick, a PhD student in the National Library of Wales, has
+in Wales and Patagonia. He studied at the Slade, one of Britain's top art schools, after epilepsy
+ended his career in the army during the second world war. This epilepsy made Kyffin Williams 
+sensitive to light and is the reason his work gets darker over time\cite{Harris2011How}.
+
+Gareth Lloyd Roderick, a PhD student in the National Library of Wales, has
 collected data such as the date or location, of these paintings. This data allows for some 
 interesting analysis; particularly that of temporal or geographical classification of a given 
 painting. That is being able to take a painting and decide the year or location in which it was
@@ -334,6 +338,36 @@ Git is one of the nicer version control programs I have used and has some nice e
 integration with zsh, git-flow for helping with the development process) and its decentralised 
 nature allows me to easily work where-ever I feel most comfortable.
 
+\subsection{Technical Issues}
+Having engineered software before I know that the biggest issue with developing a piece of software
+is working with external APIs. With this project I can currently get away with only having to work
+with a few APIs; OpenCV being the main candidate. I have had some struggles trying to understand
+exactly what the API wants as inputs and returns as outputs, but that is more due to a slight lack
+of knowledge in the area of computer vision and image processing rather than the API being complex.
+
+I am currently reading up on image processing and computer vision, using free,
+online resources\cite{Prince2012Computer} and knowledge within the department.
+
+OpenCV seems like a good library to work with, though I have yet to use it for any
+specialised image processing (i.e. I have only used built-in methods OpenCV provides by default).
+I currently don't see any issue as the python bindings for OpenCV use numpy in the background. Both
+of these libraries are widely used and open source. If I do happen to have any problems with either
+of these libraries there is a substantial community behind them and the option to fix any problems
+and give them back to the projects.
+
+Another technical issue associated with this project is the resolution of the paintings in the 
+current database. Most of the images are fairly small as they are intended to be used on a website
+rather than in an image processing application. There is potential that I may be able to get a hold
+of larger images for certain paintings, but if the techniques could be made to work on the current
+size of image it would probably be better for the project as a whole.
+
+A problem associated with this is memory limits; for smaller images only a small amount of data
+will need to be stored, but for more complex techniques, large matrices may be generated and memory
+might become a precious resource. At current all analysis is run before classification but it may
+be necessary to only hold the analysis data for the current example to classify and the training 
+example for which we are currently measuring the distance to. This would not be a difficult change
+to make, but may slow the program down as a whole.
+
 \clearpage
 %==============================================================================
 \subsection{Research into Existing Work}
@@ -345,7 +379,7 @@ Kyffin Williams' paintings that his brushstrokes change over time, his early wor
 smaller strokes over the canvas to large bold strokes in his later work.
 
 The first paper I found relating to the analysis of brushstrokes involved moving a circular filter
-across the whole painting to find the ridges of strokes, then to fill any unbroken areas. They then
+across the whole painting to find the ridges of strokes, then filling any unbroken areas. They then
 shrunk these areas to a single pixel line and fitted a $n^{\text{th}}$ order polynomial to this
 line\cite{Berezhnoy2005Authentic}. This method seems fairly simplistic, but could be an interesting
 first step, but as it is more focused on authenticating paintings it may be of limited use.
@@ -389,6 +423,7 @@ over time and particularly the Red and Green values, the change may not be enoug
 examples due to the fluctuations in the data. 
 
 \begin{figure}[p]
+\centering
 \includegraphics[scale=0.5]{img/kyffin-rgp-avg.png}
 \caption{Mean RGB intensities by year.}
 \label{fig:mean-rgb-by-year}
@@ -411,13 +446,14 @@ both do have quite a high variance, meaning classification will tend to be unrel
 seem slightly less so than RGB.
 
 \begin{figure}[p]
+\centering
 \includegraphics[scale=0.5]{img/hsv-legend-12-11-01.png}
 \caption{Mean HSV intensities by year. Note: value increases as time progresses showing Kyffin
 Williams' paintings became brighter as time went on.}
 \label{fig:mean-hsv-by-year}
 \end{figure}
 
-
+\clearpage
 \subsubsection{Histogram Analysis}
 With colour-space analysis complete, the next sensible step was to start generating colour 
 histograms from Kyffin Williams paintings.
@@ -430,8 +466,17 @@ can only generate RGB histograms (shown in figure~\ref{fig:histogram}), but it i
 include HSV histograms too.
 
 \begin{figure}[h]
-\includegraphics[scale=0.5]{img/histogram.png}
-\caption{Example of an RGB Histogram.}
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+  \includegraphics[width=\textwidth]{img/histogram.png}
+  \caption{Histogram}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+  \includegraphics[width=\textwidth]{img/nlw_nlw_kwf00078_large.jpg}
+  \caption{Painting}
+\end{subfigure}
+\caption{Example of an RGB Histogram of Welsh Blacks Grazing on Snowdonia (1980).}
+\label{fig:histogram}
 \end{figure}
 
 From looking at the RGB histograms it becomes very apparent that Red is a very rare colour in 
@@ -439,6 +484,7 @@ isolation, except during the Patagonia period. Similarly green in isolation appe
 where it is visible it's usually more of a teal colour. Very bright colours are also rare except
 in paintings with a lot of (Welsh) sky.
 
+\clearpage
 \subsubsection{Nearest Neighbour Classification}
 Having looked at different representations of colour in paintings, the next part was to create a 
 simple classification algorithm. The simplest of which is 1-Nearest Neighbour, that is; take the 
@@ -491,6 +537,7 @@ $K$ is the number of nearest neighbours to check.
 \end{figure}
 
 
+\clearpage
 \subsubsection{Distance Measures}
 Working out the ``Nearest'' example to a given painting requires some way of measuring distance
 between the two.
@@ -530,8 +577,17 @@ d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
 
 \subsubsection{Leave-one-out Cross Validation}
 \begin{figure}[h]
+\centering
 \includegraphics[scale=0.5]{img/validation-rgb-1nn.png}
 \caption{Leave-one-out cross validation of actual year against classified year using RGB statistical analysis and
+1-nearest neighbour classification.}
+\label{fig:validation-rgb-1nn}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{img/validation-hsv-1nn.png}
+\caption{Leave-one-out cross validation of actual year against classified year using HSV statistical analysis and
 1-nearest neighbour classification.}
 \label{fig:validation-rgb-1nn}
 \end{figure}
@@ -543,36 +599,6 @@ the classified year, aiming for the line $x=y$, an example of this is shown in
 figure~\ref{fig:validation-rgb-1nn}. With this information we can also work out the correlation 
 between the two and have an indication of how each analysis technique performs.
 
-
-\subsection{Technical Issues}
-Having engineered software before I know that the biggest issue with developing a piece of software
-is working with external APIs. With this project I can currently get away with only having to work
-with a few APIs; OpenCV being the main candidate. I have had some struggles trying to understand
-exactly what the API wants as inputs and returns as outputs, but that is more due to a slight lack
-of knowledge in the area of computer vision and image processing rather than the API being complex.
-
-I am currently reading up on image processing and computer vision, using free,
-online resources\cite{Prince2012Computer} and knowledge within the department.
-
-OpenCV seems like a good library to work with, though I have yet to use it for any
-specialised image processing (i.e. I have only used built-in methods OpenCV provides by default).
-I currently don't see any issue as the python bindings for OpenCV use numpy in the background. Both
-of these libraries are widely used and open source. If I do happen to have any problems with either
-of these libraries there is a substantial community behind them and the option to fix any problems
-and give them back to the projects.
-
-Another technical issue associated with this project is the resolution of the paintings in the 
-current database. Most of the images are fairly small as they are intended to be used on a website
-rather than in an image processing application. There is potential that I may be able to get a hold
-of larger images for certain paintings, but if the techniques could be made to work on the current
-size of image it would probably be better for the project as a whole.
-
-A problem associated with this is memory limits; for smaller images only a small amount of data
-will need to be stored, but for more complex techniques, large matrices may be generated and memory
-might become a precious resource. At current all analysis is run before classification but it may
-be necessary to only hold the analysis data for the current example to classify and the training 
-example for which we are currently measuring the distance to. This would not be a difficult change
-to make, but may slow the program down as a whole.
 
 \clearpage
 %==============================================================================
@@ -597,6 +623,7 @@ project.
 \newpage
 \subsection{Gantt Chart}
 \begin{figure}[H]
+\centering
 \includegraphics[scale=0.45, angle=90]{img/gantt.png}
 \caption{Gantt Chart for the Kyffin Williams project}
 \label{fig:gantt}
@@ -604,9 +631,32 @@ project.
 
 \clearpage
 \subsection{Mid-term Demonstration}
-For the mid-term demonstration I aim to be able to demonstrate
-%TODO
+For the mid-term demonstration I aim to be able to demonstrate a working, end-to-end, prototype
+which will generate correlations for each analysis technique and be able to rank them in some
+viewable way. Finally I want to be able to pass this technique an unseen example for which the date
+can be guessed relatively easy and see how if it can classify it as well as I can.
 
+For this I would like to have the at least following techniques complete:
+
+\begin{itemize}
+\item RGB Statistical Analysis
+\item HSV Statistical Analysis
+\item RGB Histogram Analysis
+\item HSV Histogram Analysis
+\item Edge Orientation Analysis
+\item Simple Stroke Analysis
+\end{itemize}
+
+\subsubsection{Final Demonstration}
+For the final demonstration I aim to have built on top of the prototype from the mid-term 
+demonstration and to have added at least a complex stroke analysis technique as well as some
+other classification techniques other than K-Nearest Neighbour.
+
+For the stroke analysis I would like to be able to visualise some of the process it takes to help 
+explain how the algorithm works and the steps it takes to produce the final result.
+
+I want to collect some paintings by a different artist and be able to compare it to Kyffin 
+Williams' work, as well as seeing if the same algorithms can be applied to other artists.
 
 %
 %You need to include an annotated bibliography. This should list all relevant web pages, books, journals etc. that you have consulted in researching your project. Each reference should include an annotation. 
