@@ -39,7 +39,7 @@
 \modulecode{CS39440}
 \supervisor{Hannah M. Dee} % e.g. Neil Taylor
 \supervisorid{hmd1}
-\wordcount{?} %TODO
+\wordcount{3615} %TODO
 
 %optional - comment out next line to use current date for the document
 %\documentdate{26th October 2011} 
@@ -215,7 +215,7 @@ considered and experimented with.
 OpenCV					& \checkmark	& \checkmark	& \checkmark	& \checkmark	& C, C++, Python			& Figure~\ref{fig:opencv}\\\hline
 FIJI					& \checkmark	& \checkmark	& \checkmark	& 		& Java					& Figure~\ref{fig:fiji}	\\\hline
 IVT					& \checkmark	& \checkmark	& \checkmark	& 		& C++					& Figure~\ref{fig:ivt}	\\\hline
-VXL					& \checkmark	& \checkmark	& \checkmark	& 		& C++					& Figure~\ref{fig:vxt}	\\\hline
+%VXL					& \checkmark	& \checkmark	& \checkmark	& 		& C++					& Figure~\ref{fig:vxt}	\\\hline
 \end{tabular}
 \caption{Comparison of image processing/computer vision libraries.}
 \label{tab:libraries-overview}
@@ -254,6 +254,11 @@ a statically typed language such as C++ could end up being difficult, especially
 keep a object-orientated approach. With a dynamically typed language such as Python it's a lot 
 easier to pass these sorts of objects so long as the functions you pass to are expecting the right 
 sort of object.
+
+The Python OpenCV bindings also allow a powerful scientific library named numpy to be used for
+matrix manipulation, complex maths functions. Another related library I am using is matplotlib, a
+library for plotting graphs and charts, which is designed to be used in conjunction with numpy. 
+These two libraries together should help with some of the more complex elements of the project.
 
 There may be some parts of the project which I might consider writing in C++ after prototyping in 
 Python. An example of this would be if I wrote an algorithm which located strokes across the 
@@ -322,10 +327,10 @@ int main(int argc, char **argv) {
 \label{fig:ivt}
 \end{figure}
 
-\begin{figure}[p]
-\caption{Using VXT to blur an image}
-\label{fig:vxt}
-\end{figure}
+%\begin{figure}[p]
+%\caption{Using VXT to blur an image}
+%\label{fig:vxt}
+%\end{figure}
 
 \subsubsection{Other Tools}
 Having used git for several personal projects I was keen to continue using it for my version 
@@ -388,6 +393,30 @@ Another method for stroke analysis has been published in the IEEE Transactions o
 and Machine Learning journal. This method is far more complex, but is able to extract and label
 individual brushstrokes. An interesting part of their findings was the ability to date some of Van
 Gogh's paintings to a known period in his career\cite{Li2012Rhythmic}.
+
+This method involves performing edge detection of the painting followed by an edge linking 
+algorithm which aims to remove small, noisy edges and to trace every edge. With this they then
+perform enclosing, as strokes may not be complete this stage also aims to fill in missing gaps of
+strokes and to fill these in within a certain tolerance.
+
+The algorithm then decides if a stroke really is a painted stroke, if the stroke is completely 
+enclosed, isolated from other non-edge pixels and forms a connected component then it is likely 
+that it is a proper brushstroke and is extracted. The edge pixels are used as the background and
+the non-edge pixels as the foreground, this is the process of labelling the brushstroke.
+
+For each of these labelled candidates, a heuristic function is used to threshold any brushstrokes 
+that are either too long or too short, these strokes are discarded. These strokes are then
+considered to be candidates if they are not significantly branched, the stroke is not too wide 
+(this may change for Kyffin Williams as he used a pallet knife rather than a brush) and the 
+brushstroke is not too big or small.
+
+Separately, the image is then segmented using K-means clustering by RGB values. This clustering 
+algorithm is applied several times, lowering the tolerances for distance within a cluster. 
+Connected components as a result of this clustering and have noise reduction performed upon them.
+Finally, the two types of brushstrokes are combined.
+
+This technique may need some changing to account for Kyffin Williams' use of a pallet knife, but
+the overall principals of this technique should work with Kyffin's paintings.
 
 \clearpage
 %==============================================================================
@@ -548,30 +577,21 @@ effort. There are numerous other methods of measuring the distance of points in 
 those which focus on the distance between colour histograms, however Euclidean and Manhattan 
 distance are both good starting points.
 
-\begin{figure}[h]
-\[
+~\\
+Manhattan Distance
+\begin{equation}\label{eq:manhattan}
 d = \sum^X_{x=0}{|a_x - b_x|}
-\]
+\end{equation}
+Where \(a\) is the first painting, \(b\) is the second, and \(X\) is all analysed values in both 
+\(a\) and \(b\)
 
-\(X\): All dimensions present in both \(a\) and \(b\).\\
-\(a\): The first point.\\
-\(b\): The second point.
-
-\caption{Manhattan Distance}
-\label{eq:manhattan}
-\end{figure}
-
-\begin{figure}[h]
-\[
+~\\
+Euclidean Distance
+\begin{equation}\label{eq:euclidean}
 d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
-\]
-
-\(X\): All dimensions present in both \(a\) and \(b\).\\
-\(a\): The first point.\\
-\(b\): The second point.
-\caption{Euclidean Distance}
-\label{eq:euclidean}
-\end{figure}
+\end{equation}
+Where \(a\) is the first painting, \(b\) is the second, and \(X\) is all analysed values in both 
+\(a\) and \(b\)
 
 
 
@@ -589,15 +609,16 @@ d = \sqrt{\sum^X_{x=0}{(a_x - b_x)^2}}
 \includegraphics[scale=0.5]{img/validation-hsv-1nn.png}
 \caption{Leave-one-out cross validation of actual year against classified year using HSV statistical analysis and
 1-nearest neighbour classification.}
-\label{fig:validation-rgb-1nn}
+\label{fig:validation-hsv-1nn}
 \end{figure}
 
 The idea of leave-one-out cross validation is to take the entire training set, remove a single 
 example and then to classify this example against the rest of the training set. You can then do
 this for every example in the training set and be able to plot a graph of the actual year against
 the classified year, aiming for the line $x=y$, an example of this is shown in 
-figure~\ref{fig:validation-rgb-1nn}. With this information we can also work out the correlation 
-between the two and have an indication of how each analysis technique performs.
+figure~\ref{fig:validation-rgb-1nn} and \ref{fig:validation-hsv-1nn}. With this information we can also work out the correlation 
+between the two and have an indication of how each analysis technique performs, but as yet I have
+not had time to complete this step.
 
 
 \clearpage
@@ -616,7 +637,9 @@ but as most agile methodologies are designed for teams rather than individual pr
 inappropriate.
 
 Figure~\ref{fig:gantt} depicts the Gantt chart I am going to try to follow for the course of this
-project.
+project. In this chart I have depicted some of the potential risks, such as other assignments and
+examinations. Unlike a lot of other people I don't have so much of a risk of having to travel to
+potential job interviews as I still have another year left in my degree.
 
 
 \clearpage
@@ -630,6 +653,13 @@ project.
 \end{figure}
 
 \clearpage
+\subsection{Plans}
+I plan to have meetings with Gareth Lloyd Roderick around ever month or two to keep him informed of
+the progress of the project, to get his input into Kyffin's work and how a human might analyse
+paintings so that they might be converted into computerised ideas. I would also like to visit the 
+National Library of Wales to view the large collection of Kyffin Williams' work in the stores there.
+
+
 \subsection{Mid-term Demonstration}
 For the mid-term demonstration I aim to be able to demonstrate a working, end-to-end, prototype
 which will generate correlations for each analysis technique and be able to rank them in some
