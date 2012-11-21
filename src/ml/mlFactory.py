@@ -2,10 +2,10 @@ from knn import KNearestNeighbour
 import re
 
 def getML( name, technique ):
-	knnRegex = re.compile('(.)nn')
+	knnRegex = re.compile('\d+nn')
 	if knnRegex.match(name):
 		m = knnRegex.search(name)
-		k = m.group(0)
+		k = m.group(0).replace('nn','')
 
 		# Default k = 1
 		if k is None:

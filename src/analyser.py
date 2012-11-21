@@ -6,6 +6,7 @@ import random, re
 import matplotlib.pyplot as plot
 import os.path
 import logging
+import scipy.stats as stats
 
 DATA_DIR = 'data/'
 
@@ -47,6 +48,12 @@ class Analyser:
 			actual.append(actualY)
 			classified.append(classifiedY)
 
+
+		a = [float(x) for x in classified]
+		b = [float(x) for x in actual]
+		
+		(correlation, unknown) =  stats.pearsonr(a, b)
+		print 'Correlation: {0}'.format(correlation)
 
 		plot.plot(actual, classified, 'x')
 		plot.xlabel('Actual Year')
