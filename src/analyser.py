@@ -21,6 +21,8 @@ class Analyser:
 	def run(self, data):
 		self.loadPaintings( data )
 		self.analyse()
+		
+		self.gui.render(self.paintings)
 
 		actual = []
 		classified = []
@@ -29,7 +31,6 @@ class Analyser:
 			toClassify = self.paintings.pop(i)
 			actualY = toClassify.year
 
-#			self.gui.render(self.paintings)
 
 #		if re.match('^\d\d\d\d$', toClassify.year) is not None:
 #			print 'Known year of {0} is {1}'.format(toClassify.title, toClassify.year)
@@ -55,6 +56,7 @@ class Analyser:
 		(correlation, unknown) =  stats.pearsonr(a, b)
 		print 'Correlation: {0}'.format(correlation)
 
+		plot.figure(2)
 		plot.plot(actual, classified, 'x')
 		plot.xlabel('Actual Year')
 		plot.ylabel('Classified Year')

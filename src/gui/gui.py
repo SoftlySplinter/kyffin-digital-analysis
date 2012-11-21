@@ -7,7 +7,7 @@ class GUI:
 	def __init__(self, dataType='default'):
 		self.dataType = dataType
 	def render(self, data, dataType='default'):
-		raise NotImplementedError('Should be implemented in sub-classes')
+		pass
 
 class TextGUI(GUI):
 	def render(self, paintings):
@@ -19,16 +19,40 @@ class GraphGUI(GUI):
 	def render(self, data):
 		if self.dataType == 'histogram':
 			self.renderHist(data)
-                elif self.dataType in ['rgb', 'hsv']:
-			self.renderGraph(data)
+                elif self.dataType == 'rgb':
+			self.renderGraph(data, ['Red','Green','Blue'], ['r-','g-','b-'])
+		elif self.dataType == 'hsv':
+			self.renderGraph(data, ['Hue','Saturation','Value'], ['c-','m-','y-'])
 		elif self.dataType == 'default':
 			print 'Nothing to do.'
                 else:
 			raise Exception('Type "{0}" unknown.'.format(self.dataType.format(self.dataType)))
 
-	def renderGraph(self, data):
+	def renderGraph(self, data, legend, lineType):
+		v1 = []
+		v2 = []
+		v3 = []
+		years = []
+
+		data.sort(key = lambda x: int(x.year))
 		for painting in data:
-			print 'TODO'
+			((a,b,c,_),_) = painting.data
+			
+			v1.append(a)
+			v2.append(b)
+			v3.append(c)
+			years.append(painting.year)
+
+		plot.figure(1)
+		p1, = plot.plot(years, v1, lineType[0])
+		p2, = plot.plot(years, v2, lineType[1])
+		p3, = plot.plot(years, v3, lineType[2])
+		plot.legend([p1,p2,p3], legend, loc=2)
+		plot.xlabel('Year')
+		plot.ylabel('Value')
+		
+		
+		plot.show
 		
 
 	def renderHist(self, data):
