@@ -7,10 +7,7 @@ class EdgeOrientation(Technique):
 		self.algorithm = EdgeOrientation.DEFAULT
 
 	def Analyse(self, painting):
-		edges = self.edge(painting)
-
-		for i in numpy.asarray(edges):
-			print i		
+		painting.data = self.edge(painting)
 
 	def edge(self, painting):
 		if self.algorithm == 'sobel':
@@ -32,4 +29,7 @@ if __name__ == '__main__':
 	src = cv.LoadImageM('test.png', cv.CV_LOAD_IMAGE_GRAYSCALE)
 	dst = cv.CreateMat(src.height, src.width, cv.CV_16S)
 	cv.Sobel(src, dst, 1,1)
-	print numpy.asarray(dst)
+	for x in range(dst.cols):
+		for y in range(dst.rows):
+			print dst[x,y],
+		print ''
