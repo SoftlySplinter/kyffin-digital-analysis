@@ -28,33 +28,10 @@ class Analyser:
 		classified = []
 
 		for i in range(len(self.paintings)):
-			toClassify = self.paintings.pop(i)
-			actualY = toClassify.year
+			self.classify(i, actual, classified)
 
-
-#		if re.match('^\d\d\d\d$', toClassify.year) is not None:
-#			print 'Known year of {0} is {1}'.format(toClassify.title, toClassify.year)
-#		elif re.match('^\d\d\d\d-\d\d\d\d$', toClassify.year) is not None:
-#			print 'Known year range of {0} is {1}'.format(toClassify.title, toClassify.year)
-#		else:
-#			print 'Year of {0} is unknown'.format(toClassify.title)
-
-			self.ml.classify( toClassify, self.paintings )
-
-			classifiedY = toClassify.year
-
-			toClassify.year = actualY
-			self.paintings.insert(i, toClassify)
-
-			actual.append(actualY)
-			classified.append(classifiedY)
-
-
-		a = [float(x) for x in classified]
-		b = [float(x) for x in actual]
-		
-		(correlation, unknown) =  stats.pearsonr(a, b)
-		print 'Correlation: {0}'.format(correlation)
+		(correlation, unknown) = self.correlation(classified, actual)
+		print 'Correlation: {0} ({1})'.format(correlation, unknown)
 
 		plot.figure(2)
 		plot.plot(actual, classified, 'x')
@@ -62,7 +39,23 @@ class Analyser:
 		plot.ylabel('Classified Year')
 		plot.show()
 
-#		print 'Classified date is: {0}'.format(toClassify.year)
+	def classify(self, i, actual, classified):
+		toClassify = self.paintings.pop(i)
+		actualY = toClassify.year
+		self.ml.classify( toClassify, self.paintings )
+
+		classifiedY = toClassify.year
+
+		toClassify.year = actualY
+		self.paintings.insert(i, toClassify)
+
+		actual.append(actualY)
+		classified.append(classifiedY)
+
+	def correlation(self, classified, actual):
+		a = [float(x) for x in classified]
+		b = [float(x) for x in actual]
+		return stats.pearsonr(a, b)
 
 	def analyse(self):
 		for painting in self.paintings:
