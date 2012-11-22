@@ -23,6 +23,10 @@ class GraphGUI(GUI):
 			self.renderGraph(data, ['Red','Green','Blue'], ['r-','g-','b-'])
 		elif self.dataType == 'hsv':
 			self.renderGraph(data, ['Hue','Saturation','Value'], ['c-','m-','y-'])
+		elif self.dataType == 'edge-orientation':
+			for painting in data:
+				cv.ShowImage(painting.title, painting.data)
+				cv.WaitKey(0)
 		elif self.dataType == 'default':
 			print 'Nothing to do.'
                 else:
