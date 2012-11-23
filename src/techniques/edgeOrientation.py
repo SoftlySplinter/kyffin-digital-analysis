@@ -2,7 +2,7 @@ from technique import Technique
 import cv, numpy
 
 class EdgeOrientation(Technique):
-	DEFAULT = 'scharr'
+	DEFAULT = 'canny'
 	def __init__(self, algorithm = DEFAULT):
 		self.algorithm = algorithm
 
