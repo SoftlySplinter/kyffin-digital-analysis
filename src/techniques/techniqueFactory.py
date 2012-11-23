@@ -1,6 +1,7 @@
 from statistical import RGBAnalysis
 from statistical import HSVAnalysis
 from histogram import HistogramAnalysis
+from edgeOrientation import EdgeOrientation
 
 def getTechnique(name):
 	if name == 'rgb':
@@ -9,5 +10,7 @@ def getTechnique(name):
 		return HSVAnalysis()
 	elif name == 'histogram':
 		return HistogramAnalysis([5,5,5])
+	elif name == 'edge-orientation':
+		return EdgeOrientation()
 	else:
 		raise Exception('Unknown technique {0}'.format(name))

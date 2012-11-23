@@ -21,7 +21,7 @@ class Analyser:
 	def run(self, data):
 		self.loadPaintings( data )
 		self.analyse()
-		
+
 		self.gui.render(self.paintings)
 
 		actual = []
