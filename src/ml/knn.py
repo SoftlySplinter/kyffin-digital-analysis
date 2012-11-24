@@ -41,7 +41,7 @@ class KNearestNeighbour:
 					years[i] = curYear
 					curYear = temp
 
-		logging.debug('KNearest: ' + ', '.join(years))
+		#logging.debug('KNearest: ' + ', '.join(years))
 
 		meanYear = 0
 		for year in years:
