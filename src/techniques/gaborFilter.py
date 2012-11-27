@@ -26,14 +26,10 @@ class GaborFilter:
 		xMin = -xMax
 		yMin = -yMax
 
-		x,y = numpy.meshgrid(range(xMin, xMax), range(yMin, yMax))
+		x,y = numpy.meshgrid(range(int(xMin), int(xMax)), range(int(yMin), int(yMax)))
 
-		yDim = len(range(xMin, xMax))
-		xDim = len(range(yMin, yMax))
-
-		print x
-		print xDim
-		print yDim
+		yDim = len(range(int(xMin), int(xMax)))
+		xDim = len(range(int(yMin), int(yMax)))
 
 		result = numpy.zeros(shape=(xDim, yDim))
 
@@ -48,18 +44,26 @@ class GaborFilter:
 
 if __name__ == '__main__':
 	g = GaborFilter()
-	gabor = g.getFilter(1.0,0,1.0,0,10.0)
+	gabor = g.getFilter(2.0,pi/2,3.0,0,1.0)
+
+
 	print gabor
-	gFilter = cv.fromarray(gabor)
+
+	tgFilter = cv.fromarray(gabor)
+	gFilter = cv.CreateMat(tgFilter.rows, tgFilter.cols, cv.CV_32F)
+	cv.Convert(tgFilter, gFilter)
+
+	print gFilter.type
+
+	cv.ShowImage('Filter',gFilter)
 	src = cv.LoadImageM('data/nlw_nlw_gcf05061_large.jpg', cv.CV_LOAD_IMAGE_GRAYSCALE)
 
-	cv.ShowImage('', src)
-	cv.WaitKey(0)
+	cv.ShowImage('Original', src)
 
 	
 	cv.Filter2D(src, src, gFilter)
 
-	cv.ShowImage('',src)
+	cv.ShowImage('Filtered',src)
 
 
 	cv.WaitKey(0)
