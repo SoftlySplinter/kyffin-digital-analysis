@@ -7,14 +7,16 @@ import matplotlib.pyplot as plot
 import os.path
 import logging
 import scipy.stats as stats
+import math
 
 DATA_DIR = 'data/'
 
 class Analyser:
-	def __init__(self, technique, gui, ml):
+	def __init__(self, technique, gui, ml, fiveYearBins):
 		self.technique = technique
 		self.gui = gui
 		self.ml = ml
+		self.fiveYearBins = fiveYearBins
 		
 		self.paintings = []
 
@@ -69,6 +71,8 @@ class Analyser:
 				try:
 					painting = paint.load(row, DATA_DIR)
 					if re.match('^\d\d\d\d$', painting.year):
+						if self.fiveYearBins:
+							painting.year = math.floor(int(painting.year)/5) * 5
 						self.paintings.append(painting)
 				except IOError:
 					continue
