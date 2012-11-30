@@ -4,7 +4,7 @@ import sys
 # Use local imports relative to ./src/ for convinience
 sys.path.append('./src/')
 
-import techniques.techniqueFactory as techniqueFactory
+import techniques.technique_factory as techniqueFactory
 import gui.guiFactory as guiFactory
 import ml.mlFactory as mlFactory
 
