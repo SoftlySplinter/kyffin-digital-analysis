@@ -26,7 +26,7 @@ class SteerableFilter:
         pass
 
     @classmethod
-    def get_filter(cls, orientation, kernel_size = 3):
+    def get_filter(cls, orientation, kernel_size = 3, transpose = False, strength = -1):
         '''
         Gets the filter in the form of a numpy matrix, which can easily be 
         changed into an OpenCV material to be used with cv.Filter2D.
@@ -44,17 +44,25 @@ class SteerableFilter:
                  'Orientation \'{0}\' is not valid for kernel size \'{1}\''
                      .format(orientation, kernel_size))
 
-        matrix = numpy.zeros((kernel_size, kernel_size))
+        matrix = numpy.ones((kernel_size, kernel_size), numpy.float32)
 
         for i in range(kernel_size):
             if orientation == 0:
-                matrix[i, kernel_size/2] = 1
+                matrix[i, kernel_size/2] = strength
             if orientation == pi/4:
-                matrix[i, kernel_size - i - 1] = 1
+                matrix[i, kernel_size - i - 1] = strength
             if orientation == pi/2:
-                matrix[kernel_size/2, i] = 1
+                matrix[kernel_size/2, i] = strength
             if orientation == (3*pi)/4:
-                matrix[i, i] = 1
+                matrix[i, i] = strength
+
+        if transpose:
+            for i in range(kernel_size):
+                for j in range(kernel_size):
+                    if matrix[i, j] == strength:
+                        matrix[i, j] = 1
+                    else:
+                        matrix[i, j] = strength
 
         return matrix
     
@@ -64,3 +72,41 @@ class SteerableFilter:
         '''Check the orientation of the filter is valid'''
         # 45 degrees (pi/4) is valid.
         return orientation % (pi/4) == 0
+
+def main():
+    '''Testing Main method'''
+    import sys, cv
+
+    if len(sys.argv) == 1:
+        print 'No image.'
+        sys.exit(1)
+
+    im_file = sys.argv[1]
+    image = cv.LoadImageM(im_file, cv.CV_LOAD_IMAGE_GRAYSCALE)
+
+    size = 3
+    ori = pi/4
+    ste = -1.
+
+    kern = cv.fromarray(SteerableFilter.get_filter(ori, size, False, ste))
+    kern_t = cv.fromarray(SteerableFilter.get_filter(ori, size, True, ste))
+
+    kernel = cv.CreateMat(size, size, cv.CV_32F)
+    kernel_t = cv.CreateMat(size, size, cv.CV_32F)
+
+    cv.Convert(kern, kernel)
+    cv.Convert(kern_t, kernel_t)
+
+
+    dst = cv.CreateMat(image.rows, image.cols, image.type)
+    dst_t = cv.CreateMat(image.rows, image.cols, image.type)
+    cv.Filter2D(image, dst, kernel)
+    cv.Filter2D(image, dst_t, kernel_t)
+
+    cv.ShowImage('Source', image)
+    cv.ShowImage('Result', dst)
+    cv.ShowImage('Result (Transpose)', dst_t)
+    cv.WaitKey(0)
+
+if __name__ == '__main__':
+    main()
