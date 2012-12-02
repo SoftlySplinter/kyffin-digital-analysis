@@ -16,9 +16,9 @@ class SteerableFilter:
 
     e.g. For orientation=0, kernel size=3, the filter would be:
 
-    0 1 0
-    0 1 0
-    0 1 0
+    -1  1 -1
+    -1  1 -1
+    -1  1 -1
     '''
 
 
@@ -26,10 +26,24 @@ class SteerableFilter:
         pass
 
     @classmethod
-    def get_filter(cls, orientation, kernel_size = 3, transpose = False, strength = -1):
+    def get_filter(cls, orientation, kernel_size = 3, transpose = False, strength = 0):
         '''
         Gets the filter in the form of a numpy matrix, which can easily be 
         changed into an OpenCV material to be used with cv.Filter2D.
+
+        The orientation can be one of: 0, pi/4, pi/2, 3 pi/4 radians 
+        (0, 45, 90 or 135 degrees for non-mathematicians).
+
+        The kernel size is fairly self-explanitory. The line will always be 
+        central to the kernel.
+
+        Transpose inverts the filter.
+
+        Strength relates to the strength of the filter. A strength of X, where
+        X != 0 relates to "positive" elements being -X, and any others being X.
+
+        A strength of 0 relates to positive elements being 0 and any others 
+        being 1
         '''
         if kernel_size % 2 == 0:
             raise RuntimeError(
@@ -44,25 +58,56 @@ class SteerableFilter:
                  'Orientation \'{0}\' is not valid for kernel size \'{1}\''
                      .format(orientation, kernel_size))
 
+        # Create the matrix
         matrix = numpy.ones((kernel_size, kernel_size), numpy.float32)
 
-        for i in range(kernel_size):
-            if orientation == 0:
-                matrix[i, kernel_size/2] = strength
-            if orientation == pi/4:
-                matrix[i, kernel_size - i - 1] = strength
-            if orientation == pi/2:
-                matrix[kernel_size/2, i] = strength
-            if orientation == (3*pi)/4:
-                matrix[i, i] = strength
+        # For standard cases, make all the elements in the matrix equal to the
+        # strength.
+        if strength != 0:
+            for i in range(kernel_size):
+                for j in range(kernel_size):
+                    matrix[i, j] *= strength
 
+        # Add the positive examples
+        for i in range(kernel_size):
+            x = 0
+            y = 0
+
+            # 0   degree line
+            if orientation == 0:
+                x = i
+                y = kernel_size/2
+            # 45  degree line
+            if orientation == pi/4:
+                x = i
+                y = kernel_size - i - 1
+            # 90  degree line
+            if orientation == pi/2:
+                x = kernel_size/2
+                y = i
+            # 135 degree line
+            if orientation == (3*pi)/4:
+                x = i
+                y = i
+
+            # Normal cases invert the value.
+            if strength != 0:
+                matrix[x, y] *= -1
+            # 0 case sets value to 0.
+            else:
+                matrix[x, y] = 0
+
+        # Transpose if needed
         if transpose:
             for i in range(kernel_size):
                 for j in range(kernel_size):
-                    if matrix[i, j] == strength:
-                        matrix[i, j] = 1
-                    else:
-                        matrix[i, j] = strength
+                        # Flip is transpose for 0 strength
+                        if strength == 0:
+                            val = int(matrix[i, j])
+                            matrix[i, j] = val ^ 1
+                        # Invert if not 0 strength
+                        else:
+                            matrix[i, j] *= -1
 
         return matrix
     
@@ -86,7 +131,7 @@ def main():
 
     size = 3
     ori = pi/4
-    ste = -1.
+    ste = 5
 
     kern = cv.fromarray(SteerableFilter.get_filter(ori, size, False, ste))
     kern_t = cv.fromarray(SteerableFilter.get_filter(ori, size, True, ste))
@@ -106,6 +151,7 @@ def main():
     cv.ShowImage('Source', image)
     cv.ShowImage('Result', dst)
     cv.ShowImage('Result (Transpose)', dst_t)
+
     cv.WaitKey(0)
 
 if __name__ == '__main__':
