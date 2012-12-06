@@ -82,7 +82,7 @@
   \newcommand{\showprojecttitlememoir}{#1}
 }
 
-\newcommand{\version}[1]{
+\newcommand{\mmpversion}[1]{
   \newcommand{\showversion}{#1}
 }
 
@@ -191,7 +191,7 @@
 \def\client#1{\gdef\@client{{\it Client:} & #1 \\}} \gdef\@client{}
 \def\configref#1{\gdef\@configref{#1}}
 \def\projref#1{\gdef\@projref{{\it Proj. Ref.:} & #1 \\}} \gdef\@projref{}
-\def\version#1{\gdef\@version{#1}}
+\def\mmpversion#1{\gdef\@mmpversion{#1}}
 \def\status#1{\gdef\@status{#1}}
 
 
@@ -266,7 +266,7 @@
  
  \vskip 0.3in
  \centering {\@date} \vskip 0.05in 
- \centering Version: {\@version} ({\@status})
+ \centering Version: {\@mmpversion} ({\@status})
 
  \vskip 0.6in
  This report was submitted as partial fulfilment of a {\@degreetype} degree in   
