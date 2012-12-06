@@ -5,7 +5,7 @@ import sys
 sys.path.append('./src/')
 
 import techniques.techniqueFactory as techniqueFactory
-import gui.guiFactory as guiFactory
+import gui.gui_factory as gui_factory
 import ml.mlFactory as mlFactory
 
 from analyser import Analyser
@@ -26,7 +26,7 @@ def main():
 		print "Kyffin ({0})".format(loadVersion())
 		if options.csv is not None:
 			tech = techniqueFactory.getTechnique(options.technique)
-			gui = guiFactory.getGUI(options.gui, options.technique)
+			gui = gui_factory.getGUI(options.gui, options.technique)
 			ml = mlFactory.getML(options.ml, tech)
 			analyser = Analyser(tech, gui, ml, options.five_flag)
 			analyser.run(options.csv)

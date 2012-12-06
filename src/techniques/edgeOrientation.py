@@ -23,7 +23,7 @@ class EdgeOrientation(Technique):
 		'''Perform Sobel Edge Detection.'''
 
 		# Load the image.
-		src = cv.LoadImageM(painting.filePath,cv.CV_LOAD_IMAGE_GRAYSCALE)
+		src = cv.LoadImageM(painting.file_path,cv.CV_LOAD_IMAGE_GRAYSCALE)
 
 		# Sobel needs a 16-bit Signed value to prevent overflow.
 		dst = cv.CreateMat(src.height, src.width, cv.CV_16S)
@@ -44,7 +44,7 @@ class EdgeOrientation(Technique):
 		'''Perform Canny Edge Detection.'''
 
 		# Load the image.
-		src = cv.LoadImageM(painting.filePath, cv.CV_LOAD_IMAGE_GRAYSCALE)
+		src = cv.LoadImageM(painting.file_path, cv.CV_LOAD_IMAGE_GRAYSCALE)
 
 		# Canny needs the same type of destination.
 		dst = cv.CreateMat(src.height, src.width, src.type)
@@ -64,7 +64,7 @@ class EdgeOrientation(Technique):
 		and y) using OpenCV's AddWeighted.'''
 
 		# Load the image.
-		src = cv.LoadImageM(painting.filePath, cv.CV_LOAD_IMAGE_GRAYSCALE)
+		src = cv.LoadImageM(painting.file_path, cv.CV_LOAD_IMAGE_GRAYSCALE)
 
 		# Smooth before performing the edge detection.
 		cv.Smooth(src, src, cv.CV_BLUR, 3, 3)

@@ -6,7 +6,7 @@ import cv
 class RGBAnalysis( Technique ):
 	def Analyse( self, painting ):
 		try:
-			image = cv.LoadImageM(painting.filePath)
+			image = cv.LoadImageM(painting.file_path)
 			cv.AvgSdv(image)
 			painting.data = cv.AvgSdv( image )
 		except IOError as e:
@@ -25,7 +25,7 @@ class RGBAnalysis( Technique ):
 class HSVAnalysis( Technique ):
 	def Analyse( self, painting ):
 		try:
-			image = cv.LoadImageM(painting.filePath)
+			image = cv.LoadImageM(painting.file_path)
 			hsvImage = cv.CloneMat(image)
 			cv.CvtColor( image, hsvImage, cv.CV_RGB2HSV )
 			painting.data = cv.AvgSdv( hsvImage )

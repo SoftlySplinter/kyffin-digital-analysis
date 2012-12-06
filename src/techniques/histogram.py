@@ -10,7 +10,7 @@ class HistogramAnalysis(Technique):
 	def Analyse(self, painting):
 		image = None
 		try:
-			image = cv.LoadImageM( painting.filePath )
+			image = cv.LoadImageM( painting.file_path )
 		except IOError as e:
 			print 'Unable to load {0}: {1}'.format(painting.title, e)
 			return
