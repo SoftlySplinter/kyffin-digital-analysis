@@ -1,0 +1,121 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{Azad2011Integrating}
+\BIBentryALTinterwordspacing
+P.~Azad, ``The integrating vision toolkit ({IVT}),'' Website, 2011. [Online].
+  Available: \url{http://ivt.sourceforge.net/}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Used documentation
+  (http://ivt.sourceforge.net/doxygen/) and examples
+  (http://ivt.sourceforge.net/examples.html) to create a simple image blurring
+  application to test the capabilities and ease of use of the library. Used
+  these resources from the 16 October 2012 to the 24 October 2012.
+  \end{quotation}
+
+\bibitem{opencv_library}
+G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
+  Tools}, 2000.
+ \begin{quotation}\noindent Used Python
+  (http://opencv.willowgarage.com/documentation/python) and C++
+  (http://opencv.willowgarage.com/documentation) documentation for library
+  reference and some learning on image processing/computer vision. Used since
+  11 October 2012. \end{quotation}
+
+\bibitem{Harris2011How}
+\BIBentryALTinterwordspacing
+R.~Harris, ``How rolf learnt to paint like sir kyffin williams,'' BBC
+  Broadcast, Feb. 2011. [Online]. Available:
+  \url{http://www.bbc.co.uk/programmes/p00f6nyt}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent A video on the BBC by Rolf Harris about some of
+  Kyffin Williams' life and about his interesting style of painting.
+  \end{quotation}
+
+\bibitem{Li2012Rhythmic}
+\BIBentryALTinterwordspacing
+J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
+  van gogh from his contemporaries: Findings via automated brushstroke
+  extraction,'' \emph{Pattern Analysis and Machine Intelligence, IEEE
+  Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
+  Available: \url{http://dx.doi.org/10.1109/TPAMI.2011.203}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Defines a complex method for analysing individual
+  brush strokes which has been used to classify the period of two paintings by
+  Van Gogh. This technique could be very powerful when applied to Kyffin
+  Williams' work. This could be one of the most important techniques for the
+  whole of the Kyffin Williams project. \end{quotation}
+
+\bibitem{Prince2012Computer}
+\BIBentryALTinterwordspacing
+S.~J.~D. Prince, \emph{Computer vision : models, learning, and
+  inference}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge University
+  Press, 2012. [Online]. Available: \url{http://www.computervisionmodels.com/}
+  9781107011793.
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Learning reference for Computer Vision and Machine
+  Learning. \end{quotation}
+
+\bibitem{Schindelin2012Fiji}
+\BIBentryALTinterwordspacing
+J.~Schindelin, I.~Arganda-Carreras, E.~Frise, V.~Kaynig, M.~Longair,
+  T.~Pietzsch, S.~Preibisch, C.~Rueden, S.~Saalfeld, B.~Schmid, J.-Y. Tinevez,
+  D.~J. White, V.~Hartenstein, K.~Eliceiri, P.~Tomancak, and A.~Cardona,
+  ``Fiji: an open-source platform for biological-image analysis,'' \emph{Nature
+  Methods}, vol.~9, no.~7, pp. 676--682, June 2012. [Online]. Available:
+  \url{http://dx.doi.org/10.1038/nmeth.2019}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Used as part of referencing FIJI documentation to
+  test out of capabilities and ease of use of the library. \end{quotation}
+
+\bibitem{SciJavaAggregator}
+\BIBentryALTinterwordspacing
+SciJava, ``Aggregator project for the fiji plugins {2.0.0-SNAPSHOT} {API}.''
+  [Online]. Available: \url{http://fiji.sc/javadoc/}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Used as reference documentation to create a simple
+  application to blur an image. Used from 11 October 2012 to 24 October 2012
+  \end{quotation}
+
+\bibitem{Stork2007Computer}
+\BIBentryALTinterwordspacing
+D.~Stork and M.~Duarte, ``Computer vision, image analysis, and master art: Part
+  3,'' \emph{IEEE Multimedia}, vol.~14, no.~1, pp. 14--18, 2007. [Online].
+  Available: \url{http://dx.doi.org/10.1109/MMUL.2007.6}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Defines a potential method of analysing regions in
+  a painting, this could be interesting to apply to Kyffin Williams' work as
+  the regions in his earlier work are a lot less well defined as those in his
+  later work. \end{quotation}
+
+\bibitem{Stork2009Computer}
+\BIBentryALTinterwordspacing
+D.~G. Stork, ``Computer vision and computer graphics analysis of paintings and
+  drawings: An introduction to the literature computer analysis of images and
+  patterns,'' ser. Lecture Notes in Computer Science, X.~Jiang and N.~Petkov,
+  Eds.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg: Springer
+  Berlin / Heidelberg, 2009, vol. 5702, ch.~2, pp. 9--24. [Online]. Available:
+  \url{http://dx.doi.org/10.1007/978-3-642-03767-2_2}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Notes a lot of useful literature to look at and
+  some useful terminology and ideas for analysis techniques too.
+  \end{quotation}
+
+\end{thebibliography}
