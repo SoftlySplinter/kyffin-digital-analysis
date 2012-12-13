@@ -130,8 +130,8 @@ def main():
     image = cv.LoadImageM(im_file, cv.CV_LOAD_IMAGE_GRAYSCALE)
 
     size = 3
-    ori = pi/4
-    ste = 5
+    ori = (pi*3)/4
+    ste = 3
 
     kern = cv.fromarray(SteerableFilter.get_filter(ori, size, False, ste))
     kern_t = cv.fromarray(SteerableFilter.get_filter(ori, size, True, ste))
@@ -152,6 +152,8 @@ def main():
     cv.ShowImage('Result', dst)
     cv.ShowImage('Result (Transpose)', dst_t)
 
+    cv.WaitKey(0)
+    cv.WaitKey(0)
     cv.WaitKey(0)
 
 if __name__ == '__main__':
