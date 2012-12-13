@@ -3,31 +3,60 @@ Contains useful techniques for performing Edge Orientation.
 '''
 
 from src.techniques.technique import Technique
+from src.techniques.steerable_filter import SteerableFilter
+from src.techniques.gabor_filter import GaborFilter
 import cv
 
 class EdgeOrientation(Technique):
     '''Perform the edge orientation technique.'''
  
-    DEFAULT = 'canny'
-    def __init__(self, algorithm = DEFAULT):
+    DEFAULT_ALGORITHM = 'steerable'
+    DEFAULT_EDGE = None
+    def __init__(self, edge = DEFAULT_EDGE, algorithm = DEFAULT_ALGORITHM):
+        self.edge = edge
         self.algorithm = algorithm
 
     def analyse(self, painting):
-        '''Analyse the given painting.'''
-        painting.data = self.edge(painting)
+        edge = self.edge_detection(painting)
+        painting.data = self.orientation(edge)
 
-    def edge(self, painting):
+    def orientation(self, image):
+        '''Get the orientation of edges in a painting.'''
+        filters = None
+        intensities = dict()
+
+        if self.algorithm == 'steerable':
+            filters = SteerableFilter.get_filters()
+        elif self.algorithm == 'gabor':
+            filters = GaborFilter.get_filters()
+
+        print filters
+
+        for key in filters:
+            intensities[key] = self.apply_filter(filters[key], image)
+
+        return intensities
+
+    def apply_filter(self, filt, image):
+        kern = cv.fromarray(filt)
+        kernel = cv.CreateMat(kern.cols, kern.rows, cv.CV_32F)
+        cv.Convert(kern, kernel)
+        dst = cv.CreateMat(image.cols, image.rows, image.type)
+        cv.Filter2D(image, dst, kernel)
+        return dst
+
+    def edge_detection(self, painting):
         '''Perform edge detection. The algorithm used is defined by 
         `self.algormth`.'''
-        if self.algorithm == 'sobel':
+        if self.edge == 'sobel':
             return self.sobel_edge(painting)
-        elif self.algorithm == 'canny':
+        elif self.edge == 'canny':
             return self.canny_edge(painting)
-        elif self.algorithm == 'scharr':
+        elif self.edge == 'scharr':
             return self.scharr_edge(painting)
         # Default to canny in a hard-coded way.
         else:
-            return self.canny_edge(painting)
+            return cv.LoadImageM(painting.filePath, cv.CV_LOAD_IMAGE_GRAYSCALE)
 
     @classmethod
     def sobel_edge(cls, painting):

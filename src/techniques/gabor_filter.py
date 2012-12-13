@@ -57,3 +57,12 @@ class GaborFilter:
             
 
         return result
+
+    @classmethod
+    def get_filters(cls, sigma = 1.0, gab_lambda = 1.0, psi = 0.0, gamma = 1.0):
+        thetas = [0, pi/4, pi/2, (pi*3)/4]
+        filters = dict()
+        for theta in thetas:
+            filters[theta] = cls.get_filter(sigma, theta, gab_lambda, psi, gamma)
+
+        return filters

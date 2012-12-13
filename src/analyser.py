@@ -61,8 +61,7 @@ class Analyser:
 
 	def analyse(self):
 		for painting in self.paintings:
-			self.technique.Analyse(painting)
-		
+			self.technique.analyse(painting)
 
 	def loadPaintings( self, data ):
 		with open( data, 'r' ) as csvFile:

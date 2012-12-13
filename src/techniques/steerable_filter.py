@@ -118,6 +118,16 @@ class SteerableFilter:
         # 45 degrees (pi/4) is valid.
         return orientation % (pi/4) == 0
 
+    @classmethod
+    def get_filters(cls, kernel_size = 3, inverse = False, strength = 0):
+        orientations = [0, pi/4, pi/2, (pi*3)/4]
+        filters = dict()
+
+        for orientation in orientations:
+            filters[orientation] = cls.get_filter(orientation, kernel_size, inverse, strength)
+
+        return filters
+
 def main():
     '''Testing Main method'''
     import sys, cv
