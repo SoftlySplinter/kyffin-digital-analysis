@@ -19,10 +19,6 @@ class KNearestNeighbour:
 
 		meta.year = None
 
-		if meta.data is None:
-			logging.info('Painting {0} was not analysed.'.format(meta.title))
-			return
-
 		# Iterate through all experience and work out the distance
 		for expMeta in experience:
 #			if re.match('^\d\d\d\d$', expMeta.year) is None:
@@ -41,10 +37,10 @@ class KNearestNeighbour:
 					years[i] = curYear
 					curYear = temp
 
-		#logging.debug('KNearest: ' + ', '.join(years))
-
 		meanYear = 0
 		for year in years:
 			meanYear += int(year)
 		meanYear /= len(years)
+
+
 		meta.year = meanYear

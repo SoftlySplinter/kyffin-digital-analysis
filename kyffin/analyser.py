@@ -75,8 +75,3 @@ class Analyser:
 						self.paintings.append(painting)
 				except IOError:
 					continue
-				
-
-if __name__ == '__main__':
-	raise ImportWarning('Intended as a library, not as a main class.')
-

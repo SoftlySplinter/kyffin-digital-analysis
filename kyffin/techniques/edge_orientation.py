@@ -2,9 +2,9 @@
 Contains useful techniques for performing Edge Orientation.
 '''
 
-from src.techniques.technique import Technique
-from src.techniques.steerable_filter import SteerableFilter
-from src.techniques.gabor_filter import GaborFilter
+from kyffin.techniques.technique import Technique
+from kyffin.techniques.steerable_filter import SteerableFilter
+from kyffin.techniques.gabor_filter import GaborFilter
 import cv
 
 class EdgeOrientation(Technique):

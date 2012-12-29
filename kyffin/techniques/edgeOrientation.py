@@ -2,7 +2,7 @@ from kyffin.technique import Technique
 import cv, numpy
 
 class EdgeOrientation(Technique):
-	DEFAULT = 'canny'
+	DEFAULT = 'steerable'
 	def __init__(self, algorithm = DEFAULT):
 		self.algorithm = algorithm
 
@@ -10,14 +10,18 @@ class EdgeOrientation(Technique):
 		painting.data = self.edge(painting)
 
 	def edge(self, painting):
-		if self.algorithm == 'sobel':
-			return self.sobelEdge(painting)
-		elif self.algorithm == 'canny':
-			return self.cannyEdge(painting)
-		elif self.algorithm == 'scharr':
-			return self.scharrEdge(painting)
-		else:
-			return self.sobelEdge(painting)
+		if self.algorithm == 'steerable':
+			return 
+		elif self.algorithm == 'gabor':
+			return 
+
+
+
+	def steerable(self, painting):
+		pass
+
+	def gabor(self, painting):
+		pass
 
 	def sobelEdge(self, painting):
 		'''Perform Sobel Edge Detection.'''

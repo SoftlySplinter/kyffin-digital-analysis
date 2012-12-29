@@ -1,7 +1,7 @@
-from statistical import RGBAnalysis
-from statistical import HSVAnalysis
-from histogram import HistogramAnalysis
-from edge_orientation import EdgeOrientation
+from kyffin.techniques.statistical import RGBAnalysis
+from kyffin.techniques.statistical import HSVAnalysis
+from kyffin.techniques.histogram import HistogramAnalysis
+from kyffin.techniques.edge_orientation import EdgeOrientation
 
 def getTechnique(name):
     if name == 'rgb':

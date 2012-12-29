@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 
-from technique import Technique
+from kyffin.techniques.technique import Technique
 import cv
 
 class RGBAnalysis( Technique ):
-    def Analyse( self, painting ):
+    def analyse( self, painting ):
         try:
             image = cv.LoadImageM(painting.filePath)
             cv.AvgSdv(image)
@@ -23,7 +23,7 @@ class RGBAnalysis( Technique ):
         return distance
 
 class HSVAnalysis( Technique ):
-    def Analyse( self, painting ):
+    def analyse( self, painting ):
         try:
             image = cv.LoadImageM(painting.filePath)
             hsvImage = cv.CloneMat(image)
