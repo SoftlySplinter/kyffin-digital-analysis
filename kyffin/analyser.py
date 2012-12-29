@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 import csv
-import painting as paint
+import kyffin.painting as paint
 import random, re
 import matplotlib.pyplot as plot
 import os.path
