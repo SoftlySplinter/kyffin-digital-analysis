@@ -1,12 +1,6 @@
-#! /usr/bin/env python
-import sys
-
-# Use local imports relative to ./src/ for convinience
-sys.path.append('./src/')
-
-import techniques.techniqueFactory as techniqueFactory
-import gui.guiFactory as guiFactory
-import ml.mlFactory as mlFactory
+import kyffin.techniques.techniqueFactory as techniqueFactory
+import kyffin.gui.guiFactory as guiFactory
+import kyffin.ml.mlFactory as mlFactory
 
 from analyser import Analyser
 from optparse import OptionParser 
@@ -19,7 +13,7 @@ def main():
 	(options, args) = parse()
 
 	if options.test_flag:
-		from test.statistical_test import StatisticalTest
+		from kyffin.test.statistical_test import StatisticalTest
 		suite = unittest.TestLoader().loadTestsFromTestCase(StatisticalTest)
 		unittest.TextTestRunner(verbosity=2).run(suite)
 	else :
@@ -52,9 +46,3 @@ def loadVersion():
 	except IOError as e:
 		print "Unable to load version file: {0}\nReason: {1}".format(VERSION_FILE, e)
 	return version
-	
-
-if __name__ == '__main__':
-	main();
-else:
-	print 'Needs to be run as an entry point.'
