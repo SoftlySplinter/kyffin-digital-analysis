@@ -5,18 +5,19 @@ Contains useful techniques for performing Edge Orientation.
 from kyffin.techniques.technique import Technique
 from kyffin.techniques.steerable_filter import SteerableFilter
 from kyffin.techniques.gabor_filter import GaborFilter
-import cv
+import cv, numpy
 
 class EdgeOrientation(Technique):
     '''Perform the edge orientation technique.'''
  
-    DEFAULT_ALGORITHM = 'steerable'
+    DEFAULT_ALGORITHM = 'gabor'
     DEFAULT_EDGE = None
     def __init__(self, edge = DEFAULT_EDGE, algorithm = DEFAULT_ALGORITHM):
         self.edge = edge
         self.algorithm = algorithm
 
     def analyse(self, painting):
+        print "Intensities for {}:".format(painting.title)
         edge = self.edge_detection(painting)
         painting.data = self.orientation(edge)
 
@@ -26,23 +27,29 @@ class EdgeOrientation(Technique):
         intensities = dict()
 
         if self.algorithm == 'steerable':
-            filters = SteerableFilter.get_filters()
+            filters = SteerableFilter.get_filters(5, False, 1)
         elif self.algorithm == 'gabor':
             filters = GaborFilter.get_filters()
 
-        print filters
-
         for key in filters:
+            print "Filter {}".format(key)
+            print filters[key]
             intensities[key] = self.apply_filter(filters[key], image)
+            print numpy.asarray(intensities[key])
 
+        print ""
         return intensities
 
     def apply_filter(self, filt, image):
         kern = cv.fromarray(filt)
-        kernel = cv.CreateMat(kern.cols, kern.rows, cv.CV_32F)
+        kernel = cv.CreateMat(kern.rows, kern.cols, cv.CV_32F)
         cv.Convert(kern, kernel)
-        dst = cv.CreateMat(image.cols, image.rows, image.type)
+        dst = cv.CreateMat(image.rows, image.cols, image.type)
         cv.Filter2D(image, dst, kernel)
+
+        cv.ShowImage("{}".format(dst), dst)
+        cv.WaitKey(0)
+
         return dst
 
     def edge_detection(self, painting):
