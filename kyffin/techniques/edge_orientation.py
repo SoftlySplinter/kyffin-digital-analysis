@@ -17,7 +17,6 @@ class EdgeOrientation(Technique):
         self.algorithm = algorithm
 
     def analyse(self, painting):
-        print "Intensities for {}:".format(painting.title)
         edge = self.edge_detection(painting)
         painting.data = self.orientation(edge)
 
@@ -27,28 +26,21 @@ class EdgeOrientation(Technique):
         intensities = dict()
 
         if self.algorithm == 'steerable':
-            filters = SteerableFilter.get_filters(5, False, 1)
+            filters = SteerableFilter.get_filters(3, False, 0)
         elif self.algorithm == 'gabor':
             filters = GaborFilter.get_filters()
 
         for key in filters:
-            print "Filter {}".format(key)
-            print filters[key]
             intensities[key] = self.apply_filter(filters[key], image)
-            print numpy.asarray(intensities[key])
-
-        print ""
         return intensities
 
     def apply_filter(self, filt, image):
+        """Apply a filter to an image."""
         kern = cv.fromarray(filt)
         kernel = cv.CreateMat(kern.rows, kern.cols, cv.CV_32F)
         cv.Convert(kern, kernel)
         dst = cv.CreateMat(image.rows, image.cols, image.type)
         cv.Filter2D(image, dst, kernel)
-
-        cv.ShowImage("{}".format(dst), dst)
-        cv.WaitKey(0)
 
         return dst
 
@@ -144,6 +136,17 @@ class EdgeOrientation(Technique):
     def distance(cls, current, other):
         '''Returns a distance metric between one analysed painting and the 
         other.'''
-        print current
-        print other
-        return 0
+        distance = 0
+        for i in current.keys():
+            distance = distance + cls.compare(current[i], other[i])
+        return distance
+
+    @classmethod
+    def compare(cls, cur_data, other_data):
+        """Compare two filters of the same orientation."""
+
+        # TODO Work out if there's a better method for comparison.
+        (cur, _, _, _) = cv.Avg(cur_data)
+        (oth, _, _, _) = cv.Avg(other_data)
+
+        return abs(cur - oth)

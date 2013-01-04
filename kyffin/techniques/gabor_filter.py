@@ -45,8 +45,6 @@ class GaborFilter:
         dim_y = range(int(min_x), int(max_x))
         dim_x = range(int(min_y), int(max_y))
 
-        print dim_y
-        print dim_x
         mat_x, mat_y = numpy.meshgrid(dim_y, dim_x)
 
         result = numpy.zeros(shape=(len(dim_x), len(dim_y)))
@@ -62,6 +60,10 @@ class GaborFilter:
 
     @classmethod
     def get_filters(cls, sigma = 1.0, gab_lambda = 1.0, psi = 0.0, gamma = 0.5):
+        """ Gets the 4 standard filters.
+        
+        The default value chosen seem to produce the best correlation with 2nn 
+        on Kyffin's paintings."""
         thetas = [0, pi/4, pi/2, (pi*3)/4]
         filters = dict()
         for theta in thetas:
