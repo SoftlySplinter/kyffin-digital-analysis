@@ -7,7 +7,7 @@ class HistogramAnalysis(Technique):
     def __init__(self, bins = [255,255,255]):
         self.bins = bins
 
-    def Analyse(self, painting):
+    def analyse(self, painting):
         image = None
         try:
             image = cv.LoadImageM( painting.filePath )
