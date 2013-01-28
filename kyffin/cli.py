@@ -1,4 +1,4 @@
-import kyffin.techniques.techniqueFactory as techniqueFactory
+import kyffin.techniques.technique_factory as techniqueFactory
 import kyffin.gui.guiFactory as guiFactory
 import kyffin.ml.mlFactory as mlFactory
 

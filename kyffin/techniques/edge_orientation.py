@@ -2,15 +2,15 @@
 Contains useful techniques for performing Edge Orientation.
 '''
 
-from src.techniques.technique import Technique
-from src.techniques.steerable_filter import SteerableFilter
-from src.techniques.gabor_filter import GaborFilter
-import cv
+from kyffin.techniques.technique import Technique
+from kyffin.techniques.steerable_filter import SteerableFilter
+from kyffin.techniques.gabor_filter import GaborFilter
+import cv, numpy
 
 class EdgeOrientation(Technique):
     '''Perform the edge orientation technique.'''
  
-    DEFAULT_ALGORITHM = 'steerable'
+    DEFAULT_ALGORITHM = 'gabor'
     DEFAULT_EDGE = None
     def __init__(self, edge = DEFAULT_EDGE, algorithm = DEFAULT_ALGORITHM):
         self.edge = edge
@@ -26,23 +26,22 @@ class EdgeOrientation(Technique):
         intensities = dict()
 
         if self.algorithm == 'steerable':
-            filters = SteerableFilter.get_filters()
+            filters = SteerableFilter.get_filters(3, False, 0)
         elif self.algorithm == 'gabor':
             filters = GaborFilter.get_filters()
 
-        print filters
-
         for key in filters:
             intensities[key] = self.apply_filter(filters[key], image)
-
         return intensities
 
     def apply_filter(self, filt, image):
+        """Apply a filter to an image."""
         kern = cv.fromarray(filt)
-        kernel = cv.CreateMat(kern.cols, kern.rows, cv.CV_32F)
+        kernel = cv.CreateMat(kern.rows, kern.cols, cv.CV_32F)
         cv.Convert(kern, kernel)
-        dst = cv.CreateMat(image.cols, image.rows, image.type)
+        dst = cv.CreateMat(image.rows, image.cols, image.type)
         cv.Filter2D(image, dst, kernel)
+
         return dst
 
     def edge_detection(self, painting):
@@ -137,6 +136,17 @@ class EdgeOrientation(Technique):
     def distance(cls, current, other):
         '''Returns a distance metric between one analysed painting and the 
         other.'''
-        print current
-        print other
-        return 0
+        distance = 0
+        for i in current.keys():
+            distance = distance + cls.compare(current[i], other[i])
+        return distance
+
+    @classmethod
+    def compare(cls, cur_data, other_data):
+        """Compare two filters of the same orientation."""
+
+        # TODO Work out if there's a better method for comparison.
+        (cur, _, _, _) = cv.Avg(cur_data)
+        (oth, _, _, _) = cv.Avg(other_data)
+
+        return abs(cur - oth)
