@@ -3,7 +3,7 @@ from kyffin.technique import Technique
 class HistogramOfOrientationGradients( Technique ):
     def analyse(self, painting):
         # Normalise colour and gamma (not needed)
-        img = self.normalize_gamma(cv.LoadImageM(painting.file_path))
+        img = self.normalize_gamma(cv.LoadImageM(painting.file_path), 1)
 
         # Compute gradients
         gradients = compute_gradients(img)
@@ -22,8 +22,11 @@ class HistogramOfOrientationGradients( Technique ):
         return 0
 
     @classmethod
-    def normalize_gamme(cls, img):
-        pass
+    def normalize_gamme(cls, img, gamma):
+        out = cv.CreateMat(img.rows, img.cols, img.type)
+        cv.Pow(img, out, gamma)
+        cv.ConvertScaleAbs(out, out)
+        return out
 
     @classmethod
     def compute_gradients(cls, img):
