@@ -23,5 +23,7 @@ setup(
     install_requires = [
         'matplotlib',
         'scipy'
-    ]
+    ],
+
+    test_suite = "kyffin.tests",
 )
