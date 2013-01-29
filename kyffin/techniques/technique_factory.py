@@ -3,6 +3,8 @@ from kyffin.techniques.statistical import HSVAnalysis
 from kyffin.techniques.histogram import HistogramAnalysis
 from kyffin.techniques.edge_orientation import EdgeOrientation
 from kyffin.techniques.colour_hog import ColourEdgeHistogramAnalysis
+from kyffin.techniques.hog import HistogramOfOrientationGradients
+
 
 def getTechnique(name):
     if name == 'rgb':
@@ -13,6 +15,8 @@ def getTechnique(name):
         return HistogramAnalysis([5,5,5])
     elif name == 'edge-orientation':
         return EdgeOrientation()
+    elif name == "hog":
+        return HistogramOfOrientationGradients()
     elif name == "colourhog":
         return ColourEdgeHistogramAnalysis()
     else:
