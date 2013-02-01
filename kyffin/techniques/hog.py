@@ -7,9 +7,15 @@ class HistogramOfOrientationGradients( Technique ):
         img = self.normalize_gamma(cv.LoadImageM(painting.filePath, cv.CV_LOAD_IMAGE_GRAYSCALE), 1)
 
         # Compute gradients
-        gradients = self.compute_gradients(img)
+        gradients = cv.fromarray(self.compute_gradients(img))
 
         # Weighted vote into spaital and orientation cells
+        hist = cv.CreateHist([30], cv.CV_HIST_ARRAY, [[0, math.pi]])
+
+        grad_img = cv.CreateImage((gradients.cols, gradients.rows), cv.IPL_DEPTH_32F, gradients.channels)
+        cv.Convert(gradients, grad_img)
+
+        cv.CalcHist([grad_img], hist)
 
         # Contrast normalise over overlapping spaital block
 
@@ -17,10 +23,10 @@ class HistogramOfOrientationGradients( Technique ):
 
         # Linear SVM (probably not needed)
 
-        pass
+        painting.data = hist
 
     def distance(self, current, other):
-        return 0
+        return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)
 
     @classmethod
     def normalize_gamma(cls, img, gamma):
@@ -66,7 +72,4 @@ class HistogramOfOrientationGradients( Technique ):
                 y_co = max(y_c)
                 dst[x][y] = math.atan2(x_co, y_co)
 
-        cv.ShowImage("origin", img)
-        cv.ShowImage("hog", cv.fromarray(dst))
-        cv.WaitKey(0)
         return dst
