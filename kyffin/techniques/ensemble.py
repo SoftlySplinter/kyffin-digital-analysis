@@ -1,4 +1,4 @@
-from kyffin.techniques.technique import Technique
+from kyffin.techniques import Technique
 
 class Ensemble(Technique):
     def __init__(self, *kargs):

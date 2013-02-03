@@ -2,7 +2,7 @@
 Contains useful techniques for performing Edge Orientation.
 '''
 
-from kyffin.techniques.technique import Technique
+from kyffin.techniques import Technique
 from kyffin.techniques.steerable_filter import SteerableFilter
 from kyffin.techniques.gabor_filter import GaborFilter
 import cv, numpy

@@ -1,5 +1,5 @@
 import cv, numpy, math
-from kyffin.techniques.technique import Technique
+from kyffin.techniques import Technique
 
 class HistogramOfOrientationGradients( Technique ):
     def analyse(self, painting):

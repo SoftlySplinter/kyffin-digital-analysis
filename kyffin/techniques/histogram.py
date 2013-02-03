@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 import sys
 import cv
-from technique import Technique
+from kyffin.techniques import Technique
 
 class HistogramAnalysis(Technique):
     def __init__(self, bins = [255,255,255]):

@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from kyffin.techniques.technique import Technique
+from kyffin.techniques import Technique
 import cv
 
 class RGBAnalysis( Technique ):
