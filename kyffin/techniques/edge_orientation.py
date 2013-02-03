@@ -2,6 +2,8 @@
 Contains useful techniques for performing Edge Orientation.
 '''
 
+__all__ = ['EdgeOrientation']
+
 from kyffin.techniques import Technique
 from kyffin.techniques.steerable_filter import SteerableFilter
 from kyffin.techniques.gabor_filter import GaborFilter
