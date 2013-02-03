@@ -17,9 +17,9 @@ def getTechnique(name):
         return EdgeOrientation()
     elif name == "hog":
         return HistogramOfOrientationGradients()
-    elif name == "colourhog":
-        hist = getTechnique('histogram')
-        hog = getTechnique('hog')
-        return Ensemble(hist, hog)
+    elif "+" in name:
+        technique_names = name.split('+')
+        techniques = [getTechnique(technique_name) for technique_name in technique_names]
+        return Ensemble(*techniques)
     else:
         raise Exception('Unknown technique {0}'.format(name))
