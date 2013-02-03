@@ -18,7 +18,7 @@ class EdgeOrientation(Technique):
 
     def analyse(self, painting):
         edge = self.edge_detection(painting)
-        painting.data = self.orientation(edge)
+        return self.orientation(edge)
 
     def orientation(self, image):
         '''Get the orientation of edges in a painting.'''

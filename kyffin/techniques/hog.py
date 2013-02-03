@@ -23,7 +23,7 @@ class HistogramOfOrientationGradients( Technique ):
 
         # Linear SVM (probably not needed)
 
-        painting.data = hist
+        return hist
 
     def distance(self, current, other):
         return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)

@@ -8,9 +8,9 @@ class Technique( object ):
     @abstractmethod
     def analyse(self, painting):
         '''Perform some form of analysis on a painting.'''
-        pass
+        return None
 
-    @classmethod
-    def distance(cls, current, other):
+    @abstractmethod
+    def distance(self, current, other):
         '''Return a distance metric from one analysed painting to another.'''
         pass

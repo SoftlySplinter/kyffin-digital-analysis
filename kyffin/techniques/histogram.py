@@ -32,7 +32,7 @@ class HistogramAnalysis(Technique):
         # Generate histograms with uniform bins.
         hist = cv.CreateHist(self.bins, cv.CV_HIST_ARRAY, ranges, 1)
         cv.CalcHist([cv.GetImage(i) for i in planes], hist)
-        painting.data = hist
+        return hist
 
     def distance(self, a, b):
         return cv.CompareHist(a,b,cv.CV_COMP_CHISQR)

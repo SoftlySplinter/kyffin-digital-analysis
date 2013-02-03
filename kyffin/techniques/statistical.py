@@ -8,7 +8,7 @@ class RGBAnalysis( Technique ):
         try:
             image = cv.LoadImageM(painting.filePath)
             cv.AvgSdv(image)
-            painting.data = cv.AvgSdv( image )
+            return cv.AvgSdv( image )
         except IOError as e:
             print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
 
@@ -28,7 +28,7 @@ class HSVAnalysis( Technique ):
             image = cv.LoadImageM(painting.filePath)
             hsvImage = cv.CloneMat(image)
             cv.CvtColor( image, hsvImage, cv.CV_RGB2HSV )
-            painting.data = cv.AvgSdv( hsvImage )
+            return cv.AvgSdv( hsvImage )
         except IOError as e:
             print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
     def distance( self, a, b ):

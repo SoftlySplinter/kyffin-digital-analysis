@@ -4,7 +4,7 @@ from kyffin.techniques.histogram import HistogramAnalysis
 from kyffin.techniques.edge_orientation import EdgeOrientation
 from kyffin.techniques.colour_hog import ColourEdgeHistogramAnalysis
 from kyffin.techniques.hog import HistogramOfOrientationGradients
-
+from kyffin.techniques.ensemble import Ensemble
 
 def getTechnique(name):
     if name == 'rgb':
@@ -18,6 +18,8 @@ def getTechnique(name):
     elif name == "hog":
         return HistogramOfOrientationGradients()
     elif name == "colourhog":
-        return ColourEdgeHistogramAnalysis()
+        hist = getTechnique('histogram')
+        hog = getTechnique('hog')
+        return Ensemble(hist, hog)
     else:
         raise Exception('Unknown technique {0}'.format(name))
