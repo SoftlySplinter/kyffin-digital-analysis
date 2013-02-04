@@ -72,10 +72,11 @@ class HOG(BaseHOG):
         return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)
        
 
-class RHOG(BaseHOG):
-    """Rectangulary celled HOG."""
+class SimpleRHOG(BaseHOG):
+    """Rectangulary celled HOG. This is far too basic, inefficient and 
+    decreases performance."""
     def analyse(self, painting):
-        data = super(RHOG, self).analyse(painting)
+        data = super(SimpleRHOG, self).analyse(painting)
         segmented = numpy.ones((10,10), numpy.float32)
         for i in range(1,10):
             for j in range(1,10):
