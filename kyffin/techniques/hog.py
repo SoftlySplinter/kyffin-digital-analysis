@@ -1,32 +1,16 @@
 import cv, numpy, math
 from kyffin.techniques import Technique
 
-class HistogramOfOrientationGradients( Technique ):
+
+class BaseHOG( Technique ):
     def analyse(self, painting):
         # Normalise colour and gamma (not needed)
         img = self.normalize_gamma(cv.LoadImageM(painting.filePath, cv.CV_LOAD_IMAGE_GRAYSCALE), 1)
 
         # Compute gradients
         gradients = cv.fromarray(self.compute_gradients(img))
+        return gradients
 
-        # Weighted vote into spaital and orientation cells
-        hist = cv.CreateHist([30], cv.CV_HIST_ARRAY, [[0, math.pi]])
-
-        grad_img = cv.CreateImage((gradients.cols, gradients.rows), cv.IPL_DEPTH_32F, gradients.channels)
-        cv.Convert(gradients, grad_img)
-
-        cv.CalcHist([grad_img], hist)
-
-        # Contrast normalise over overlapping spaital block
-
-        # Collect HOG's over detection window
-
-        # Linear SVM (probably not needed)
-
-        return hist
-
-    def distance(self, current, other):
-        return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)
 
     @classmethod
     def normalize_gamma(cls, img, gamma):
@@ -73,3 +57,43 @@ class HistogramOfOrientationGradients( Technique ):
                 dst[x][y] = math.atan2(x_co, y_co)
 
         return dst
+
+class HOG(BaseHOG):
+    """Basic HOG."""
+    def analyse(self, painting):
+        gradients = super(HOG, self).analyse(painting)
+        grad_img = cv.CreateImage((gradients.cols, gradients.rows), cv.IPL_DEPTH_32F, gradients.channels)
+        cv.Convert(gradients, grad_img)
+        hist = cv.CreateHist([15], cv.CV_HIST_ARRAY, [[0, 2 * math.pi]])
+        cv.CalcHist([grad_img], hist)
+        return hist
+
+    def distance(self, current, other):
+        return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)
+       
+
+class RHOG(BaseHOG):
+    """Rectangulary celled HOG."""
+    def analyse(self, painting):
+        data = super(RHOG, self).analyse(painting)
+        segmented = numpy.ones((10,10), numpy.float32)
+        for i in range(1,10):
+            for j in range(1,10):
+                avg = 0
+                for x in range(1,int(data.rows / 10)):
+                    for y in range(1,int(data.cols / 10)):
+                        (val, _, _, _) = cv.Get2D(data, x*i, y*j)
+                        avg += val
+                avg /= int(data.rows/10) * int(data.cols / 10)
+                segmented[i-1][j-1] = avg
+        
+        
+        segs = cv.fromarray(segmented) 
+        grad_img = cv.CreateImage((segs.rows, segs.cols), cv.IPL_DEPTH_32F, segs.channels)
+        cv.Convert(segs, grad_img)
+        hist = cv.CreateHist([15], cv.CV_HIST_ARRAY, [[0, 2 * math.pi]])
+        cv.CalcHist([grad_img], hist)
+        return hist
+
+    def distance(self, current, other):
+        return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)
