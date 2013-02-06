@@ -12,17 +12,20 @@ import math
 DATA_DIR = 'data/'
 
 class Analyser:
-    def __init__(self, technique, gui, ml, fiveYearBins):
+    def __init__(self, technique, gui, ml, fiveYearBins, export_path):
         self.technique = technique
         self.gui = gui
         self.ml = ml
         self.fiveYearBins = fiveYearBins
+        self.export_path = export_path
         
         self.paintings = []
 
     def run(self, data):
         self.loadPaintings( data )
         self.analyse()
+
+        if export_path: return
 
         self.gui.render(self.paintings)
 
@@ -60,8 +63,15 @@ class Analyser:
         return stats.pearsonr(a, b)
 
     def analyse(self):
-        for painting in self.paintings:
-            painting.data = self.technique.analyse(painting)
+        if export_path:
+            with open(export_path, 'w') as export_file:
+                for painting in self.paintings:
+                    data = self.technique.analyse(painting)
+                    
+                    
+        else:
+            for painting in self.paintings:
+                painting.data = self.technique.analyse(painting)
 
     def loadPaintings( self, data ):
         with open( data, 'r' ) as csvFile:
