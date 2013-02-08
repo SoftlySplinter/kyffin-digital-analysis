@@ -67,7 +67,7 @@ class Analyser:
             with open(self.export_path, 'w') as export_file:
                 for painting in self.paintings:
                     data = self.technique.analyse(painting)
-                    
+                    export_file.write("{} {}\n".format(painting.year, self.technique.export(data)))
                     
         else:
             for painting in self.paintings:

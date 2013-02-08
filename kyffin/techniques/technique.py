@@ -1,2 +1,0 @@
-'''Overarching technique class.'''
-

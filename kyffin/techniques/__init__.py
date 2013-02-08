@@ -14,3 +14,8 @@ class Technique( object ):
     def distance(self, current, other):
         '''Return a distance metric from one analysed painting to another.'''
         pass
+
+    @abstractmethod
+    def export(self, data):
+        """Export the analysed data."""
+        return None
