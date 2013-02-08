@@ -25,7 +25,7 @@ class Analyser:
         self.loadPaintings( data )
         self.analyse()
 
-        if export_path: return
+        if self.export_path: return
 
         self.gui.render(self.paintings)
 
@@ -63,8 +63,8 @@ class Analyser:
         return stats.pearsonr(a, b)
 
     def analyse(self):
-        if export_path:
-            with open(export_path, 'w') as export_file:
+        if self.export_path:
+            with open(self.export_path, 'w') as export_file:
                 for painting in self.paintings:
                     data = self.technique.analyse(painting)
                     
