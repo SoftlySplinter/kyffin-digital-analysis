@@ -98,3 +98,11 @@ class SimpleRHOG(BaseHOG):
 
     def distance(self, current, other):
         return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)
+
+    def export(self, data, year):
+        with NamedTemporaryFile() as temp:
+            cv.Save(temp.name, data.bins, name=year)
+            output = ""
+            for line in temp:
+                output += line
+        return output

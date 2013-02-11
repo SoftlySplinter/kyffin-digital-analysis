@@ -13,3 +13,6 @@ class Ensemble(Technique):
         for i in range(len(self.techniques)):
             distance = distance + self.techniques[i].distance(current[i], other[i])
         return distance
+
+    def export(self, data):
+        return [technique.export(data) for technique in self.techniques]
