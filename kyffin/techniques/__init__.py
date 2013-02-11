@@ -16,6 +16,6 @@ class Technique( object ):
         pass
 
     @abstractmethod
-    def export(self, data):
+    def export(self, data, year):
         """Export the analysed data."""
-        return None
+        return "%YAML:1.0\n{}: {}".format(year, str(data))

@@ -22,9 +22,6 @@ class RGBAnalysis( Technique ):
                 distance += abs(a[i][j] - b[i][j])
         return distance
 
-    def export(self, data):
-        return str(data)
-
 class HSVAnalysis( Technique ):
     def analyse( self, painting ):
         try:
@@ -43,9 +40,6 @@ class HSVAnalysis( Technique ):
             for j in range(len(a[i])):
                 distance += abs(a[i][j] - b[i][j])
         return distance
-
-    def export(self, data):
-        return str(data)
 
 if __name__ == '__main__':
     raise ImportWarning('Intended as a library, not as a main class.')
