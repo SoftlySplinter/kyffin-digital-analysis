@@ -63,16 +63,11 @@ class Analyser:
         return stats.pearsonr(a, b)
 
     def analyse(self):
+        for painting in self.paintings:
+            painting.data = self.technique.analyse(painting)
         if self.export_path:
             with open(self.export_path, 'w') as export_file:
-                for painting in self.paintings:
-                    data = self.technique.analyse(painting)
-                    export_file.write(self.technique.export(data, "_" + painting.year))
-                    export_file.write("\n")
-                    
-        else:
-            for painting in self.paintings:
-                painting.data = self.technique.analyse(painting)
+                export_file.write(self.technique.export(self.paintings))
 
     def loadPaintings( self, data ):
         with open( data, 'r' ) as csvFile:

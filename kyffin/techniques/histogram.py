@@ -40,8 +40,9 @@ class HistogramAnalysis(Technique):
 
     def export(self, data, year):
         with NamedTemporaryFile() as temp:
-            cv.Save(temp.name, data.bins, name=year)
-            output = ""
+            cv.Save(temp.name, data.bins, name='data')
+            output = "" 
             for line in temp:
                 output += line
+            output += "year: {}\n".format(year)
         return output

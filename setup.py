@@ -22,7 +22,8 @@ setup(
     # Requirements
     install_requires = [
         'matplotlib',
-        'scipy'
+        'scipy',
+        'liac-arff',
     ],
 
     test_suite = "kyffin.tests",
