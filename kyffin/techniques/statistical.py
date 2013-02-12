@@ -24,16 +24,22 @@ class RGBAnalysis( Technique ):
         return distance
 
     def get_attributes(self):
-        return [('Year',          'DATE'),
+        return [('Year',          'NUMERIC'),
                 ('Average Red',   'REAL'),
                 ('Average Green', 'REAL'),
-                ('Average Blue',  'REAL')]
+                ('Average Blue',  'REAL'),
+                ('StdDev Red',    'REAL'),
+                ('StdDev Green',  'REAL'),
+                ('StdDev Blue',   'REAL')]
 
     def get_values(self, paintings):
-        return [[date(int(painting.year), 1, 1), 
+        return [[int(painting.year), 
                  painting.data[0][0], 
                  painting.data[0][1],
-                 painting.data[0][2]]
+                 painting.data[0][2],
+                 painting.data[1][0],
+                 painting.data[1][1],
+                 painting.data[1][2]]
                 for painting in paintings]
 
 
@@ -55,6 +61,25 @@ class HSVAnalysis( Technique ):
             for j in range(len(a[i])):
                 distance += abs(a[i][j] - b[i][j])
         return distance
+    def get_attributes(self):
+        return [('Year',               'NUMERIC'),
+                ('Average Hue',        'REAL'),
+                ('Average Saturation', 'REAL'),
+                ('Average Value',      'REAL'),
+                ('StdDev Hue',         'REAL'),
+                ('StdDev Saturation',  'REAL'),
+                ('StdDev Value',       'REAL')]
+
+    def get_values(self, paintings):
+        return [[int(painting.year), 
+                 painting.data[0][0], 
+                 painting.data[0][1],
+                 painting.data[0][2],
+                 painting.data[1][0],
+                 painting.data[1][1],
+                 painting.data[1][2]]
+                for painting in paintings]
+
 
 if __name__ == '__main__':
     raise ImportWarning('Intended as a library, not as a main class.')
