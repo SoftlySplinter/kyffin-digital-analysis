@@ -3,3 +3,5 @@ build
 dist
 img
 papers
+weka
+*.arff

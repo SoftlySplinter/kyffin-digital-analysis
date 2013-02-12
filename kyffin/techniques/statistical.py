@@ -2,6 +2,7 @@
 
 from kyffin.techniques import Technique
 import cv
+from datetime import date
 
 class RGBAnalysis( Technique ):
     def analyse( self, painting ):
@@ -21,6 +22,20 @@ class RGBAnalysis( Technique ):
             for j in range(len(a[i])):
                 distance += abs(a[i][j] - b[i][j])
         return distance
+
+    def get_attributes(self):
+        return [('Year',          'DATE'),
+                ('Average Red',   'REAL'),
+                ('Average Green', 'REAL'),
+                ('Average Blue',  'REAL')]
+
+    def get_values(self, paintings):
+        return [[date(int(painting.year), 1, 1), 
+                 painting.data[0][0], 
+                 painting.data[0][1],
+                 painting.data[0][2]]
+                for painting in paintings]
+
 
 class HSVAnalysis( Technique ):
     def analyse( self, painting ):

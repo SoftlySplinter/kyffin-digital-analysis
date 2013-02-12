@@ -22,11 +22,11 @@ class Technique( object ):
         data = {'description': self.__class__.__name__, 
                 'relation': 'year', 
                 'attributes': self.get_attributes(), 
-                'data': self.get_data(paintings)}
+                'data': self.get_values(paintings)}
         return arff.dumps(data)
 
     @abstractmethod
-    def get_data(self, paintings):
+    def get_values(self, paintings):
         return [[datetime.date(int(painting.year),1, 1)] for painting in paintings]
 
     def get_attributes(self):
