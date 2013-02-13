@@ -2,7 +2,7 @@
 
 from kyffin.techniques import Technique
 import cv
-from datetime import date
+from datetime import date, datetime
 
 class RGBAnalysis( Technique ):
     def analyse( self, painting ):
@@ -24,7 +24,7 @@ class RGBAnalysis( Technique ):
         return distance
 
     def get_attributes(self):
-        return [('Year',          'NUMERIC'),
+        return [('Year',          'DATE %Y'),
                 ('Average Red',   'REAL'),
                 ('Average Green', 'REAL'),
                 ('Average Blue',  'REAL'),
@@ -33,7 +33,7 @@ class RGBAnalysis( Technique ):
                 ('StdDev Blue',   'REAL')]
 
     def get_values(self, paintings):
-        return [[int(painting.year), 
+        return [[datetime.strptime(painting.year, '%Y'), 
                  painting.data[0][0], 
                  painting.data[0][1],
                  painting.data[0][2],

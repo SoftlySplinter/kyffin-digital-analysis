@@ -3,6 +3,7 @@ import sys
 import cv
 from kyffin.techniques import Technique
 from tempfile import NamedTemporaryFile
+import yaml
 
 class HistogramAnalysis(Technique):
     def __init__(self, bins = [255,255,255]):
@@ -38,11 +39,22 @@ class HistogramAnalysis(Technique):
     def distance(self, a, b):
         return cv.CompareHist(a,b,cv.CV_COMP_CHISQR)
 
-    def export(self, data, year):
-        with NamedTemporaryFile() as temp:
-            cv.Save(temp.name, data.bins, name='data')
-            output = "" 
-            for line in temp:
-                output += line
-            output += "year: {}\n".format(year)
-        return output
+    def get_values(self, paintings):
+        return [[painting.year] + self.export_cv(painting) for painting in paintings] 
+
+    def get_attributes(self):
+        atts = []
+        for i in xrange(self.bins[0]):
+            for j in xrange(self.bins[1]):
+                for k in xrange(self.bins[2]):
+                    atts.append(('{}, {}, {}'.format(i, j, k), 'REAL'))
+        return [('year', 'INTEGER')] + atts
+                
+
+    def export_cv(self, painting):
+        data = []
+        for i in xrange(self.bins[0]):
+            for j in xrange(self.bins[1]):
+                for k in xrange(self.bins[2]):
+                    data.append(cv.QueryHistValue_3D(painting.data, i, j, k))
+        return data
