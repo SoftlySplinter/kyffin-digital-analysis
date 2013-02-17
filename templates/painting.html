@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Kyffin Williams - {{ year }}</title>
+<h1>Kyffin Williams - {{ year }} ({{ no_paintings }})</h1>
+<ul>
+{% for painting in paintings %}
+<h2>{{ painting.title }}</h2>
+<img src="{{ painting.image }}" />
+<hr />
+{% endfor %}
+</ul>

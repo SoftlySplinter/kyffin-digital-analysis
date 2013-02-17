@@ -16,7 +16,10 @@ setup(
     zip_safe = False,
     
     entry_points = {
-        'console_scripts': ['kyffin = kyffin.cli:main']
+        'console_scripts': [
+            'kyffin = kyffin.cli:main',
+            'kyffin-www = kyffin.www:main'
+        ]    
     },
 
     # Requirements
@@ -24,6 +27,7 @@ setup(
         'matplotlib',
         'scipy',
         'liac-arff',
+        'flask',
     ],
 
     test_suite = "kyffin.tests",
