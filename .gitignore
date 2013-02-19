@@ -5,3 +5,4 @@ img
 papers
 weka
 *.arff
+.*.swp
