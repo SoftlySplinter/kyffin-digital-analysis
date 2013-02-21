@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 \providecommand{\url}[1]{#1}
 \csname url@rmstyle\endcsname
 \providecommand{\newblock}{\relax}
@@ -17,45 +17,6 @@
 \language=\csname l@#1\endcsname
 \fi
 #2}}
-
-\bibitem{Azad2011Integrating}
-\BIBentryALTinterwordspacing
-P.~Azad, ``{The Integrating Vision Toolkit (IVT)},'' Website, 2011. [Online].
-  Available: \url{http://ivt.sourceforge.net/}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Used documentation
-  (http://ivt.sourceforge.net/doxygen/) and examples
-  (http://ivt.sourceforge.net/examples.html) to create a simple image blurring
-  application to test the capabilities and ease of use of the library. Used
-  these resources from the 16 October 2012 to the 24 October 2012.
-  \end{quotation}
-
-\bibitem{Bacardit2013Largescale}
-\BIBentryALTinterwordspacing
-J.~Bacardit and X.~Llor\`{a}, ``{Large-scale data mining using genetics-based
-  machine learning},'' \emph{Wiley Interdisciplinary Reviews: Data Mining and
-  Knowledge Discovery}, vol.~3, no.~1, pp. 37--61, Jan. 2013. [Online].
-  Available: \url{http://dx.doi.org/10.1002/widm.1078}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent A paper recommended by Julie Greensmith for
-  information on a Learning Classifier System (LCS) which Julie believes will
-  yield good results with the Kyffin Williams project. \end{quotation}
-
-\bibitem{Berezhnoy2005Authentic}
-\BIBentryALTinterwordspacing
-I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``{Authentic:
-  Computerized Brushstroke Analysis},'' in \emph{Multimedia and Expo, 2005.
-  ICME 2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, July 2005, pp. 1586--1588. [Online]. Available:
-  \url{http://dx.doi.org/10.1109/icme.2005.1521739}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Defines a method of analysing brushstrokes by
-  applying a circular filter across a digital image to pick up the ridges of a
-  brushstroke. This can then be used to pick out individual brushstrokes in
-  order to be able to fit a nth order polynomial to them. Though this paper
-  focuses on authenticating Van Gogh's paintings, it could easily be applied to
-  the work of Kyffin Williams and may allow for some interesting analysis.
-  \end{quotation}
 
 \bibitem{opencv_library}
 G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
@@ -78,25 +39,10 @@ I.~Chilvers, J.~Glaves-Smith, and I.~Chilvers, \emph{{A dictionary of modern
 \bibitem{Contributors2012Gabor}
 \BIBentryALTinterwordspacing
 W.~Contributors, ``{Gabor filter},'' Online, Oct. 2012. [Online]. Available:
-  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342109}
+  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342%
+109}
 \BIBentrySTDinterwordspacing
 
-
-\bibitem{Dalal2005Histograms}
-\BIBentryALTinterwordspacing
-N.~Dalal and B.~Triggs, ``{Histograms of oriented gradients for human
-  detection},'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
-  2005. IEEE Computer Society Conference on}, ser. CVPR '05, vol.~1.\hskip 1em
-  plus 0.5em minus 0.4em\relax Washington, DC, USA: IEEE, June 2005, pp.
-  886--893 vol. 1. [Online]. Available:
-  \url{http://dx.doi.org/10.1109/cvpr.2005.177}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Describes a method of producing histograms of edge
-  orientations which may prove to be a useful analysis technique for Kyffin
-  Williams' art. The most interesting part of this paper is the use of
-  segmentation and binning of gradients which seems like it could be useful to
-  differentiate different parts of the image which may be painted in different
-  styles. \end{quotation}
 
 \bibitem{Davies2008Welsh}
 \BIBentryALTinterwordspacing
@@ -135,74 +81,5 @@ R.~Harris, ``{How Rolf learnt to paint like Sir Kyffin Williams},'' BBC
 E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy: Open source
   scientific tools for Python},'' 2001.
 
-
-\bibitem{Li2012Rhythmic}
-\BIBentryALTinterwordspacing
-J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``{Rhythmic Brushstrokes
-  Distinguish van Gogh from His Contemporaries: Findings via Automated
-  Brushstroke Extraction},'' \emph{Pattern Analysis and Machine Intelligence,
-  IEEE Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
-  Available: \url{http://dx.doi.org/10.1109/tpami.2011.203}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Defines a complex method for analysing individual
-  brush strokes which has been used to classify the period of two paintings by
-  Van Gogh. This technique could be very powerful when applied to Kyffin
-  Williams' work. This could be one of the most important techniques for the
-  whole of the Kyffin Williams project. \end{quotation}
-
-\bibitem{Prince2012Computer}
-\BIBentryALTinterwordspacing
-S.~J.~D. Prince, \emph{{Computer vision : models, learning, and
-  inference}}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge University
-  Press, 2012. [Online]. Available: \url{http://www.computervisionmodels.com/}
-  9781107011793.
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Learning reference for Computer Vision and Machine
-  Learning. \end{quotation}
-
-\bibitem{Schindelin2012Fiji}
-\BIBentryALTinterwordspacing
-J.~Schindelin, I.~Arganda-Carreras, E.~Frise, V.~Kaynig, M.~Longair,
-  T.~Pietzsch, S.~Preibisch, C.~Rueden, S.~Saalfeld, B.~Schmid, J.-Y.~Y.
-  Tinevez, D.~J.~J. White, V.~Hartenstein, K.~Eliceiri, P.~Tomancak, and
-  A.~Cardona, ``{Fiji: an open-source platform for biological-image
-  analysis.}'' \emph{Nature methods}, vol.~9, no.~7, pp. 676--682, July 2012.
-  [Online]. Available: \url{http://dx.doi.org/10.1038/nmeth.2019}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Used as part of referencing FIJI documentation to
-  test out of capabilities and ease of use of the library. \end{quotation}
-
-\bibitem{SciJavaAggregator}
-\BIBentryALTinterwordspacing
-SciJava, ``{Aggregator project for the Fiji plugins 2.0.0-SNAPSHOT API}.''
-  [Online]. Available: \url{http://fiji.sc/javadoc/}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Used as reference documentation to create a simple
-  application to blur an image. Used from 11 October 2012 to 24 October 2012
-  \end{quotation}
-
-\bibitem{Stork2007Computer}
-\BIBentryALTinterwordspacing
-D.~Stork and M.~Duarte, ``{Computer Vision, Image Analysis, and Master Art:
-  Part 3},'' \emph{IEEE Multimedia}, vol.~14, no.~1, pp. 14--18, 2007.
-  [Online]. Available: \url{http://dx.doi.org/10.1109/mmul.2007.6}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Defines a potential method of analysing regions in
-  a painting, this could be interesting to apply to Kyffin Williams' work as
-  the regions in his earlier work are a lot less well defined as those in his
-  later work. \end{quotation}
-
-\bibitem{Stork2009Computer}
-\BIBentryALTinterwordspacing
-D.~G. Stork, ``{Computer Vision and Computer Graphics Analysis of Paintings and
-  Drawings: An Introduction to the Literature Computer Analysis of Images and
-  Patterns},'' ser. Lecture Notes in Computer Science, X.~Jiang and N.~Petkov,
-  Eds.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg: Springer
-  Berlin / Heidelberg, 2009, vol. 5702, ch.~2, pp. 9--24. [Online]. Available:
-  \url{http://dx.doi.org/10.1007/978-3-642-03767-2_2}
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Notes a lot of useful literature to look at and
-  some useful terminology and ideas for analysis techniques too.
-  \end{quotation}
 
 \end{thebibliography}
