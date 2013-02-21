@@ -44,6 +44,22 @@ W.~Contributors, ``{Gabor filter},'' Online, Oct. 2012. [Online]. Available:
 \BIBentrySTDinterwordspacing
 
 
+\bibitem{Dalal2005Histograms}
+\BIBentryALTinterwordspacing
+N.~Dalal and B.~Triggs, ``{Histograms of oriented gradients for human
+  detection},'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
+  2005. IEEE Computer Society Conference on}, ser. CVPR '05, vol.~1.\hskip 1em
+  plus 0.5em minus 0.4em\relax Washington, DC, USA: IEEE, June 2005, pp.
+  886--893 vol. 1. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/cvpr.2005.177}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Describes a method of producing histograms of edge
+  orientations which may prove to be a useful analysis technique for Kyffin
+  Williams' art. The most interesting part of this paper is the use of
+  segmentation and binning of gradients which seems like it could be useful to
+  differentiate different parts of the image which may be painted in different
+  styles. \end{quotation}
+
 \bibitem{Davies2008Welsh}
 \BIBentryALTinterwordspacing
 J.~Davies and A.~Gymreig, \emph{{The Welsh Academy encyclopaedia of

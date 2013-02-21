@@ -52,9 +52,9 @@ the project, what our aims for the project were and what form of help Llyod coul
 As one of the objectives of this project is to, eventually, get a paper published, the relevant
 details of the process we would need to go through if we wanted to do so.
 
-The second meeting was between Hannah, Llyod, Lorna (Llyod's supervisor) and I. Again we discussed
-the state of the project. Llyod had also produced a better version of his ``database'' to be more
-machine readable and succinct. A lot of information came from this meeting;
+The second meeting was between Hannah, Llyod, Lorna M. Hughes (Llyod's supervisor) and I. Again we
+discussed the state of the project. Llyod had also produced a better version of his ``database'' 
+to be more machine readable and succinct. A lot of information came from this meeting;
 
 \begin{itemize}
 \item The ``cut-off'' point between early and late is around 1973.
@@ -94,29 +94,162 @@ digitally how it is meant to be in real life.
 
 \section{Existing Work}
 
-% Give a broad view of some of the related work to this project.
+\subsection{Edge-Orientated Gradients}\label{sec:existing-hogs}
 
-\subsection{Edge-Orientated Gradients}
-
-% Discuss the Dalal and Triggs paper on Histograms of Edge-Orientated Gradients and any other papers I've looked at around this area.
-
-\subsection{Brush-stroke Analysis}
-
-% Discuss in detail some of the existing work into brush-stroke analysis. 
+\subsection{Brush-stroke Analysis}\label{sec:existing-brushstroke}
 
 
 \section{Analysis Objectives}
+Analysis is one of the biggest sections of this project and involves creating techniques which 
+will allow comparison of paintings in a way which will allow some form of classification to be
+performed on them.
+
+Typically I would expect this to produce some form of high-dimension state space in which each
+painting is a point in the state space. From this state space the distance between one painting
+and another can be easily resolved using a distance measure like Manhattan distance 
+\eqref{eq:manhattan_distance}, euclidean distance \eqref{eq:euclidean_distance} or a distance 
+measure more specific to the state space should it be needed (e.g.: chi-squared for histograms).
+
+\begin{equation}\label{eq:manhattan_distance}
+d_1(\mathbf{p},\mathbf{q}) = \|\mathbf{p}-\mathbf{q}\|_1 = \sum^{n}_{i=0}{|p_i-q_i|}
+\end{equation}
+
+\begin{equation}\label{eq:euclidean_distance}
+d_1(\mathbf{p}, \mathbf{q}) = \sqrt{\sum^{n}_{i=0}({q_i-p_i})^2}
+\end{equation}
 
 \subsection{Colour-space Analysis}
+The simplest way of analysing a digital image is to look at the colours which it consists of.
+Doing this is relatively simple; each pixel has a set of values defining the colour of that point,
+getting something meaningful from this is less simple.
+
+The simplest strategy is to perform some form of statistical analysis on each painting then use
+this for classification. Several good and computationally cheap options exist for this; 
+mean \eqref{eq:mean} and standard deviation \eqref{eq:std_dev}, are some good
+examples which often come predefined in image processing and computer vision libraries.
+
+\begin{equation}\label{eq:mean}
+\upmu = \frac{1}{N}\sum_{i=1}^{N}x_i
+\end{equation}
+
+\begin{equation}\label{eq:std_dev}
+\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \upmu)^2}
+\end{equation}
+
+The representation of colour is another important factor, an RGB representation will have all 
+three values change if there are many changes in brightness of the colours whilst a HSV 
+representation will only have a single value change.
+
+Therefore, an object of this section should be to explore different colour models and statistical
+methods which can be applied to them.
+
+Another useful technique which should be investigated early into the project are image histograms.
+These histograms plot the distribution of colour across an image and are therefore a very powerful
+method of analysing an image, especially for comparison. As with statistical analysis, histograms
+will be largely effective by colour model.
 
 \subsection{Texture Analysis}
+As Kyffin Williams' work is very textural, it follows that a main part of the analysis should
+focus around the texture of his paintings. Unfortunately for this section, it seems unlikely that
+I will be able to get any 3-dimensional models of Kyffin's paintings. This would have been a nice,
+if rather large, section of the project.
 
-\subsection{Brush-stroke Analysis}
+Instead it is more sensible to look at the orientation of edges in Kyffin's work. Some useful 
+pre-existing techniques have already been discussed in section~\ref{sec:existing-hogs}. Histograms
+of edge orientation\cite{Dalal2005Histograms} seem like a promising concept which may prove 
+relatively simple to implement.
+
+This section may also help with any work into brush-stroke analysis (see 
+section~\ref{sec:analysis-brushstroke}).
+
+\subsection{Brush-stroke Analysis}\label{sec:analysis-brushstroke}
+With Kyffin's distinctive style and how obviously this style changes over time, the ultimate aim 
+of this project is to be able to analyse the brush-strokes\footnote{A slight misnomer as Kyffin 
+used a palette knife to paint with rather than a traditional brush} in a painting.
+
+From looking at the paintings it is very apparent that in his earlier work he made a lot more 
+strokes than in his later works\footnote{Although this isn't quite true as the canvases he worked
+on in his later life tended to be larger}. The strokes in his later work tend to have larger areas
+and span more of the canvas.
+
+If it is possible to calculate a rough amount and size of strokes made in a given painting it 
+should be a reasonable piece of data to classify on. As previously discussed in section~
+\ref{sec:existing-brushstroke} there has already been a decent amount of research into determining
+brush-strokes in a painting. 
+
+It would be preferable to try and take one of the techniques discussed in that research and change
+it to suit the needs of the project rather than attempting to create a whole new method of 
+brush-stroke recognition.
+
+\subsection{Ensemble Techniques}
+With some of the aforementioned analysis techniques it makes sense to combine two or more 
+techniques together; a good example would be colour histograms and histograms of edge orientation.
+
+This form of analysis is inspired by the concept of the same name in statistics and machine 
+learning which tend to obtain better predictive performance. It may also be worth while trying to
+weight different techniques so that the techniques which give the best performance affect the 
+result of the ensemble technique more.
 
 
 \section{Classification Objectives}
+The overall objective of classification is to be able to label a painting by Kyffin Williams as 
+being painted in a given year based on analysis performed on all other paintings with known years.
+
+This ties in with the main aim of this project of being able to classify any Kyffin Williams
+painting, whether it has a known or unknown year, as being from a given year. Evidently for 
+paintings with an unknown year it is difficult to know how accurately the system has been, so, for
+the most part, these paintings have been ignored and those paintings with a known year have made
+up the training and validation set.
+
+Because of the small size of paintings with known years it should be computationally viable to 
+perform leave-one-out cross validation (figure~\ref{fig:loocv}).
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Function{LOOCV}{$data$} \Comment{$data$ is a set of all data points}
+  \ForAll{$item \in data$}
+    \State $classified_{item} \gets$ \Call{classify}{$item, data \setminus \left\{{item}\right\}$} 
+  \EndFor
+  \Statex
+  \Return $classified$
+\EndFunction
+\end{algorithmic}
+\caption{Pseudocode for Leave-One-Out Cross Validation}\label{fig:loocv}
+\end{figure}
+
+This can be used to evaluate the performance of the analysis technique and classification 
+algorithm. Pearson's product-moment correlation coefficient \eqref{eq:pearsons} between actual year
+and classified year has been suggested to be a good performance measure for this project.
+
+\begin{equation}\label{eq:pearsons}
+\rho_{X,Y}={\mathrm{cov}(X,Y) \over \sigma_X \sigma_Y} ={E[(X-\mu_X)(Y-\mu_Y)] \over \sigma_X\sigma_Y}
+\end{equation}
+
 
 \subsection{Classification}
+One of the simplest methods of classification is $k$-Nearest Neighbour (figure~\ref{fig:knn}) from
+this one can take a poll of the years for each neighbour and assign the year of the painting to
+classify to be the average of these years.
+
+Depending which form of average you take (mathematical mean \eqref{eq:mean}, median or mode) will
+alter the result; although it should be noted that median is very unlikely to give a result on its
+own due to the sparseness of the data.
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Require{$0 < k \leq \left|{data}\right|$} \Comment{$data$ is a set of all data points}
+\Function{KNearestNeighbour}{$k, data$}
+  \For{$i = 1 \to k$}
+    \State $nn_i \gets \Call{Nearest}{data}$
+    \State $data \gets data \setminus \left\{{nn_i}\right\}$
+    \State $i = i + 1$
+  \EndFor
+  \Statex
+  \Return $nn$
+\EndFunction
+\end{algorithmic}
+\caption{Pseudocode for $k$-Nearest Neighbour}\label{fig:knn}
+\end{figure}
 
 \subsubsection{Use of Weka}
 
