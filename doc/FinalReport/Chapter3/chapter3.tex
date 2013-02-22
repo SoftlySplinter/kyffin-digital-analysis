@@ -12,11 +12,14 @@
 
 
 \section{Overall Architecture}
+The basic architecture for any system like this is to load the data in from a source of some form,
+apply an analysis technique to each data point then pass this data into the classification system.
 
-\section{Some detailed design}
+From the classification system you should then be able to get the classified and actual year for
+each data point which can then have validation performed on it. This architecture is summed up in
+figure~\ref{fig:basic-arch}
 
-\subsection{Even more detail}
-
-\section{User Interface}
-
-\section{Other relevant sections}
+\begin{figure}[h]
+\includegraphics[width=\linewidth]{img/basic-arch}
+\caption{Basic Overall Architecture}\label{fig:basic-arch}
+\end{figure}

@@ -1,0 +1,10 @@
+digraph hierarchy {
+  rankdir=LR
+  start[shape=box,style=rounded]
+  end[shape=rect, style=rounded]
+  data[shape=folder, label="Data Source"]
+  analyser[shape=rect, label="Analysis"]
+  classified[shape=rect, label="Classification"]
+  validation[shape=rect, label="Cross Validation"]
+  start -> data -> analyser -> classified -> validation -> end
+}

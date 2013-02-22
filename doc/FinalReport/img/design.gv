@@ -1,0 +1,45 @@
+digraph hierarchy {
+  graph[nodesep=0.5, ranksep=0.5]
+  size="10,10"
+  node[shape=record,style=filled,fillcolor=gray95]
+  edge[dir=back]
+
+
+  analyser[label = "{Analyser|-gui:GUI\l-technique:Technique\l-ml:ML\l-paintings:Painting[]\l|+run(*args):void\l+load(file):void\l}"]
+  painting[label = "{Painting|-title:String\l-year:int\l-guessedYear\l-genre:String\l-filePath:String\l-analysedData:Object}"]
+
+  gui[label = "{\<Interface\>\nGUI|+show(paintings):void}"]
+  guiFact[label = "{GUIFactory|+getGUI(type):GUI}"]
+  guiConc[label = "Concrete GUIs", shape=plaintext]
+
+  technique[label = "{\<Interface\>\nTechnique|+analyse(painting):void}"]
+  techFact[label = "{TechniqueFactory|+getTechnique(type):Technique}"]
+  techConc[label = "Concrete Analysis Techniques", shape=plaintext]
+
+  ml[label = "{\<Interface\>\nML|+classify(painting, paintings):void}"]
+  mlFact[label = "{MLFactory|+getML(type):ML}"]
+  mlConc[label = "Concrete ML Techniques", shape=plaintext]
+
+  // Use
+  edge[style=dashed, arrowtail=vee]
+  guiFact -> analyser
+  techFact -> analyser
+  mlFact -> analyser
+
+  mlConc -> mlFact
+  techConc -> techFact
+  guiConc -> guiFact
+
+  // Inheritance
+  edge[style=filled, arrowtail=empty]
+  ml -> mlConc
+  technique -> techConc
+  gui -> guiConc
+  
+  // 1..1 Relations
+  edge[arrowtail=none]
+  gui -> analyser[taillabel="1..1"]
+  technique -> analyser[taillabel="1..1"]
+  ml -> analyser[taillabel="1..1"]
+  analyser -> painting[headlabel="0..*"]
+}
