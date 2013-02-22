@@ -1,0 +1,36 @@
+digraph a {
+  rankdir=TB
+  subgraph b {
+    node[shape=rect]
+    data[shape=folder,label="Data Source"]
+    analysis[label="Analysis"]
+    classification[label="Classification"]
+    validation[label="Cross Validation"]
+    node[style=rounded]
+    start -> data -> analysis -> classification -> validation -> end
+  }
+
+  subgraph c {
+    edge[style=dashed]
+    analysis_factory[shape=record,label="{Analysis Factory|+factoryMethod(type:String):Analyser}"]
+    analysis -> analysis_factory
+
+    analyser -> analysis_factory[dir=back]
+
+    edge[style=solid, arrowhead=none]
+    analyser[shape=record, label="{Analyser|+analyse(painting:Painting):Object}"]
+    analyser -> analysis
+  }
+
+  subgraph d {
+    edge[style=dashed]
+    classification_factory[shape=record,label="{Classification Factory|+factoryMethod(type:String):Classifier}"]
+    classification -> classification_factory
+
+    classifier ->  classification_factory[dir=back]
+
+    edge[style=solid, arrowhead=none]
+    classifier[shape=record, label="{Classifier|+classify(painting:Painting,paintings:\{Painting\}):year}"]
+    classifier -> classification
+  }
+}

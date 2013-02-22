@@ -1,0 +1,25 @@
+digraph a {
+  rankdir=LR
+  subgraph b {
+    start[shape=rect,style=rounded]
+    end[shape=rect,style=rounded]
+    node[shape=rect]
+    data[shape=folder,label="Data Source"]
+    analysis[label="Analysis"]
+    classification[label="Classification"]
+    validation[label="Cross Validation"]
+    start -> data -> analysis -> classification -> validation -> end
+  }
+
+  subgraph c {
+    edge[style=dashed]
+    analysis_factory[shape=record,label="Analysis Factory|+factoryMethod(type)"]
+    analysis_factory -> analysis
+  }
+
+  subgraph d {
+    edge[style=dashed]
+    classification_factory[shape=record,label="Classification Factory|+factoryMethod(type)"]
+    classification_factory -> classification
+  }
+}

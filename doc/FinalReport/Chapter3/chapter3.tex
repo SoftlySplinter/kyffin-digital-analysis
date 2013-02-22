@@ -17,9 +17,38 @@ apply an analysis technique to each data point then pass this data into the clas
 
 From the classification system you should then be able to get the classified and actual year for
 each data point which can then have validation performed on it. This architecture is summed up in
-figure~\ref{fig:basic-arch}
+figure~\ref{fig:basic-arch}.
 
 \begin{figure}[h]
 \includegraphics[width=\linewidth]{img/basic-arch}
 \caption{Basic Overall Architecture}\label{fig:basic-arch}
+\end{figure}
+
+Building up from this it is apparent that to implement the analysis and classification steps that 
+there is a need to implement the factory method design 
+pattern\cite[p.~93-100]{Gamma1996Entwurfsmuster}. Reading from a data source should be a simple
+matter of reading from a file, and cross validation has already been decided to use leave-one-out
+cross validation.
+
+Figure~\ref{fig:factory-arch} shows the design after adding in the factory methods.
+
+\begin{figure}[h]
+\includegraphics[width=\linewidth]{img/factory-arch}
+\caption{Overall Architecture with Factory Methods}\label{fig:factory-arch}
+\end{figure}
+
+From this we then need the two top-level interfaces \verb+Analyser+ and \verb+Classifier+. The 
+\verb+Analyser+ interface should have a single method which runs analysis on a painting and return
+some form of object which represents the analysed data.
+
+The \verb+Classifier+ class should have a method which takes a single painting and a set of
+paintings, returning a year which is the classified year of the single painting based on the set
+of paintings.
+
+At this point it is also required that there is a class to store meta-data of a painting. 
+Figure~\ref{fig:interfaces-arch} depicts the design after adding in these parts.
+
+\begin{figure}[h]
+\includegraphics[width=\linewidth]{img/interfaces-arch}
+\caption{Overall architecture with Interfaces for Analysers and Classifiers}\label{fig:interfaces-arch}
 \end{figure}

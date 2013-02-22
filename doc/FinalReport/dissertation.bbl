@@ -29,25 +29,24 @@ G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
 
 \bibitem{Chilvers2009Dictionary}
 \BIBentryALTinterwordspacing
-I.~Chilvers, J.~Glaves-Smith, and I.~Chilvers, \emph{{A dictionary of modern
-  and contemporary art}}.\hskip 1em plus 0.5em minus 0.4em\relax Oxford
-  University Press, 2009. [Online]. Available:
+I.~Chilvers, J.~Glaves-Smith, and I.~Chilvers, \emph{A dictionary of modern and
+  contemporary art}.\hskip 1em plus 0.5em minus 0.4em\relax Oxford University
+  Press, 2009. [Online]. Available:
   \url{http://www.worldcat.org/isbn/0199239665} 0199239665.
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{Contributors2012Gabor}
 \BIBentryALTinterwordspacing
-W.~Contributors, ``{Gabor filter},'' Online, Oct. 2012. [Online]. Available:
-  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342%
-109}
+W.~Contributors, ``Gabor filter,'' Online, Oct. 2012. [Online]. Available:
+  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342109}
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{Dalal2005Histograms}
 \BIBentryALTinterwordspacing
-N.~Dalal and B.~Triggs, ``{Histograms of oriented gradients for human
-  detection},'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
+N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human
+  detection,'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
   2005. IEEE Computer Society Conference on}, ser. CVPR '05, vol.~1.\hskip 1em
   plus 0.5em minus 0.4em\relax Washington, DC, USA: IEEE, June 2005, pp.
   886--893 vol. 1. [Online]. Available:
@@ -62,17 +61,26 @@ N.~Dalal and B.~Triggs, ``{Histograms of oriented gradients for human
 
 \bibitem{Davies2008Welsh}
 \BIBentryALTinterwordspacing
-J.~Davies and A.~Gymreig, \emph{{The Welsh Academy encyclopaedia of
-  Wales}}.\hskip 1em plus 0.5em minus 0.4em\relax University of Wales Press,
+J.~Davies and A.~Gymreig, \emph{The Welsh Academy encyclopaedia of
+  Wales}.\hskip 1em plus 0.5em minus 0.4em\relax University of Wales Press,
   2008, pp. 957--958. [Online]. Available:
   \url{http://www.worldcat.org/isbn/9780708319536} 9780708319536.
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{Gamma1996Entwurfsmuster}
+\BIBentryALTinterwordspacing
+E.~Gamma, \emph{Entwurfsmuster : Elemente wiederverwendbarer objektorientierter
+  Software}, ser. Addison-Wesley professional computing series.\hskip 1em plus
+  0.5em minus 0.4em\relax Addison-Wesley, 1996. [Online]. Available:
+  \url{http://www.worldcat.org/isbn/9780201633610} 9780201633610.
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{Hall2009WEKA}
 \BIBentryALTinterwordspacing
 M.~Hall, E.~Frank, G.~Holmes, B.~Pfahringer, P.~Reutemann, and I.~H. Witten,
-  ``{The WEKA data mining software: an update},'' \emph{SIGKDD Explor. Newsl.},
+  ``The {WEKA} data mining software: an update,'' \emph{SIGKDD Explor. Newsl.},
   vol.~11, no.~1, pp. 10--18, Nov. 2009. [Online]. Available:
   \url{http://dx.doi.org/10.1145/1656274.1656278}
 \BIBentrySTDinterwordspacing
@@ -85,7 +93,7 @@ M.~Hall, E.~Frank, G.~Holmes, B.~Pfahringer, P.~Reutemann, and I.~H. Witten,
 
 \bibitem{Harris2011How}
 \BIBentryALTinterwordspacing
-R.~Harris, ``{How Rolf learnt to paint like Sir Kyffin Williams},'' BBC
+R.~Harris, ``How rolf learnt to paint like sir kyffin williams,'' BBC
   Broadcast, Feb. 2011. [Online]. Available:
   \url{http://www.bbc.co.uk/programmes/p00f6nyt}
 \BIBentrySTDinterwordspacing
@@ -94,8 +102,8 @@ R.~Harris, ``{How Rolf learnt to paint like Sir Kyffin Williams},'' BBC
   \end{quotation}
 
 \bibitem{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy}
-E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy: Open source
-  scientific tools for Python},'' 2001.
+E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy}: Open source
+  scientific tools for python,'' 2001.
 
 
 \end{thebibliography}
