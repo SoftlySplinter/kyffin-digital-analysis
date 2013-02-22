@@ -1,0 +1,3 @@
+(indexentry :tkey (("NLW" "\\glossaryentryfield{nlw}{\\glsnamefont{NLW}}{National Library of Wales}{\\relax }") ) :locref "{}{1}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("RGB" "\\glossaryentryfield{rgb}{\\glsnamefont{RGB}}{Red, Green, Blue}{\\relax }") ) :locref "{}{3}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("HSV" "\\glossaryentryfield{hsv}{\\glsnamefont{HSV}}{Hue, Saturation, Value}{\\relax }") ) :locref "{}{3}" :attr "pageglsnumberformat" ) 
