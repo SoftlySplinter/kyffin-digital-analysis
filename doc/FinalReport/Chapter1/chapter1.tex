@@ -28,11 +28,11 @@ colour between Patagonian and Welsh landscapes.
 
 \section{Interdisciplinary work with the National Library of Wales}
 
+% FIXME Llyod's Thesis Title
 This project was initially suggested through a conversation between Hannah Dee and Gareth ``Llyod''
-Roderick about image processing and art. Llyod is a PhD student at the \gls{nlw} researching 
-(TODO: Find out what Llyod's thesis title is). Their initial idea was to be able
-to geolocate a Kyffin painting on a map to build up a geographical representation of Kyffin's 
-work.
+Roderick about image processing and art. Llyod is a PhD student at the \gls{nlw}.
+Their initial idea was to try to geolocate a Kyffin painting on a map to build up a geographical 
+representation of Kyffin's work.
 
 Hannah started to create a prototype for performing geographical analysis, this proved to be a 
 difficult task and one which is still being researched.
@@ -208,7 +208,7 @@ perform leave-one-out cross validation (figure~\ref{fig:loocv}).
 \begin{algorithmic}
 \Function{LOOCV}{$data$} \Comment{$data$ is a set of all data points}
   \ForAll{$item \in data$}
-    \State $classified_{item} \gets$ \Call{classify}{$item, data \setminus \left\{{item}\right\}$} 
+    \State $classified_{item} \gets$ \Call{Classify}{$item, data \setminus \left\{{item}\right\}$} 
   \EndFor
   \Statex
   \Return $classified$
@@ -251,7 +251,20 @@ own due to the sparseness of the data.
 \caption{Pseudocode for $k$-Nearest Neighbour}\label{fig:knn}
 \end{figure}
 
-\subsubsection{Use of Weka}
+There are other techniques which could be applied to this problem, but the rewards for 
+implementing them is not likely to be outweighed by the time it would take to implement such
+techniques. There is a workaround for this; there are several machine learning tool-kits which 
+provide pre-implemented version of these techniques.
+
+One of the most popular tool-kits available for general use is Weka\cite{Hall2009WEKA}, which is discussed in more
+detail in section~\ref{sec:bg-weka}.
+
+% FIXME Find out who Julie is here.
+Another technique suggested by Julie Greensmith is to use \gls{lcs}\cite{Bacardit2013Largescale}, 
+which has an implementation for Weka. This may prove to give very good results for the kind of
+analysis being performed on Kyffin's work.
+
+\subsubsection{Use of Weka}\label{sec:bg-weka}
 
 \subsubsection{Learning Classifier Systems (LCS)}
 

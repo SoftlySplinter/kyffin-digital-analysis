@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{#1}
 \csname url@rmstyle\endcsname
 \providecommand{\newblock}{\relax}
@@ -17,6 +17,17 @@
 \language=\csname l@#1\endcsname
 \fi
 #2}}
+
+\bibitem{Bacardit2013Largescale}
+\BIBentryALTinterwordspacing
+J.~Bacardit and X.~Llor\`{a}, ``Large-scale data mining using genetics-based
+  machine learning,'' \emph{Wiley Interdisciplinary Reviews: Data Mining and
+  Knowledge Discovery}, vol.~3, no.~1, pp. 37--61, Jan. 2013. [Online].
+  Available: \url{http://dx.doi.org/10.1002/widm.1078}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent A paper recommended by Julie Greensmith for
+  information on a Learning Classifier System (LCS) which Julie believes will
+  yield good results with the Kyffin Williams project. \end{quotation}
 
 \bibitem{opencv_library}
 G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
