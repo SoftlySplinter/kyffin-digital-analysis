@@ -29,7 +29,6 @@ class NearestExemplar:
                     temp.data = self.technique.analyse(temp)
                     self.exemplars[temp.year] = temp
                 except ValueError as e:
-                    print e
                     continue
 
     def classify(self, painting, experience):
