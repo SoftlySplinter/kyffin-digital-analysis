@@ -29,6 +29,22 @@ J.~Bacardit and X.~Llor\`{a}, ``Large-scale data mining using genetics-based
   information on a Learning Classifier System (LCS) which Julie believes will
   yield good results with the Kyffin Williams project. \end{quotation}
 
+\bibitem{Berezhnoy2005Authentic}
+\BIBentryALTinterwordspacing
+I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``Authentic:
+  Computerized brushstroke analysis,'' in \emph{Multimedia and Expo, 2005. ICME
+  2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, July 2005, pp. 1586--1588. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/icme.2005.1521739}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Defines a method of analysing brushstrokes by
+  applying a circular filter across a digital image to pick up the ridges of a
+  brushstroke. This can then be used to pick out individual brushstrokes in
+  order to be able to fit a nth order polynomial to them. Though this paper
+  focuses on authenticating Van Gogh's paintings, it could easily be applied to
+  the work of Kyffin Williams and may allow for some interesting analysis.
+  \end{quotation}
+
 \bibitem{opencv_library}
 G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
   Tools}, 2000.
@@ -116,5 +132,19 @@ R.~Harris, ``How rolf learnt to paint like sir kyffin williams,'' BBC
 E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy}: Open source
   scientific tools for python,'' 2001.
 
+
+\bibitem{Li2012Rhythmic}
+\BIBentryALTinterwordspacing
+J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
+  van gogh from his contemporaries: Findings via automated brushstroke
+  extraction,'' \emph{Pattern Analysis and Machine Intelligence, IEEE
+  Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
+  Available: \url{http://dx.doi.org/10.1109/tpami.2011.203}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Defines a complex method for analysing individual
+  brush strokes which has been used to classify the period of two paintings by
+  Van Gogh. This technique could be very powerful when applied to Kyffin
+  Williams' work. This could be one of the most important techniques for the
+  whole of the Kyffin Williams project. \end{quotation}
 
 \end{thebibliography}

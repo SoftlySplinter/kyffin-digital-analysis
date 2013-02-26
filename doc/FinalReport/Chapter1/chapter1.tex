@@ -96,7 +96,45 @@ digitally how it is meant to be in real life.
 
 \subsection{Edge-Orientated Gradients}\label{sec:existing-hogs}
 
-\subsection{Brush-stroke Analysis}\label{sec:existing-brushstroke}
+\subsection{Brush-stroke Analysis}\label{sec:existing-brush-stroke}
+Stroke analysis is one of the main goals for this project. It is quite apparent from looking at 
+Kyffin Williams' paintings that his brush-strokes change over time, his early work having lots of
+smaller strokes over the canvas to large bold strokes in his later work.
+
+The first paper I found relating to the analysis of brush-strokes involved moving a circular filter
+across the whole painting to find the ridges of strokes, then filling any unbroken areas. They then
+shrunk these areas to a single pixel line and fitted a $n^{\text{th}}$ order polynomial to this
+line\cite{Berezhnoy2005Authentic}. This method seems fairly simplistic, but could be an interesting
+first step, but as it is more focused on authenticating paintings it may be of limited use.
+
+Another method for stroke analysis has been published in the IEEE Transactions on Pattern Analysis
+and Machine Learning journal. This method is far more complex, but is able to extract and label
+individual brush-strokes. An interesting part of their findings was the ability to date some of Van
+Gogh's paintings to a known period in his career\cite{Li2012Rhythmic}.
+
+This method involves performing edge detection of the painting followed by an edge linking 
+algorithm which aims to remove small, noisy edges and to trace every edge. With this they then
+perform enclosing, as strokes may not be complete this stage also aims to fill in missing gaps of
+strokes and to fill these in within a certain tolerance.
+
+The algorithm then decides if a stroke really is a painted stroke, if the stroke is completely 
+enclosed, isolated from other non-edge pixels and forms a connected component then it is likely 
+that it is a proper brush-stroke and is extracted. The edge pixels are used as the background and
+the non-edge pixels as the foreground, this is the process of labelling the brush-stroke.
+
+For each of these labelled candidates, a heuristic function is used to threshold any brush-strokes 
+that are either too long or too short, these strokes are discarded. These strokes are then
+considered to be candidates if they are not significantly branched, the stroke is not too wide 
+(this may change for Kyffin Williams as he used a pallet knife rather than a brush) and the 
+brush-stroke is not too big or small.
+
+Separately, the image is then segmented using $k$-means clustering by \gls{rgb} values. This clustering 
+algorithm is applied several times, lowering the tolerances for distance within a cluster. 
+Connected components as a result of this clustering and have noise reduction performed upon them.
+Finally, the two types of brush-strokes are combined.
+
+This technique may need some changing to account for Kyffin Williams' use of a pallet knife, but
+the overall principals of this technique should work with Kyffin's paintings.
 
 
 \section{Analysis Objectives}
@@ -160,9 +198,9 @@ of edge orientation\cite{Dalal2005Histograms} seem like a promising concept whic
 relatively simple to implement.
 
 This section may also help with any work into brush-stroke analysis (see 
-section~\ref{sec:analysis-brushstroke}).
+section~\ref{sec:analysis-brush-stroke}).
 
-\subsection{Brush-stroke Analysis}\label{sec:analysis-brushstroke}
+\subsection{Brush-stroke Analysis}\label{sec:analysis-brush-stroke}
 With Kyffin's distinctive style and how obviously this style changes over time, the ultimate aim 
 of this project is to be able to analyse the brush-strokes\footnote{A slight misnomer as Kyffin 
 used a palette knife to paint with rather than a traditional brush} in a painting.
@@ -174,7 +212,7 @@ and span more of the canvas.
 
 If it is possible to calculate a rough amount and size of strokes made in a given painting it 
 should be a reasonable piece of data to classify on. As previously discussed in section~
-\ref{sec:existing-brushstroke} there has already been a decent amount of research into determining
+\ref{sec:existing-brush-stroke} there has already been a decent amount of research into determining
 brush-strokes in a painting. 
 
 It would be preferable to try and take one of the techniques discussed in that research and change
@@ -266,9 +304,20 @@ analysis being performed on Kyffin's work.
 
 \subsubsection{Use of Weka}\label{sec:bg-weka}
 
-\subsubsection{Learning Classifier Systems (LCS)}
+%\subsubsection{Learning Classifier Systems (LCS)}
 
 \subsection{Exemplars}
+The use of exemplar images would be another way of performing classification. The idea of an 
+exemplar is that a painting is the most representative of a given time period. With the help of
+Llyod, Lorna and the \gls{nlw} a list of exemplars which can be used as a ground truth to classify
+against has been produced.
 
+The initial idea for digitally producing exemplars is to take the middle painting for a time 
+period, as would be expected. These can then be compared to the ground truths to see how correct
+the analysis technique performed.
 
+However, there is also the potentially to generate a theoretical exemplar from the analysis. This
+might be hard to perform validation against the ground truth upon, but will give some useful data
+on Kyffin Williams' style and how it changed.
 
+These theoretical exemplars would likely be produced using some form of Gaussian mixture model.
