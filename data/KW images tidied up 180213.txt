@@ -1,0 +1,326 @@
+Filename	ID	Title	Catalogue entry BBC YP	Genre	Height	Width	Area	Materials	Collection	image_width 	image_height 	image_height/image_width 
+001.jpg	1	A Chapel in the Tyrol	1950-1960	Landscape	40.7	29.8	1212.86	oil on hardboard	NLW	687	944	1.3741
+002.jpg	2	A Ruined Classical Building	1940-1960	Landscape	30.4	40.7	1237.28	oil on hardboard	NLW	944	699	0.7405
+003.jpg	3	"Above Carneddi, No.2"	c.1985	Landscape	50	75	3750	oil on canvas	NLW	944	627	0.6642
+004.jpg	4	Across the Water	1990-2006	Landscape	50.3	76	3822.8	oil on canvas	NLW	944	636	0.6737
+005.jpg	5	"Allt Corn Yd, Llanddona"	n.d.	Landscape	61	91.4	5575.4	oil on canvas	OYM	944	638	0.6758
+006.jpg	6	Alpine Mountain Landscape	1950-1960	Landscape	60.8	50.5	3070.4	oil on canvas	NLW	787	944	1.1995
+007.jpg	7	Alpine Mountains/ Y Grib Goch	1990-2006	Landscape	50.5	60.8	3070.4	oil on canvas	NLW	944	790	0.8369
+008.jpg	8	"Alun Oldfield-Davis, Controller (1945-1967)"	n.d.	Portrait	174	98	17052	oil on canvas	BBC	538	944	1.7546
+009.jpg	9	An Officer of the Royal Welch Fusiliers	1940-1950	Portrait	60.7	40.5	2458.35	oil on canvas	NLW	638	944	1.4796
+010.jpg	10	Anglesey Cottages with Cattle	c.1970	Landscape	59.8	76	4544.8	oil on canvas	NMGW	800	581	0.7262
+011.jpg	11	Anglesey Landscape	c.1960	Landscape	90	121	10890	oil on canvas	OYM	944	585	0.6197
+012.jpg	12	Ann Griffiths (b.1935)	1970	Portrait	54.3	49.7	2698.71	oil on canvas	NLW	944	942	0.9979
+013.jpg	13	Ar Hyd Y Ffos	1969 (?)	Landscape	121	91	11011	oil on canvas	NLW	719	944	1.3129
+014.jpg	14	Autumn Road	1950-1960	Landscape	61	76.3	4654.3	oil on canvas	NLW	944	761	0.8061
+015.jpg	15	Autumn Sunset	1960-1980	Landscape	60.5	76.2	4610.1	oil on canvas	NLW	944	756	0.8008
+016.jpg	16	Barn in a Patagonian Landscape	1969 (?)	Landscape	50.7	61	3092.7	oil on canvas	NLW	944	806	0.8538
+017.jpg	17	Blaen Ffrancon No.1	c.1978	Landscape	92.1	121.9	11226.99	oil on canvas	NMGW	800	599	0.7488
+018.jpg	18	Blaen Nant	1976	Landscape	76.7	127	9740.9	oil on canvas	RAA	944	521	0.5519
+019.jpg	19	Blue Sky with Brown Hill	1970-1990	Landscape	55.5	91.2	5061.6	oil on canvas	NLW	944	580	0.6144
+020.jpg	20	Bryn Cader Faner	2000	Landscape	120.3	120.3	14472.09	oil on canvas	NLW	944	939	0.9947
+021.jpg	21	Bryn yr Hen Bobl	1970-1990	Landscape	61	61	3721	oil on canvas	NLW	936	944	1.0085
+022.jpg	22	"Buildings, Patagonia"	1969 (?)	Landscape	51	68.7	3503.7	oil on canvas	NLW	944	716	0.7585
+023.jpg	23	Capel Carmel	c.1958	Landscape	51.5	62	3193	oil on canvas	OYM	944	702	0.7436
+024.jpg	24	Carreg Cennen No.1	1982	Landscape	75.5	75.5	5700.25	oil on canvas	NLW	944	941	0.9968
+025.jpg	25	Cattle in the Field	1940-1950	Landscape	30.5	40.6	1238.3	oil on board	NLW	944	725	0.768
+026.jpg	26	Ceg y Ffos	1969	Landscape	17.5	25	437.5	oil on canvas	NLW	944	671	0.7108
+027.jpg	27	Ceserea	1960-1980	Landscape	47.1	99.5	4686.45	oil on canvas	NLW	944	459	0.4862
+028.jpg	28	Chapel at Dinorwic	c.2000	Landscape	111	111	12321	oil on canvas	NLW	928	944	1.0172
+029.jpg	29	Chapel with a Mountain Behind	1960-1970	Landscape	71.2	91.6	6521.92	oil on canvas	NLW	944	732	0.7754
+030.jpg	30	Charles Evans	c.1967	Portrait	61.1	51.5	3146.65	oil on canvas	NLW	789	944	1.1965
+031.jpg	31	"Church and Cottage, North Wales"	1950-1960	Landscape	76	127	9652	oil on canvas	NLW	944	577	0.6112
+032.jpg	32	Cloud and Hills above the Traeth	n.d.	Landscape	90.5	120.4	10896.2	oil on canvas	BU	944	691	0.732
+033.jpg	33	"Cloud and Mist, Eryri"	1950-1960	Landscape	61	51	3111	oil on canvas	NLW	802	944	1.1771
+034.jpg	34	Cloud on Foel Goch	1960-1961	Landscape	91.3	112.8	10298.64	oil on canvas	NLW	944	716	0.7585
+035.jpg	35	Cloud on the Mountains	1970-1990	Landscape	71	91.5	6496.5	oil on canvas	NLW	944	750	0.7945
+036.jpg	36	Cloud on the Mountains	1950-1970	Landscape	51	61	3111	oil on canvas	NLW	944	808	0.8559
+037.jpg	37	Cloud over Crib Goch	1970-1990	Landscape	60.5	60.5	3660.25	oil on canvas	NLW	944	927	0.982
+038.jpg	38	Clouds above Crib Goch	n.d.	Landscape	89.58	93.7	8393.646	oil on canvas	BU	944	691	0.732
+039.jpg	39	Cloudy Day in Snowdonia	1940-1950	Landscape	22.9	30.9	707.61	oil on hardboard	NLW	944	694	0.7352
+040.jpg	40	Cnicht	1960-1970	Landscape	50.5	60.8	3070.4	oil on canvas	NLW	944	803	0.8506
+041.jpg	41	Coastal Sunset	1970-1990	Landscape	76.2	76.2	5806.44	oil on canvas	NLW	938	944	1.0064
+042.jpg	42	Coastal Sunset	1990-2006	Landscape	50.5	75.7	3822.85	oil on canvas	NLW	944	632	0.6695
+043.jpg	43	"Col des Aravis, Haute Savoie"	1960-1980	Landscape	45.7	60.7	2773.99	oil on canvas	NLW	944	717	0.7595
+044.jpg	44	"Conservatory, Highgate"	c.1950	Landscape	60	49.5	2970	oil on canvas	NLW	784	944	1.2041
+045.jpg	45	"Corporal Norman Pritchard, Goat Major, 3rd Battalion"	1983	Portrait	112	110	12320	oil on canvas	RWFRM	919	944	1.0272
+046.jpg	46	Cottage in the Fields	1990-2006	Landscape	50.5	60.7	3065.35	oil on canvas	NLW	944	791	0.8379
+047.jpg	47	"Cottages, Carmel, No.1"	c.1985	Landscape	49.7	117	5814.9	oil on canvas	NLW	944	422	0.447
+048.jpg	48	"Cottages, Cilgwyn"	n.d.	Landscape	52.2	62	3236.4	oil on canvas	MOMA	944	772	0.8178
+049.jpg	49	"Cottages, Eryri"	1960-1980	Landscape	45.7	75.8	3464.06	oil on canvas	NLW	944	568	0.6017
+050.jpg	50	"Cottages, Eryri"	1960-1980	Landscape	50.5	60.5	3055.25	oil on canvas	NLW	944	813	0.8612
+051.jpg	51	"Cottages, Llanddona"	c.1955	Landscape	50.8	76.5	3886.2	oil on canvas	NMGW	800	529	0.6612
+052.jpg	52	"Cottages, Llanrhuddlad"	c.1955	Landscape	51.8	62	3211.6	oil on canvas	OYM	944	662	0.7013
+053.jpg	53	"Cottages, Mynydd Bodafon"	c.1962	Landscape	57	77.5	4417.5	oil on canvas	OYM	944	689	0.7299
+054.jpg	54	"Cottages, North Wales"	1960-1970	Landscape	61.3	50.5	3095.65	oil on canvas	NLW	794	944	1.1889
+055.jpg	55	"Cottages, Snowdonia"	1960-1970	Landscape	51	61	3111	oil on canvas	NLW	944	778	0.8242
+056.jpg	56	"Councillor Dora Phyllis Oxenham (1910–1996), CBE, Chair of Northamptonshire County Council (1969–1972) "	1960s	Portrait	60.5	65	3932.5	oil on canvas	Northamptonshire Council	590	685	1.161
+057.jpg	57	Craggs and Trees 	1970-1990	Landscape	75.6	76	5745.6	oil on canvas	NLW	944	754	0.7987
+058.jpg	58	Crib Coch and Llanberis Pass	n.d.	Landscape	122	152.4	18592.8	oil on canvas	Newport Museum and Art Gallery	944	478	0.5064
+059.jpg	59	Crib Goch 	n.d.	Landscape	51	122	6222	oil on canvas	Gwynedd Council Collection	944	944	1
+060.jpg	60	Crib Goch with a Blue Sky	1970-1990	Landscape	50.8	61	3098.8	oil on canvas	NLW	944	803	0.8506
+061.jpg	61	Crows and Storm Coming	1960-1970	Landscape	61	76.2	4648.2	oil on canvas	NLW	944	636	0.6737
+062.jpg	62	Crucifixion	1950-1960	Genre	61	76	4636	oil on canvas	NLW	944	757	0.8019
+063.jpg	63	Cwm Hetiau	1970-1990	Landscape	121.2	182.9	22167.48	oil on canvas	NLW	944	620	0.6568
+064.jpg	64	Cwm Pennant	n.d.	Landscape	50	67.2	3360	oil on canvas	Newport Museum and Art Gallery	944	700	0.7415
+065.jpg	65	Dafydd Williams on the Mountain	1969	Landscape	91.5	121.8	11144.7	oil on canvas	RAA	944	713	0.7553
+066.jpg	66	Dame Eileen Louise Younghusband	c.1965	Portrait	91.5	71.1	6505.65	oil on canvas	NPG	624	800	1.2821
+067.jpg	67	Dark Hills across the Water	1950-1970	Landscape	50.5	91.5	4620.75	oil on canvas	NLW	944	525	0.5561
+068.jpg	68	"Dark Mountains, Blue Sky"	1950-1970	Landscape	76	152.5	11590	oil on canvas	NLW	944	475	0.5032
+069.jpg	69	"Dark Mountains, Eryri"	1970-1990	Landscape	70.7	91.2	6447.84	oil on canvas	NLW	944	743	0.7871
+070.jpg	70	Dead Hare in Brown Paper	1940-1950	Still life	50.7	68.3	3462.81	oil on canvas	NLW	944	708	0.75
+071.jpg	71	Deposition	1960-1970	Genre	76	152.6	11597.6	oil on canvas	NLW	944	472	0.5
+072.jpg	72	Deposition	n.d.	Genre	22	32.5	715	oil on board	Glynn Vivian Art Gallery	944	643	0.6811
+073.jpg	73	"Deserted Farm, Llanrhuddlad"	c.1970	Landscape	51	61	3111	oil on canvas	Southend Museum Collection	944	831	0.8803
+074.jpg	74	Dolwyddelan Castle	c.1985	Landscape	75	75	5625	oil on canvas	NLW	939	944	1.0053
+075.jpg	75	Dr Alun Oldfield Davies	c.1970	Portrait	121.5	91.5	11117.25	oil on canvas	NLW	712	944	1.3258
+076.jpg	76	Dr Llywellyn Wyn Griffith (1890-1977)	1960-1979 (?)	Portrait	90	70	6300	oil on canvas	NLW	735	944	1.2844
+077.jpg	77	Drwsycoed	n.d.	Landscape	49.7	59.8	2972.06	oil on canvas	Merthyr Tydfil Museum Service	944	780	0.8263
+078.jpg	78	"Duffryncamwy, Patagonia"	1969	Landscape	121.3	121.3	14713.69	oil on canvas	NMGW	800	787	0.9838
+079.jpg	79	Dusk in the Mountains	1940-1960	Landscape	22	42.5	935	oil on hardboard	NLW	944	492	0.5212
+080.jpg	80	"Dyfryn, Cesarea"	n.d.	Landscape	74	126	9324	oil on canvas	BU	944	575	0.6091
+081.jpg	81	Eryri	1960-1970	Landscape	40.8	50.8	2072.64	oil on canvas	NLW	944	769	0.8146
+082.jpg	82	Eryri (Snowdon)	n.d.	Landscape	38.8	76.4	2964.32	oil on canvas	Glynn Vivian Art Gallery	944	463	0.4905
+083.jpg	83	Euros Hughes Irrigating his Fields	1969	Landscape	50	50	2500	oil on canvas	NLW	944	923	0.9778
+084.jpg	84	Evan Roberts (1909-1991)	1990	Portrait	72	72	5184	oil on canvas	OYM	904	944	1.0442
+085.jpg	85	Farm at Cesarae	n.d.	Landscape	65	93	6045	oil on canvas	BBC	944	626	0.6631
+086.jpg	86	Farm behind Harlech	n.d.	Landscape	29	75	2175	oil on canvas	Amgueddfa Ceredigion Museum	944	650	0.6886
+087.jpg	87	Farm below Crib Goch	1967	Landscape	122	183	22326	oil on canvas	GAC	944	626	0.6631
+088.jpg	88	"Farm Building, Eryri"	1970-1990	Landscape	50.5	75.7	3822.85	oil on canvas	NLW	944	642	0.6801
+089.jpg	89	Farm Buildings	1960-1970	Landscape	40.5	51	2065.5	oil on canvas	NLW	944	756	0.8008
+090.jpg	90	Farm Ceserea	n.d.	Landscape	50	111.5	5575	oil on canvas	OYM	944	279	0.2956
+091.jpg	91	Farm Eryri	1970-1990	Landscape	61.3	50.8	3114.04	oil on canvas	NLW	789	944	1.1965
+092.jpg	92	"Farm, Llanddona"	c.1958	Landscape	51.8	62	3211.6	oil on canvas	OYM	944	748	0.7924
+093.jpg	93	"Farm, Llanfairynghornwy"	c.1975	Landscape	39.5	49.9	1971.05	oil on canvas	NLW	944	742	0.786
+094.jpg	94	Farm near Nanhoron	1970-1990	Landscape	60.7	76.3	4631.41	oil on canvas	NLW	944	763	0.8083
+095..jpg	95	Farmer Amongst the Rocks	1990-2006	Landscape	60.7	91	5523.7	oil on canvas	NLW	944	632	0.6695
+096.jpg	96	Farmer and Cattle	1957	Landscape	58.5	128.7	7528.95	oil on canvas	OYM	944	371	0.393
+097.jpg	97	Farmer and Cottages 	1940-1950	Landscape	61	50.7	3092.7	oil on canvas	NLW	794	944	1.1889
+098.jpg	98	Farmer and Dog Climbing a Rocky Path	1950-1960	Landscape	50.6	65.7	3324.42	oil on canvas	NLW	944	732	0.7754
+099.jpg	99	Faarmer and Dog in the Moutnains	1950-1970	Landscape	61.2	77.7	4755.24	oil on canvas	NLW	944	763	0.8083
+100.jpg	100	Farmer at Dusk	1970-1990	Landscape	68.3	50.7	3462.81	oil on canvas	NLW	703	944	1.3428
+101.jpg	101	Farmer in Eryri	1970-1990	Landscape	50.7	60.7	3077.49	oil on canvas	NLW	944	794	0.8411
+102.jpg	102	Farmer on the Mountain	1984-1990	Landscape	91.4	121.7	11123.38	oil on canvas	NLW	944	721	0.7638
+103.jpg	103	Farmer on the Mountains	n.d.	Landscape	90.1	119.8	10793.98	oil on canvas	BU	944	706	0.7479
+104.jpg	104	Farmer with Following Dog	1990-2006	Landscape	60.8	61	3708.8	oil on canvas	NLW	944	942	0.9979
+105.jpg	105	Farmer below the Ridge	c.1983	Landscape	122.5	92.8	11368	oil on canvas	OYM	562	944	1.6797
+106.jpg	106	"Farmers, Cwm Nantlle"	1947	Landscape	51.2	61.2	3133.44	oil on canvas	NMGW	800	667	0.8338
+107.jpg	107	Farmers on the Carneddau	c.1980	Landscape	121.7	183	22271.1	oil on canvas	NLW	800	528	0.66
+108.jpg	108	Farmers on the Moelwyns; Llwybr Iddew Mawr	c.1970	Landscape	121	182	22022	oil on canvas	NLW	944	616	0.6525
+109.jpg	109	Farmhouse on the Horizon in Rugged Land	1960-1970	Landscape	61	91.8	5599.8	oil on canvas	NLW	944	630	0.6674
+110.jpg	110	"Farms, Porth Dafarch No.1"	1977	Landscape	91	91	8281	oil on canvas	GAC	944	941	0.9968
+111.jpg	111	"Fedw, Penrhosllugwy"	c.1948	Landscape	58.5	88.5	5177.25	oil on canvas	OYM	944	513	0.5434
+112.jpg	112	Fferm Fynydd Hill Farm (recto)	n.d.	Landscape	75.5	151.5	11438.25	oil on canvas	Gwynedd Council Collection	944	476	0.5042
+113.jpg	113	Fferm Fynydd Hill Farm (verso)	n.d.	Landscape	75.5	151.5	11438.25	oil on canvas	Gwynedd Council Collection	944	476	0.5042
+114.jpg	114	Ffridd Llwyn Gorful	c.1970	Landscape	62	88	5456	oil on canvas	NLW	944	629	0.6663
+115.jpg	115	Figure and Mountains (verso)	n.d.	Landscape	57.3	126	7219.8	oil on canvas	NMGW	800	351	0.4388
+116.jpg	116	Fred Uhlman (1901-1985)	c.1960	Portrait	61	51	3111	oil on canvas	NLW	772	944	1.2228
+117.jpg	117	Fresians in a Field with the Coast Beyond	1940-1950	Landscape	51	68.5	3493.5	oil on canvas	NLW	944	708	0.75
+118.jpg	118	"Fusilier Dean (The Depot, Wrexham, 1948)"	1948	Portrait	88	75	6600	oil on canvas	RWFRM	799	944	1.1815
+119.jpg	119	"Gardener at work, near a Church"	1940-1950	Landscape	40	32.9	1316	oil on canvas	NLW	765	944	1.234
+120.jpg	120	German Girl	c.1963	Portrait	61	51	3111	oil on canvas	RAA	772	944	1.2228
+121.jpg	121	Girl Guide 1	1990-2006	Portrait	76.1	76.2	5798.82	oil on canvas	NLW	944	917	0.9714
+122.jpg	122	Girl Guide 2	1990-2006	Portrait	76.5	76.5	5852.25	oil on canvas	NLW	929	944	1.0161
+123.jpg	123	"Giudecca, Venice"	1950-1970	Landscape	76	63.1	4795.6	oil on canvas	NLW	944	764	0.8093
+124.jpg	124	Golfer Resting	1940-1950	Genre	20.3	26.7	542.01	oil on board	NLW	944	728	0.7712
+125.jpg	125	"Green Fields and Grey Mountains, Snowdonia"	1970-1990	Landscape	76.3	76.3	5821.69	oil on canvas	NLW	932	944	1.0129
+126.jpg	126	Green Mountain Landscape	1950-1970	Landscape	40.8	51	2080.8	oil on canvas	NLW	944	778	0.8242
+127.jpg	127	Green Trees and Fields Beneath a Dark Mountain	1950-1970	Landscape	51	61	3111	oil on canvas	NLW	944	780	0.8263
+128.jpg	128	Grey Cloud and Sun over the Mountains	1970-1990	Landscape	50.8	68.5	3479.8	oil on canvas	NLW	944	697	0.7383
+129.jpg	129	Grey Sky and Dark Moutnains	1960-1970	Landscape	50.5	60.7	3065.35	oil on canvas	NLW	944	798	0.8453
+130.jpg	130	Gyrn Las	1990-2006	Landscape	50.3	76.2	3832.86	oil on canvas	NLW	944	645	0.6833
+131.jpg	131	Hamlet in the Trees	1970-1990	Landscape	61.2	77	4712.4	oil on canvas	NLW	944	769	0.8146
+132.jpg	132	Hamlet on the Horizon	1970-1980	Landscape	40.5	50.7	2053.35	oil on canvas	NLW	944	754	0.7987
+133.jpg	133	Hampstead Heath	1940-1950	Landscape	18.2	34.1	620.62	oil on cardboard	NLW	944	500	0.5297
+134.jpg	134	"Henry Roberts, Bryngwyn, Patagonia"	c.1969	Landscape	120.5	120.5	14520.25	oil on canvas	NLW	942	944	1.0021
+135.jpg	135	Henry Roberts o Hafotty (1888-1960)	n.d.	Portrait	68.5	50.5	3459.25	oil on canvas	NLW	695	944	1.3583
+136.jpg	136	Hermon	n.d.	Landscape	91	91	8281	oil on canvas	OYM	944	944	1
+137.jpg	137	Highgate Schoolboy	c.1953	Portrait	92	50.6	4655.2	oil on canvas	Glynn Vivian Art Gallery	516	944	1.8295
+138.jpg	138	Highgate West Hill	n.d.	Landscape	45	55	2475	oil on canvas	Highgate Literary & Scientific Institute	944	765	0.8104
+139.jpg	139	Hill Farm in Merioneth	during or before 1958	Landscape	51	112	5712	oil on canvas	Herbert Art Gallery and Museum	944	425	0.4502
+140.jpg	140	Hill Farmers	n.d.	Landscape	91.5	137	12535.5	oil on canvas	Bodelwyddan Castle Trust	944	703	0.7447
+141.jpg	141	Hills above nant Peris	n.d.	Landscape	94.4	125	11800	oil on canvas	BU	944	719	0.7617
+142.jpg	142	Hillside Cottages	1960-1970	Landscape	50.5	50.6	2555.3	oil on canvas	NLW	925	944	1.0205
+143.jpg	143	Hillside with Sheep Farmer and Dog	n.d.	Landscape	74.5	125.2	9327.4	oil on canvas	BU	944	579	0.6133
+144.jpg	144	Hillside with Trees on the Horizon	1960-1970	Landscape	71.2	91.2	6493.44	oil on canvas	NLW	944	751	0.7956
+145.jpg	145	Horses and Riders	1940-1950	Genre	21.6	45.6	984.96	oil on hardboard	NLW	944	444	0.4703
+146.jpg	146	Hugh Rowalnds	1990-2006	Portrait	50.7	61	3092.7	oil on canvas	NLW	944	787	0.8337
+147.jpg	147	"Hugh Thomas, Portrait of a Farmer"	1950	Portrait	59.5	49.5	2945.25	oil on canvas	BU	812	944	1.1626
+148.jpg	148	Huw T. Edwrds	c.1960	Portrait	91.5	71	6496.5	oil on canvas	NMGW	618	800	1.2945
+149.jpg	149	Italian Ruins	c.1950	Landscape	26.3	40.8	1073.04	oil on canvas	NLW	944	603	0.6388
+150.jpg	150	Jack Jones	c.1959	Portrait	58.2	45.7	2659.74	oil on canvas	Glynn Vivian Art Gallery	743	944	1.2705
+151.jpg	151	Jack Raymond Jones	1969	Portrait	90.5	55	4977.5	oil on canvas	NLW	561	944	1.6827
+152.jpg	152	John Dafydd Evans (1900-1984)	c.1945	Portrait	25.5	36.5	930.75	oil on board	NLW	944	718	0.7606
+153.jpg	153	Keith Andrew (b.1947)	1980s (?)	Portrait	74.5	74.5	5550.25	oil on canvas	NLW	922	944	1.0239
+154.jpg	154	Landscape at Llanaelhaearn	1947	Landscape	51.1	61	3117.1	oil on canvas	Arts Council Collection	800	664	0.83
+155.jpg	155	Landscape with Cattle	c.1950	Landscape	29	40	1160	oil on canvas	NLW	944	699	0.7405
+156.jpg	156	Llandonna	n.d.	Landscape	89	119.5	10635.5	oil on canvas	BBC	944	707	0.7489
+157.jpg	157	Llanerchymedd Mill	c.1955	Landscape	52	69.5	3614	oil on canvas	OYM	944	688	0.7288
+158.jpg	158	"Lle Cul, Patagonia"	1969	Landscape	89.5	89.5	8010.25	oil on canvas	NLW	944	938	0.9936
+159.jpg	159	"Lle Cul, Patagonia"	c.1969	Landscape	92	122	11224	oil on canvas	NLW	944	712	0.7542
+160.jpg	160	"Lle Cul, Patagonia"	c.1969	Landscape	49.5	60	2970	oil on canvas	NLW	944	787	0.8337
+161.jpg	161	"Lle Cul, Patagonia"	c.1969	Landscape	49.9	60	2994	oil on canvas	NLW	944	789	0.8358
+162.jpg	162	Lliwedd	1978	Landscape	91	91	8281	oil on canvas	OYM	906	944	1.0419
+163.jpg	163	Llyn Conwy	1996	Landscape	54	131	7074	oil on canvas	NLW	944	466	0.4936
+164.jpg	164	"Llyn-y-Cau, Cader Idris"	1950 or before	Landscape	37.3	75.3	2808.69	oil on canvas	NLW	944	464	0.4915
+165.jpg	165	"Llyn-y-Cau, Cader Idris"	c.1990	Landscape	120	120	14400	oil on canvas	NLW	938	944	1.0064
+166.jpg	166	Lone Cottage	1990-2006	Landscape	50.7	76.2	3863.34	oil on canvas	NLW	944	630	0.6674
+167.jpg	167	Lowlight Eryri	1970-1990	Landscape	76	76	5776	oil on canvas	NLW	944	939	0.9947
+168.jpg	168	Mackerel	c.1988	Still life	104	68.5	7124	oil on canvas	NLW	564	944	1.6738
+169.jpg	169	Male Nude	1940-1950	Study	35.5	25.3	898.15	oil on board	NLW	690	944	1.3681
+170.jpg	170	Man and Horse in the Desert	1970	Landscape	90.2	98	8839.6	oil on canvas	NLW	929	944	1.0161
+171.jpg	171	"Marie Levy, nee Wooler"	1960	Portrait	60	50	3000	oil on canvas	NLW	743	944	1.2705
+172.jpg	172	Mary	1950s	Portrait	61	51	3111	oil on canvas	NMGW	660	800	1.2121
+173.jpg	173	"Meadows, Mist and Mountains"	1970-1990	Landscape	45.6	55.5	2530.8	oil on canvas	NLW	944	777	0.8231
+174.jpg	174	Michelle	1950-1970	Portrait	60.5	50.5	3055.25	oil on canvas	NLW	792	944	1.1919
+175.jpg	175	Miss Josling	c.1960	Portrait	30.5	20.5	625.25	oil on board	OYM	667	944	1.4153
+176.jpg	176	Miss Parry	1979	Portrait	110	49.2	5412	oil on canvas	NLW	416	944	2.2692
+177.jpg	177	Mist on the Mountains	1960-1970	Landscape	55.5	76	4218	oil on canvas	NLW	944	699	0.7405
+178.jpg	178	Moel Hebog	c.1952	Landscape	25.4	35.5	901.7	oil on board	NLW	800	571	0.7138
+179.jpg	179	Moelfre	n.d.	Landscape	50.5	68	3434	oil on canvas	OYM	944	694	0.7352
+180.jpg	180	Moelwyn Bach	1960	Landscape	92.2	122.5	11294.5	oil on canvas	OYM	944	590	0.625
+181.jpg	181	Moelwyn Back from Tanygrisiau	1960-1970	Landscape	50.5	68	3434	oil on canvas	NLW	944	704	0.7458
+182.jpg	182	Mont Blanc	1950-1960	Landscape	21.4	37.6	804.64	oil on hardboard	NLW	944	526	0.5572
+183.jpg	183	Moonlight above Gwynant	1990-2006	Landscape	121.9	121.9	14859.61	oil on canvas	NLW	944	941	0.9968
+184.jpg	184	Mountain Landscape	1987 or before	Landscape	12	12.5	150	oil on canvas	NLW	944	936	0.9915
+185.jpg	185	Mountain Landscape	1957	Landscape	44.5	55	2447.5	oil on canvas	Merthyr Tydfil Museum Service	944	764	0.8093
+186.jpg	186	Mountain Landscape with High Sun	1970-1980	Landscape	76.3	76.2	5814.06	oil on canvas	NLW	934	944	1.0107
+187.jpg	187	Mountain Landscape with Trees and a Field in the Foreground	1960-1980	Landscape	50.5	76.5	3863.25	oil on canvas	NLW	944	634	0.6716
+188.jpg	188	Mountain Stream with Trees	1970-1990	Landscape	55.5	68	3774	oil on canvas	NLW	944	783	0.8294
+189.jpg	189	Mountain Summit with Low Cloud	1960-1970	Landscape	71	91.5	6496.5	oil on canvas	NLW	944	732	0.7754
+190.jpg	190	"Mountain Summits, Snowdonia"	1960-1970	Landscape	50.2	91.3	4583.26	oil on canvas	NLW	944	527	0.5583
+191.jpg	191	Mountain Torrent	1940-1950	Landscape	40.7	51	2075.7	oil on canvas	NLW	944	760	0.8051
+192.jpg	192	Mountain Valley	1940-1950	Landscape	12	33.6	403.2	oil on board	NLW	944	347	0.3676
+193.jpg	193	Mountain Valley	1940-1950	Landscape	51	68.7	3503.7	oil on canvas	NLW	944	714	0.7564
+194.jpg	194	Mountain Valley Cottages	1990-2006	Landscape	71.2	91.5	6514.8	oil on canvas	NLW	944	745	0.7892
+195.jpg	195	Mountainous Landscape	n.d.	Landscape	21	37	777	oil on board	Glynn Vivian Art Gallery	944	551	0.5837
+196.jpg	196	Mountains and Rocks	1950-1960	Landscape	40.5	50.7	2053.35	oil on canvas	NLW	944	776	0.822
+197.jpg	197	"Mountains, Eryri, with Cloud"	1970-1990	Landscape	90.7	91.5	8299.05	oil on canvas	NLW	944	936	0.9915
+198.jpg	198	"Mountains, North Wales"	1950-1970	Landscape	76	63.1	4795.6	oil on canvas	NLW	794	944	1.1889
+199.jpg	199	"Mountains, Snowdonia"	1960-1980	Landscape	60.7	76.1	4619.27	oil on canvas	NLW	944	758	0.803
+200.jpg	200	"Mountains, Snowdonia"	1950-1960	Landscape	50.7	68.5	3472.95	oil on canvas	NLW	944	713	0.7553
+201.jpg	201	Mountains with Blue Sky	1970-1990	Landscape	56	76.2	4267.2	oil on canvas	NLW	944	707	0.7489
+202.jpg	202	Mrs Rowlands	c.1984	Portrait	126	76.5	9639	oil on canvas	OYM	571	944	1.6532
+203.jpg	203	"Mynydd Bodafon, Anglesey"	n.d.	Landscape	57	67	3819	oil on canvas	Hereford Museum and Art Gallery	800	635	0.7938
+204.jpg	204	Mynydd Mawr a'r Wyddfa	1970-1990	Landscape	61	91.5	5581.5	oil on canvas	NLW	944	629	0.6663
+205.jpg	205	Nant Ffrancon	1960-1970	Landscape	76	127.4	9682.4	oil on canvas	NLW	944	562	0.5953
+206.jpg	206	Nant Ffrancon from Llandegfan	c.1960	Landscape	30.8	76.4	2353.12	oil on canvas	GAC	944	363	0.3845
+207.jpg	207	Near Capel Curig	1960-1980	Landscape	50.5	60.8	3070.4	oil on canvas	NLW	944	794	0.8411
+208.jpg	208	Nun at a Crucifix	1950-1960	Portrait	76.8	61.5	4723.2	oil on canvas	NLW	756	944	1.2487
+209.jpg	209	"Paith, Patagonia"	1969 (?)	Landscape	51	68.7	3503.7	oil on canvas	NLW	944	721	0.7638
+210.jpg	210	Patagonian Landscape	1969 (?)	Landscape	65	65	4225	oil on canvas	NLW	944	944	1
+211.jpg	211	Path below Crib Goch	1970-1980	Landscape	76	76	5776	oil on canvas	NLW	933	944	1.0118
+212.jpg	212	"Pen Carmen, Ty Ddewi"	n.d.	Landscape	57.3	126	7219.8	oil on canvas	NMGW	800	371	0.4638
+213.jpg	213	"Pencamedd, Llansadwrn"	n.d.	Landscape	58	79	4582	oil on canvas	NLW	800	593	0.7412
+214.jpg	214	Pengwyryd	c.1999	Landscape	120	120	14400	oil on canvas	NLW	939	944	1.0053
+215.jpg	215	Penmon Coast and Ynys Seriol	1960-1980	Landscape	55.3	91.5	5059.95	oil on canvas	NLW	944	577	0.6112
+216.jpg	216	Penmon Cross	n.d.	Landscape	77.5	39.5	3061.25	oil on canvas	OYM	385	944	2.4519
+217.jpg	217	Pentrepella	1970s	Landscape	76.6	178	13634.8	oil on canvas	NLW	944	402	0.4258
+218.jpg	218	Pilot Boat off Moelfre	1947	Landscape	38.5	74.5	2868.25	oil on canvas	OYM	944	613	0.6494
+219.jpg	219	Plucked Chicken	1950-1970	Still life	102	56.5	5763	oil on canvas	NLW	523	944	1.805
+220.jpg	220	Ponies at Betws Garmon	n.d.	Landscape	89.5	119.6	10704.2	oil on canvas	BU	944	728	0.7712
+221.jpg	221	Ponies at Dusk	1960-1970	Landscape	55.8	91.3	5094.54	oil on canvas	NLW	944	581	0.6155
+222.jpg	222	Ponies on a Sea Cliff	1990-2006	Landscape	76.1	76	5783.6	oil on canvas	NLW	939	944	1.0053
+223.jpg	223	Pony on Llanddwyn Island	n.d.	Landscape	72.3	87.3	6311.79	oil on canvas	Derbyshire and Derby School Library Service	800	638	0.7975
+224.jpg	224	"Porth Swtan, Sir Fon "	c.1985	Landscape	49.8	89.8	4472.04	oil on canvas	NLW	944	522	0.553
+225.jpg	225	Portrait of a Boy	1944	Portrait	27.9	21.6	602.64	oil on hardboard	UCL Art Museum	624	800	1.2821
+226.jpg	226	Portrait of Grey-Haired Woman	1943	Portrait	30.5	25.4	774.7	oil on canvas	UCL Art Museum	655	800	1.2214
+227.jpg	227	Portrait of a Young Woman looking Left	1950-1970	Portrait	61	51	3111	oil on canvas	NLW	798	944	1.183
+228.jpg	228	Pwllderi	1970-1990	Landscape	51.3	61	3129.3	oil on canvas	NLW	944	784	0.8305
+229.jpg	229	R.S. Thomas (1913-2000)	c.1980	Portrait	91	91	8281	oil on canvas	NLW	939	944	1.0053
+230.jpg	230	"Range of Mountains, Snowdonia"	1950-1960	Landscape	50.3	76.1	3827.83	oil on canvas	NLW	944	633	0.6706
+231.jpg	231	Rhosybol	1960--1970	Landscape	91	121.7	11074.7	oil on canvas	NLW	944	702	0.7436
+232.jpg	232	Road to the Farm	1970-1990	Landscape	50.5	76.2	3848.1	oil on canvas	NLW	944	635	0.6727
+233.jpg	233	"Roadside Cottage, Eryri"	1940-1950	Landscape	50.5	61	3080.5	oil on canvas	NLW	944	796	0.8432
+234.jpg	234	Rocamdour	1960-1970	Landscape	51	61.2	3121.2	oil on canvas	NLW	944	785	0.8316
+235.jpg	235	Royal Welchman in Scarlet	1948	Portrait	75.3	59.6	4487.88	oil on canvas	RWFRM	729	944	1.2949
+236.jpg	236	Rugged Mountains with Low Cloud	1970-1990	Landscape	91.3	91.6	8363.08	oil on canvas	NLW	944	939	0.9947
+237.jpg	237	Sea at Trearddur	c.1976	Seascape	50	114	5700	oil on canvas	Southend Museum Collection	800	349	0.4362
+238.jpg	238	Self Portrait	c.1953	Portrait	32	13	416	oil on canvas	NLW	393	944	2.402
+239.jpg	239	Self Portrait	1968	Portrait	89.5	60.5	5414.75	oil on canvas	NLW	601	944	1.5707
+240.jpg	240	Self Portrait	1997	Portrait	124.5	74.7	9300.15	oil on canvas	NLW	575	944	1.6417
+241.jpg	241	Self Portrait	1940-1950	Portrait	34.7	29.4	1020.18	oil on hardboard	NLW	803	944	1.1756
+242.jpg	242	Sir Charles Eans (1918-1995)	c.1965	Portrait	91	71	6461	oil on canvas	NMGW	613	800	1.3051
+243.jpg	243	"Sir David Hughes Parry (1983-1973), President (1955-1964)"	1964	Portrait	91	71	6461	oil on canvas	Aberystwyth School of Art Gallery and Museum	716	944	1.3184
+244.jpg	244	Sir Thomas Parry (1904-1985)	c.1970	Portrait	75.5	90.5	6832.75	oil on canvas	NLW	944	944	1
+245.jpg	245	Skeleton	1940-1950	Still life	28	57.8	1618.4	oil on paper	NLW	944	701	0.7426
+246.jpg	246	Snow above Beddgelert	c.1959	Landscape	91.5	122	11163	oil on canvas	National Museums Liverpool	944	683	0.7235
+247.jpg	247	"Snow and Cloud, Snowdonia"	1950-1970	Landscape	61	76.5	4666.5	oil on canvas	NLW	944	728	0.7712
+248.jpg	248	Snow on Siabod	c.1968	Landscape	40.6	50.9	2066.54	oil on canvas	NMGW	800	629	0.7862
+249.jpg	249	"Snow on the Mountains, Eryri"	1960-1970	Landscape	61.2	76.3	4669.56	oil on canvas	NLW	944	757	0.8019
+250.jpg	250	Snowdon	"Mid 20th Century (pre 1965, see note)"	Landscape	55	80	4400	oil on canvas	Alun School	944	700	0.7415
+251.jpg	251	Snowdon from Drws y Coed	n.d.	Landscape	119.8	181.6	21755.68	oil on canvas	BU	944	732	0.7754
+252.jpg	252	Snowdon from Gelli Iago	1960-1970	Landscape	91.6	121.7	11147.72	oil on canvas	NLW	944	699	0.7405
+253.jpg	253	Snowdon from Llyn Nantlle	c.1945	Landscape	39.4	49.5	1950.3	oil on canvas	NMGW	800	649	0.8112
+254.jpg	254	Snowdon from near Harlech	n.d.	Landscape	21	35.7	749.7	oil on board	Glynn Vivian Art Gallery	944	548	0.5805
+255.jpg	255	Snowdon from Ty Obry	c.1960s	Landscape	120	240	28800	oil on canvas	NLW	944	482	0.5106
+256.jpg	256	Snowdon Range	1990-2006	Landscape	76.2	126.3	9624.06	oil on canvas	NLW	944	568	0.6017
+257.jpg	257	Snowdon Range	1950-1970	Landscape	51	68.6	3498.6	oil on canvas	NLW	944	705	0.7468
+258.jpg	258	"Snowdon, the Traeth and the Frightened Horse"	1948	Landscape	76.5	183	13999.5	oil on canvas	Aberystwyth School of Art Gallery and Museum	944	390	0.4131
+259.jpg	259	Snowdonian Summits	1970-1990	Landscape	50.5	76	3838	oil on canvas	NLW	944	637	0.6748
+260.jpg	260	Snowstorm off Penmon	1961	Landscape	91.5	122	11163	oil on canvas	OYM	944	602	0.6377
+261.jpg	261	Storm	1950-1960	Seascape	51	61.2	3121.2	oil on canvas	NLW	944	793	0.84
+262.jpg	262	Storm Approaching	1990-2006	Seascape	90.9	90.9	8262.81	oil on canvas	NLW	944	942	0.9979
+263.jpg	263	"Storm Approaching, Eryri"	1990-2006	Seascape	50.5	76	3838	oil on canvas	NLW	944	638	0.6758
+264.jpg	264	Storm at Trearddur	1987	Seascape	95	126	11970	oil on canvas	OYM	944	712	0.7542
+265.jpg	265	Storm Clouds over the Mountains	1960-1970	Seascape	56	91.6	5129.6	oil on canvas	NLW	944	580	0.6144
+266.jpg	266	Storm from the Beach	1990-2006	Seascape	61	91.2	5563.2	oil on canvas	NLW	944	631	0.6684
+267.jpg	267	"Storm, Porth Cwyfan"	1995	Landscape	94.3	145.4	13711.22	oil on canvas	NMGW	800	465	0.5812
+268.jpg	268	"Storm, Trearddur"	1996	Landscape	60	90.5	5430	oil on canvas	NLW	944	626	0.6631
+269.jpg	269	Stormy Sea	1970-1990	Seascape	55.7	76.2	4244.34	oil on canvas	NLW	944	691	0.732
+270.jpg	270	Stormy Sea	1990-2006	Seascape	50.5	75.5	3812.75	oil on canvas	NLW	944	631	0.6684
+271.jpg	271	Stormy Sea	1990-2006	Seascape	71	91.5	6496.5	oil on canvas	NLW	944	734	0.7775
+272.jpg	272	Stormy Sea under a Dark Sky	1990-2006	Seascape	50.5	76	3838	oil on canvas	NLW	944	637	0.6748
+273.jpg	273	Stormy Sky and Distant Mountain	1960-1980	Landscape	50.4	61	3074.4	oil on canvas	NLW	944	809	0.857
+274.jpg	274	"Summer, Snowdonia"	1970-1990	Landscape	61	76	4636	oil on canvas	NLW	944	757	0.8019
+275.jpg	275	Sun and Cloud on Lliwedd 	1973	Landscape	55.3	76.2	4213.86	oil on canvas	Aberystwyth School of Art Gallery and Museum	944	657	0.696
+276.jpg	276	Sunflowers with Mountains Beyond	1940-1950	Landscape	40.8	29.8	1215.84	oil on canvas	NLW	705	944	1.339
+277.jpg	277	Sunset	n.d.	Landscape	121.7	121.7	14810.89	oil on canvas	OYM	944	944	1
+278.jpg	278	"Sunset, Anglesey"	2004	Landscape	91	91	8281	oil on canvas	NLW	944	942	0.9979
+279.jpg	279	Swtan	1947	Landscape	44.6	50.8	2265.68	oil on canvas	OYM	944	729	0.7722
+280.jpg	280	Talsarn	1981	Landscape	58.3	58.6	3416.38	oil on canvas	Hereford Museum and Art Gallery	915	944	1.0317
+281.jpg	281	Tan-y-Grisiau	n.d.	Landscape	90	70	6300	oil on canvas	OYM	645	944	1.4636
+282.jpg	282	The Chelsea Pensioner	1980	Portrait	95	64	6080	oil on canvas	OYM	644	944	1.4658
+283.jpg	283	"The Church and Cottages, Aberffraw"	1960s	Landscape	49.5	75	3712.5	oil on canvas (?)	Merthyr Tydfil Museum Service	944	618	0.6547
+284.jpg	284	The Cleric	1940-1950	Portrait	91.3	61.2	5587.56	oil on canvas	NLW	635	944	1.4866
+285.jpg	285	The Crucifixion	n.d.	Genre	125.5	57	7153.5	oil on canvas	BU	498	944	1.8956
+286.jpg	286	The Dark Lake	1951	Landscape	44.5	54.5	2425.25	oil on canvas	Swindon Art Gallery	800	654	0.8175
+287.jpg	287	The Gathering (Farmers on Glyder Fawr)	1980s 	Landscape	122	183	22326	oil on canvas	NLW	944	622	0.6589
+288.jpg	288	The Moelwyns from Aberglasyn	c.1952	Landscape	38.8	77	2987.6	oil on canvas	NLW	800	398	0.4975
+289.jpg	289	The New Road to the Valley	c.1969	Landscape	91.5	91	8326.5	oil on canvas	NLW	922	944	1.0239
+290.jpg	290	The Old Soldier	1951	Portrait	91.4	70.5	6443.7	oil on canvas	Arts Council Collection	539	685	1.2709
+291.jpg	291	The Path from the Shore	1970-1990	Landscape	91.5	91.2	8344.8	oil on canvas	NLW	927	944	1.0183
+292.jpg	292	The Way to the Cottages	1990-2006	Landscape	60.7	91.2	5535.84	oil on canvas	NLW	944	628	0.6653
+293.jpg	293	Three Farmers on a mountain Path	1960-1970	Landscape	50.7	68.7	3483.09	oil on canvas	NLW	944	705	0.7468
+294.jpg	294	Tom Owen	1951	Portrait	83	74	6142	oil on canvas	Carmarthenshire County Council	791	944	1.1934
+295.jpg	295	Towards the Moutains	1960-1980	Landscape	51	61	3111	oil on canvas	NLW	944	807	0.8549
+296.jpg	296	Traeth Coch	1970-1980	Landscape	76.1	127.2	9679.92	oil on canvas	NLW	944	571	0.6049
+297.jpg	297	Tre'r Ceiri	n.d.	Landscape	35.5	45.5	1615.25	oil on canvas	Glynn Vivian Art Gallery	944	721	0.7638
+298.jpg	298	Tryfan	1960-1980	Landscape	91.2	122.2	11144.64	oil on canvas	NLW	944	710	0.7521
+299.jpg	299	Tryfan	1950-1960	Landscape	40.5	51	2065.5	oil on canvas	NLW	944	770	0.8157
+300.jpg	300	Tryfan No.2	n.d.	Landscape	50	110	5500	oil on canvas	Atkinson Art Gallery	800	350	0.4375
+301.jpg	301	View from Pwllfanogl	n.d.	Landscape	76	76	5776	oil on canvas	OYM	933	944	1.0118
+302.jpg	302	View of Snowdon in Winter	n.d.	Landscape	27.1	76.5	2073.15	oil on canvas	Glynn Vivian Art Gallery	944	357	0.3782
+303.jpg	303	"Waterfall, Ogwen"	n.d.	Landscape	127	77	9779	oil on canvas	MOMA	561	944	1.6827
+304.jpg	304	Wave Breaking on Rocks	1950-1970	Landscape	70.8	91.2	6456.96	oil on canvas	NLW	944	740	0.7839
+305.jpg	305	Wave on Stormy Sea	1990-2006	Seascape	50.5	91.2	4605.6	oil on canvas	NLW	944	634	0.6716
+306.jpg	306	Welsh Black Bull	1990-2006	Landscape	71.2	91.2	6493.44	oil on canvas	NLW	944	739	0.7828
+307.jpg	307	Welsh Black on Rocky Outcrop above the Coast	1940-1950	Landscape	51	68.5	3493.5	oil on canvas	NLW	944	702	0.7436
+308.jpg	308	Welsh Blacks Grazing on Snowdonia	1970-1990	Landscape	50.8	60.8	3088.64	oil on canvas	NLW	944	795	0.8422
+309.jpg	309	"Welsh Blacks, Llanddona"	1960-1970	Landscape	61	61	3721	oil on canvas	NLW	944	937	0.9926
+310.jpg	310	Welsh Landscape	c.1970	Landscape	50.5	68.5	3459.25	oil on canvas	NLW	944	693	0.7341
+311.jpg	311	Welsh Landscape	n.d.	Landscape	119.5	119.5	14280.25	oil on canvas	CU	799	800	1.0013
+312.jpg	312	Welsh Landscape with Farmers	n.d.	Landscape	49.5	113.5	5618.25	oil on canvas	CU	800	343	0.4288
+313.jpg	313	Welsh Pony Grazing at the Coast	1960-1970	Landscape	56	76.3	4272.8	oil on canvas	NW	944	696	0.7373
+314.jpg	314	Welsh Sheepdog	1980-1990	Genre	51	76	3876	oil on canvas	NW	944	640	0.678
+315.jpg	315	William Lee	1979	Portrait	91	91	8281	oil on canvas	NMGW	797	800	1.0038
+316.jpg	316	William Moelwyn Merchant (1913-1997)	c.1970	Portrait	90	90	8100	oil on canvas	NLW	940	944	1.0043
+317.jpg	317	Winter at Fachwen	1967	Landscape	122	244	29768	oil on canvas	GAC	944	473	0.5011
+318.jpg	318	Winter Coast 	1970-1990	Landscape	50.9	76.5	3893.85	oil on canvas	NLW	944	635	0.6727
+319.jpg	319	Woman with a Duster	c.1990	Portrait	121.5	91	11056.5	oil on canvas	NLW	719	944	1.3129
+320.jpg	320	Y Garn and Foel Goch	c.1950	Landscape	60.5	95.5	5777.75	oil on canvas	Scarborough Art Gallery	944	587	0.6218
+321.jpg	321	Yellow Fields under a Grey Sky	1950-1960	Landscape	60.8	91.5	5563.2	oil on canvas	NLW	944	632	0.6695
+322.jpg	322	Yolanta	1967	Portrait	60	91	5460	oil on canvas	OYM	944	521	0.5519
+323.jpg	323	"Young Girl with a Black Dress, Standing"	1950-1970	Portrait	76.5	50.5	3863.25	oil on canvas	NLW	651	944	1.4501
+324.jpg	324	Young Woman Looking Forward	c.1950	Portrait	60.9	40.7	2478.63	oil on canvas	NLW	632	944	1.4937
+325.jpg	325	Yr Wyddfa a Grib Goch	1950-1960	Landscape	60.7	76	4613.2	oil on canvas	NLW	944	758	0.803
