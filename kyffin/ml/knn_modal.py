@@ -41,4 +41,4 @@ class KNearestNeighbourModal:
         modal_year = int(years[len(years)/2])
         if len(years) % 2 == 0:
             modal_year = modal_year + int(years[(len(years)/2) - 1]) / 2
-        meta.year = modal_year
+        return modal_year

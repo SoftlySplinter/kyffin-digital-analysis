@@ -47,12 +47,11 @@ class Analyser:
     def classify(self, i, actual, classified):
         toClassify = self.paintings.pop(i)
         actualY = toClassify.year
-        self.ml.classify( toClassify, self.paintings )
-
-        classifiedY = toClassify.year
-
-        toClassify.year = actualY
+        classifiedY = self.ml.classify( toClassify, self.paintings )
         self.paintings.insert(i, toClassify)
+        if classifiedY == -1:
+            return
+
 
         actual.append(actualY)
         classified.append(classifiedY)
