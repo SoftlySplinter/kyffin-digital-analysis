@@ -5,10 +5,41 @@
 %It is more likely that things were more complex than you first thought. In particular, were there any problems or difficulties that you found during implementation that you had to address? Did such problems simply delay you or were they more significant? Your implementation might well be described in the same chapter as Problems (see below).
 
 \section{Colour Space Analysis}
+Colour space analysis involves performing statistical analysis on different colour models 
+(\gls{rgb}, \gls{hsv}, etc.). This gives a very simplistic view of the entire image.
 
-\subsection{Colour Spaces}
+OpenCV offers the \textit{Avg(CvArr):CvScalar} method to perform the average across the image, 
+however with a further look into the documentation there is also the 
+\textit{AvgStd(CvArr):(CvScalar,CvScalr)} method which performs both mean and standard deviation
+on an image.
+
+The analysed data was just the tuple returned by the \textit{AvgStd} method. The distance measure
+was defined to be the sum of all elements in the tuple (in the case of an \gls{rgb} colour model
+the mean red, green and blue and the standard deviation of red, green and blue).
+
+\subsection{Colour Models}
+There are many colour models to consider with digital image processing. \Gls{rgb} is one of the
+better know colour spaces as it is often how images are captured. It does have a problem in that
+all three values can change when the brightness changes.
+
+As one of the main principals of this project is that Kyffin Williams' work darkened over time, it
+should follow that \gls{rgb} may not be the best colour model to use.
+
+To account for this it was decided to also use a \gls{hsv} colour model to compare and contrast to
+\gls{rgb}.
+
+OpenCV handles colour spaces slightly oddly. Initially it uses \textit{LoadImageM(str, int):CvMat}
+to load the image, where the \textit{int} is a flag to define whether the image should be loaded
+in colour or grayscale.
+
+From this image you then can use \textit{CvtColor(CvArr, CvArr, int)} to convert the colour model
+of an image. The \textit{int} is a flag to define a number of different colour spaces.
+
+Once converted, all methods act exactly the same as they would on a \gls{rgb} image.
+
 
 \subsection{Colour Histograms}
+
 
 
 \section{Texture Analysis}
