@@ -64,13 +64,23 @@ Once converted, all methods act exactly the same as they would on a \gls{rgb} im
 \subsubsection{Nearest Exemplar Classification}
 To implement Nearest Exemplar Classification was a fairly easy task: Llyod (with help from members
 of the \gls{nlw}) provided a secondary spreadsheet which contained all the necessary information 
-of exemplar by year (see figure~\ref{fig:exemplar-spreadsheet} for the full document).
+of exemplar by year (see table~\ref{tab:exemplar-spreadsheet} for the full document).
 
-The spreadsheet was arranged in the format described in figure~\ref{fig:exemplar-layout}, from
+The spreadsheet was arranged in the format described in table~\ref{tab:exemplar-layout}, from
 there it was a simple matter of saving the spreadsheet as a \gls{csv} file and taking some of the
 existing code for parsing \gls{csv} files. This caused a slight problem in that the parsed data
 didn't have enough information to create a full \verb+Painting+ object, yet all the analysis
 techniques worked from these objects.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|} \hline
+Filename & ID  & Title                      & Catalogue Entry & Year \\\hline
+154.jpg  & 154 & Landscape at Llanaelhaearn & 1947            & 1947 \\\hline
+\multicolumn{5}{|c|}{\textit{etc.}}\\\hline
+\end{tabular}
+\caption{Layout of the Exemplar Spreadsheet}\label{tab:exemplar-layout}
+\end{table}
 
 This was solved easily thanks to Python's dynamic typing. A simple class which implemented all the
 necessary elements of \verb+Painting+ could be passed to the analysis techniques without any
@@ -91,7 +101,12 @@ example which was an exemplar itself.
 
 \begin{figure}[h]
 \begin{algorithmic}
-\Method{NearestExemplarClassification}{examples, exemplars}
+\Function{NearestExemplarClassification}{$example$, $exemplars$}
+\If{$example \in exemplars$}
+\State \Return $\varnothing$
+\EndIf
+\State \Return \Call{Nearest}{$example, exemplars$}
+\EndFunction
 \end{algorithmic}
 \caption{Nearest Exemplar Classification Psuedocode}\label{fig:nec-psuedo}
 \end{figure}
