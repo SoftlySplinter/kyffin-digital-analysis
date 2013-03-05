@@ -8,12 +8,11 @@
 Colour space analysis involves performing statistical analysis on different colour models 
 (\gls{rgb}, \gls{hsv}, etc.). This gives a very simplistic view of the entire image.
 
-OpenCV offers the \textit{Avg(CvArr):CvScalar} method to perform the average across the image, 
-however with a further look into the documentation there is also the 
-\textit{AvgStd(CvArr):(CvScalar,CvScalr)} method which performs both mean and standard deviation
-on an image.
+OpenCV offers the \texttt{Avg} method to perform the average across the image, however with a 
+further look into the documentation there is also the \texttt{AvgStd} method which performs both 
+mean and standard deviation on an image.
 
-The analysed data was just the tuple returned by the \textit{AvgStd} method. The distance measure
+The analysed data was just the tuple returned by the \texttt{AvgStd} method. The distance measure
 was defined to be the sum of all elements in the tuple (in the case of an \gls{rgb} colour model
 the mean red, green and blue and the standard deviation of red, green and blue).
 
@@ -28,12 +27,12 @@ should follow that \gls{rgb} may not be the best colour model to use.
 To account for this it was decided to also use a \gls{hsv} colour model to compare and contrast to
 \gls{rgb}.
 
-OpenCV handles colour spaces slightly oddly. Initially it uses \textit{LoadImageM(str, int):CvMat}
-to load the image, where the \textit{int} is a flag to define whether the image should be loaded
-in colour or grayscale.
+OpenCV handles colour spaces slightly oddly. Initially it uses \texttt{LoadImageM} to load the 
+image, which uses an integer argument as a flag to define whether the image should be loaded in 
+colour or grayscale.
 
-From this image you then can use \textit{CvtColor(CvArr, CvArr, int)} to convert the colour model
-of an image. The \textit{int} is a flag to define a number of different colour spaces.
+From this image you then can use \texttt{CvtColor} to convert the colour model of an image, which 
+uses an integer argument as a flag to define a number of different colour spaces.
 
 Once converted, all methods act exactly the same as they would on a \gls{rgb} image.
 
@@ -69,7 +68,7 @@ of exemplar by year (see table~\ref{tab:exemplar-spreadsheet} for the full docum
 The spreadsheet was arranged in the format described in table~\ref{tab:exemplar-layout}, from
 there it was a simple matter of saving the spreadsheet as a \gls{csv} file and taking some of the
 existing code for parsing \gls{csv} files. This caused a slight problem in that the parsed data
-didn't have enough information to create a full \verb+Painting+ object, yet all the analysis
+didn't have enough information to create a full \texttt{Painting} object, yet all the analysis
 techniques worked from these objects.
 
 \begin{table}[h]
@@ -83,7 +82,7 @@ Filename & ID  & Title                      & Catalogue Entry & Year \\\hline
 \end{table}
 
 This was solved easily thanks to Python's dynamic typing. A simple class which implemented all the
-necessary elements of \verb+Painting+ could be passed to the analysis techniques without any
+necessary elements of \texttt{Painting} could be passed to the analysis techniques without any
 complaints. With a statically typed language this would have been harder to complete, but there
 would have been ways around using sub-classes and so on.
 
