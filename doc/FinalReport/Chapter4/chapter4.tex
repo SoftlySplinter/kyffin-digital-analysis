@@ -110,7 +110,47 @@ example which was an exemplar itself.
 \caption{Nearest Exemplar Classification Psuedocode}\label{fig:nec-psuedo}
 \end{figure}
 
-\subsubsection{Theoretical Exemplars}
+This proved to give slightly worse correlation per technique than $k$-Nearest Neighbour. This 
+result is to be expected; for a start an artistically classified exemplar is unlikely to be the
+same as a statistically classified exemplar (see section~\ref{sec:sce}). Also, with fewer examples
+to classify against, any variance in the data set (of which there is a lot) will likely be 
+magnified.
+
+Lastly, a painting may be picked as an exemplar by an expert for different reasons than any
+analysis technique that currently exists can give; emotional connections and knowledge of the
+artists history can be very subjective and may not relate to anything put down in paint.
+
+
+\subsection{Statistically Classified Exemplars}\label{sec:sce}
+
+Another approach to exemplars is to work out a theoretical exemplar for a given period; the 
+centroid of paintings within the given feature space for a single year, for example.
+
+The simplest way of working this out is showing in figure~\ref{fig:sce-psuedo}, this works by 
+taking the mean (equation~\ref{eq:mean}) of each feature in the set of paintings for a single 
+year, this will give the point in feature space that is most central. This is the same technique
+used to generate centroids in a clustering algorithm ($k$-Means Clustering, for example).
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Function{StatisticalClassifyExemplar}{$examples$}
+\ForAll{$example \in examples$}
+\ForAll{$feature \in example_{features}$}
+\State $average_{feature} \gets average_{feature} + example_{feature}$
+\EndFor
+\EndFor
+\ForAll{$feature \in average$}
+\State$average_{feature} \gets \frac{average_{feature}}{\Call{Length}{examples}}$
+\EndFor
+\State \Return $average$
+\EndFunction
+\end{algorithmic}
+\caption{Psuedocode for generating a Statistically Classified Exemplar}\label{fig:sce-psuedo}
+\end{figure}
+
+This may become a long operation depending on how many dimensions the feature space has. A
+technique like \gls{pca} may be useful to help cut down the number of dimensions needed that this
+algorithm uses.
 
 
 \section{3\textsuperscript{rd} Party Libraries and Tools}
