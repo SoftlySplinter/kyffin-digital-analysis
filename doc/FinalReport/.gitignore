@@ -1,4 +1,5 @@
 *.log
+*.glo
 *.xdy
 *.aux
 *.blg

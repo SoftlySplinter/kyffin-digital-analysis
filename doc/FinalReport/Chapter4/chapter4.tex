@@ -61,10 +61,42 @@ Once converted, all methods act exactly the same as they would on a \gls{rgb} im
 \subsubsection{Attribute-Relation File Format (ARFF)}
 
 \subsection{Exemplars}
-\subsubsection{``Real'' Exemplars}
-%Central Exemplars
+\subsubsection{Nearest Exemplar Classification}
+To implement Nearest Exemplar Classification was a fairly easy task: Llyod (with help from members
+of the \gls{nlw}) provided a secondary spreadsheet which contained all the necessary information 
+of exemplar by year (see figure~\ref{fig:exemplar-spreadsheet} for the full document).
+
+The spreadsheet was arranged in the format described in figure~\ref{fig:exemplar-layout}, from
+there it was a simple matter of saving the spreadsheet as a \gls{csv} file and taking some of the
+existing code for parsing \gls{csv} files. This caused a slight problem in that the parsed data
+didn't have enough information to create a full \verb+Painting+ object, yet all the analysis
+techniques worked from these objects.
+
+This was solved easily thanks to Python's dynamic typing. A simple class which implemented all the
+necessary elements of \verb+Painting+ could be passed to the analysis techniques without any
+complaints. With a statically typed language this would have been harder to complete, but there
+would have been ways around using sub-classes and so on.
+
+With the exemplars loaded and analysed, the program could continue as normal, until the
+classification step.
+
+The idea of Nearest Exemplar Classification is to classify the unknown example using the nearest
+exemplar to that example in the feature space. This acts as a $k$-Nearest Neighbour with $k=1$ and
+the space of neighbours only including the exemplars, rather than every other example. The 
+psuedocode for this is shown in figure~\ref{fig:nec-psuedo}.
+
+Initially this was implemented so that the examples that were exemplars were also classified, but
+this is a pointless exercise which only skews the results. Additional logic was added to skip any
+example which was an exemplar itself.
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Method{NearestExemplarClassification}{examples, exemplars}
+\end{algorithmic}
+\caption{Nearest Exemplar Classification Psuedocode}\label{fig:nec-psuedo}
+\end{figure}
+
 \subsubsection{Theoretical Exemplars}
-%Gaussian Mixture Model-based Exemplars
 
 
 \section{3\textsuperscript{rd} Party Libraries and Tools}

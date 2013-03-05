@@ -95,6 +95,93 @@ digitally how it is meant to be in real life.
 \section{Existing Work}
 
 \subsection{Edge-Orientated Gradients}\label{sec:existing-hogs}
+As Kyffin Williams' work is highly texturally, looking at the edge orientation of the image is
+likely to be a valuable technique to use.
+
+One technique recommended by Hannah was to look at \gls{hog}. The suggested paper outlined the use
+of grids of \gls{hog} descriptors to improve the feature set for robust visual object
+recognition\cite{Dalal2005Histograms}. As it significantly improves the feature set it seems
+sensible to try and implement it as a technique without the Kyffin project to experiment with a
+non colour-based approach.
+
+The approach involves quite a few separate steps, only some of which are relevant to the project:
+
+\begin{enumerate}
+\item Gamma and colour normalization. Grayscale, \gls{rgb} and \gls{lab} spaces were used.
+\gls{rgb} and \gls{lab} give similar results. Grayscale reduced performance less that square root 
+gamma compression, but not as much as log compression.
+
+\item Compute gradients. Often the simplest are the better here; Gaussian smoothing followed by 
+discrete derivative masks (e.g.: figure~\ref{fig:1x2-ddm}, figure~\ref{fig:1x3-ddm}), etc. For 
+colour this was done for each channel, and take the one with the largest norm.
+
+\item Spatial and Orientation binning:
+\begin{itemize}
+\item Spatial binning is done by splitting the images into cells which can be rectangle or radial.
+\item Orientation binning are spaced equally between either 0-180 "unsigned" or 0-360 "signed" 
+bins.
+\end{itemize}
+
+\item Normalisation and Descriptor Blocks. Gradients vary over foreground/background, etc. 
+Typically the blocks were overlapped so that each scalar response contains several components.
+
+\item Pass a detector window across the image.
+
+\item Run through a Linear \gls{svm} to classify the image.
+\end{enumerate}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+-1 \\
+1
+\end{bmatrix}
+$$
+\caption{Example of a 1 by 2 Discrete Derivative Mask} \label{fig:1x2-ddm}
+\end{figure}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+-1 \\
+0 \\
+1
+\end{bmatrix}
+$$
+\caption{Example of a 1 by 3 Discrete Derivative Mask} \label{fig:1x3-ddm}
+\end{figure}
+
+Obviously, when applying this as an analysis technique to paintings, there are some points which
+are completely irrelevant. Passing a detector window and running through a Linear \gls{svm} are
+the obvious two. Normalisation is another unneeded step; computing performance isn't likely to be
+a large issue for this project; so long as the techniques complete within a semi-reasonable amount
+of time.
+
+The leaves the act of computing the gradients (again, this can be done without Gaussian smoothing
+as that reduces accuracy) which should a simple matter implemented by earlier techniques. Binning 
+by \gls{rhog} or \gls{chog} descriptors, which may prove to the one of the more difficult parts of
+implementing this technique.
+
+\Gls{rhog} descriptors have similarities to \gls{sift} descriptors, but are used quite 
+differently; \gls{sift} descriptors are optimised for sparse baseline matching whilst \gls{rhog}
+descriptors are optimised for the dense and robust coding of a spatial form. The size of the
+descriptor affects performance when using \gls{rhog}, for paintings it may turn out that a size
+relating to the original size of the painting is a good way of getting around this problem.
+
+\Gls{chog} descriptors become more complex still. They are similar to Shape 
+Context\cite{ Belongie2001Matchin}, but differ in one key aspect: in \gls{chog} descriptors each
+spatial cell holds a stack of gradient-weighted orientation cells over an orientation-independent
+edge-presence count which Shape Contexts use.
+
+According to the author it is better to think of \gls{chog} descriptors as an advanced form of 
+centre-surround coding as small descriptors with very few radial bins gave the best results.
+
+Local contrast normalisation can be performed to help against local variations in the illumination
+of foreground and background.
+
+It would seem that both \gls{rhog} and \gls{chog} descriptors are designed more for the detection
+window rather than analysis technique. This may make them less useful and result in an implemented
+technique being just a simple histogram of edge orientations.
 
 \subsection{Brush-stroke Analysis}\label{sec:existing-brush-stroke}
 Stroke analysis is one of the main goals for this project. It is quite apparent from looking at 
