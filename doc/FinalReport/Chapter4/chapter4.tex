@@ -8,8 +8,19 @@
 
 \subsection{Loading Data}
 One of the more key parts to implement before all others in this project is the ability to load in
-data from Llyod's spreadsheet. The first step of this was to convert it to a \gls{csv} file-type,
+data from Llyods spreadsheet. The first step of this was to convert it to a \gls{csv} file-type,
 which is easier to read programatically.
+
+The initial spreadsheet was slightly different from the version depicted below, Llyod was kind 
+enough to update it so it was easier to handle digitally. In this version of the spreadsheet the
+filenames were much longer and were in sub-folders depending on their collection. Extra logic was
+needed to locate the file (a simple matter of concatenating the collection to the filename as a
+directory). The image files in the second version were just flat files which I decided would be
+better placed in a data directory.
+
+The move to the newer version was a good excuse to clean up some of the initial code to use better
+Python programming practises; replacing messy loops with list comprehension where possible, using
+\gls{kwargs} and dictionaries instead of having utility methods, etc.
 
 From the original format show in table~\ref{tab:spreadsheet-format} (see 
 table~\ref{tab:spreadsheet} for the full document) the data was converted to the CSV format show
@@ -38,6 +49,43 @@ NLW,687,944,1.3741}
 This \gls{csv} was then parsed using the Python 2.7 in-built \texttt{csv} module with relative 
 ease. The example code (see listing~\ref{lst:csv_example_code}) helped with correct resource 
 management as, at this point, my Python knowledge was fairly low.
+
+
+\subsection{Top-Level Classes}
+Being used to Java, an initial instinct of mine was to set up interfaces for the majority of 
+top-level classes (namely the \texttt{Analyser} and \texttt{Classifier} classes). However, 
+because of Python's duck typing, there wasn't possibly to create these classes as interfaces. I 
+decided to create them as abstract stub classes which just held placeholder method definitions 
+which needed to be overridden in the concrete sub-classes. This was a slightly pointless exercise 
+due to the weak typing, but useful for me to get my head around the architecture.
+
+I also implemented the \texttt{Painting} class and had a method to take an array (from the CSV 
+file) and create a new instance of it from this. Later this was changed to use Python 
+\gls{kwargs} instead as it made more sense for the job. This change was done during the change to 
+the second version of Llyods database.
+
+
+\subsection{Command Line Interface}
+As a research program with lots of different analysis and classification techniques the next step
+in setting up the basic architecture was to create a set of command-line arguments which would
+switch the functionality of the program. These arguments are depicted in table~\ref{tab:args}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|} \hline
+Name             & Short Flag & Long Flag         & Description\\\hline
+Analyser         & \verb+-a+  & \verb+--analyser  +& Switch the analysis technique\\\hline
+Machine Learning & \verb+-m+  & \verb+--ml        +& Switch the machine learning technique\\\hline
+Data             & \verb+-d+  & \verb+--csv       +& The data file to use\\\hline
+GUI              & \verb+-g+  & \verb+--gui       +& Switch the GUI visualisation\\\hline
+Binning          & \verb+-5+  & \verb+--bin-years +& Put paintings in 5 year bins\\\hline
+Export           & \verb+-e+  & \verb+--export    +& Export analysed data\\\hline
+\end{tabular}
+\caption{Command Line Arguments}\label{tab:args}
+\end{table}
+
+The \texttt{argparse} library handles this nicely, the example code shown in 
+listing~\ref{lst:argparse_example_code} shows the usage of this library.
 
 
 \section{Colour Space Analysis}
