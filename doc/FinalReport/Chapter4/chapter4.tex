@@ -18,19 +18,26 @@ in figure~\ref{fig:csv-spreadsheet}.
 \begin{table}[h]
 \resizebox{\textwidth}{!}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|} \hline
-Filename & ID & Title & Catalogue entry BBC YP & Genre & Height & Width & Area & Materials & Collection & image width & image height & image height/image width \\ \hline
-001.jpg & 1 & A Chapel in the Tyrol & 1950-1960 & Landscape & 40.7 & 29.8 & 1212.86 & oil on hardboard & NLW & 687 & 944 & 1.3741 \\ \hline
+Filename & ID & Title & Catalogue entry BBC YP & Genre & Height & Width & Area & Materials & 
+Collection & image width & image height & image height/image width \\ \hline
+001.jpg & 1 & A Chapel in the Tyrol & 1950-1960 & Landscape & 40.7 & 29.8 & 1212.86 & oil on 
+hardboard & NLW & 687 & 944 & 1.3741 \\ \hline
 \end{tabular}
 }
-\caption{Format of the Data Spreadsheet}\label{tab:spreadsheet-format}
+\caption{Layout of the Painting Data Spreadsheet}\label{tab:spreadsheet-format}
 \end{table}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{
-\texttt{001.jpg,1,A Chapel in the Tyrol,1950-1960,Landscape,40.7,29.8,1212.86,oil on hardboard,NLW,687,944,1.3741}
+\texttt{001.jpg,1,A Chapel in the Tyrol,1950-1960,Landscape,40.7,29.8,1212.86,oil on hardboard,
+NLW,687,944,1.3741}
 }
-\caption{Format of the Data in CSV Format}\label{fig:csv-spreadsheet}
+\caption{Painting Data in CSV Format}\label{fig:csv-spreadsheet}
 \end{figure}
+
+This \gls{csv} was then parsed using the Python 2.7 in-built \texttt{csv} module with relative 
+ease. The example code (see listing~\ref{lst:csv_example_code}) helped with correct resource 
+management as, at this point, my Python knowledge was fairly low.
 
 
 \section{Colour Space Analysis}
