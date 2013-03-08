@@ -4,6 +4,35 @@
 
 %It is more likely that things were more complex than you first thought. In particular, were there any problems or difficulties that you found during implementation that you had to address? Did such problems simply delay you or were they more significant? Your implementation might well be described in the same chapter as Problems (see below).
 
+\section{Basic Structure}
+
+\subsection{Loading Data}
+One of the more key parts to implement before all others in this project is the ability to load in
+data from Llyod's spreadsheet. The first step of this was to convert it to a \gls{csv} file-type,
+which is easier to read programatically.
+
+From the original format show in table~\ref{tab:spreadsheet-format} (see 
+table~\ref{tab:spreadsheet} for the full document) the data was converted to the CSV format show
+in figure~\ref{fig:csv-spreadsheet}.
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|} \hline
+Filename & ID & Title & Catalogue entry BBC YP & Genre & Height & Width & Area & Materials & Collection & image width & image height & image height/image width \\ \hline
+001.jpg & 1 & A Chapel in the Tyrol & 1950-1960 & Landscape & 40.7 & 29.8 & 1212.86 & oil on hardboard & NLW & 687 & 944 & 1.3741 \\ \hline
+\end{tabular}
+}
+\caption{Format of the Data Spreadsheet}\label{tab:spreadsheet-format}
+\end{table}
+
+\begin{figure}[h]
+\resizebox{\textwidth}{!}{
+\texttt{001.jpg,1,A Chapel in the Tyrol,1950-1960,Landscape,40.7,29.8,1212.86,oil on hardboard,NLW,687,944,1.3741}
+}
+\caption{Format of the Data in CSV Format}\label{fig:csv-spreadsheet}
+\end{figure}
+
+
 \section{Colour Space Analysis}
 Colour space analysis involves performing statistical analysis on different colour models 
 (\gls{rgb}, \gls{hsv}, etc.). This gives a very simplistic view of the entire image.
@@ -37,6 +66,21 @@ uses an integer argument as a flag to define a number of different colour spaces
 Once converted, all methods act exactly the same as they would on a \gls{rgb} image.
 
 \subsection{Colour Histograms}
+Colour Histograms are a representation of the distribution of colour across an image; this makes
+them very powerful for analysing the colour space of an image.
+
+OpenCV provides a number of methods for both calculating and operating upon colour histograms. 
+Here the example code (figure~\ref{lst:opencv_histogram}) from the OpenCV documentation was a
+useful reference as some of the details of creating histograms in OpenCV are not noted implicitly
+in the python documentation.
+
+The distance measure between colour histograms is also handled by OpenCV using a compare histogram
+method. Under the covers this uses a Chi Squared (equation~\ref{eq:chi_squared}) method to
+compare to histograms of equal dimensions.
+
+\begin{equation}\label{eq:chi_squared}
+d(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I) + H_2(I)}}
+\end{equation}
 
 
 \section{Texture Analysis}
