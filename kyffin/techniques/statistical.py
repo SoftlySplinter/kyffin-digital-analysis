@@ -52,6 +52,7 @@ class HSVAnalysis( Technique ):
             return cv.AvgSdv( hsvImage )
         except IOError as e:
             print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
+
     def distance( self, a, b ):
         if b is None:
             return float('inf')
@@ -61,6 +62,23 @@ class HSVAnalysis( Technique ):
             for j in range(len(a[i])):
                 distance += abs(a[i][j] - b[i][j])
         return distance
+
+    def centroid(self, data):
+        avg_count = [0,0,0,0]
+        std_count = [0,0,0,0]
+        count = [avg_count, std_count]
+
+        for painting in data:
+            for i in xrange(len(count)):
+                for j in xrange(len(count[i])):
+                    count[i][j] += painting.data[i][j]
+
+        for i in xrange(len(count)):
+            for j in xrange(len(count[i])):
+                count[i][j] /= len(data)
+
+        return count
+
     def get_attributes(self):
         return [('Year',               'NUMERIC'),
                 ('Average Hue',        'REAL'),
