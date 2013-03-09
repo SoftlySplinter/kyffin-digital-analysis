@@ -87,6 +87,8 @@ Export           & \verb+-e+  & \verb+--export    +& Export analysed data\\\hlin
 The \texttt{argparse} library handles this nicely, the example code shown in 
 listing~\ref{lst:argparse_example_code} shows the usage of this library.
 
+These flags then hook into the factory methods to actually create the instances.
+
 
 \section{Colour Space Analysis}
 Colour space analysis involves performing statistical analysis on different colour models 
@@ -141,6 +143,80 @@ d(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I) + H_2(I)}}
 \section{Texture Analysis}
 
 \subsection{Edge Orientation}
+Edge orientation involves passing a filter over an image which is used to find the orientation of
+that gradient. There are many forms of filter which can be used to do this. The simplest of which
+discrete derivative masks (figure~\ref{fig:1x2-ddm}, figure~\ref{fig:1x3-ddm}, etc.), steerable 
+filters are a more adjustable implementation of this. There are also more complex filters, like 
+Gabor filters, which provide better flexibility and matching.
+
+Using discrete derivative masks it is fairly simple to work out to orientation of a gradient 
+mathematically. First pass a mask of the form $\begin{bmatrix}-1\\0\\1\end{bmatrix}$, followed
+by one in the form $\begin{bmatrix}-1 & 0 & 1\end{bmatrix}$. These give you 
+$\frac{\delta f}{\delta x}$ and $\frac{\delta f}{\delta y}$ respectively.
+
+From these values you can then use a gradient direction function, shown in 
+equation~\ref{eq:grad_dir}, to work out the actual direction of the gradient.
+
+\begin{equation} \label{eq:grad_dir}
+\theta = {\rm atan2}\left( \frac{\delta f}{\delta x}, \frac{\delta f}{\delta y} \right)
+\end{equation}
+
+Another way of doing this is to change the orientation of the filter and bin the direction into 
+certain cardinal directions; typically $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and $\frac{3\pi}{4}$
+(from $\pi$ to $2\pi$ becomes a repeat of any of those directions, only in reverse and are, 
+therefore, covered already).
+
+To do this we can use steerable filters (shown in figures~\ref{fig:0-steer}, \ref{fig:45-steer},
+\ref{fig:90-steer} and \ref{fig:135-steer}). With these we adjust the angle they are designed to
+match ($\theta$), which will then give the degree to which a gradient matches that angle. To 
+complete the binning by orientation, this value will then have a threshold applied, then added to
+the bin if the value is above the threshold.
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=0$)}\label{fig:0-steer}
+\end{figure}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=\frac{\pi}{4}$)}\label{fig:45-steer}
+\end{figure}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+0 & 0 & 0 \\
+1 & 1 & 1 \\
+0 & 0 & 0
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=\frac{\pi}{2}$)}\label{fig:90-steer}
+\end{figure}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=\frac{3\pi}{4}$)}\label{fig:135-steer}
+\end{figure}
+
+
 \subsubsection{Histogram of Edge Orientation}
 
 
