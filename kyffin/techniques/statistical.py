@@ -42,6 +42,18 @@ class RGBAnalysis( Technique ):
                  painting.data[1][2]]
                 for painting in paintings]
 
+    def centroid(self, data):
+        count = [[0,0,0,0],[0,0,0,0]]
+        for painting in data:
+            for i in xrange(len(count)):
+                for j in xrange(len(count[i])):
+                    count[i][j] += painting.data[i][j]
+        for i in xrange(len(count)):
+            for j in xrange(len(count[i])):
+                count[i][j] /= len(data)
+        return count
+
+
 
 class HSVAnalysis( Technique ):
     def analyse( self, painting ):
@@ -64,19 +76,14 @@ class HSVAnalysis( Technique ):
         return distance
 
     def centroid(self, data):
-        avg_count = [0,0,0,0]
-        std_count = [0,0,0,0]
-        count = [avg_count, std_count]
-
+        count = [[0,0,0,0],[0,0,0,0]]
         for painting in data:
             for i in xrange(len(count)):
                 for j in xrange(len(count[i])):
                     count[i][j] += painting.data[i][j]
-
         for i in xrange(len(count)):
             for j in xrange(len(count[i])):
                 count[i][j] /= len(data)
-
         return count
 
     def get_attributes(self):

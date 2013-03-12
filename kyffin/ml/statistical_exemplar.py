@@ -54,5 +54,4 @@ class StatisticalExemplar:
             centroid_data = self.technique.centroid(years[year])
             centroid = FakePainting(-1, "", "Statistcal Centriod", year)
             centroid.data = centroid_data
-            print centroid.data
             self.statistical_exemplars[year] = centroid
