@@ -32,7 +32,7 @@ class Analyser:
         actual = []
         classified = []
 
-        for i in range(len(self.paintings)):
+        for i in xrange(len(self.paintings)):
             self.classify(i, actual, classified)
 
         (correlation, unknown) = self.correlation(classified, actual)
@@ -51,8 +51,6 @@ class Analyser:
         self.paintings.insert(i, toClassify)
         if classifiedY == -1:
             return
-
-
         actual.append(actualY)
         classified.append(classifiedY)
 
