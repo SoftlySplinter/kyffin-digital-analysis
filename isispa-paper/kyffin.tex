@@ -171,7 +171,7 @@
 
 % *** MATH PACKAGES ***
 %
-%\usepackage[cmex10]{amsmath}
+\usepackage[cmex10]{amsmath}
 % A popular package from the American Mathematical Society that provides
 % many useful and powerful commands for dealing with mathematics. If using
 % it, be sure to load this package with the cmex10 option to ensure that
@@ -353,7 +353,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Estimating Painting Date Based on Image Features}
+\title{Can we date an artist's work from catalogue photographs?}
 
 
 % author names and affiliations
@@ -422,7 +422,8 @@ Email: lorna.hughes@llgc.org.uk}}
 
 \begin{abstract}
 %\boldmath
-The abstract goes here.
+Kyffin Williams, art changes over time, blah blah blah. Features, colour, edges, histograms of oriented gradients; strong correlation using leave-one-out methodology.
+Exemplars; artistic and statistic. 
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -453,62 +454,156 @@ The abstract goes here.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
+This paper presents a interdisciplinary computational study into the modelling
+of artistic style, and how this style changes over time. The artist Sir John
+(Kyffin) Williams painted from X to 2004, and produced many landscape paintings
+during this period -- he was a prolific painter. His style evolved from a very
+figurative, representational style, to something more abstract: the computer
+scientists on our team would say that the paintings became more \emph{blocky};
+the art historians that \emph{XXXwhatever lorna wants to say}. Through a
+collection of digital photographs of oil paintings, collected from museum
+websites, catalogues and other sources, we first investigate whether it is
+possible to date a painting from an unknown year based upon image features
+alone.  
+
+
+
 \section{Background}
 % 1 Page on Llyod's work
 
+
+\section{The image dataset}
+
+Our image dataset consists of 325 paintings, with associated metadata. Metadata
+includes title, year or year ranges, genre, original painting size, painting materials and 
+image size.
+
+These pictures are challenging: they are not colour calibrated; some suffer
+from reflections (towards the end of his life Kyffin painted using
+exceptionally thick and textural strokes, which gives specularities on the
+catalogue images); they are at varying resolutions; and come from a range of
+different cameras. Image size bears little relation to the original painting
+size, and some images are even optimised for the web.  Table~\ref{summary_t}
+below summarises the dataset
+
+
+\begin{table}[h]
+\begin{tabular}{| l | c | c | p{3cm} |}
+Type & Number & Number & Notes \\
+  & & (Known date) &  \\
+\hline
+Landscapes  & 247 & 64 & \\
+Portraits   &  52 & 35 & \\
+Seascapes   &  11 &  2 & \\
+Still lifes &   4 &  1 & \\
+Other       &   8 &  0 & \\
+\end{tabular}
+\caption{A summary of the Kyffin Williams painting dataset used}
+\label{summary_t}
+\end{table}
+
 \section{Methodology}
 % 0.5 Page on the validation - LOOCV
-Leave-one-out cross validation was used on the results of feature-based classifiers, a list of
-actual years against the classified years was then produced. Pearson product-moment correlation
-coefficient was applied to these lists to give a performance measure of each classifier.
 
-For exemplar-based classifiers the result of the classification was a new point in space, the
-statistically-chosen exemplar, which was then compared to an existing point in space, the
-artistically-chosen exemplar. The performance measure applied to each classifier was the squared
-error of the distance from the statistically-chosen exemplar to the artistically-chosen exemplar.
+Within our database of X paintings, we know the actual year of painting for Y
+artworks. In order to determine the accuracy of our results we have used a
+leave-one-out cross validation methodology. This involves us taking a painting
+for which we know the year, and then guessing that year; thus we are able to
+tell whether we are right, and if we are wrong, exactly how wrong we are.  
+
+To simplify the classification stage we use a K-Nearest Neighbour classifier
+with the other Y-1 paintings for which we know the date; we expect that there
+may be some underlying pattern in the change of style but for this work have
+concentrated on features for classification rather than classification or
+regression itself.
+ 
+Thus for each feature set, we take all paintings for which we know the year of
+creation; select one painting, and find its nearest neighbours within that
+feature space. We also know that painting's actual year, and we can plot actual
+against predicted year for all known-year paintings.  To measure goodness of
+fit, the Pearson's product-moment correlation coefficient was calculated on
+these orderings; this provides us with a performance measure of each
+classifier.
+
+% XXX Thought: You can test Pearson's for statistical significance - can we try this?
+% http://www.vassarstats.net/textbook/ch4apx.html 
+% Should not require much change to your code.
 
 
-
-\section{Classification}
+\section{An exploration of colour and texture features}
 
 % 0.5 page on references
 % 4 pages on the rest
-\subsection{Feature-based Classification}
-The digital analysis of paintings is quite a wide area to look into; there are many feature spaces
-which can be used; from colour-space, edge detection, texture analysis and brush-stroke
-recognition.
 
-Initially we focused on simple colour-space analysis; taking the mean RGB across each painting and
-running it through a simple classification algorithm, k-nearest neighbour. Other colour models,
-such as HSV, were also used to compare and contrast against RGB. Manhattan distance was the
-primary distance measure used for this feature space.
+The digital analysis of paintings is quite a wide area to look into; there are
+many feature spaces which can be used; from colour-space, edge detection,
+texture analysis and brush-stroke recognition.
 
-Colour histograms of the paintings were also produced as a more accurate measurement of 
-colour space. We continued to use k-nearest neighbour, but with different methods of calculating
-distance between each point in feature space; namely chi squared.
+Initially we focused on simple colour-space analysis; taking the mean RGB
+across each painting and running it through a simple classification algorithm,
+k-nearest neighbour. Other colour models, such as HSV, were also used to
+compare and contrast against RGB. 
 
-As a lot of Kyffin Williams' paintings are highly textural, edge detection and texture analysis
-were thought to be good techniques to explore.
+Colour histograms of the paintings were also produced as a more accurate
+measurement of colour space. We continued to use k-nearest neighbour, but with
+different methods of calculating distance between each point in feature space;
+namely chi squared.
 
-Edge detection involved applying one of the various edge detection algorithms available, applying
-it to each painting. The distance measure is base on the number and strength of edges in the
-painting.
+%XXX I would concentrate on chi-squared, forget manhattan for this paper. 
+%XXX basically all along we are generating histograms of feature response, 
+%XXX and then using these to classify. the histogram might just mean mean 
+%XXX R, G, B but it's a histogram all the same. 
 
-Texture analysis is a continuation of edge detection. Instead of just taking the strength and 
-number of edges; it creates a histogram of orientated gradients\cite{Dalal2005Histograms} begin to
-build up a more faithful representation of the texture of a painting. To begin with steerable 
-filters at $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and $\frac{3\pi}{4}$ were applied to the image to
-bin by those orientations.
+As a lot of Kyffin Williams' paintings are highly textural, edge detection and
+texture analysis were thought to be good techniques to explore.
 
-Gabor filters were also used with a greater range of angles to produce a more accurate 
-representation of the texture of the painting.
+Edge detection involved applying one of the various edge detection algorithms
+available, applying it to each painting. The distance measure is base on the
+number and strength of edges in the painting. 
 
-Another method for producing histograms of orientated gradients is to apply two discrete 
-derivative masks to the image to get the gradient of $x$ and $y$ and then to work out the gradient
-direction at each point. This can then have a histogram created from it to provide a different
-representation of the texture of the image.
+%XXX which edge detection?  need a cite
 
-\subsection{Exemplar-based Classification}
+Texture analysis is a continuation of edge detection. Instead of just taking
+the strength and number of edges; it creates a histogram of orientated
+gradients\cite{Dalal2005Histograms} begin to build up a more faithful
+representation of the texture of a painting. To begin with steerable filters at
+$0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and $\frac{3\pi}{4}$ were applied to the
+image to bin by those orientations.
+
+%XXX can we have a scary equation here?
+\begin{align}
+g_e(x) &= \frac{1}{2\pi\sigma_x \sigma_y}e^{-\frac{1}{2}\left(\frac{x^2}{\sigma_x}+\frac{y^2}{\sigma_y}\right)}\cos(2\pi\omega_{x_0}x + 2\pi\omega_{y_0}y)
+\intertext{Where}
+&(\omega_{x_0},\omega_{y_0}) \text{ Defines the centre frequency}\nonumber
+\intertext{and}
+&(\sigma_x,\sigma_y) \text{ the spread of the Gaussian window}\nonumber
+\end{align}
+
+Gabor filters were also used with a greater range of angles to produce a more
+accurate representation of the texture of the painting.
+
+%XXX can you draw a picture showing the influence of steerable filter angles?
+
+Another method for producing histograms of orientated gradients is to apply two
+discrete derivative masks to the image to get the gradient of $x$ and $y$ and
+then to work out the gradient direction at each point. This can then have a
+histogram created from it to provide a different representation of the texture
+of the image.
+
+%XXX Right oh now what we need is some graphs
+%XXX I suggest for now doing results in-line, or have a table here showing 
+%XXX correlation coefficients 
+
+\section{Exemplars: can we improve results by incorporating expert knowledge? }
+
+
+For exemplar-based classifiers the result of the classification was a new point
+in space, the statistically-chosen exemplar, which was then compared to an
+existing point in space, the artistically-chosen exemplar. The performance
+measure applied to each classifier was the squared error of the distance from
+the statistically-chosen exemplar to the artistically-chosen exemplar.
+
+
 The data on artistically-chosen exemplars opened up the options for different methods of
 classification. Rather than using a k-nearest neighbour algorithm to classify each point in the
 feature space we could just take the year of the nearest exemplar to that point and use that for
@@ -519,12 +614,12 @@ exemplars would be the centroid of a group of paintings in feature space; a rela
 operation to perform digitally.
 
 \subsection{Comparing Artistic and Statistical Exemplars}
+
 The same distance measure used to run k-nearest neighbour on the feature-based classifiers was
 used to generate the error between the statistical and artistic exemplars.
 
 %TODO I need to actually write some more code for this
 
-\section{Results}
 
 \section{Conclusion}
 

@@ -4,6 +4,8 @@ import cv
 from kyffin.techniques import Technique
 from tempfile import NamedTemporaryFile
 import yaml
+from scipy.cluster.vq import kmeans,whiten
+import numpy
 
 class HistogramAnalysis(Technique):
     def __init__(self, bins = [255,255,255]):
@@ -60,6 +62,5 @@ class HistogramAnalysis(Technique):
         return data
 
     def centroid(self, data):
-        count = [[[[0] * self.bins[2]] * self.bins[1]] * self.bins[0]]
-        print count
-        return count
+        arrs = [numpy.asarray(painting.data.bins) for painting in data]
+        pass
