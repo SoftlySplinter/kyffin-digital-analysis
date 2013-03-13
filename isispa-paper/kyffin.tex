@@ -368,7 +368,7 @@ Ceredigion,\\
 SY23 3DB\\
 Email: adb9@aber.ac.uk}
 \and
-\IEEEauthorblockN{Gareth Llyod Roderick}
+\IEEEauthorblockN{Gareth Lloyd Roderick}
 \IEEEauthorblockA{\\
 Email: glr7@aber.ac.uk}
 \and
@@ -450,36 +450,83 @@ The abstract goes here.
 
 \section{Introduction}
 % no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
-I wish you the best of success.
 
-\hfill mds
- 
-\hfill January 11, 2007
-
-\subsection{Metadata}
+\section{Background}
 % 1 Page on Llyod's work
 
-\subsection{Methodology}
-% 0.5 Page on the validation - LOO-CV
+\section{Methodology}
+% 0.5 Page on the validation - LOOCV
+Leave-one-out cross validation was used on the results of feature-based classifiers, a list of
+actual years against the classified years was then produced. Pearson product-moment correlation
+coefficient was applied to these lists to give a performance measure of each classifier.
 
-\subsection{Classification}
+For exemplar-based classifiers the result of the classification was a new point in space, the
+statistically-chosen exemplar, which was then compared to an existing point in space, the
+artistically-chosen exemplar. The performance measure applied to each classifier was the squared
+error of the distance from the statistically-chosen exemplar to the artistically-chosen exemplar.
+
+
+
+\section{Classification}
 
 % 0.5 page on references
 % 4 pages on the rest
-\subsubsection{Feature-based Classification}
+\subsection{Feature-based Classification}
+The digital analysis of paintings is quite a wide area to look into; there are many feature spaces
+which can be used; from colour-space, edge detection, texture analysis and brush-stroke
+recognition.
 
-\subsubsection{Exemplar-based Classification}
+Initially we focused on simple colour-space analysis; taking the mean RGB across each painting and
+running it through a simple classification algorithm, k-nearest neighbour. Other colour models,
+such as HSV, were also used to compare and contrast against RGB. Manhattan distance was the
+primary distance measure used for this feature space.
 
-\subsubsection{Comparing Artistic and Statistical Exemplars}
+Colour histograms of the paintings were also produced as a more accurate measurement of 
+colour space. We continued to use k-nearest neighbour, but with different methods of calculating
+distance between each point in feature space; namely chi squared.
 
+As a lot of Kyffin Williams' paintings are highly textural, edge detection and texture analysis
+were thought to be good techniques to explore.
+
+Edge detection involved applying one of the various edge detection algorithms available, applying
+it to each painting. The distance measure is base on the number and strength of edges in the
+painting.
+
+Texture analysis is a continuation of edge detection. Instead of just taking the strength and 
+number of edges; it creates a histogram of orientated gradients\cite{Dalal2005Histograms} begin to
+build up a more faithful representation of the texture of a painting. To begin with steerable 
+filters at $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and $\frac{3\pi}{4}$ were applied to the image to
+bin by those orientations.
+
+Gabor filters were also used with a greater range of angles to produce a more accurate 
+representation of the texture of the painting.
+
+Another method for producing histograms of orientated gradients is to apply two discrete 
+derivative masks to the image to get the gradient of $x$ and $y$ and then to work out the gradient
+direction at each point. This can then have a histogram created from it to provide a different
+representation of the texture of the image.
+
+\subsection{Exemplar-based Classification}
+The data on artistically-chosen exemplars opened up the options for different methods of
+classification. Rather than using a k-nearest neighbour algorithm to classify each point in the
+feature space we could just take the year of the nearest exemplar to that point and use that for
+classification.
+
+This then raised the question as to what the digitally-chosen exemplars would be. Statistically 
+exemplars would be the centroid of a group of paintings in feature space; a relatively simple 
+operation to perform digitally.
+
+\subsection{Comparing Artistic and Statistical Exemplars}
+The same distance measure used to run k-nearest neighbour on the feature-based classifiers was
+used to generate the error between the statistical and artistic exemplars.
+
+%TODO I need to actually write some more code for this
+
+\section{Results}
 
 \section{Conclusion}
-The conclusion goes here.
 
 
 
@@ -512,23 +559,9 @@ The authors would like to thank...
 % http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
 % The IEEEtran BibTeX style support page is at:
 % http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
-
-
-
+\bibliography{references}
 
 % that's all folks
 \end{document}
