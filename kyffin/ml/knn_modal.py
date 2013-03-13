@@ -17,8 +17,6 @@ class KNearestNeighbourModal:
         kNearest = [float("inf")] * self.k
         years = [None] * self.k
 
-        meta.year = None
-
         # Iterate through all experience and work out the distance
         for expMeta in experience:
 #            if re.match('^\d\d\d\d$', expMeta.year) is None:

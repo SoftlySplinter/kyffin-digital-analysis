@@ -4,6 +4,92 @@
 
 %It is more likely that things were more complex than you first thought. In particular, were there any problems or difficulties that you found during implementation that you had to address? Did such problems simply delay you or were they more significant? Your implementation might well be described in the same chapter as Problems (see below).
 
+\section{Basic Structure}
+
+\subsection{Loading Data}
+One of the more key parts to implement before all others in this project is the ability to load in
+data from Llyods spreadsheet. The first step of this was to convert it to a \gls{csv} file-type,
+which is easier to read programatically.
+
+The initial spreadsheet was slightly different from the version depicted below, Llyod was kind 
+enough to update it so it was easier to handle digitally. In this version of the spreadsheet the
+filenames were much longer and were in sub-folders depending on their collection. Extra logic was
+needed to locate the file (a simple matter of concatenating the collection to the filename as a
+directory). The image files in the second version were just flat files which I decided would be
+better placed in a data directory.
+
+The move to the newer version was a good excuse to clean up some of the initial code to use better
+Python programming practises; replacing messy loops with list comprehension where possible, using
+\gls{kwargs} and dictionaries instead of having utility methods, etc.
+
+From the original format show in table~\ref{tab:spreadsheet-format} (see 
+table~\ref{tab:spreadsheet} for the full document) the data was converted to the CSV format show
+in figure~\ref{fig:csv-spreadsheet}.
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|} \hline
+Filename & ID & Title & Catalogue entry BBC YP & Genre & Height & Width & Area & Materials & 
+Collection & image width & image height & image height/image width \\ \hline
+001.jpg & 1 & A Chapel in the Tyrol & 1950-1960 & Landscape & 40.7 & 29.8 & 1212.86 & oil on 
+hardboard & NLW & 687 & 944 & 1.3741 \\ \hline
+\end{tabular}
+}
+\caption{Layout of the Painting Data Spreadsheet}\label{tab:spreadsheet-format}
+\end{table}
+
+\begin{figure}[h]
+\resizebox{\textwidth}{!}{
+\texttt{001.jpg,1,A Chapel in the Tyrol,1950-1960,Landscape,40.7,29.8,1212.86,oil on hardboard,
+NLW,687,944,1.3741}
+}
+\caption{Painting Data in CSV Format}\label{fig:csv-spreadsheet}
+\end{figure}
+
+This \gls{csv} was then parsed using the Python 2.7 in-built \texttt{csv} module with relative 
+ease. The example code (see listing~\ref{lst:csv_example_code}) helped with correct resource 
+management as, at this point, my Python knowledge was fairly low.
+
+
+\subsection{Top-Level Classes}
+Being used to Java, an initial instinct of mine was to set up interfaces for the majority of 
+top-level classes (namely the \texttt{Analyser} and \texttt{Classifier} classes). However, 
+because of Python's duck typing, there wasn't possibly to create these classes as interfaces. I 
+decided to create them as abstract stub classes which just held placeholder method definitions 
+which needed to be overridden in the concrete sub-classes. This was a slightly pointless exercise 
+due to the weak typing, but useful for me to get my head around the architecture.
+
+I also implemented the \texttt{Painting} class and had a method to take an array (from the CSV 
+file) and create a new instance of it from this. Later this was changed to use Python 
+\gls{kwargs} instead as it made more sense for the job. This change was done during the change to 
+the second version of Llyods database.
+
+
+\subsection{Command Line Interface}
+As a research program with lots of different analysis and classification techniques the next step
+in setting up the basic architecture was to create a set of command-line arguments which would
+switch the functionality of the program. These arguments are depicted in table~\ref{tab:args}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|} \hline
+Name             & Short Flag & Long Flag         & Description\\\hline
+Analyser         & \verb+-a+  & \verb+--analyser  +& Switch the analysis technique\\\hline
+Machine Learning & \verb+-m+  & \verb+--ml        +& Switch the machine learning technique\\\hline
+Data             & \verb+-d+  & \verb+--csv       +& The data file to use\\\hline
+GUI              & \verb+-g+  & \verb+--gui       +& Switch the GUI visualisation\\\hline
+Binning          & \verb+-5+  & \verb+--bin-years +& Put paintings in 5 year bins\\\hline
+Export           & \verb+-e+  & \verb+--export    +& Export analysed data\\\hline
+\end{tabular}
+\caption{Command Line Arguments}\label{tab:args}
+\end{table}
+
+The \texttt{argparse} library handles this nicely, the example code shown in 
+listing~\ref{lst:argparse_example_code} shows the usage of this library.
+
+These flags then hook into the factory methods to actually create the instances.
+
+
 \section{Colour Space Analysis}
 Colour space analysis involves performing statistical analysis on different colour models 
 (\gls{rgb}, \gls{hsv}, etc.). This gives a very simplistic view of the entire image.
@@ -37,11 +123,100 @@ uses an integer argument as a flag to define a number of different colour spaces
 Once converted, all methods act exactly the same as they would on a \gls{rgb} image.
 
 \subsection{Colour Histograms}
+Colour Histograms are a representation of the distribution of colour across an image; this makes
+them very powerful for analysing the colour space of an image.
+
+OpenCV provides a number of methods for both calculating and operating upon colour histograms. 
+Here the example code (figure~\ref{lst:opencv_histogram}) from the OpenCV documentation was a
+useful reference as some of the details of creating histograms in OpenCV are not noted implicitly
+in the python documentation.
+
+The distance measure between colour histograms is also handled by OpenCV using a compare histogram
+method. Under the covers this uses a Chi Squared (equation~\ref{eq:chi_squared}) method to
+compare to histograms of equal dimensions.
+
+\begin{equation}\label{eq:chi_squared}
+d(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I) + H_2(I)}}
+\end{equation}
 
 
 \section{Texture Analysis}
 
 \subsection{Edge Orientation}
+Edge orientation involves passing a filter over an image which is used to find the orientation of
+that gradient. There are many forms of filter which can be used to do this. The simplest of which
+discrete derivative masks (figure~\ref{fig:1x2-ddm}, figure~\ref{fig:1x3-ddm}, etc.), steerable 
+filters are a more adjustable implementation of this. There are also more complex filters, like 
+Gabor filters, which provide better flexibility and matching.
+
+Using discrete derivative masks it is fairly simple to work out to orientation of a gradient 
+mathematically. First pass a mask of the form $\begin{bmatrix}-1\\0\\1\end{bmatrix}$, followed
+by one in the form $\begin{bmatrix}-1 & 0 & 1\end{bmatrix}$. These give you 
+$\frac{\delta f}{\delta x}$ and $\frac{\delta f}{\delta y}$ respectively.
+
+From these values you can then use a gradient direction function, shown in 
+equation~\ref{eq:grad_dir}, to work out the actual direction of the gradient.
+
+\begin{equation} \label{eq:grad_dir}
+\theta = {\rm atan2}\left( \frac{\delta f}{\delta x}, \frac{\delta f}{\delta y} \right)
+\end{equation}
+
+Another way of doing this is to change the orientation of the filter and bin the direction into 
+certain cardinal directions; typically $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and $\frac{3\pi}{4}$
+(from $\pi$ to $2\pi$ becomes a repeat of any of those directions, only in reverse and are, 
+therefore, covered already).
+
+To do this we can use steerable filters (shown in figures~\ref{fig:0-steer}, \ref{fig:45-steer},
+\ref{fig:90-steer} and \ref{fig:135-steer}). With these we adjust the angle they are designed to
+match ($\theta$), which will then give the degree to which a gradient matches that angle. To 
+complete the binning by orientation, this value will then have a threshold applied, then added to
+the bin if the value is above the threshold.
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=0$)}\label{fig:0-steer}
+\end{figure}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=\frac{\pi}{4}$)}\label{fig:45-steer}
+\end{figure}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+0 & 0 & 0 \\
+1 & 1 & 1 \\
+0 & 0 & 0
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=\frac{\pi}{2}$)}\label{fig:90-steer}
+\end{figure}
+
+\begin{figure}[h]
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+$$
+\caption{Steerable Filter ($\theta=\frac{3\pi}{4}$)}\label{fig:135-steer}
+\end{figure}
+
+
 \subsubsection{Histogram of Edge Orientation}
 
 

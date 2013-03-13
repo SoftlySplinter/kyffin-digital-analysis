@@ -58,3 +58,8 @@ class HistogramAnalysis(Technique):
                 for k in xrange(self.bins[2]):
                     data.append(cv.QueryHistValue_3D(painting.data, i, j, k))
         return data
+
+    def centroid(self, data):
+        count = [[[[0] * self.bins[2]] * self.bins[1]] * self.bins[0]]
+        print count
+        return count

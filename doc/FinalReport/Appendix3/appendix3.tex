@@ -1,7 +1,40 @@
 \chapter{Code Samples}
 
+\section{Example CSV Parsing Code}
+\begin{lstlisting}[language=python,breaklines=true,
+caption={Example CSV Parsing Code from http://docs.python.org/2/library/csv.html},label=lst:csv_example_code]
+>>> import csv
+>>> with open('eggs.csv', 'rb') as csvfile:
+...     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+...     for row in spamreader:
+...         print ', '.join(row)
+Spam, Spam, Spam, Spam, Spam, Baked Beans
+Spam, Lovely Spam, Wonderful Spam
+\end{lstlisting}
+
+\section{argparse Example Code}
+\begin{lstlisting}[language=python,
+caption={Example argparse Code from http://docs.python.org/2/library/argparse.html},
+label=lst:argparse_example_code]
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('integers',
+                   metavar='N',
+                   type=int, 
+                   nargs='+',
+                   help='an integer for the accumulator')
+parser.add_argument('--sum',
+                   dest='accumulate',
+                   action='store_const',
+                   const=sum, default=max,
+                   help='sum the integers (default: find the max)')
+
+args = parser.parse_args()
+print args.accumulate(args.integers)
+\end{lstlisting}
+
 \section{Gabor Filter Example Implementation}
-\begin{figure}[h]
 \begin{lstlisting}[language=MATLAB,breaklines=true,
 caption={Example implementation of a Gabor Filter in MATLAB from wikipedia\cite{Contributors2012Gabor}}]
 function gb=gabor_fn(sigma,theta,lambda,psi,gamma)
@@ -24,13 +57,12 @@ y_theta=-x*sin(theta)+y*cos(theta);
  
 gb= exp(-.5*(x_theta.^2/sigma_x^2+y_theta.^2/sigma_y^2)).*cos(2*pi/lambda*x_theta+psi);
 \end{lstlisting}
-\end{figure}
 
 
 \section{OpenCV Histogram Example Code}
 
 
-\begin{lstlisting}[language=python,breaklines=true,
+\begin{lstlisting}[language=python,breaklines=true,label=lst:opencv_histogram,
 caption={Example Histogram calculation and displaying code from OpenCV\cite{opencv_library}.}] 
 # Taken from: http://opencv.willowgarage.com/documentation/python/imgproc_histograms.html#calchist
 # Calculating and displaying 2D Hue-Saturation histogram of a color image
@@ -84,7 +116,7 @@ if __name__ == '__main__':
     cv.NamedWindow("H-S Histogram", 1)
     cv.ShowImage("H-S Histogram", hs_histogram(src))
 
-    cv.WaitKey(0)
+    cv.WaitKey(0)]
 \end{lstlisting}
 
 

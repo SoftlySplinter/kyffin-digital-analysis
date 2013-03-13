@@ -11,11 +11,12 @@ class FakePainting:
         self.data = None
         self.id = id
 
-class NearestExemplar:
+class StatisticalExemplar:
     def __init__(self, technique, exemplar_file):
         self.technique = technique
         self.exemplars = {}
         self.read_exemplars(exemplar_file)
+        self.statistical_exemplars = None
 
     def read_exemplars(self, db):
         with open(db, 'r') as csv_file:
@@ -24,7 +25,7 @@ class NearestExemplar:
                     r_filename      = row[0]
                     r_id            = row[1]
                     r_title         = row[2]
-                    r_exemplar_year = int(row[4])
+                    r_exemplar_year = row[4]
                     temp = FakePainting(r_id, r_filename, r_title, r_exemplar_year)
                     temp.data = self.technique.analyse(temp)
                     self.exemplars[temp.year] = temp
@@ -33,14 +34,25 @@ class NearestExemplar:
 
     def classify(self, painting, experience):
         """Classify the point in space"""
-        
-        nearest_exemplar = None
-        for year in self.exemplars:
-            if self.exemplars[year].id == painting.id:
-                return -1
-            distance = self.technique.distance(painting.data, self.exemplars[year].data)
-            if nearest_exemplar == None or nearest_exemplar['distance'] > distance:
-                nearest_exemplar = {'year': year, 'distance': distance}
-            
-#        print "Original: {}\nClassified: {}\n".format(painting.year, nearest_exemplar['year'])
-        return nearest_exemplar['year']
+        if self.statistical_exemplars == None:
+            self.generate_exemplars([painting]+experience)
+        in_exemplars = False
+        for exemplar in self.exemplars:
+            if self.exemplars[exemplar].id == painting.id:
+                artistic = self.exemplars[exemplar]
+                statistical = self.statistical_exemplars[exemplar]
+                return self.technique.distance(artistic.data, statistical.data)
+        return -1
+
+    def generate_exemplars(self,data):
+        self.statistical_exemplars = {}
+        years = {}
+        for painting in data:
+            if painting.year not in years:
+                years[painting.year] = []
+            years[painting.year].append(painting)
+        for year in years:
+            centroid_data = self.technique.centroid(years[year])
+            centroid = FakePainting(-1, "", "Statistcal Centriod", year)
+            centroid.data = centroid_data
+            self.statistical_exemplars[year] = centroid

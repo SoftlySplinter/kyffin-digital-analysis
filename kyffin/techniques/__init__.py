@@ -17,6 +17,9 @@ class Technique( object ):
         '''Return a distance metric from one analysed painting to another.'''
         pass
 
+    def centroid(self, data):
+        return data[0]
+
     def export(self, paintings):
         """Export the analysed data."""
         data = {'description': self.__class__.__name__, 
