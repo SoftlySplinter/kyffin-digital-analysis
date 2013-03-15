@@ -3,7 +3,7 @@ __all__ = ['Technique']
 from abc import abstractmethod
 import arff
 import datetime
-import cv2
+import cv2, numpy
 
 class Technique( object ):
     '''Abstract class to define a technique.'''
