@@ -3,22 +3,21 @@ __all__ = ['Technique']
 from abc import abstractmethod
 import arff
 import datetime
+import cv2
 
 class Technique( object ):
     '''Abstract class to define a technique.'''
 
-    @abstractmethod
     def analyse(self, painting):
         '''Perform some form of analysis on a painting.'''
         return None
 
-    @abstractmethod
     def distance(self, current, other):
         '''Return a distance metric from one analysed painting to another.'''
-        pass
+        return cv2.compareHist(current, other, cv2.cv.CV_COMP_CHISQR)
 
-    def centroid(self, data):
-        return data[0]
+    def centroid(self, paintings):
+        return numpy.mean([painting.data for painting in paintings], axis=0)
 
     def export(self, paintings):
         """Export the analysed data."""
@@ -28,7 +27,6 @@ class Technique( object ):
                 'data': self.get_values(paintings)}
         return arff.dumps(data)
 
-    @abstractmethod
     def get_values(self, paintings):
         return [[datetime.date(int(painting.year),1, 1)] for painting in paintings]
 

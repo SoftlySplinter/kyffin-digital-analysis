@@ -1,10 +1,11 @@
 #! /usr/bin/env python
 import sys
 import cv
+import cv2
 from kyffin.techniques import Technique
 from tempfile import NamedTemporaryFile
 import yaml
-from scipy.cluster.vq import kmeans,whiten
+from scipy.cluster.vq import kmeans2
 import numpy
 
 class HistogramAnalysis(Technique):
@@ -12,34 +13,11 @@ class HistogramAnalysis(Technique):
         self.bins = bins
 
     def analyse(self, painting):
-        image = None
-        try:
-            image = cv.LoadImageM( painting.filePath )
-        except IOError as e:
-            print 'Unable to load {0}: {1}'.format(painting.title, e)
-            return
-
-        r_range = [0,255]
-        g_range = [0,255]
-        b_range = [0,255]
-        ranges = [r_range, g_range, b_range]
-
-        # Set up the planes for RGB.
-        r_plane = cv.CreateMat(image.rows, image.cols, cv.CV_8UC1)
-        g_plane = cv.CreateMat(image.rows, image.cols, cv.CV_8UC1)
-        b_plane = cv.CreateMat(image.rows, image.cols, cv.CV_8UC1)
-                
-        # Split the original image based on these planes and combine into an array for convenience.
-        cv.Split(image, r_plane, g_plane, b_plane, None)
-        planes = [r_plane, g_plane, b_plane]
-
-        # Generate histograms with uniform bins.
-        hist = cv.CreateHist(self.bins, cv.CV_HIST_ARRAY, ranges, 1)
-        cv.CalcHist([cv.GetImage(i) for i in planes], hist)
+        image = cv2.imread(painting.filePath)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        hist = cv2.calcHist([image], [0,1], None, [180,256], [0,255,0,255])
+        cv2.normalize(hist, hist, 0, 255, cv2.NORM_MINMAX)
         return hist
-
-    def distance(self, a, b):
-        return cv.CompareHist(a,b,cv.CV_COMP_CHISQR)
 
     def get_values(self, paintings):
         return [[painting.year] + self.export_cv(painting) for painting in paintings] 
@@ -60,7 +38,3 @@ class HistogramAnalysis(Technique):
                 for k in xrange(self.bins[2]):
                     data.append(cv.QueryHistValue_3D(painting.data, i, j, k))
         return data
-
-    def centroid(self, data):
-        arrs = [numpy.asarray(painting.data.bins) for painting in data]
-        pass

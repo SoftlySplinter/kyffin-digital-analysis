@@ -1,24 +1,18 @@
 #! /usr/bin/env python
 
 from kyffin.techniques import Technique
-import cv
+import cv2, numpy
 from datetime import date, datetime
 
 class RGBAnalysis( Technique ):
     def analyse( self, painting ):
         try:
-            image = cv.LoadImageM(painting.filePath)
-            cv.AvgSdv(image)
-            return cv.AvgSdv( image )
+            image = cv2.imread(painting.filePath)
+            mean,std_dev = cv2.meanStdDev(image)
+            ret = numpy.ndarray(shape=(2,3), buffer=numpy.array([mean,std_dev]), dtype=numpy.float32)
+            return ret
         except IOError as e:
             print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
-
-    def distance( self, a, b ):
-        distance = 0
-        for i in range(len(a)):
-            for j in range(len(a[i])):
-                distance += abs(a[i][j] - b[i][j])
-        return distance
 
     def get_attributes(self):
         return [('Year',          'DATE %Y'),
@@ -39,49 +33,31 @@ class RGBAnalysis( Technique ):
                  painting.data[1][2]]
                 for painting in paintings]
 
-    def centroid(self, data):
-        count = [[0,0,0,0],[0,0,0,0]]
-        for painting in data:
-            for i in xrange(len(count)):
-                for j in xrange(len(count[i])):
-                    count[i][j] += painting.data[i][j]
-        for i in xrange(len(count)):
-            for j in xrange(len(count[i])):
-                count[i][j] /= len(data)
-        return count
+#    def centroid(self, data):
+#        count = [[0,0,0,0],[0,0,0,0]]
+#        for painting in data:
+#            for i in xrange(len(count)):
+#                for j in xrange(len(count[i])):
+#                    count[i][j] += painting.data[i][j]
+#        for i in xrange(len(count)):
+#            for j in xrange(len(count[i])):
+#                count[i][j] /= len(data)
+#        return count
 
 
 
 class HSVAnalysis( Technique ):
     def analyse( self, painting ):
         try:
-            image = cv.LoadImageM(painting.filePath)
-            hsvImage = cv.CloneMat(image)
-            cv.CvtColor( image, hsvImage, cv.CV_RGB2HSV )
-            return cv.AvgSdv( hsvImage )
+            image = cv2.imread(painting.filePath)
+            image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+            mean,std_dev = cv2.meanStdDev(image)
+            ret = numpy.ndarray(shape=(2,3), buffer=numpy.array([mean,std_dev]), dtype=numpy.float32)
+            return ret
         except IOError as e:
             print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
-
-    def distance( self, a, b ):
-        if b is None:
-            return float('inf')
-
-        distance = 0
-        for i in range(len(a)):
-            for j in range(len(a[i])):
-                distance += abs(a[i][j] - b[i][j])
-        return distance
-
-    def centroid(self, data):
-        count = [[0,0,0,0],[0,0,0,0]]
-        for painting in data:
-            for i in xrange(len(count)):
-                for j in xrange(len(count[i])):
-                    count[i][j] += painting.data[i][j]
-        for i in xrange(len(count)):
-            for j in xrange(len(count[i])):
-                count[i][j] /= len(data)
-        return count
+        except IOError as e:
+            print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
 
     def get_attributes(self):
         return [('Year',               'NUMERIC'),
