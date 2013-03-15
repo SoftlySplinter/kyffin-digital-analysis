@@ -9,8 +9,7 @@ class RGBAnalysis( Technique ):
         try:
             image = cv2.imread(painting.filePath)
             mean,std_dev = cv2.meanStdDev(image)
-            ret = numpy.ndarray(shape=(2,3), buffer=numpy.array([mean,std_dev]), dtype=numpy.float32)
-            return ret
+            return numpy.hstack((numpy.float32(mean), numpy.float32(std_dev)))
         except IOError as e:
             print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
 
@@ -52,8 +51,7 @@ class HSVAnalysis( Technique ):
             image = cv2.imread(painting.filePath)
             image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
             mean,std_dev = cv2.meanStdDev(image)
-            ret = numpy.ndarray(shape=(2,3), buffer=numpy.array([mean,std_dev]), dtype=numpy.float32)
-            return ret
+            return numpy.hstack((numpy.float32(mean), numpy.float32(std_dev)))
         except IOError as e:
             print 'Unable to load painting "{0}". {1}'.format(painting.title, e)
         except IOError as e:

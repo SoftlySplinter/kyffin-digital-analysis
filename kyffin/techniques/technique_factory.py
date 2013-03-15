@@ -12,7 +12,7 @@ def getTechnique(name):
         return HSVAnalysis()
     elif name == 'histogram':
         return HistogramAnalysis([5,5,5])
-    elif name == 'edge-orientation':
+    elif name == 'edge':
         return EdgeOrientation()
     elif name == "hog":
         return HOG() 

@@ -7,7 +7,6 @@ class Ensemble(Technique):
     def analyse(self, painting):
         return [technique.analyse(painting) for technique in self.techniques]
         
-
     def distance(self, current, other):
         distance = 0
         for i in range(len(self.techniques)):
