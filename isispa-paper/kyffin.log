@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.19)  13 MAR 2013 21:01
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.19)  15 MAR 2013 10:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -200,7 +200,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 528--531
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-] (./kyffin.bbl)
+]
+Underfull \hbox (badness 2932) in paragraph at lines 601--603
+[]\OT1/ptm/m/n/10 Where $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ![]; ![]\OT1/cmr/m/n
+/10 )$ \OT1/ptm/m/n/10 de-fines the cen-tre fre-quency, and
+ []
+
+(./kyffin.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -214,13 +220,13 @@ Before submitting the final camera ready copy, remember to:
 
 [2] (./kyffin.aux) ) 
 Here is how much of TeX's memory you used:
- 1517 strings out of 493485
- 22584 string characters out of 3143526
- 83307 words of memory out of 3000000
- 4872 multiletter control sequences out of 15000+200000
+ 1519 strings out of 493485
+ 22605 string characters out of 3143526
+ 82307 words of memory out of 3000000
+ 4874 multiletter control sequences out of 15000+200000
  36945 words of font info for 66 fonts, out of 3000000 for 9000
  960 hyphenation exceptions out of 8191
- 27i,10n,20p,198b,205s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,9n,20p,198b,205s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
@@ -233,7 +239,7 @@ nts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type
 b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on kyffin.pdf (2 pages, 123478 bytes).
+Output written on kyffin.pdf (2 pages, 125081 bytes).
 PDF statistics:
  60 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream

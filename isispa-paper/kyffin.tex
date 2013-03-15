@@ -469,14 +469,14 @@ alone.
 
 
 \section{Background}
-% 1 Page on Llyod's work
+% 1 Page on Lloyd's work
 
 
 \section{The image dataset}
 
 Our image dataset consists of 325 paintings, with associated metadata. Metadata
-includes title, year or year ranges, genre, original painting size, painting materials and 
-image size.
+includes title, year or year ranges, genre, original painting size, painting
+materials and image size.
 
 These pictures are challenging: they are not colour calibrated; some suffer
 from reflections (towards the end of his life Kyffin painted using
@@ -505,14 +505,14 @@ Other       &   8 &  0 & \\
 \section{Methodology}
 % 0.5 Page on the validation - LOOCV
 
-Within our database of X paintings, we know the actual year of painting for Y
+Within our database of 325 paintings, we know the actual year of painting for 102 %XXX is this true?
 artworks. In order to determine the accuracy of our results we have used a
 leave-one-out cross validation methodology. This involves us taking a painting
 for which we know the year, and then guessing that year; thus we are able to
 tell whether we are right, and if we are wrong, exactly how wrong we are.  
 
 To simplify the classification stage we use a K-Nearest Neighbour classifier
-with the other Y-1 paintings for which we know the date; we expect that there
+with the other 101 paintings for which we know the date; we expect that there
 may be some underlying pattern in the change of style but for this work have
 concentrated on features for classification rather than classification or
 regression itself.
@@ -545,14 +545,9 @@ k-nearest neighbour. Other colour models, such as HSV, were also used to
 compare and contrast against RGB. 
 
 Colour histograms of the paintings were also produced as a more accurate
-measurement of colour space. We continued to use k-nearest neighbour, but with
-different methods of calculating distance between each point in feature space;
-namely chi squared.
-
- XXX I would concentrate on chi-squared, forget manhattan for this paper. 
- basically all along we are generating histograms of feature response, 
- and then using these to classify. the histogram might just mean mean 
- R, G, B but it's a histogram all the same. 
+measurement of colour space. With all of these analysis techniques we treat the results as 
+histograms, this allows us to use a single distance measure, namely chi-squared, for k-nearest
+neighbour
 
 As a lot of Kyffin Williams' paintings are highly textural, edge detection and
 texture analysis were thought to be good techniques to explore.
@@ -564,25 +559,46 @@ number and strength of edges in the painting.
  XXX which edge detection?  need a cite
 
 Texture analysis is a continuation of edge detection. Instead of just taking
-the strength and number of edges; it creates a histogram of orientated
-gradients\cite{Dalal2005Histograms} begin to build up a more faithful
-representation of the texture of a painting. To begin with steerable filters at
-$0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and $\frac{3\pi}{4}$ were applied to the
-image to bin by those orientations.
+the strength and number of edges, we create a histogram of orientated gradients
+as in \cite{Dalal2005Histograms}. In this way we begin to build up a richer
+representation of the texture of a painting. Given the change in style of
+Kyffin Williams' work, moving away from figurative representations with curved
+lines towards more blocky rectilinear brush strokes, we expect these edge
+orientation frequencies to change over time. To this end we used simple
+steerable filters $S$, applied to the image at $0$, $\frac{\pi}{4}$,
+$\frac{\pi}{2}$ and $\frac{3\pi}{4}$. 
+\begin{equation}
+S\left(\frac{\pi}{2}\right) = \left( \begin{array}{ccc}
+0 & 0 & 0 \\
+1 & 1 & 1 \\
+0 & 0 & 0 \end{array} \right)
+\label{filter_ex}
+\end{equation}
 
-%XXX can we have a scary equation here?
-\begin{align}
-g_e(x) &= \frac{1}{2\pi\sigma_x \sigma_y}e^{-\frac{1}{2}\left(\frac{x^2}{\sigma_x}+\frac{y^2}{\sigma_y}\right)}\cos(2\pi\omega_{x_0}x + 2\pi\omega_{y_0}y)
-\intertext{Where}
-&(\omega_{x_0},\omega_{y_0}) \text{ Defines the centre frequency}\nonumber
-\intertext{and}
-&(\sigma_x,\sigma_y) \text{ the spread of the Gaussian window}\nonumber
-\end{align}
+Equation~\ref{filter_ex} shows a sample steerable filter, in this case
+$S(\frac{\pi}{2})$, the filter which gives the highest response when presented
+with horizontal lines. By convolving each image with filters tuned to different
+orientations, we can build a histogram recording the frequency of lines at each
+orientation.
+
+ XXX Can we have a visualisation of this? perhaps a picture with its associated
+histogram? maybe a crop from this blog http://users.aber.ac.uk/adb9/?e=27 but
+maybe we want to make the visualisation a bit more stand out...
 
 Gabor filters were also used with a greater range of angles to produce a more
 accurate representation of the texture of the painting.
 
- XXX can you draw a picture showing the influence of steerable filter angles?
+\begin{equation}
+g_e(x) = \frac{1}{2\pi\sigma_x \sigma_y}e^{-\frac{1}{2}\left(\frac{x^2}{\sigma_x}+\frac{y^2}{\sigma_y}\right)}\cos(2\pi\omega_{x_0}x + 2\pi\omega_{y_0}y)
+\label{gabor_eq}
+\end{equation}
+
+Where $(\omega_{x_0},\omega_{y_0})$\ defines the centre frequency, and
+$(\sigma_x,\sigma_y)$ the spread of the Gaussian window.
+
+
+ XXX Again, can we get a visualisation? What does Gabor give us that steerable 
+filters don't (apart from scary mathematics?)
 
 Another method for producing histograms of orientated gradients is to apply two
 discrete derivative masks to the image to get the gradient of $x$ and $y$ and
@@ -660,5 +676,4 @@ The authors would like to thank...
 
 % that's all folks
 \end{document}
-
 
