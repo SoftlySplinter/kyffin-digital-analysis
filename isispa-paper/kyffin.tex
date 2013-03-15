@@ -496,7 +496,7 @@ Landscapes  & 247 & 64 & \\
 Portraits   &  52 & 35 & \\
 Seascapes   &  11 &  2 & \\
 Still lifes &   4 &  1 & \\
-Other       &   8 &  0 & \\
+Other       &   8 &  0 & Genre unknown or studies \\
 \end{tabular}
 \caption{A summary of the Kyffin Williams painting dataset used}
 \label{summary_t}
@@ -554,9 +554,8 @@ texture analysis were thought to be good techniques to explore.
 
 Edge detection involved applying one of the various edge detection algorithms
 available, applying it to each painting. The distance measure is base on the
-number and strength of edges in the painting. 
-
- XXX which edge detection?  need a cite
+number and strength of edges in the painting. Canny\cite{Canny1986Computational} 
+edge detection is a reasonable algorithm for this. %TODO Why?
 
 Texture analysis is a continuation of edge detection. Instead of just taking
 the strength and number of edges, we create a histogram of orientated gradients
@@ -609,6 +608,19 @@ of the image.
  XXX Right oh now what we need is some graphs
  I suggest for now doing results in-line, or have a table here showing 
  correlation coefficients 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3.5cm}|c|c|}
+Technique     & $r$ & $P(r)$ \\ \hline
+RGB           &     &        \\
+HSV           &     &        \\
+HSV Histogram &     &        \\
+Edge Strength &     &        \\
+HOG           &     &        \\
+\end{tabular}
+\caption{Correlation Coefficients}\label{tab:results}
+\end{table}
 
 \section{Exemplars: can we improve results by incorporating expert knowledge? }
 

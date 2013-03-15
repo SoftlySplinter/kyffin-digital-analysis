@@ -21,6 +21,14 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{Canny1986Computational}
+\BIBentryALTinterwordspacing
+J.~F. Canny, ``A computational approach to edge detection,'' \emph{Pattern
+  Analysis and Machine Intelligence, IEEE Transactions on}, vol. PAMI-8, no.~6,
+  pp. 679--698, Nov. 1986. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/tpami.1986.4767851}
+\BIBentrySTDinterwordspacing
+
 \bibitem{Dalal2005Histograms}
 \BIBentryALTinterwordspacing
 N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human

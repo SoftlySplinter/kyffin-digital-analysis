@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.19)  15 MAR 2013 10:12
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.19)  15 MAR 2013 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -201,7 +201,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 528--531
 
 
 ]
-Underfull \hbox (badness 2932) in paragraph at lines 601--603
+Underfull \hbox (badness 2932) in paragraph at lines 595--597
 []\OT1/ptm/m/n/10 Where $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ![]; ![]\OT1/cmr/m/n
 /10 )$ \OT1/ptm/m/n/10 de-fines the cen-tre fre-quency, and
  []
@@ -220,10 +220,10 @@ Before submitting the final camera ready copy, remember to:
 
 [2] (./kyffin.aux) ) 
 Here is how much of TeX's memory you used:
- 1519 strings out of 493485
- 22605 string characters out of 3143526
- 82307 words of memory out of 3000000
- 4874 multiletter control sequences out of 15000+200000
+ 1521 strings out of 493485
+ 22642 string characters out of 3143526
+ 83307 words of memory out of 3000000
+ 4876 multiletter control sequences out of 15000+200000
  36945 words of font info for 66 fonts, out of 3000000 for 9000
  960 hyphenation exceptions out of 8191
  27i,9n,20p,198b,205s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -239,7 +239,7 @@ nts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type
 b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on kyffin.pdf (2 pages, 125081 bytes).
+Output written on kyffin.pdf (2 pages, 126526 bytes).
 PDF statistics:
  60 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream
