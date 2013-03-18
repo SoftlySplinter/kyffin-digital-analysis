@@ -128,7 +128,7 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+  \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
@@ -456,36 +456,48 @@ Exemplars; artistic and statistic.
 
 This paper presents a interdisciplinary computational study into the modelling
 of artistic style, and how this style changes over time. The artist Sir John
-(Kyffin) Williams painted from X to 2004, and produced many landscape paintings
+(Kyffin) Williams painted from X to 2004, and produced a good many paintings
 during this period -- he was a prolific painter. His style evolved from a very
 figurative, representational style, to something more abstract: the computer
 scientists on our team would say that the paintings became more \emph{blocky};
-the art historians that \emph{XXXwhatever lorna wants to say}. Through a
-collection of digital photographs of oil paintings, collected from museum
+the art historians that \emph{XXXwhatever lorna and lloyd want to say}. Through
+a collection of digital photographs of oil paintings, collected from museum
 websites, catalogues and other sources, we first investigate whether it is
 possible to date a painting from an unknown year based upon image features
 alone.  
 
+XXX mention key features of Kyffin's work, Patagonia, where he painted
 
 
 \section{Background}
 % 1 Page on Lloyd's work
 
+\subsection{A digital humanities approach to art history}
+
+\subsection{Computer vision and the analysis of paintings}
+
+XXX in here we will need refs to that work on van gogh, to the guy who wrote
+the review paper, and to anything else on computer analysis of paintings that
+is relevant. What we're looking for are 5+ references, going from the general
+(massive review paper) to the specific (image processing to analyse artistic
+style). Bonus points for freshness - we don't really want to cite anything
+older than 10 years. Can you copy and paste some stuff from your MPR? Doesn't
+matter if it's too long I'll hack it back.
 
 \section{The image dataset}
 
 Our image dataset consists of 325 paintings, with associated metadata. Metadata
-includes title, year or year ranges, genre, original painting size, painting
+includes title, year or year ranges (for those works where year is unknown but
+can be estimated by curators), genre, original painting size, painting
 materials and image size.
 
-These pictures are challenging: they are not colour calibrated; some suffer
-from reflections (towards the end of his life Kyffin painted using
-exceptionally thick and textural strokes, which gives specularities on the
-catalogue images); they are at varying resolutions; and come from a range of
-different cameras. Image size bears little relation to the original painting
-size, and some images are even optimised for the web.  Table~\ref{summary_t}
-below summarises the dataset
-
+These photographs of paintings are challenging in and of themselves: they are
+not colour calibrated; some suffer from reflections (towards the end of his
+life Kyffin painted using exceptionally thick and textural strokes, which gives
+specularities on the catalogue images); they are at varying resolutions; and
+come from a range of different cameras. Image size bears little relation to the
+original painting size, and some images are even optimised for the web.
+Table~\ref{summary_t} below summarises the dataset
 
 \begin{table}[h]
 \begin{tabular}{| l | c | c | p{3cm} |}
@@ -502,28 +514,52 @@ Other       &   8 &  0 & Genre unknown or studies \\
 \label{summary_t}
 \end{table}
 
+XXXIt may be worth putting in something here about image size vs painting size?
+
+
 \section{Methodology}
 % 0.5 Page on the validation - LOOCV
 
-Within our database of 325 paintings, we know the actual year of painting for 102 %XXX is this true?
-artworks. In order to determine the accuracy of our results we have used a
-leave-one-out cross validation methodology. This involves us taking a painting
-for which we know the year, and then guessing that year; thus we are able to
-tell whether we are right, and if we are wrong, exactly how wrong we are.  
+Within our database of 325 paintings, we know the actual year of painting for
+102 artworks. In order to determine the accuracy of our results, rather than
+work with the full dataset (and work with images with uncertain metadata in the
+form of date ranges), we have used a leave-one-out cross validation
+methodology. This involves us taking a painting for which we know the year, and
+then using our classifier to guess that year; thus we are able to tell whether
+we are right. We are also able, if we are wrong, to determine exactly how wrong
+we are.  
 
-To simplify the classification stage we use a K-Nearest Neighbour classifier
-with the other 101 paintings for which we know the date; we expect that there
-may be some underlying pattern in the change of style but for this work have
-concentrated on features for classification rather than classification or
-regression itself.
+To simplify the classification stage we use a K-Nearest Neighbour (KNN)
+classifier with the other 101 paintings for which we know the date. KNN is a
+fast, non-parametric classifier which makes no assumptions about the underlying
+patterns in the data, merely that paintings from around the same time will be
+similarly located in our feature space(s). Whilst we suspect that there may be
+some broader underlying trend in the change of style, for this work have
+concentrated on features for classification rather than the question of
+classification or regression itself. 
  
+\begin{figure}
+\includegraphics[width=8cm]{kyffin_overview.pdf}
+\caption{Overview of the classification methodology}
+\label{LOOCV}
+\end{figure}
+% yes diagram looks proper fuzzy but if we can work out export to pdf
+% instead of png then it'll look ok. you should have the dia file as 
+% well as the png
+
 Thus for each feature set, we take all paintings for which we know the year of
 creation; select one painting, and find its nearest neighbours within that
-feature space. We also know that painting's actual year, and we can plot actual
-against predicted year for all known-year paintings.  To measure goodness of
-fit, the Pearson's product-moment correlation coefficient was calculated on
-these orderings; this provides us with a performance measure of each
-classifier.
+feature space. The year assigned by our classifier to that painting is the 
+XXXMEAN/MED/MODE?
+Figure~\ref{LOOCV} provides an overview of this classification methodology.
+
+
+We also know that painting's actual year, and we can plot actual against
+predicted year for all known-year paintings.  To measure goodness of fit, the
+Pearson's product-moment correlation coefficient was calculated on these
+orderings; this provides us with a performance measure of each classifier.  It
+is also possible to test Pearson's R for statistical significance; thus
+significance levels are reported alongside R in this paper.
 
  XXX Thought: You can test Pearson's for statistical significance - can we try this?
  http://www.vassarstats.net/textbook/ch4apx.html 
@@ -535,20 +571,30 @@ classifier.
 % 0.5 page on references
 % 4 pages on the rest
 
-The digital analysis of paintings is quite a wide area to look into; there are
-many feature spaces which can be used; from colour-space, edge detection,
-texture analysis and brush-stroke recognition.
+The digital analysis of paintings is a broad reseach area. Within the
+methodology we have selected, there are many feature spaces which could be
+useful: from simple analysis of the way in which colour changes over time,
+through edge detection, to texture analysis and maybe even brush-stroke
+recognition. Within this work we have concentrated on lower level image
+features -- colours, textures, and edges -- rather than attempt to extract
+brush strokes. Kyffin Williams painted with a pallette knife rather than a
+brush, and his work is characterised by angularity rather than identifiable
+``strokes''.
 
-Initially we focused on simple colour-space analysis; taking the mean RGB
-across each painting and running it through a simple classification algorithm,
-k-nearest neighbour. Other colour models, such as HSV, were also used to
-compare and contrast against RGB. 
+As there is a clear (to the eye) trend in colour usage, as the paintings get
+``gloomier'' over time, we started with simple colour-space analysis: taking
+the mean RGB for each painting and using this with our KNN classfier; we also
+tested other colour spaces, such as HSV. Promisingly this provided us with a
+positive correlation.  With all of these analysis techniques we treat the
+results as histograms, this allows us to use a single distance measure, namely
+chi-squared, for k-nearest neighbour.
 
-Colour histograms of the paintings were also produced as a more accurate
-measurement of colour space. With all of these analysis techniques we treat the results as 
-histograms, this allows us to use a single distance measure, namely chi-squared, for k-nearest
-neighbour
-
+Staying with the colour variation theme, we then used colour histograms, which
+provide a more precise representation of the way Kyffin Williams used colour.
+These histograms were developed by counting the number of pixels within a
+particular colour range for each painting, and then building a normalised
+histogram representing the colour usage.
+ 
 As a lot of Kyffin Williams' paintings are highly textural, edge detection and
 texture analysis were thought to be good techniques to explore.
 
@@ -613,7 +659,21 @@ of the image.
 \centering
 \input{results-hist}
 \caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour on Histogram Analysis}
+\label{pearsons-k}
 \end{figure}
+
+
+XXX you're not going to like me for this but can you plot the other feature
+spaces too?
+
+The one parameter of our classifier is the choice of K in K-nearest neigbour.
+Simply setting $K=1$\ has the effect of assigning the year of the nearest
+painting in feature space to the current test painting, whereas setting
+$K=102$\ has the effect of giving each painting the mean value of the entire
+dataset. Clearly a point between these two extremes would be best; from
+Figure~\ref{pearsons-k} we can see that for many of the feature spaces we
+consider, the optimum K value is around 10.
+
 
 \begin{table}[h]
 \centering
@@ -694,4 +754,3 @@ The authors would like to thank...
 
 % that's all folks
 \end{document}
-
