@@ -17,7 +17,7 @@ def main():
         suite = unittest.TestLoader().loadTestsFromTestCase(StatisticalTest)
         unittest.TextTestRunner(verbosity=2).run(suite)
     else :
-        print "Kyffin ({0})".format(loadVersion())
+#        print "Kyffin ({0})".format(loadVersion())
         if options.csv is not None:
             tech = techniqueFactory.getTechnique(options.technique)
             gui = guiFactory.getGUI(options.gui, options.technique)

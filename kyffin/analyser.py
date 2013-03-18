@@ -36,7 +36,7 @@ class Analyser:
             self.classify(i, actual, classified)
 
         (correlation, unknown) = self.correlation(classified, actual)
-        print 'Correlation: {0} ({1})'.format(correlation, unknown)
+        print '{0}\t{1}'.format(correlation, unknown)
 
         plot.figure(2)
         plot.plot(actual, classified, 'x')
