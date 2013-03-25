@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  25 MAR 2013 14:21
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  25 MAR 2013 15:00
 entering extended mode
  %&-line parsing enabled.
 **kyffin.tex
@@ -241,10 +241,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 558.
 
-<kyffin_overview.pdf, id=9, 299.1175pt x 333.245pt>
-File: kyffin_overview.pdf Graphic file (type pdf)
- <use kyffin_overview.pdf>
-[2] <img/steerable.jpg, id=14, 947.54pt x 634.37pt>
+<img/kyffin_overview.pdf, id=9, 299.1175pt x 333.245pt>
+File: img/kyffin_overview.pdf Graphic file (type pdf)
+
+<use img/kyffin_overview.pdf> [2]
+<img/steerable.jpg, id=14, 947.54pt x 634.37pt>
 File: img/steerable.jpg Graphic file (type jpg)
  <use img/steerable.jpg>
 \openout2 = `img/steerable.aux'.
@@ -266,25 +267,55 @@ Underfull \hbox (badness 2932) in paragraph at lines 734--736
 [3
 
 
- <./kyffin_overview.pdf> <./img/steerable.jpg>] (./results/rgb.tex)
-(./results/hsv.tex) (./results/histogram.tex) (./results/edge.tex)
+ <./img/kyffin_overview.pdf> <./img/steerable.jpg>]
+
+! LaTeX Error: File `results/knn-mean/rgb.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+
+! LaTeX Error: File `results/knn-mean/hsv.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+
+! LaTeX Error: File `results/histogram.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+
+! LaTeX Error: File `results/edge.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+
+! LaTeX Error: File `results/hog.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-(./results/hog.tex)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4] (./kyffin.bbl
+(./kyffin.bbl
 Overfull \hbox (8.97964pt too wide) in paragraph at lines 34--38
 \OT1/ptm/m/n/8 http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted
 []by/kyffin-
  []
 
-)
+[4])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -296,29 +327,31 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5] (./kyffin.aux (./img/steerable.aux)) ) 
+[5
+
+] (./kyffin.aux (./img/steerable.aux)) ) 
 Here is how much of TeX's memory you used:
- 2257 strings out of 493848
- 32225 string characters out of 1152823
- 230117 words of memory out of 3000000
+ 2248 strings out of 493848
+ 32084 string characters out of 1152823
+ 96117 words of memory out of 3000000
  5522 multiletter control sequences out of 15000+50000
  39875 words of font info for 73 fonts, out of 3000000 for 9000
  717 hyphenation exceptions out of 8191
- 27i,9n,21p,316b,234s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/d
-vips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex1
-0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf
--texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fon
-ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
-/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive
-/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/tim
-es/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr
-/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on kyffin.pdf (5 pages, 333508 bytes).
+ 27i,9n,21p,316b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvi
+ps/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/f
+onts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times
+/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/s
+hare/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on kyffin.pdf (5 pages, 300435 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
