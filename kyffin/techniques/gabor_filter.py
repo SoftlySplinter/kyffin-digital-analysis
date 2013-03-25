@@ -1,10 +1,17 @@
 from math import cos, sin, exp, pi, ceil
 
 import numpy
+import cv2
+from kyffin.techniques import Technique
 
-class GaborFilter:
+class GaborFilter(Technique):
     def __init__(self):
         pass
+
+    def analyse(self, painting):
+        image = cv2.imread(painting.filePath, cv2.cv.CV_LOAD_IMAGE_GRAYSCALE)
+        data = [cv2.filter2D(image, cv2.cv.CV_32F, self.get_filter(orientation)) for orientation in [2*pi,pi/4,pi/2,(pi*3)/4]]
+        return numpy.array([cv2.calcHist([d], [0], None, [2], [0,255]) for d in data])
 
     @classmethod
     def gabor(cls, cur_x, cur_y, 
@@ -22,7 +29,7 @@ class GaborFilter:
 
     @classmethod
     # From wikipedia's MATLAB code.
-    def get_filter(cls, sigma, theta, gab_lambda, psi, gamma):
+    def get_filter(cls, sigma, theta=0.5, gab_lambda=1., psi=0., gamma=0.5):
         sigma_x = sigma
         sigma_y = sigma/gamma
 
@@ -47,7 +54,7 @@ class GaborFilter:
 
         mat_x, mat_y = numpy.meshgrid(dim_y, dim_x)
 
-        result = numpy.zeros(shape=(len(dim_x), len(dim_y)))
+        result = numpy.zeros((len(dim_x), len(dim_y)), numpy.float32)
 
         for i in range(len(dim_x)):
             for j in range(len(dim_y)):

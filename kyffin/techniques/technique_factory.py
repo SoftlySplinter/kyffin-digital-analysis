@@ -5,6 +5,7 @@ from kyffin.techniques.edge_orientation import EdgeOrientation
 from kyffin.techniques.hog import *
 from kyffin.techniques.ensemble import Ensemble
 from kyffin.techniques.steerable_filter import SteerableFilter
+from kyffin.techniques.gabor_filter import GaborFilter
 
 def getTechnique(name):
     if name == 'rgb':
@@ -23,6 +24,8 @@ def getTechnique(name):
         return SimpleRHOG() 
     elif name == "steerable":
         return SteerableFilter()
+    elif name == "gabor":
+        return GaborFilter()
     elif "+" in name:
         technique_names = name.split('+')
         techniques = [getTechnique(technique_name) for technique_name in technique_names]
