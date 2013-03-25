@@ -21,40 +21,49 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{Berezhnoy2005Authentic}
+\bibitem{Williams1993Across}
+K.~Williams, \emph{{Across the Straits: An Autobiography}}.\hskip 1em plus
+  0.5em minus 0.4em\relax Gomer, 1993.
+
+\bibitem{Davies2004100}
+J.~Davies and C.~Cymru, \emph{{100 Welsh heroes}}.\hskip 1em plus 0.5em minus
+  0.4em\relax Culturenet Cymru, 2004.
+
+\bibitem{2013Your}
 \BIBentryALTinterwordspacing
-I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``Authentic:
-  Computerized brushstroke analysis,'' in \emph{Multimedia and Expo, 2005. ICME
-  2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, Jul. 2005, pp. 1586--1588. [Online]. Available:
-  \url{http://dx.doi.org/10.1109/icme.2005.1521739}
+``{Your Paintings - Kyffin Williams},'' Mar. 2013. [Online]. Available:
+  \url{http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted\_by/ky%
+ffin-williams\_artists}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Stork2009Computer}
+D.~G. Stork, ``Computer vision and computer graphics analysis of paintings and
+  drawings: An introduction to the literature,'' ser. Lecture Notes in Computer
+  Science, X.~Jiang and N.~Petkov, Eds.\hskip 1em plus 0.5em minus 0.4em\relax
+  Berlin, Heidelberg: Springer Berlin / Heidelberg, 2009, vol. 5702, ch.~2, pp.
+  9--24.
+
+\bibitem{Berezhnoy2009Automatic}
+I.~E. Berezhnoy, E.~O. Postma, and Herik, ``{Automatic extraction of
+  brushstroke orientation from paintings},'' \emph{Machine Vision and
+  Applications}, vol.~20, no.~1, pp. 1--9, 2009.
+
 \bibitem{Li2012Rhythmic}
-\BIBentryALTinterwordspacing
 J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
   van gogh from his contemporaries: Findings via automated brushstroke
   extraction,'' \emph{Pattern Analysis and Machine Intelligence, IEEE
-  Transactions on}, vol.~34, no.~6, pp. 1159--1176, Jun. 2012. [Online].
-  Available: \url{http://dx.doi.org/10.1109/tpami.2011.203}
-\BIBentrySTDinterwordspacing
+  Transactions on}, vol.~34, no.~6, pp. 1159--1176, Jun. 2012.
 
 \bibitem{Canny1986Computational}
-\BIBentryALTinterwordspacing
 J.~F. Canny, ``A computational approach to edge detection,'' \emph{Pattern
   Analysis and Machine Intelligence, IEEE Transactions on}, vol. PAMI-8, no.~6,
-  pp. 679--698, Nov. 1986. [Online]. Available:
-  \url{http://dx.doi.org/10.1109/tpami.1986.4767851}
-\BIBentrySTDinterwordspacing
+  pp. 679--698, Nov. 1986.
 
 \bibitem{Dalal2005Histograms}
-\BIBentryALTinterwordspacing
 N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human
   detection,'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
   2005. IEEE Computer Society Conference on}, ser. CVPR '05, vol.~1.\hskip 1em
   plus 0.5em minus 0.4em\relax Washington, DC, USA: IEEE, Jun. 2005, pp.
-  886--893 vol. 1. [Online]. Available:
-  \url{http://dx.doi.org/10.1109/cvpr.2005.177}
-\BIBentrySTDinterwordspacing
+  886--893 vol. 1.
 
 \end{thebibliography}
