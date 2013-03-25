@@ -746,40 +746,14 @@ the image.
 % I suggest for now doing results in-line, or have a table here showing 
 % correlation coefficients 
 
-\textbf{XXX Alex is going to combine the various correlation-against-K graphs so that we have one graph with all techniques on the same axes}
+% \textbf{Alex is going to combine the various correlation-against-K graphs so that we have one graph with all techniques on the same axes}
 
 \begin{figure}[h]
 \centering
-\input{results/knn-mean/rgb}
-\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour on RGB Colour-Space Analysis}
+\includegraphics[width=0.5\textwidth]{results/test.pdf}
+%\input{results/eepic}
+\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour}
 \end{figure}
-
-\begin{figure}[h]
-\centering
-\input{results/knn-mean/hsv}
-\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour on HSV Colour-Space Analysis}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\input{results/histogram}
-\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour on Histogram Analysis}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\input{results/edge}
-\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour on Edge Strength Analysis}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\input{results/hog}
-\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour on HOG Analysis}
-\label{pearsons-k}
-\end{figure}
-
-
 
 % you're not going to like me for this but can you plot the other feature
 %spaces too?
