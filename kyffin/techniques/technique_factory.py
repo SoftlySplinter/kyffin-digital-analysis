@@ -1,6 +1,6 @@
 from kyffin.techniques.statistical import RGBAnalysis
 from kyffin.techniques.statistical import HSVAnalysis
-from kyffin.techniques.histogram import HistogramAnalysis
+from kyffin.techniques.histogram import HistogramAnalysis, HSVHistogramAnalysis
 from kyffin.techniques.edge_orientation import EdgeOrientation
 from kyffin.techniques.hog import *
 from kyffin.techniques.ensemble import Ensemble
@@ -10,8 +10,10 @@ def getTechnique(name):
         return RGBAnalysis()
     if name == 'hsv':
         return HSVAnalysis()
-    elif name == 'histogram':
-        return HistogramAnalysis([5,5,5])
+    elif name == 'hist':
+        return HistogramAnalysis()
+    elif name == 'hsv-hist':
+        return HSVHistogramAnalysis()
     elif name == 'edge':
         return EdgeOrientation()
     elif name == "hog":
