@@ -2,10 +2,12 @@
 Module for the Steerable Filter class.
 '''
 
+from kyffin.techniques import Technique
 from math import pi
 import numpy
+import cv2
 
-class SteerableFilter:
+class SteerableFilter(Technique):
     '''
     Defines a steerable filter
 
@@ -24,6 +26,11 @@ class SteerableFilter:
 
     def __init__(self):
         pass
+
+    def analyse(self, painting):
+        image = cv2.imread(painting.filePath, cv2.cv.CV_LOAD_IMAGE_GRAYSCALE)
+        data = [cv2.filter2D(image, -1, self.get_filter(orientation)) for orientation in [0,pi/4,pi/2,(pi*3)/4]]
+        return numpy.array([cv2.calcHist([d], [0], None, [2], [0,255]) for d in data])
 
     @classmethod
     def get_filter(cls, orientation, kernel_size = 3, transpose = False, strength = 0):
@@ -140,8 +147,8 @@ def main():
     image = cv.LoadImageM(im_file, cv.CV_LOAD_IMAGE_GRAYSCALE)
 
     size = 3
-    ori = (pi*3)/4
-    ste = 3
+    ori = (pi*1)/4
+    ste = 0.75
 
     kern = cv.fromarray(SteerableFilter.get_filter(ori, size, False, ste))
     kern_t = cv.fromarray(SteerableFilter.get_filter(ori, size, True, ste))

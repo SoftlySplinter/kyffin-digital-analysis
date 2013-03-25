@@ -4,6 +4,7 @@ from kyffin.techniques.histogram import HistogramAnalysis, HSVHistogramAnalysis
 from kyffin.techniques.edge_orientation import EdgeOrientation
 from kyffin.techniques.hog import *
 from kyffin.techniques.ensemble import Ensemble
+from kyffin.techniques.steerable_filter import SteerableFilter
 
 def getTechnique(name):
     if name == 'rgb':
@@ -20,6 +21,8 @@ def getTechnique(name):
         return HOG() 
     elif name == "rhog":
         return SimpleRHOG() 
+    elif name == "steerable":
+        return SteerableFilter()
     elif "+" in name:
         technique_names = name.split('+')
         techniques = [getTechnique(technique_name) for technique_name in technique_names]
