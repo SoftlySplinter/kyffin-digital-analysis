@@ -10,6 +10,33 @@
 
 %How much material you include on detailed design and implementation will depend very much on the nature of the project. It should not be padded out. Think about the significant aspects of your system. For example, describe the design of the user interface if it is a critical aspect of your system, or provide detail about methods and data structures that are not trivial. Do not spend time on long lists of trivial items and repetitive descriptions. If in doubt about what is appropriate, speak to your supervisor.
 
+\section{Methodology}
+
+Within our database of 325 paintings, we know the actual year of painting for
+102 artworks. In order to determine the accuracy of our results, rather than
+work with the full dataset (and work with images with uncertain metadata in the
+form of date ranges), we have used a leave-one-out cross validation
+methodology. This involves us taking a painting for which we know the year, and
+then using our classifier to guess that year; thus we are able to tell whether
+we are right. We are also able, if we are wrong, to determine exactly how wrong
+we are.  
+
+To simplify the classification stage we use a K-Nearest Neighbour (KNN)
+classifier with the other 101 paintings for which we know the date. KNN is a
+fast, non-parametric classifier which makes no assumptions about the underlying
+patterns in the data, merely that paintings from around the same time will be
+similarly located in our feature space(s). Whilst we suspect that there may be
+some broader underlying trend in the change of style, for this work have
+concentrated on features for classification rather than the question of
+classification or regression itself. See figure~\ref{img:classification-overview}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{img/kyffin_overview.pdf}
+\caption{Overview of the Classification Methodology}
+\label{img:classification-overview}
+\end{figure}
+
 
 \section{Overall Architecture}
 The basic architecture for any system like this is to load the data in from a source of some form,
