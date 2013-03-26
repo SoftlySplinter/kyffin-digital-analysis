@@ -3,10 +3,8 @@
 import csv
 import kyffin.painting as paint
 import random, re
-import matplotlib.pyplot as plot
 import os.path
 import logging
-import scipy.stats as stats
 import math
 
 DATA_DIR = 'data/'
@@ -35,14 +33,7 @@ class Analyser:
         for i in xrange(len(self.paintings)):
             self.classify(i, actual, classified)
 
-        (correlation, unknown) = self.correlation(classified, actual)
-        print '{0}\t{1}'.format(correlation, unknown)
-
-        plot.figure(2)
-        plot.plot(actual, classified, 'x')
-        plot.xlabel('Actual Year')
-        plot.ylabel('Classified Year')
-        plot.show()
+        self.ml.visualise(actual, classified)
 
     def classify(self, i, actual, classified):
         toClassify = self.paintings.pop(i)
@@ -53,11 +44,6 @@ class Analyser:
             return
         actual.append(actualY)
         classified.append(classifiedY)
-
-    def correlation(self, classified, actual):
-        a = [float(x) for x in classified]
-        b = [float(x) for x in actual]
-        return stats.pearsonr(a, b)
 
     def analyse(self):
         for painting in self.paintings:

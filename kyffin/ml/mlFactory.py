@@ -1,5 +1,5 @@
 from kyffin.ml.knn import KNearestNeighbour
-from kyffin.ml.knn_modal import KNearestNeighbourModal
+from kyffin.ml.knn import KNearestNeighbourModal
 from kyffin.ml.nearest_exemplar import NearestExemplar
 from kyffin.ml.statistical_exemplar import StatisticalExemplar
 import re
