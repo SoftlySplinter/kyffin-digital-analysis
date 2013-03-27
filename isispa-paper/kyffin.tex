@@ -606,7 +606,7 @@ complex humanities data set.
 %Kyffin Williams' paintings that his brush-strokes change over time, his early work having lots of
 %smaller strokes over the canvas to large bold strokes in his later work.
 
-\textbf{XXX Alex or Hannah are going to have to read \cite{Stork2009Computer}, cite it sensibly, and pull some other references which are relevant}
+\textbf{XXX Hannah to read \cite{Stork2009Computer}, cite it sensibly, and pull some other references which are relevant}
 
 When we consider computer vision-based analysis of painterly style we find that
 the vast majority of  work concentrates on brush stroke detection and analysis.
@@ -744,7 +744,7 @@ These histograms were developed by counting the number of pixels within a
 particular colour range for each painting, and then building a normalised
 histogram representing the colour usage. 
 
-\textbf{XXX Alex how many bins? }
+%\textbf{Alex how many bins? }
  
 As a lot of Kyffin Williams' paintings are highly textural, edge detection and
 texture analysis was thought to be a good avenue to explore.  Firstly, we
@@ -778,13 +778,13 @@ orientation.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{img/steerable}
+\includegraphics[width=0.45\textwidth]{img/steerable.jpg}
 \caption{Example image -- Coastal Sunset, 1990-2006}\label{fig:example-img}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\include{img/steerable}
+\includegraphics[width=0.45\textwidth]{img/steerable.pdf}
 \caption{Steerable filter strength $S(\theta)$ on the example image in figure~\ref{fig:example-img}}
 \end{figure}
 
@@ -804,9 +804,9 @@ Gabor filters tuned to equally spaced orientations to build a histogram
 representing line orientations in each painting, and present results below for
 histograms built from the output of both 4 and 8 filter orientations.
 
-\textbf{XXX Hannah or Alex to look at a textbook for a better version of the above scary maths and cite.}
+\textbf{XXX Hannah to look at a textbook for a better version of the above scary maths and cite.}
 
-\textbf{XXX Alex to run Gabor with 4 and 8.}
+% \textbf{Alex to run Gabor with 4 and 8.}
 
 The final method for producing histograms we consider involves the application
 of two discrete derivative masks to the image to get the gradient of $x$ and
@@ -832,7 +832,6 @@ providing a direct comparator}
 \centering
 \includegraphics[width=0.5\textwidth]{results/mean.pdf}
 \label{pearsons-k}
-%\input{results/eepic}
 \caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour}
 \end{figure}
 
@@ -847,7 +846,7 @@ dataset. Clearly a point between these two extremes would be best; from
 Figure~\ref{pearsons-k} we can see that for many of the feature spaces we
 consider, the optimum K value is around 7 or 8.
 
-\textbf{XXX Alex - can we get the results table for K=7?}
+%\textbf{Alex - can we get the results table for K=7?}
 
 \begin{table}[h]
 \centering
@@ -880,9 +879,9 @@ HOG (Discrete Derivatives): 15 orientations	& 0.44695489816	& 6.95435503135e-07 
 \caption{Correlation Coefficients, ordered by strength}\label{tab:results}
 \end{table}
 
-\textbf{XXX Alex - do we have HOG results for steerable, Gabor, and derivative masks?}
+%\textbf{Alex - do we have HOG results for steerable, Gabor, and derivative masks?}
 
-\textbf{XXX Alex - do we have any ensemble methods? IIRC combining HOG with HSV gave us impressive correlations}
+% \textbf{Alex - do we have any ensemble methods? IIRC combining HOG with HSV gave us impressive correlations}
 
 \section{Exemplars: can we improve results by incorporating expert knowledge? }
 
@@ -917,8 +916,6 @@ particular year according to a particular feature space.
 
 The same distance measure used to run k-nearest neighbour on the feature-based classifiers was
 used to generate the error between the statistical and artistic exemplars.
-
-%TODO I need to actually write some more code for this
 
 \textbf{XXX Alex... er... your to do list is longer than mine:-)}
 

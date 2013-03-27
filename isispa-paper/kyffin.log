@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  27 MAR 2013 11:58
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  27 MAR 2013 13:57
 entering extended mode
  %&-line parsing enabled.
 **kyffin.tex
@@ -180,8 +180,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
-) (./kyffin.aux
-(./img/steerable.aux))
+) (./kyffin.aux)
 \openout1 = `kyffin.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 352.
@@ -196,7 +195,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 352.
 LaTeX Font Info:    ... okay on input line 352.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 352.
 LaTeX Font Info:    ... okay on input line 352.
- (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count104
 \scratchdimen=\dimen128
@@ -259,11 +259,13 @@ File: img/steerable.jpg Graphic file (type jpg)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-\openout2 = `img/steerable.aux'.
 
-(./img/steerable.tex
-\plotpoint=\box30
-)
+
+pdfTeX warning: pdflatex (file ./img/steerable.pdf): PDF inclusion: found PDF v
+ersion <1.5>, but at most version <1.4> allowed
+<img/steerable.pdf, id=15, 361.35pt x 144.54pt>
+File: img/steerable.pdf Graphic file (type pdf)
+ <use img/steerable.pdf>
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 788.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -282,10 +284,10 @@ Underfull \hbox (badness 2932) in paragraph at lines 801--806
 
 pdfTeX warning: pdflatex (file ./results/mean.pdf): PDF inclusion: found PDF ve
 rsion <1.5>, but at most version <1.4> allowed
-<results/mean.pdf, id=24, 433.62pt x 433.62pt>
+<results/mean.pdf, id=26, 433.62pt x 433.62pt>
 File: results/mean.pdf Graphic file (type pdf)
  <use results/mean.pdf>
-Overfull \hbox (9.0pt too wide) in paragraph at lines 833--836
+Overfull \hbox (9.0pt too wide) in paragraph at lines 833--835
  [][] 
  []
 
@@ -293,14 +295,12 @@ Overfull \hbox (9.0pt too wide) in paragraph at lines 833--836
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 866--866
+Underfull \hbox (badness 1960) in paragraph at lines 865--865
 []\OT1/ptm/m/n/7 HOG (Dis-crete Deriva-tives): 15
  []
 
-[4
-
-
- <./img/steerable.jpg> <./results/mean.pdf>] (./kyffin.bbl
+[4 <./img/steerable.jpg> <./img/steerable.pdf> <./results/mean.pdf>]
+(./kyffin.bbl
 Overfull \hbox (8.97964pt too wide) in paragraph at lines 34--38
 \OT1/ptm/m/n/8 http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted
 []by/kyffin-
@@ -318,16 +318,16 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5] (./kyffin.aux (./img/steerable.aux))
+[5] (./kyffin.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2253 strings out of 493848
- 32199 string characters out of 1152823
- 96127 words of memory out of 3000000
- 5532 multiletter control sequences out of 15000+50000
+ 2248 strings out of 493848
+ 32153 string characters out of 1152823
+ 96859 words of memory out of 3000000
+ 5534 multiletter control sequences out of 15000+50000
  39875 words of font info for 73 fonts, out of 3000000 for 9000
  717 hyphenation exceptions out of 8191
  27i,9n,21p,316b,269s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -344,9 +344,9 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-texlive
 /fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on kyffin.pdf (5 pages, 317104 bytes).
+Output written on kyffin.pdf (5 pages, 321808 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
