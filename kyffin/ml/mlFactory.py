@@ -1,7 +1,7 @@
 from kyffin.ml.knn import KNearestNeighbour
 from kyffin.ml.knn import KNearestNeighbourModal
 from kyffin.ml.nearest_exemplar import NearestExemplar
-from kyffin.ml.statistical_exemplar import StatisticalExemplar
+from kyffin.ml.statistical_exemplar import TheoreticalStatisticalExemplar, RealStatisticalExemplar
 import re
 
 def getML( name, technique ):
@@ -32,6 +32,8 @@ def getML( name, technique ):
     if "nearest-exemplar" in name:
         return NearestExemplar(technique, "./exemplar.csv")
     if "statistical-exemplar" in name:
-        return StatisticalExemplar(technique, "./exemplar.csv")
+        return RealStatisticalExemplar(technique, "./exemplar.csv")
+    if "theoretical-exemplar" in name:
+        return TheoreticalStatisticalExemplar(technique, "./exemplar.csv")
     else:
         return KNearestNeighbour( technique )

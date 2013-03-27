@@ -1,6 +1,7 @@
 """Classified based on the nearest exemplar."""
 import csv
 from kyffin.ml.knn import KNearestNeighbour
+from kyffin.ml import ML
 import sys
 
 class FakePainting:
@@ -11,7 +12,7 @@ class FakePainting:
         self.data = None
         self.id = id
 
-class NearestExemplar:
+class NearestExemplar(ML):
     def __init__(self, technique, exemplar_file):
         self.technique = technique
         self.exemplars = {}
