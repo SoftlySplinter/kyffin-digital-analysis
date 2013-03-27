@@ -13,6 +13,9 @@ class TheoreticalStatisticalExemplar(NearestExemplar):
         if self.actual_exemplars == None:
             self.actual_exemplars = self.exemplars
             self.generate_exemplars([painting] + experience)
+#        if painting.id in [self.exemplars[e].id for e in self.exemplars]:
+#            print painting.title + " in exemplars"
+#            return -1
         return super(TheoreticalStatisticalExemplar, self).classify(painting, self.actual_exemplars)
 
     def generate_exemplars(self,data):
@@ -42,6 +45,19 @@ class RealStatisticalExemplar(TheoreticalStatisticalExemplar):
                 dist = new_dist
                 nearest = i
         
-        print "Statistical Exemplar for {}: {}\nArtistical Exemplar: {}\n".format(nearest.year, nearest.title, self.actual_exemplars[int(nearest.year)].title if int(nearest.year) in self.actual_exemplars else "N/A")
+        print "Statistical Exemplar for {}: {} ({})".format(
+            nearest.year, 
+            nearest.title, 
+            nearest.id)
+        if int(nearest.year) in self.actual_exemplars:
+            if self.actual_exemplars[int(nearest.year)].id == nearest.id: 
+                print "Artistical Exemplar matches ({})\n".format(len(data))
+            else:
+                print "Artistical Exemplar: {} ({}) ({})\n".format(
+                   self.actual_exemplars[int(nearest.year)].title,
+                   self.actual_exemplars[int(nearest.year)].id,
+                   len(data))
+        else:
+            print "No artistical exemplar\n"
         return nearest.data
             

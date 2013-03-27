@@ -11,7 +11,7 @@ class ML(object):
         plot.plot(actual, classified, 'x')
         plot.xlabel('Actual Year')
         plot.ylabel('Classified Year')
-#        plot.show()
+        plot.show()
 
         actual = [int(a) for a in actual]
         classified = [int(c) for c in classified]
@@ -26,7 +26,7 @@ class ML(object):
         ax.set_xlim(-m_x, m_x)
         plot.xlabel('Years out')
         plot.ylabel('Number of Paintings')
-#        plot.show()
+        plot.show()
 
     def correlation(self, classified, actual):
         a = [float(x) for x in classified]
