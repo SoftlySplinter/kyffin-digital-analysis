@@ -6,11 +6,12 @@ set xtics 1
 set size 1,1
 #set autoscale
 set key tmargin
-plot "mean/rgb.dat"      using 1:2 title "RGB Colour-Space Analysis" with lines,\
-     "mean/hsv.dat"      using 1:2 title "HSV Colour-Space Analysis" with lines, \
-     "mean/hist.dat"     using 1:2 title "RGB Histogram Analysis" with lines, \
-     "mean/hsv-hist.dat" using 1:2 title "HSV Histogram Analysis" with lines, \
-     "mean/edge.dat"     using 1:2 title "Edge Strength Analysis" with lines, \
-     "mean/steerable.dat" using 1:2 title "Steerable Filter Texture Analysis" with lines,\
-     "mean/gabor.dat" using 1:2 title "Gabor Filter Texture Analysis" with lines,\
-     "mean/hog.dat" using 1:2 title "Histogram of Orientated Gradients Analysis" with lines
+plot "mean/rgb.dat"      using 1:2 title "RGB" with lines,\
+     "mean/hsv.dat"      using 1:2 title "HSV" with lines, \
+     "mean/hist.dat"     using 1:2 title "RGB Histograms" with lines, \
+     "mean/hsv-hist.dat" using 1:2 title "HSV Histograms" with lines, \
+     "mean/edge.dat"     using 1:2 title "Edge Strength" with lines, \
+     "mean/steerable.dat" using 1:2 title "Steerable filters: 4 orientations" with lines,\
+     "mean/gabor.dat" using 1:2 title "Gabor filters: 4 orientations" with lines,\
+     "mean/gabor8.dat" using 1:2 title "Gabor filters: 8 orientations" with lines,\
+     "mean/hog.dat" using 1:2 title "HOG (Discrete Derivatives): 15 orientations" with lines

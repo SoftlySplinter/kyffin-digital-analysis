@@ -360,30 +360,37 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Alexander David Brown}
-\IEEEauthorblockA{Department of Computer Science,\\
-Llandinam Building,\\
+\IEEEauthorblockA{Computer Science,\\
 Aberystwyth University,\\
+Penglais,\\
 Aberystwyth,\\
 Ceredigion,\\
-SY23 3DB\\
-Email: adb9@aber.ac.uk}
+Wales SY23 3DB\\
+adb9@aber.ac.uk}
 \and
 \IEEEauthorblockN{Gareth Lloyd Roderick}
-\IEEEauthorblockA{\\
-Email: glr7@aber.ac.uk}
-\and
-\IEEEauthorblockN{Hannah M. Dee}
-\IEEEauthorblockA{Department of Computer Science,\\
-Llandinam Building,\\
+\IEEEauthorblockA{School of Art,\\
 Aberystwyth University,\\
+Buarth Mawr,\\
+Aberystwyth,\\
+Wales SY23 1NG\\
+glr7@aber.ac.uk}
+\and
+\IEEEauthorblockN{Hannah M. Dee\footnote{Corresponding Author}}
+\IEEEauthorblockA{Computer Science,\\
+Aberystwyth University,\\
+Penglais,\\
 Aberystwyth,\\
 Ceredigion,\\
-SY23 3DB\\
-Email: hmd1@aber.ac.uk}
+Wales SY23 3DB\\
+hmd1@aber.ac.uk}
 \and
 \IEEEauthorblockN{Lorna M. Hughes}
-\IEEEauthorblockA{\\
-Email: lorna.hughes@llgc.org.uk}}
+\IEEEauthorblockA{The National Library of Wales,\\
+Aberystwyth,\\
+Ceredigion,\\
+Wales SY23 3BU\\
+lorna.hughes@llgc.org.uk}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -454,30 +461,36 @@ Exemplars; artistic and statistic.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
-This paper presents a interdisciplinary computational study into the modelling of artistic style, 
-and how this style changes over time.  Sir John Kyffin Williams (1918-2006) was one of the 
-predominant figures in Welsh art of the twentieth century.  Kyffin- as he was almost universally 
-known in Wales- studied at the Slade School of Art and worked as an art master at Highgate School,
-before returning to live on his native Anglesey in 1973.  He was a prolific painter and once 
-claimed to have painted `two pictures per week when in London, and three per week when in 
-Wales.'\cite[p.209]{Williams1993Across} With a career spanning from the mid-1940s to approximately 2004, 
-this rate amounts to a large body of work.
+This paper presents a interdisciplinary computational study into the modelling
+of artistic style, and how this style changes over time.  Sir John Kyffin
+Williams (1918-2006) was one of the predominant figures in Welsh art of the
+twentieth century.  Kyffin -- as he was almost universally known in Wales --
+studied at the Slade School of Art and worked as an art master at Highgate
+School, before returning to live on his native Anglesey in 1973.  He was a
+prolific painter and once claimed to have painted ``two pictures per week when
+in London, and three per week when in Wales.'\cite[p.209]{Williams1993Across}
+With a career spanning from the mid-1940s to approximately 2004, this rate
+amounts to a large body of work.
 
-His style evolved from a very figurative, representational style, to something more expressive, 
-which retained representational qualities: the computer scientists on our team would say that the 
-paintings became more \emph{blocky}; the art historians that his landscapes are almost 
-constructed with swathes of textural paint. His was a style characterised by thick impasto paint,
-applied almost exclusively with palette knife, although the application technique appears to 
-change over time.
+His style evolved from a very representational style to something more
+expressive, which retained representational qualities: the computer scientists
+on our team would say that the paintings became more \emph{blocky}; the art
+historians that his landscapes are almost constructed with swathes of textural
+paint. His was a style characterised by thick impasto paint, applied almost
+exclusively with palette knife, although the application technique appears to
+change over time. This development of style led us to wonder: is it possible to
+date the pictures from images alone?
 
-Through a collection of digital photographs of oil paintings, collected from museum websites, 
-catalogues and other sources, we first investigate whether it is possible to date a painting from 
-an unknown year based upon image features alone. We show that using a K-nearest neighbour 
-classifier, tested using a leave-one-out methodology, we can obtain a strong correlation between 
-image feature descriptors and year of painting. We go on to investigate whether exemplar based 
-methods are able to improve on this, using what we call artistic exemplars (paintings selected by 
-an expert as being typical for a particular year) and statistic exemplars (paintings which are 
-near the centre of year-based clusters in feature space).
+Through a collection of digital photographs of oil paintings, collected from
+museum websites, catalogues and other sources, we first investigate whether it
+is possible to date a painting based upon image features. We show that using a
+K-nearest neighbour classifier, tested using a leave-one-out methodology, we
+can obtain a strong correlation between image feature descriptors and year of
+painting. We go on to investigate whether exemplar based methods are able to
+improve on this, using what we call \emph{artistic exemplars} (paintings
+selected by an expert as being typical for a particular year) and
+\emph{statistic exemplars} (paintings which are near the centre of year-based
+clusters in feature space).
 
 %This paper presents a interdisciplinary computational study into the modelling
 %of artistic style, and how this style changes over time. The artist Sir John
@@ -500,47 +513,92 @@ near the centre of year-based clusters in feature space).
 
 \section{Background}
 % 1 Page on Lloyd's work
-Although also a portrait painter, Kyffin Williams is primarily known for his landscape paintings 
-of north west Wales and Anglesey. While his technique and style changed over the years, his 
-landscapes in oil are instantly recognisable, often featuring bold chunks of colour, and various 
-points during his career bold black outlines to figures and landscapes features. Greens, browns 
-and greys often form the palette of his paintings of the Welsh landscape. These colour selections 
-seem appropriate for the artist’s claim that melancholy, derived from the `dark hills, heavy 
-clouds and enveloping sea mists,' is a 'national characteristic’ of the Welsh.\cite{Williams1993Across} 
-This combination of colour selection and technique seems appropriate for the depiction of the 
-areas where he painted. Many of his most successful paintings are said to have a `dark quality' in
-depicting `rain lashed hillsides,' and it was this darkness which `makes his landscapes so 
-distinctively Welsh.'\cite{Davies2004100} Both of the above descriptions could be applicable to paintings 
-in the collections of the National Library of Wales such as Snowdonian Summits (1970-1990) or 
-Yr Wyddfa a Grib Goch (1950-1960).
 
-The aesthetic of Kyffin’s Welsh landscapes is contrasted by the paintings he made following a 
-trip to Patagonia to paint the landscape and people of the Welsh communities there in 1968 as part
-of a Winston Churchill Foundation scholarship. The colours and application of paint in pictures 
-produced in following this journey (such as Lle Cul, Henry Roberts, Bryngwyn Patagonia, Euros 
-Hughes Irrigating his Fields, all 1969, National Library of Wales) differ starkly from paintings 
-of Welsh landscapes, incorporating pinks, purples and oranges. This contrast, combined with the 
-fact that the Patagonian pictures were produced during a definite period of time has reiterated 
-our interest in how analysing the formal qualities of pictures from different collections 
-remotely, using digital images can be used to apply a date of production to works where the date 
-is unknown.
+Although also a portrait painter, Williams is primarily known for his landscape
+paintings of north west Wales and Anglesey. While his technique and style
+changed over the years, his landscapes in oil are instantly recognisable, often
+featuring bold chunks of colour, and various points during his career bold
+black outlines to figures and landscapes features. Greens, browns and greys
+often form the palette of his paintings of the Welsh landscape. These colour
+selections seem appropriate for the artist’s claim that melancholy, derived
+from the ``dark hills, heavy clouds and enveloping sea mists'', is a national
+characteristic of the Welsh.\cite{Williams1993Across} This combination of
+colour selection and technique seems appropriate for the depiction of the areas
+where he painted. Many of his most successful paintings are said to have a
+``dark quality'' in depicting ``rain lashed hillsides,'' and it was this
+darkness which ``makes his landscapes so distinctively
+Welsh.''\cite{Davies2004100} 
 
-Kyffin Williams’s work in well represented in public collections in Wales (particularly at the 
-National Library of Wales, the National Museums and Galleries of Wales and Oriel Ynys Môn, 
-Anglesey). His pictures, often depicting the landscape and people of north-west Wales were also 
-tremendously popular with the art buying public. Of the 325 paintings by Williams in public 
-collections in the UK listed on the BBC/Public Catalogue Foundation’s Your Paintings website, 212 
-of them are in the collections of the National Library of Wales\cite{2013Your}. Many of 
-these paintings were bequeathed to the Library as part of a larger bequest by the artist 
-(including works on paper and other archival material). Many of the pictures which came to the 
-library from the artist’s studio had little in the way of metadata, and as such have been 
-catalogued with large date-ranges estimating the dates of production.  
+%Both of the above descriptions could be applicable
+%to paintings in the collections of the National Library of Wales such as
+%Snowdonian Summits (1970-1990) or Yr Wyddfa a Grib Goch (1950-1960).
+
+The aesthetic of Williams’s Welsh landscapes is contrasted by the paintings he
+made following a trip to Patagonia to paint the landscape and people of the
+Welsh communities there in 1968 as part of a Winston Churchill Foundation
+scholarship. The colours and application of paint in pictures produced in
+following this journey (such as \emph{Lle Cul}, \emph{Henry Roberts},
+\emph{Bryngwyn Patagonia}, \emph{Euros Hughes Irrigating his Fields}, all 1969,
+National Library of Wales) differ starkly from paintings of Welsh landscapes,
+incorporating pinks, purples and oranges. This contrast, combined with the fact
+that the Patagonian pictures were produced during a definite period of time has
+reinforced our interest in the analysis of the formal qualities of pictures
+from different collections remotely, using digital images. 
+
+Williams’s work is well represented in public collections in Wales
+(particularly at the National Library of Wales, the National Museums and
+Galleries of Wales and Oriel Ynys M\^{o}n, Anglesey). His pictures, often
+depicting the landscape and people of north-west Wales were also tremendously
+popular with the art buying public. Of the 325 paintings by Williams in public
+collections in the UK listed on the BBC/Public Catalogue Foundation's ``Your
+Paintings'' website, 212 of them are in the collections of the National Library
+of Wales\cite{2013Your}. Many of these paintings were bequeathed to the Library
+as part of a larger bequest by the artist (including works on paper and other
+archival material). Many of the pictures which came to the library from the
+artist’s studio had little in the way of metadata, and as such have been
+catalogued with large date-ranges estimating the dates of production.  This
+uncertainty in metadata is another motivating force behind the current project.
 
 %\textbf{We need here to mention key features of Kyffin's work, Patagonia, where he painted}
 
-\subsection{A digital humanities approach to art history}
+\subsection{Taking a digital humanities approach to art history}
 
-\textbf{XXX We need some words for this bit}
+Digital humanities is an established area of research that brings together
+digital content, tools and methods in order to address and create new knowledge
+across the disciplines. Digital humanities approaches can be seen in two
+distinct types of inquiry. The first is to carry out \emph{traditional}
+humanities research more effectively or efficiently, by applying computational
+methods or approaches to digitized humanities sources (originally text, image,
+or audio-visual content from archives or libraries). Using John Unsworth’s
+definition of ``scholarly primitives''\cite{unsworth00} digital humanities
+scholarship customarily involves the use of digital tools and methods for
+discovering, annotating, comparing, referring, sampling, illustrating, or
+representing humanities data. A classic example of this sort of work would be
+the use of concordances and other computer-based analysis of digitized primary
+sources that have been processed by optical character recognition software to
+count, classify, or interpret digital texts (see, for example, the Historical
+Concordance of the Welsh language\cite{welshconcordance}).  The second strand
+of digital humanities inquiry is the development of new research questions that
+can only be developed through the synthesis of digital content, tools and
+methods: work that would have otherwise been unimaginable\cite{hughes11}. This
+type of research is by necessity multi-disciplinary, drawing together expertise
+to be found across humanities, scientific and engineering disciplines, as well
+as involving content experts from libraries, archives and museums. However, in
+order to be truly transformative, this type of research must also be
+interdisciplinary. 
+
+The National Library of Wales now has a research programme in digital
+collections, which is a forum for investigation into the digital collections of
+Wales in collaboration with academics and students at universities in Wales and
+beyond, in order to develop new research based around the digital content
+created by the Library \cite{llgc}. The research project described in this
+article is an example of a digital humanities collaborative venture, bringing
+together digital humanists, art historians, and computer scientists.  The
+results of this research have value across all these groups. Arts historians
+are able to better investigate a large corpus of digital paintings through the
+application of computer science approaches to this content, and computer
+scientists are able to configure new approaches in imaging to working with a
+complex humanities data set. 
 
 \subsection{Computer vision and the analysis of paintings}
 
@@ -567,15 +625,15 @@ to a known period in his career.
 
 Techniques based upon stroke analysis, whilst applicable to the work of some
 artists, are not applicable to all. In particular, Kyffin Williams painted with
-a pallet knife and whilst there are clear ``\emph{strokes}'' identifiable in
+a palette knife and whilst there are clear \emph{strokes} identifiable in
 his style, these vary widely in size and shape, so the morphological techniques
 which can detect strokes in Van Gogh's work are unlikely to pay off when
-considering the blockier Williams oeuvre. Another difference of note is that
-much work on computerised painting analysis (including \cite{Li2012Rhythmic,
-Berezhnoy2009Automatic}) is based upon high resolution scans acquired in
-controlled conditions, whereas the current paper deals instead with a
-collection of photographs from catalogues, websites, and other disparate
-sources. 
+considering the blockier paintings in the Williams oeuvre. Another difference
+of note is that much work on computerised painting analysis (including
+\cite{Li2012Rhythmic, Berezhnoy2009Automatic}) is based upon high resolution
+scans acquired in controlled conditions, whereas the current paper deals
+instead with a collection of photographs from catalogues, websites, and other
+disparate sources. 
 
 \section{The image dataset}
 
@@ -603,10 +661,11 @@ Landscapes  & 247 & 64 & \\
 Portraits   &  52 & 35 & \\
 Seascapes   &  11 &  2 & \\
 Still lifes &   4 &  1 & \\
-Other       &   8 &  0 & Genre unknown or studies \\
+Other       &   8 &  0 & Other or studies \\
 \hline
 \end{tabular}
-\caption{A summary of the Kyffin Williams painting dataset used}
+\vspace{0.5em}
+\caption{A summary of our Kyffin Williams painting dataset}
 \label{summary_t}
 \end{table}
 
@@ -642,10 +701,10 @@ classification or regression itself.
 
 Thus for each feature set, we take all paintings for which we know the year of
 creation; select one painting, and find its nearest neighbours within that
-feature space. The year assigned by our classifier to that painting is the 
-mean of the K neighbours.
-Figure~\ref{LOOCV} provides an overview of this classification methodology.
-
+feature space. The year assigned by our classifier to that painting is the mean
+of the K neighbours; we found this provided better results than both median and
+mode.  Figure~\ref{LOOCV} provides an overview of this classification
+methodology.
 
 We also know that painting's actual year, and we can plot actual against
 predicted year for all known-year paintings.  To measure goodness of fit, the
@@ -657,7 +716,6 @@ feature spaces we consider, it is possible treat the painting descriptors as
 histograms.  This allows us to use a single distance measure, namely
 chi-squared, in our K-nearest neighbour classification.
 
-
 \section{An exploration of colour and texture features}
 
 % 0.5 page on references
@@ -666,11 +724,13 @@ chi-squared, in our K-nearest neighbour classification.
 The digital analysis of paintings is a broad reseach area. Within the
 methodology we have selected, there are many feature spaces which could be
 useful: from simple analysis of the way in which colour changes over time,
-through edge detection, to texture analysis. Within this work we have
-concentrated on lower level image features -- colours, textures, and edges --
-rather than attempt to extract brush strokes. Kyffin Williams painted with a
-pallette knife rather than a brush, and his work is characterised by angularity
-rather than identifiable ``strokes''.
+through edge detection, to texture analysis. We have concentrated on lower
+level image features -- colours, textures, and edges -- rather than attempt to
+extract brush strokes. As mentioned earlier, Williams painted with a pallette
+knife rather than a brush, and his work is characterised by angularity rather
+than identifiable ``strokes''.  In this section we describe the various feature
+sets and feature spaces we have explored; results for each of these are
+presented in Section~\ref{results} below.
 
 There is a clear (to the eye) trend in colour usage, as the paintings get
 ``gloomier'' over time, so we started with simple colour-space analysis: taking
@@ -682,10 +742,15 @@ Staying with the colour variation theme, we then used colour histograms, which
 provide a more precise representation of the way Kyffin Williams used colour.
 These histograms were developed by counting the number of pixels within a
 particular colour range for each painting, and then building a normalised
-histogram representing the colour usage.
+histogram representing the colour usage. 
+
+\textbf{XXX Alex how many bins? }
  
 As a lot of Kyffin Williams' paintings are highly textural, edge detection and
-texture analysis were thought to be good techniques to explore.  To investigate the edge properties of the artworks we apply a Canny \cite{Canny1986Computational} edge detector to the paintings, and then build a histogram based upon counts of edge strength.
+texture analysis was thought to be a good avenue to explore.  Firstly, we
+investigated simple \emph{edginess}; as a rough estimate of the the edge
+properties of the artworks we apply a Canny \cite{Canny1986Computational} edge
+detector to the paintings, and then use a count of edge pixels as our feature. 
 
 Texture analysis is a continuation of edge detection. Instead of taking simply
 the strength and number of edges, we create a histogram of orientated gradients
@@ -723,8 +788,10 @@ orientation.
 \caption{Steerable filter strength $S(\theta)$ on the example image in figure~\ref{fig:example-img}}
 \end{figure}
 
-Gabor filters were also used with a greater range of angles to produce a more
-accurate representation of the texture of the painting.
+Gabor filters are linear filters which can be tuned to a greater range of
+angles and frequencies than simple steerable filters, which in turn results in
+a more accurate representation of the texture of the painting. The general
+equation for a Gabor filter is given in Equation~\ref{gabor_eq}.
 
 \begin{equation}
 g_e(x) = \frac{1}{2\pi\sigma_x \sigma_y}e^{-\frac{1}{2}\left(\frac{x^2}{\sigma_x}+\frac{y^2}{\sigma_y}\right)}\cos(2\pi\omega_{x_0}x + 2\pi\omega_{y_0}y)
@@ -732,15 +799,25 @@ g_e(x) = \frac{1}{2\pi\sigma_x \sigma_y}e^{-\frac{1}{2}\left(\frac{x^2}{\sigma_x
 \end{equation}
 
 Where $(\omega_{x_0},\omega_{y_0})$\ defines the centre frequency, and
-$(\sigma_x,\sigma_y)$ the spread of the Gaussian window.
+$(\sigma_x,\sigma_y)$ the spread of the Gaussian window. In this work we use
+Gabor filters tuned to equally spaced orientations to build a histogram
+representing line orientations in each painting, and present results below for
+histograms built from the output of both 4 and 8 filter orientations.
 
 \textbf{XXX Hannah or Alex to look at a textbook for a better version of the above scary maths and cite.}
 
-Another method for producing histograms of orientated gradients is to apply two
-discrete derivative masks to the image to get the gradient of $x$ and $y$ and
-then to work out the gradient direction at each point. This can then have a
-histogram created from it to provide a richer representation of the texture of
-the image.
+\textbf{XXX Alex to run Gabor with 4 and 8.}
+
+The final method for producing histograms we consider involves the application
+of two discrete derivative masks to the image to get the gradient of $x$ and
+$y$, and then to work out the gradient direction at each point. These gradient
+directions are then summarised in a histogram of oriented gradients, providing
+a yet richer representation of the texture of the image. This is similar to the
+method described in \cite{Dalal2005Histograms}. 
+
+\textbf{XXX Alex we use 15 bins; can we try different bin size? or is that just
+me being fussy? It'd be good to have Gabor (4, 8, 16); HOG (4, 8, 16); thus
+providing a direct comparator}
 
 % Right oh now what we need is some graphs
 % I suggest for now doing results in-line, or have a table here showing 
@@ -748,9 +825,13 @@ the image.
 
 % \textbf{Alex is going to combine the various correlation-against-K graphs so that we have one graph with all techniques on the same axes}
 
+\section{Year classification results}
+\label{results}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{results/mean.pdf}
+\label{pearsons-k}
 %\input{results/eepic}
 \caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour}
 \end{figure}
@@ -764,23 +845,27 @@ painting in feature space to the current test painting, whereas setting
 $K=102$\ has the effect of giving each painting the mean value of the entire
 dataset. Clearly a point between these two extremes would be best; from
 Figure~\ref{pearsons-k} we can see that for many of the feature spaces we
-consider, the optimum K value is around 10.
+consider, the optimum K value is around 7 or 8.
 
+\textbf{XXX Alex - can we get the results table for K=7?}
 
 \begin{table}[h]
 \centering
 \begin{tabular}{|p{3.5cm}|c|c|}
 \hline
 Technique     & $r$ & $P(r)$ \\ \hline
-RGB           & 0.179 & 0.05757 \\
-HSV           & 0.158 & 0.09518 \\
-HSV Histogram & 0.364 & 0.00007 \\
 Edge Strength & 0.060 & 0.52877 \\
-HOG           & 0.479 & 0.00000008 \\
+HSV           & 0.158 & 0.09518 \\
+RGB           & 0.179 & 0.05757 \\
+HSV Histogram & 0.364 & 0.00007 \\
+Steerable filters: 4 orientations & & \\
+Gabor filters: 4 orientations & & \\
+Gabor filters: 8 orientations & & \\
+HOG (Discrete Derivatives): 15 orientations & 0.479 & 0.00000008 \\
 \hline
-
 \end{tabular}
-\caption{Correlation Coefficients}\label{tab:results}
+\vspace{0.5em}
+\caption{Correlation Coefficients, ordered by strength}\label{tab:results}
 \end{table}
 
 \textbf{XXX Alex - do we have HOG results for steerable, Gabor, and derivative masks?}
@@ -789,24 +874,18 @@ HOG           & 0.479 & 0.00000008 \\
 
 \section{Exemplars: can we improve results by incorporating expert knowledge? }
 
-We have also investigated the utility of incorporating expert
-knowledge within our framework. For each year represented in
-our collection we asked Dr Paul Joyner, head of the purchasing and donations unit at the National 
-Library of Wales, board member of the Trustees of the Kyffin Williams estate who has written 
-widely on Welsh art and Kyffin Williams, to choose the one painting which best represents the 
-artist's work for that year. These we consider to be connoisseurially/artistically chosen 
-exemplars (\emph{artistic exemplars}, for short), which
-%We have also investigated the utility of incorporating expert knowledge within
-%our framework. For each year represented in our collection we have asked a
-%Kyffin Williams expert \textbf{ we could do with a bit more information
-%here} to choose the one painting which best represents the artist's work for
-%that year.  These we consider to be artistically chosen exemplars
-%(\emph{artistic exemplars}, for short), which 
-we can then use as a representation of that particular year.
+We have also investigated the utility of incorporating expert knowledge within
+our framework. For each year represented in our collection we asked Dr Paul
+Joyner, of the National Library of Wales, to choose the one painting which best
+represents the artist's work for that year. Dr Joyner is a member of the
+Trustees of the Kyffin Williams Estate and he has written widely on Welsh Art
+and Kyffin Williams. These chosen paintings we consider to be
+connoisseurially/artistically selected exemplars (\emph{artistic exemplars}, for
+short), which we can then use as a representation of that particular year.
 
 The data on artistic exemplars opens up the options for different methods of
 classification. Rather than using K-nearest neighbour to classify each point in
-the feature space, we take the year of the nearest exemplar to assign that year
+the feature space, we can take the year of the nearest exemplar to assign that year
 to the painting in question. 
 
 This then raises the question of whether we can determine \emph{statistical
@@ -829,6 +908,7 @@ used to generate the error between the statistical and artistic exemplars.
 
 %TODO I need to actually write some more code for this
 
+\textbf{XXX Alex... er... your to do list is longer than mine:-)}
 
 \section{Conclusions and future directions}
 
@@ -855,7 +935,9 @@ artistic styles.
 \section*{Acknowledgment}
 
 
-The authors would like to thank...
+The authors would like to thank Dr Paul Joyner of the National Library of Wales
+for his invaluable expert assistance. We would also like to thank Professor
+Robert Meyrick of the School of Art, Aberystywth University.
 
 
 
