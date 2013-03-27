@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  27 MAR 2013 11:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  27 MAR 2013 11:58
 entering extended mode
  %&-line parsing enabled.
 **kyffin.tex
@@ -293,7 +293,7 @@ Overfull \hbox (9.0pt too wide) in paragraph at lines 833--836
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 864--864
+Underfull \hbox (badness 1960) in paragraph at lines 866--866
 []\OT1/ptm/m/n/7 HOG (Dis-crete Deriva-tives): 15
  []
 
@@ -344,7 +344,7 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-texlive
 /fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on kyffin.pdf (5 pages, 316925 bytes).
+Output written on kyffin.pdf (5 pages, 317104 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

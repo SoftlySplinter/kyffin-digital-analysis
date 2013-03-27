@@ -854,14 +854,26 @@ consider, the optimum K value is around 7 or 8.
 \begin{tabular}{|p{3.5cm}|c|c|}
 \hline
 Technique     & $r$ & $P(r)$ \\ \hline
-Edge Strength & 0.060 & 0.52877 \\
-HSV           & 0.158 & 0.09518 \\
-RGB           & 0.179 & 0.05757 \\
-HSV Histogram & 0.364 & 0.00007 \\
-Steerable filters: 4 orientations & & \\
-Gabor filters: 4 orientations & & \\
-Gabor filters: 8 orientations & & \\
-HOG (Discrete Derivatives): 15 orientations & 0.479 & 0.00000008 \\
+%K=7
+Edge Strength					& 0.01072814442	& 0.910207365322    \\
+HSV						& 0.11224162320	& 0.236562323053    \\
+RGB						& 0.11775991536	& 0.214157639943    \\
+HSV Histograms					& 0.14603200925	& 0.122741593497    \\
+RGB Histograms					& 0.26953009140	& 0.00389039298815  \\
+Steerable filters: 4 orientations		& 0.31169031994	& 0.000777735274356 \\
+Gabor filters: 8 orientations			& 0.43790920108	& 1.23123557269e-06 \\
+Gabor filters: 4 orientations			& 0.44084541429	& 1.02469784947e-06 \\
+HOG (Discrete Derivatives): 15 orientations	& 0.44695489816	& 6.95435503135e-07 \\
+
+%K=10
+%Edge Strength & 0.060 & 0.52877 \\
+%HSV           & 0.158 & 0.09518 \\
+%RGB           & 0.179 & 0.05757 \\
+%HSV Histogram & 0.364 & 0.00007 \\
+%Steerable filters: 4 orientations & & \\
+%Gabor filters: 4 orientations & & \\
+%Gabor filters: 8 orientations & & \\
+%HOG (Discrete Derivatives): 15 orientations & 0.479 & 0.00000008 \\
 \hline
 \end{tabular}
 \vspace{0.5em}
