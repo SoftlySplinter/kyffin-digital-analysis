@@ -5,12 +5,12 @@ import cv2
 from kyffin.techniques import Technique
 
 class GaborFilter(Technique):
-    def __init__(self):
-        pass
+    def __init__(self, orientations):
+        self.orientations = orientations
 
     def analyse(self, painting):
         image = cv2.imread(painting.filePath, cv2.cv.CV_LOAD_IMAGE_GRAYSCALE)
-        data = [cv2.filter2D(image, cv2.cv.CV_32F, self.get_filter(orientation)) for orientation in [2*pi,pi/4,pi/2,(pi*3)/4]]
+        data = [cv2.filter2D(image, cv2.cv.CV_32F, self.get_filter(orientation)) for orientation in self.orientations]
         return numpy.array([cv2.calcHist([d], [0], None, [2], [0,255]) for d in data])
 
     @classmethod
