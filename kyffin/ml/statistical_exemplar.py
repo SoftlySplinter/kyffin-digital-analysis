@@ -3,6 +3,8 @@ import csv
 from kyffin.ml.knn import KNearestNeighbour
 from kyffin.ml.nearest_exemplar import NearestExemplar, FakePainting
 import sys
+import matplotlib.pyplot as plot
+import numpy
 
 class TheoreticalStatisticalExemplar(NearestExemplar):
     def __init__(self, technique, exemplar_file):
@@ -33,6 +35,19 @@ class TheoreticalStatisticalExemplar(NearestExemplar):
 
     def centroid(self, data):
         return self.technique.centroid(data)
+
+    def visualise(self, actual, classified):
+        super(TheoreticalStatisticalExemplar, self).visualise(actual, classified)
+        error = {stat: self.technique.distance(self.exemplars[stat].data, self.actual_exemplars[real].data) for (stat, real) in zip(self.exemplars, self.actual_exemplars)}
+        print "\nError distance: {}".format(sum(error.values()))
+        fig = plot.figure(4)
+        ax = fig.add_subplot(111)
+        errors = [error[key] for key in sorted(error)]
+        ax.bar(range(len(error)), errors)
+        ax.set_xticklabels( sorted(error) )
+        plot.ylabel('Error Distance')
+        plot.xlabel('Year')
+        plot.show()
 
 class RealStatisticalExemplar(TheoreticalStatisticalExemplar):
     def centroid(self, data):
