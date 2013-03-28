@@ -1,15 +1,18 @@
-import cv, numpy, math
+import cv, numpy, math, cv2
 from kyffin.techniques import Technique
+import os
 
 
 class BaseHOG( Technique ):
+    def __init__(self, bins):
+        self.bins = bins
+
     def analyse(self, painting):
         # Normalise colour and gamma (not needed)
-        img = self.normalize_gamma(cv.LoadImageM(painting.filePath, cv.CV_LOAD_IMAGE_GRAYSCALE), 1)
-
+#        img = self.normalize_gamma(cv.LoadImageM(painting.filePath, cv.CV_LOAD_IMAGE_GRAYSCALE), 1)
+        img = cv2.imread(painting.filePath)
         # Compute gradients
-        gradients = cv.fromarray(self.compute_gradients(img))
-        return gradients
+        return self.compute_gradients(img)
 
 
     @classmethod
@@ -33,25 +36,16 @@ class BaseHOG( Technique ):
         gradient_filter_y[0][1] = 0
         gradient_filter_y[0][2] = 1
 
-        kern_x = cv.fromarray(gradient_filter_x)
-        kernel_x = cv.CreateMat(kern_x.rows, kern_x.cols, cv.CV_32F)
-        cv.Convert(kern_x, kernel_x)
+        dst_x = cv2.filter2D(img, -1, gradient_filter_x)
+        dst_y = cv2.filter2D(img, -1, gradient_filter_y)
 
-        kern_y = cv.fromarray(gradient_filter_y)
-        kernel_y = cv.CreateMat(kern_y.rows, kern_y.cols, cv.CV_32F)
-        cv.Convert(kern_y, kernel_y)
+        dst = numpy.zeros(img.shape, numpy.float32)
 
-        dst_x = cv.CreateMat(img.rows, img.cols, img.type)
-        dst_y = cv.CreateMat(img.rows, img.cols, img.type)
-        cv.Filter2D(img, dst_x, kernel_x)
-        cv.Filter2D(img, dst_y, kernel_y)
-
-        dst = numpy.ones((img.rows, img.cols), numpy.float32)
-
-        for x in range(img.rows):
-            for y in range(img.cols):
-                x_c = cv.Get2D(dst_x, x, y)
-                y_c = cv.Get2D(dst_y, x, y)
+        w,h,_ = img.shape
+        for x in range(w):
+            for y in range(h):
+                x_c = dst_x[x][y]
+                y_c = dst_y[x][y]
                 x_co = max(x_c)
                 y_co = max(y_c)
                 dst[x][y] = math.atan2(x_co, y_co)
@@ -59,18 +53,31 @@ class BaseHOG( Technique ):
         return dst
 
 class HOG(BaseHOG):
+    def __init__(self, bins):
+        super(HOG, self).__init__(bins)
+        self.path = ".hog"
+
     """Basic HOG."""
     def analyse(self, painting):
-        gradients = super(HOG, self).analyse(painting)
-        grad_img = cv.CreateImage((gradients.cols, gradients.rows), cv.IPL_DEPTH_32F, gradients.channels)
-        cv.Convert(gradients, grad_img)
-        hist = cv.CreateHist([15], cv.CV_HIST_ARRAY, [[0, 2 * math.pi]])
-        cv.CalcHist([grad_img], hist)
-        return hist
+        if not self.exists(painting.id):
+            gradients = super(HOG, self).analyse(painting)
+            self.can(painting.id, gradients)
+        else:
+            gradients = self.uncan(painting.id)
+        return cv2.calcHist([gradients], [0], None, [self.bins], [0, 2 * math.pi])
 
-    def distance(self, current, other):
-        return cv.CompareHist(current,other,cv.CV_COMP_CHISQR)
-       
+    def exists(self, id):
+        return os.path.exists("{}/{}.npy".format(self.path, str(id)))
+
+    def can(self, id, data):
+        if not os.path.exists(self.path):
+            os.mkdir(self.path)
+        filename="{}/{}".format(self.path, str(id))
+        numpy.save(filename, data)
+
+    def uncan(self, id):
+        filename="{}/{}.npy".format(self.path, str(id))
+        return numpy.load(filename)
 
 class SimpleRHOG(BaseHOG):
     """Rectangulary celled HOG. This is far too basic, inefficient and 

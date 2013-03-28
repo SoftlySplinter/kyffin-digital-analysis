@@ -21,7 +21,11 @@ def getTechnique(name):
     elif name == 'edge':
         return EdgeOrientation()
     elif name == "hog":
-        return HOG() 
+        return HOG(4)
+    elif name == "hog8":
+        return HOG(8)
+    elif name == "hog16":
+        return HOG(16)
     elif name == "rhog":
         return SimpleRHOG() 
     elif name == "steerable":
@@ -30,6 +34,8 @@ def getTechnique(name):
         return GaborFilter([(i * pi) / 4 for i in xrange(1,4)])
     elif name == "gabor8":
         return GaborFilter([(i * pi) / 8 for i in xrange(1,8)])
+    elif name == "gabor16":
+        return GaborFilter([(i * pi) / 16 for i in xrange(1,16)])
     elif name == "size":
         return Size()
     elif "+" in name:

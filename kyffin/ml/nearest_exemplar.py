@@ -34,14 +34,12 @@ class NearestExemplar(ML):
 
     def classify(self, painting, experience):
         """Classify the point in space"""
-        
         nearest_exemplar = None
         for year in self.exemplars:
             if self.exemplars[year].id == painting.id:
-                return -1
+                continue
             distance = self.technique.distance(painting.data, self.exemplars[year].data)
             if nearest_exemplar == None or nearest_exemplar['distance'] > distance:
                 nearest_exemplar = {'year': year, 'distance': distance}
             
-#        print "Original: {}\nClassified: {}\n".format(painting.year, nearest_exemplar['year'])
         return nearest_exemplar['year']

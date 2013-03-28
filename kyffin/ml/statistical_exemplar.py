@@ -28,13 +28,13 @@ class TheoreticalStatisticalExemplar(NearestExemplar):
                 years[painting.year] = []
             years[painting.year].append(painting)
         for year in years:
-            centroid_data = self.centroid(years[year])
-            centroid = FakePainting(-1, "", "Statistcal Centriod", year)
+            (centroid_data, centroid_id) = self.centroid(years[year])
+            centroid = FakePainting(centroid_id, "", "Statistcal Centriod", year)
             centroid.data = centroid_data
             self.exemplars[year] = centroid
 
     def centroid(self, data):
-        return self.technique.centroid(data)
+        return (self.technique.centroid(data), -1)
 
     def visualise(self, actual, classified):
         super(TheoreticalStatisticalExemplar, self).visualise(actual, classified)
@@ -51,7 +51,7 @@ class TheoreticalStatisticalExemplar(NearestExemplar):
 
 class RealStatisticalExemplar(TheoreticalStatisticalExemplar):
     def centroid(self, data):
-        centroid = super(RealStatisticalExemplar, self).centroid(data)
+        (centroid,_) = super(RealStatisticalExemplar, self).centroid(data)
         nearest = data[0]
         dist = self.technique.distance(centroid, nearest.data)
         for i in data:
@@ -74,5 +74,4 @@ class RealStatisticalExemplar(TheoreticalStatisticalExemplar):
                    len(data))
         else:
             print "No artistical exemplar\n"
-        return nearest.data
-            
+        return (nearest.data, nearest.id)
