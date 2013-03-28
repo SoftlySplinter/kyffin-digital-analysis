@@ -26,6 +26,8 @@ def getTechnique(name):
         return HOG(8)
     elif name == "hog16":
         return HOG(16)
+    elif name == "hog15":
+        return HOG(15)
     elif name == "rhog":
         return SimpleRHOG() 
     elif name == "steerable":

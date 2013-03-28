@@ -59,19 +59,13 @@ class RealStatisticalExemplar(TheoreticalStatisticalExemplar):
             if new_dist < dist:
                 dist = new_dist
                 nearest = i
-        
-        print "Statistical Exemplar for {}: {} ({})".format(
-            nearest.year, 
-            nearest.title, 
-            nearest.id)
-        if int(nearest.year) in self.actual_exemplars:
-            if self.actual_exemplars[int(nearest.year)].id == nearest.id: 
-                print "Artistical Exemplar matches ({})\n".format(len(data))
-            else:
-                print "Artistical Exemplar: {} ({}) ({})\n".format(
-                   self.actual_exemplars[int(nearest.year)].title,
-                   self.actual_exemplars[int(nearest.year)].id,
-                   len(data))
-        else:
-            print "No artistical exemplar\n"
+        s = ""
+#        s += str(nearest.year) + "\t"
+        s += str(nearest.id)
+#        if int(nearest.year) in self.actual_exemplars:
+#            s += "\t" + str(self.actual_exemplars[int(nearest.year)].id)
+#        else:
+#            s += "\tN/A"
+#        s += "\t" + str(len(data))
+        print s
         return (nearest.data, nearest.id)
