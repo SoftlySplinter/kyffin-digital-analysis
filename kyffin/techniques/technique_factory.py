@@ -6,6 +6,7 @@ from kyffin.techniques.hog import *
 from kyffin.techniques.ensemble import Ensemble
 from kyffin.techniques.steerable_filter import SteerableFilter
 from kyffin.techniques.gabor_filter import GaborFilter
+from kyffin.techniques.size import Size
 from math import pi
 
 def getTechnique(name):
@@ -29,6 +30,8 @@ def getTechnique(name):
         return GaborFilter([(i * pi) / 4 for i in xrange(1,4)])
     elif name == "gabor8":
         return GaborFilter([(i * pi) / 8 for i in xrange(1,8)])
+    elif name == "size":
+        return Size()
     elif "+" in name:
         technique_names = name.split('+')
         techniques = [getTechnique(technique_name) for technique_name in technique_names]
