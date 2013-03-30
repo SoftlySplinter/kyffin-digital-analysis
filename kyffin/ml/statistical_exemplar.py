@@ -38,7 +38,12 @@ class TheoreticalStatisticalExemplar(NearestExemplar):
 
     def visualise(self, actual, classified):
         super(TheoreticalStatisticalExemplar, self).visualise(actual, classified)
-        error = {stat: self.technique.distance(self.exemplars[stat].data, self.actual_exemplars[real].data) for (stat, real) in zip(self.exemplars, self.actual_exemplars)}
+#        error = {stat: self.technique.distance(self.exemplars[stat].data, self.actual_exemplars[real].data) for (stat, real) in zip(self.exemplars, self.actual_exemplars)}
+#        error = {stat: (self.exemplars[real].year, self.actual_exemplars[real].year) for real in self.actual_exemplars}
+        error = {}
+        for year in self.exemplars:
+            if int(year) in self.actual_exemplars:
+                error[year] = self.technique.distance(self.exemplars[year].data, self.actual_exemplars[int(year)].data)
         print "\nError distance: {}".format(sum(error.values()))
         fig = plot.figure(4)
         ax = fig.add_subplot(111)
@@ -48,6 +53,9 @@ class TheoreticalStatisticalExemplar(NearestExemplar):
         plot.ylabel('Error Distance')
         plot.xlabel('Year')
         plot.show()
+
+        for y,e in zip(sorted(error), errors):
+            print str(y) + " " + str(e)
 
 class RealStatisticalExemplar(TheoreticalStatisticalExemplar):
     def centroid(self, data):
@@ -59,13 +67,13 @@ class RealStatisticalExemplar(TheoreticalStatisticalExemplar):
             if new_dist < dist:
                 dist = new_dist
                 nearest = i
-        s = ""
+#        s = ""
 #        s += str(nearest.year) + "\t"
-        s += str(nearest.id)
+#        s += str(nearest.id)
 #        if int(nearest.year) in self.actual_exemplars:
 #            s += "\t" + str(self.actual_exemplars[int(nearest.year)].id)
 #        else:
 #            s += "\tN/A"
 #        s += "\t" + str(len(data))
-        print s
+#        print s
         return (nearest.data, nearest.id)

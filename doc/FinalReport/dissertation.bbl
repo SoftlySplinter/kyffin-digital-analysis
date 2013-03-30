@@ -20,8 +20,8 @@
 
 \bibitem{Bacardit2013Largescale}
 \BIBentryALTinterwordspacing
-J.~Bacardit and X.~Llor\`{a}, ``Large-scale data mining using genetics-based
-  machine learning,'' \emph{Wiley Interdisciplinary Reviews: Data Mining and
+J.~Bacardit and X.~Llor\`{a}, ``{Large-scale data mining using genetics-based
+  machine learning},'' \emph{Wiley Interdisciplinary Reviews: Data Mining and
   Knowledge Discovery}, vol.~3, no.~1, pp. 37--61, Jan. 2013. [Online].
   Available: \url{http://dx.doi.org/10.1002/widm.1078}
 \BIBentrySTDinterwordspacing
@@ -31,9 +31,9 @@ J.~Bacardit and X.~Llor\`{a}, ``Large-scale data mining using genetics-based
 
 \bibitem{Berezhnoy2005Authentic}
 \BIBentryALTinterwordspacing
-I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``Authentic:
-  Computerized brushstroke analysis,'' in \emph{Multimedia and Expo, 2005. ICME
-  2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
+I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``{Authentic:
+  Computerized Brushstroke Analysis},'' in \emph{Multimedia and Expo, 2005.
+  ICME 2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, July 2005, pp. 1586--1588. [Online]. Available:
   \url{http://dx.doi.org/10.1109/icme.2005.1521739}
 \BIBentrySTDinterwordspacing
@@ -54,26 +54,35 @@ G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
   reference and some learning on image processing/computer vision. Used since
   11 October 2012. \end{quotation}
 
+\bibitem{Brown2013Can}
+A.~D. Brown, H.~M. Dee, G.~L. Roderick, and L.~M. Hughes, ``{Can we date an
+  artist's work from catalogue photographs?}'' Apr. 2013.
+ \begin{quotation}\noindent The paper submitted to ISPA as a part of this
+  project. \end{quotation}
+
 \bibitem{Chilvers2009Dictionary}
 \BIBentryALTinterwordspacing
-I.~Chilvers, J.~Glaves-Smith, and I.~Chilvers, \emph{A dictionary of modern and
-  contemporary art}.\hskip 1em plus 0.5em minus 0.4em\relax Oxford University
-  Press, 2009. [Online]. Available:
+I.~Chilvers, J.~Glaves-Smith, and I.~Chilvers, \emph{{A dictionary of modern
+  and contemporary art}}.\hskip 1em plus 0.5em minus 0.4em\relax Oxford
+  University Press, 2009. [Online]. Available:
   \url{http://www.worldcat.org/isbn/0199239665} 0199239665.
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent References for Sir John Kyffin Williams
+  \end{quotation}
 
 \bibitem{Contributors2012Gabor}
 \BIBentryALTinterwordspacing
-W.~Contributors, ``Gabor filter,'' Online, Oct. 2012. [Online]. Available:
-  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342109}
+W.~Contributors, ``{Gabor filter},'' Online, Oct. 2012. [Online]. Available:
+  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342%
+109}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Reference for the example code for Gabor Filters. A
+  better reference should be found if possible. \end{quotation}
 
 \bibitem{Dalal2005Histograms}
 \BIBentryALTinterwordspacing
-N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human
-  detection,'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
+N.~Dalal and B.~Triggs, ``{Histograms of oriented gradients for human
+  detection},'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
   2005. IEEE Computer Society Conference on}, ser. CVPR '05, vol.~1.\hskip 1em
   plus 0.5em minus 0.4em\relax Washington, DC, USA: IEEE, June 2005, pp.
   886--893 vol. 1. [Online]. Available:
@@ -88,26 +97,18 @@ N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human
 
 \bibitem{Davies2008Welsh}
 \BIBentryALTinterwordspacing
-J.~Davies and A.~Gymreig, \emph{The Welsh Academy encyclopaedia of
-  Wales}.\hskip 1em plus 0.5em minus 0.4em\relax University of Wales Press,
+J.~Davies and A.~Gymreig, \emph{{The Welsh Academy encyclopaedia of
+  Wales}}.\hskip 1em plus 0.5em minus 0.4em\relax University of Wales Press,
   2008, pp. 957--958. [Online]. Available:
   \url{http://www.worldcat.org/isbn/9780708319536} 9780708319536.
 \BIBentrySTDinterwordspacing
-
-
-\bibitem{Gamma1996Entwurfsmuster}
-\BIBentryALTinterwordspacing
-E.~Gamma, \emph{Entwurfsmuster : Elemente wiederverwendbarer objektorientierter
-  Software}, ser. Addison-Wesley professional computing series.\hskip 1em plus
-  0.5em minus 0.4em\relax Addison-Wesley, 1996. [Online]. Available:
-  \url{http://www.worldcat.org/isbn/9780201633610} 9780201633610.
-\BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent References for Sir John Kyffin Williams.
+  \end{quotation}
 
 \bibitem{Hall2009WEKA}
 \BIBentryALTinterwordspacing
 M.~Hall, E.~Frank, G.~Holmes, B.~Pfahringer, P.~Reutemann, and I.~H. Witten,
-  ``The {WEKA} data mining software: an update,'' \emph{SIGKDD Explor. Newsl.},
+  ``{The WEKA data mining software: an update},'' \emph{SIGKDD Explor. Newsl.},
   vol.~11, no.~1, pp. 10--18, Nov. 2009. [Online]. Available:
   \url{http://dx.doi.org/10.1145/1656274.1656278}
 \BIBentrySTDinterwordspacing
@@ -120,7 +121,7 @@ M.~Hall, E.~Frank, G.~Holmes, B.~Pfahringer, P.~Reutemann, and I.~H. Witten,
 
 \bibitem{Harris2011How}
 \BIBentryALTinterwordspacing
-R.~Harris, ``How rolf learnt to paint like sir kyffin williams,'' BBC
+R.~Harris, ``{How Rolf learnt to paint like Sir Kyffin Williams},'' BBC
   Broadcast, Feb. 2011. [Online]. Available:
   \url{http://www.bbc.co.uk/programmes/p00f6nyt}
 \BIBentrySTDinterwordspacing
@@ -129,16 +130,19 @@ R.~Harris, ``How rolf learnt to paint like sir kyffin williams,'' BBC
   \end{quotation}
 
 \bibitem{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy}
-E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy}: Open source
-  scientific tools for python,'' 2001.
-
+E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy: Open source
+  scientific tools for Python},'' 2001.
+ \begin{quotation}\noindent Reference for SciPy and NumPy; two useful libraries
+  which implement complex scientific and mathematical functions. NumPy is also
+  heavily tied to OpenCV version 2.4 so it is a necessity to include as part of
+  this project. \end{quotation}
 
 \bibitem{Li2012Rhythmic}
 \BIBentryALTinterwordspacing
-J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
-  van gogh from his contemporaries: Findings via automated brushstroke
-  extraction,'' \emph{Pattern Analysis and Machine Intelligence, IEEE
-  Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
+J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``{Rhythmic Brushstrokes
+  Distinguish van Gogh from His Contemporaries: Findings via Automated
+  Brushstroke Extraction},'' \emph{Pattern Analysis and Machine Intelligence,
+  IEEE Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
   Available: \url{http://dx.doi.org/10.1109/tpami.2011.203}
 \BIBentrySTDinterwordspacing
  \begin{quotation}\noindent Defines a complex method for analysing individual

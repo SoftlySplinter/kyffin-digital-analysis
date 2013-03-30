@@ -327,6 +327,15 @@ This may become a long operation depending on how many dimensions the feature sp
 technique like \gls{pca} may be useful to help cut down the number of dimensions needed that this
 algorithm uses.
 
+\subsection{cv2 and Histogram Results}
+Whilst reading through the \emph{numpy}\cite{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy} and \emph{OpenCV} it turned out that, until this point, I had 
+been using a deprecated version of OpenCV. \emph{cv2} is the new version of \emph{OpenCV} for python, 
+which provides bindings for \emph{OpenCV 2.4} and uses \emph{numpy} arrays and multi-dimensional arrays to 
+represent all data types rather than in-built data structures.
+
+This makes everything a lot easier to work with as all \emph{numpy} arrays (with the correct data type)
+can be passed into the \emph{cv2} methods.
+
 
 \section{3\textsuperscript{rd} Party Libraries and Tools}
 

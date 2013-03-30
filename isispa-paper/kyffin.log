@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  28 MAR 2013 14:24
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.17)  29 MAR 2013 12:29
 entering extended mode
  %&-line parsing enabled.
 **kyffin.tex
@@ -287,6 +287,12 @@ Underfull \hbox (badness 1960) in paragraph at lines 865--865
  []
 
 [4 <./img/steerable.jpg> <./img/steerable.pdf> <./results/mean.pdf>]
+
+pdfTeX warning: pdflatex (file ./img/exemplar.pdf): PDF inclusion: found PDF ve
+rsion <1.5>, but at most version <1.4> allowed
+<img/exemplar.pdf, id=58, 361.35pt x 216.81pt>
+File: img/exemplar.pdf Graphic file (type pdf)
+ <use img/exemplar.pdf>
 (./kyffin.bbl
 Overfull \hbox (12.97964pt too wide) in paragraph at lines 34--38
 \OT1/ptm/m/n/8 http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted
@@ -318,31 +324,31 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5] (./kyffin.aux) ) 
+[5 <./img/exemplar.pdf>] (./kyffin.aux) ) 
 Here is how much of TeX's memory you used:
- 2249 strings out of 493848
- 32157 string characters out of 1152823
+ 2254 strings out of 493848
+ 32252 string characters out of 1152823
  96874 words of memory out of 3000000
- 5535 multiletter control sequences out of 15000+50000
+ 5539 multiletter control sequences out of 15000+50000
  39875 words of font info for 73 fonts, out of 3000000 for 9000
  717 hyphenation exceptions out of 8191
  27i,9n,21p,316b,269s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/urw/times
-/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/s
-hare/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on kyffin.pdf (5 pages, 326241 bytes).
+{/usr/share/texmf-texlive/fonts/enc/dv
+ips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/
+fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/time
+s/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/
+share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on kyffin.pdf (5 pages, 337200 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
+ 115 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
