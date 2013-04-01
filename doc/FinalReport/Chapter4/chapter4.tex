@@ -8,10 +8,10 @@
 
 \subsection{Loading Data}
 One of the more key parts to implement before all others in this project is the ability to load in
-data from Llyods spreadsheet. The first step of this was to convert it to a \gls{csv} file-type,
+data from Lloyds spreadsheet. The first step of this was to convert it to a \gls{csv} file-type,
 which is easier to read programatically.
 
-The initial spreadsheet was slightly different from the version depicted below, Llyod was kind 
+The initial spreadsheet was slightly different from the version depicted below, Lloyd was kind 
 enough to update it so it was easier to handle digitally. In this version of the spreadsheet the
 filenames were much longer and were in sub-folders depending on their collection. Extra logic was
 needed to locate the file (a simple matter of concatenating the collection to the filename as a
@@ -63,7 +63,7 @@ due to the weak typing, but useful for me to get my head around the architecture
 I also implemented the \texttt{Painting} class and had a method to take an array (from the CSV 
 file) and create a new instance of it from this. Later this was changed to use Python 
 \gls{kwargs} instead as it made more sense for the job. This change was done during the change to 
-the second version of Llyods database.
+the second version of Lloyds database.
 
 
 \subsection{Command Line Interface}
@@ -158,12 +158,23 @@ simple to implement.
 
 %TODO Image of the Canny'd image.
 
-\subsection{Edge Orientation}
-Edge orientation involves passing a filter over an image which is used to find the orientation of
-that gradient. There are many forms of filter which can be used to do this. The simplest of which
-discrete derivative masks (figure~\ref{fig:1x2-ddm}, figure~\ref{fig:1x3-ddm}, etc.), steerable 
-filters are a more adjustable implementation of this. There are also more complex filters, like 
-Gabor filters, which provide better flexibility and matching.
+\subsection{Histograms of Orientation Gradients}
+This technique is based on the \gls{hog} paper\cite{Dalal2005Histograms} and mirrors some of the
+implementation in a simplified fashion.
+
+The main crux of the method was to generate the exact orientation of a given point of an image,
+apply this across the image and then bin the results into a histogram. The original paper then
+focused on using this for human recognition and aimed to keep the time complexity down through
+normalisation, applying it to this project only needed the generation of the histogram of exact
+orientations.
+
+Calculating the edge orientation involves passing a filter over an image which is used to find the
+orientation of that gradient. 
+
+There are many forms of filter which can be used to do this. The simplest of which discrete 
+derivative masks (figure~\ref{fig:1x2-ddm}, figure~\ref{fig:1x3-ddm}, etc.), steerable filters 
+are a more adjustable implementation of this. There are also more complex filters, like Gabor 
+filters, which provide better flexibility and matching.
 
 Using discrete derivative masks it is fairly simple to work out to orientation of a gradient 
 mathematically. First pass a mask of the form $\begin{bmatrix}-1\\0\\1\end{bmatrix}$, followed
@@ -177,10 +188,14 @@ equation~\ref{eq:grad_dir}, to work out the actual direction of the gradient.
 \theta = {\rm atan2}\left( \frac{\delta f}{\delta x}, \frac{\delta f}{\delta y} \right)
 \end{equation}
 
-Once this has been calculated a histogram of these orientations is created, this resulting
-histogram is then used as the analysed data. More complex operations can be performed on this,
-e.g. normalisation, which can potentially improve the overall result.
+Working out the exact orientation of a gradient is a costly operation and it became useful to
+\emph{can} (persist) the results to allow the technique to complete in a decent amount of time.
+This change was made after the change to \emph{cv2} and was done using \emph{numpy} methods for
+simplicity. 
 
+Rather than can the resulting histograms it was actually easier to can the output gradients as 
+this allowed histograms with varying bin sizes to be used; this allows a comparison between 
+steerable and Gabor filters to these histograms.
 
 \subsection{Steerable Filters}
 Another way of doing this is to change the orientation of the filter and bin the direction into 
@@ -245,27 +260,190 @@ x' &= x \cos \theta + y \sin \theta \nonumber \\
 y' &= x \sin \theta + y \cos \theta \nonumber
 \end{align}
 
+As with steerable filters the results of the filter were passed into a histogram. Initially Gabor
+filters were implemented with the same 4 orientations as steerable filters ($0$, $\frac{\pi}{4}$,
+$\frac{\pi}{2}$ and $\frac{3\pi}{4}$), however this has two problems:
 
-\subsubsection{Histogram of Edge Orientation}
+\begin{enumerate}
+\item The variation in orientations is not being utilised and,
+\item Divide by 0 errors from python.
+\end{enumerate}
 
+To solve both of these issues I changed to way Gabor filters were initialised, adding in a 
+parameter which defined the number of orientations that instance of the Gabor filter would have,
+the logic of which is defined in figure~\ref{fig:gabor-init}, note how the range is $1\dots b$, 
+solving the divide by 0 issue as $\theta=0$ and $\theta=\pi$ will produce the same result (both
+matching vertical lines best).
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Function{Gabor.init}{$b$} \Comment{$b$ is the number of orientations}
+\For {$i \in 1\dots b$}
+\State $\theta_i \gets \frac{i\pi}{b}$ \Comment{$\theta$ is the list of orientations to produce filters for}
+\EndFor
+\EndFunction
+\end{algorithmic}
+\caption{Psuedocode for Gabor Filter initialisation including number of orientations to produce 
+filters for}\label{fig:gabor-init}
+\end{figure}
+
+The actual Gabor filters are then produced for all values in $\theta$ at runtime and applied to
+the images in turn.
 
 \section{Brush-Stroke Analysis}
 
+Due to time constraints it was not viable to look at brush-stroke analysis, especially with the
+shift of focus to exemplars after texture analysis.
+
+It would have been nice to explore this area due to Williams' style, but a lack of high-resolution
+images would have also made this a difficult area to get right.
+
+There were several good ideas thought of for this area. One was to train a machine learning 
+technique to recognise brush-strokes through the manual marking of strokes. This would have been a
+very interesting method to try, especially being able to apply existing techniques to aid and
+improve the classification of brush-strokes.
+
+Other techniques involved passing filters over the image looking for the edges of brush-strokes
+\cite{Berezhnoy2009Automatic}, then applying other operations to complete the stroke area. This
+is a much simpler technique which will likely give bad results due to the low resolution and
+non-uniform scaling of the images as it seems to be very dependant on the filter.
+
+One final technique suggested by Li et al.\cite{Li2012Rhythmic} involves a combination of edge
+analysis and clustering in colour space with a number of heuristics involving branching, 
+stroke-width modelling and gap filling to refine the original brush-stroke estimates.
+
+The difficulty that would be associated with this section of work is that existing techniques may
+not be applicable to Williams' work due to his use of the palette knife. Whilst there are very
+obviously clear strokes in his work, comparing these strokes to the likes of Van Gogh are unlikely
+to pay off due to the \emph{blockier} strokes of the palette knife. Another reason this analysis
+technique was side-lined in favour of exemplars.
 
 \section{Classification and Validation}
+With the results of analysis techniques there's also a need to be able to classify paintings based
+on these results and also to validate the results of both so that different methods of analysis
+and classification can be compared for performance.
 
 \subsection{$k$-Nearest Neighbour}
+The simplest method of classification is to work out which painting in the data set is closest in
+feature space to the painting which needs to be classified and classify the year of this painting
+with the year of the nearest painting.
+
+This is effective a $k$-Nearest Neighbour with $k=1$, figure~\ref{fig:1nn} shows the psuedocode
+for this algorithm
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Function{1-NN}{$p$, $data$}
+\State $n = \operatorname*{arg\,min}_{d \in data}$ \Call{Distance}{$p, d$}
+\State\Return $n_{year}$
+\EndFunction
+\end{algorithmic}
+\caption{Psuedocode for 1-Nearest Neighbour}\label{fig:1nn}
+\end{figure}
+
+From 1-Nearest Neighbour it is a simple matter to change this to a $k$-Nearest Neighbour algorithm
+as figure~\ref{fig:knn} shows.
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Function{k-NN}{$p$, $data$, $k$}
+\ForAll {$k$}
+\State $n = \operatorname*{arg\,min}_{d \in data}$ \Call{Distance}{$p, d$}
+\State $a \gets a + n_{year}$
+\State $data \gets data \setminus n$
+\EndFor
+\State \Return \Call{Average}{$a$}
+\EndFunction
+\end{algorithmic}
+\end{figure}
+
+With this, the method of averaging the year can be any statistical method of taking the average
+(mean, median or mode). Mean is the typical case for $k$-Nearest Neighbour as it is simple to
+implement. Median is less common as it is slightly more complex to implement. Mode is more 
+difficult to implement programmatically, especially given the sparseness of the data. 
+
+$k$-Nearest Neighbour is good for this project as it makes no assumptions about the state of the
+data, it only uses points in feature space to function. Initially, when feature space data wasn't
+stored exclusively in histograms with was useful as it allowed different distance measure to be
+applied without needing to change the classifier.
+
 
 \subsection{Leave-One-Out Cross Validation}
+To validate the classified years from $k$-Nearest Neighbour, this project uses Leave-one-out Cross
+Validation; a technique which involves removing each point from the known data set, applying the
+classification technique to this point against the remaining data set. This produces a list of
+classified years against the actual years.
+
+To measure the goodness of fit the Pearson's product-moment correlation coefficient was 
+calculated on these orderings; this provides us with a performance measure of each classifier. 
+It is also possible to test Pearson's R for statistical significance.
+
+Pearson's correlation is perfect for this project; A perfect correlation of $1$ is achieved by
+having the classified years exactly match the actual years.
+
+Both of these are easy to implement - leave-one-out cross validation just involves iterating over
+the entire list of known paintings, popping the current painting from the list and running the 
+classifier on it, then pushing it back into the list at it's original position. Pearson's 
+correlation is implemented by \emph{numpy} with Pearson's R for statistical significance included
+as a part of the method.
+
+As a part of this \emph{matplotlib} was used to plot this data graphically; as a scatter plot for
+actual versus classified year and as a histogram for the number of years out the classifier was.
+
+%TODO Scatter plot
+%TODO histogram of years out
+
 
 \subsection{Weka 3}
+Weka is a collection of machine learning algorithms\cite{Hall2009WEKA}, used predominately for
+data mining. Due to the number of machine learning techniques it provides it was interesting to
+input data from the analysis techniques into Weka.
+
+%TODO More on Weka
+
+
 \subsubsection{Attribute-Relation File Format (ARFF)}
+Part of inputting data into Weka is to produce Attribute-Relation File Format (ARFF) from the
+analysis techniques. ARFF is the main format supported by Weka, so it is one of the easiest ways
+of importing the data into Weka.
+
+A few libraries exist for ARFF conversion in Python, however they all have their own quirks. 
+\emph{liac-arff} was one of the easiest to use, but doesn't support the date attribute. This isn't
+a problem for our current project as we only use year which can easily be represented as an 
+integer instead. I did intend to contribute a working patch for dates for the library, but it 
+would have taken too much time out of the project to get it working correctly.
+
 
 \subsection{Exemplars}
+Another method of classification is to incorporate expert knowledge within the framework. For each
+year represented in the collection Dr Paul Joyner, of the National Library of Wales was asked to
+choose the one painting which best represented Williams' work for that year. Dr. Joyner is a 
+member of the Trustees of the Kyffin Williams Estate and he has written widely on Welsh Art and
+Kyffin Williams.
+
+These chosen paintings are considered to be connoisseurially or artistically selected exemplars
+(\emph{artistic exemplars}, for short), which can be used as a representation of that particular
+year.
+
+
 \subsubsection{Nearest Exemplar Classification}
-To implement Nearest Exemplar Classification was a fairly easy task: Llyod (with help from members
-of the \gls{nlw}) provided a secondary spreadsheet which contained all the necessary information 
-of exemplar by year (see table~\ref{tab:exemplar-spreadsheet} for the full document).
+The most obvious use for artistic exemplars is to classify a given example using the nearest 
+artistic exemplar, rather than other members of the data set, as depicted in 
+figure~\ref{fig:nearest-exemplar}.
+
+\begin{figure}[h]
+\begin{algorithmic}
+\Function{NearestExemplar}{$p$}
+\State $n \gets \operatorname*{arg\,min}_{e \in exemplars}$ \Call{Distance}{$p$,$e$}
+\State \Return $n_{year}$
+\EndFunction
+\end{algorithmic}
+\caption{Psuedocode for Nearest Exemplar Classification}\label{fig:nearest-exemplar}
+\end{figure}
+
+To implement Nearest Exemplar Classification was a fairly easy task: a secondary spreadsheet was 
+provided which contained all the necessary information of exemplar by year (see 
+table~\ref{tab:exemplar-spreadsheet} for the full document).
 
 The spreadsheet was arranged in the format described in table~\ref{tab:exemplar-layout}, from
 there it was a simple matter of saving the spreadsheet as a \gls{csv} file and taking some of the
@@ -297,20 +475,17 @@ the space of neighbours only including the exemplars, rather than every other ex
 psuedocode for this is shown in figure~\ref{fig:nec-psuedo}.
 
 Initially this was implemented so that the examples that were exemplars were also classified, but
-this is a pointless exercise which only skews the results. Additional logic was added to skip any
-example which was an exemplar itself.
+this is a pointless exercise which only skews the results. Additional logic to remove any exemplar
+which matched the current example.
 
 \begin{figure}[h]
 \begin{algorithmic}
-\Function{NearestExemplarClassification}{$example$, $exemplars$}
-\If{$example \in exemplars$}
-\State \Return \Call{Nearest}{$example$, $exemplars \setminus example$}
-\Else
-\State \Return \Call{Nearest}{$example$, $exemplars$}
-\EndIf
+\Function{NearestExemplarClassification}{$p$}
+\State $n \gets \operatorname*{arg\,min}_{e \in exemplars \setminus p}$ \Call{Distance}{$p$, $e$}
+\State \Return $n_{year}$
 \EndFunction
 \end{algorithmic}
-\caption{Nearest Exemplar Classification Psuedocode}\label{fig:nec-psuedo}
+\caption{Nearest Exemplar Classification Psuedocode with Logic to Remove $p$ from $exemplars$}\label{fig:nec-psuedo}
 \end{figure}
 
 This proved to give slightly worse correlation per technique than $k$-Nearest Neighbour. This 
@@ -356,13 +531,16 @@ technique like \gls{pca} may be useful to help cut down the number of dimensions
 algorithm uses.
 
 \subsection{cv2 and Histogram Results}
-Whilst reading through the \emph{numpy}\cite{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy} and \emph{OpenCV} it turned out that, until this point, I had 
-been using a deprecated version of OpenCV. \emph{cv2} is the new version of \emph{OpenCV} for python, 
-which provides bindings for \emph{OpenCV 2.4} and uses \emph{numpy} arrays and multi-dimensional arrays to 
-represent all data types rather than in-built data structures.
+Whilst reading through the 
+\emph{numpy}\cite{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy} and \emph{OpenCV} 
+it turned out that, until this point, I had been using a deprecated version of OpenCV. \emph{cv2} 
+is the new version of \emph{OpenCV} for python, which provides bindings for \emph{OpenCV 2.4} and 
+uses \emph{numpy} arrays and multi-dimensional arrays to represent all data types rather than 
+in-built data structures.
 
 This makes everything a lot easier to work with as all \emph{numpy} arrays (with the correct data type)
 can be passed into the \emph{cv2} methods.
+
 
 
 \section{3\textsuperscript{rd} Party Libraries and Tools}

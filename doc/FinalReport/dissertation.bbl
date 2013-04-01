@@ -55,6 +55,20 @@ I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``{Authentic:
   the work of Kyffin Williams and may allow for some interesting analysis.
   \end{quotation}
 
+\bibitem{Berezhnoy2009Automatic}
+\BIBentryALTinterwordspacing
+I.~Berezhnoy, E.~Postma, and Herik, ``{Automatic extraction of brushstroke
+  orientation from paintings},'' vol.~20, no.~1, pp. 1--9, 2009. [Online].
+  Available: \url{http://dx.doi.org/10.1007/s00138-007-0098-7}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Defines a method of analysing brushstrokes by
+  applying a circular filter across a digital image to pick up the ridges of a
+  brushstroke. This can then be used to pick out individual brushstrokes in
+  order to be able to fit a nth order polynomial to them. Though this paper
+  focuses on authenticating Van Gogh's paintings, it could easily be applied to
+  the work of Kyffin Williams and may allow for some interesting analysis.
+  \end{quotation}
+
 \bibitem{opencv_library}
 G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
   Tools}, 2000.
@@ -114,6 +128,16 @@ N.~Dalal and B.~Triggs, ``{Histograms of oriented gradients for human
   segmentation and binning of gradients which seems like it could be useful to
   differentiate different parts of the image which may be painted in different
   styles. \end{quotation}
+
+\bibitem{Daugman1985Uncertainty}
+\BIBentryALTinterwordspacing
+J.~G. Daugman, ``{Uncertainty relation for resolution in space, spatial
+  frequency, and orientation optimized by two-dimensional visual cortical
+  filters},'' \emph{Journal of the Optical Society of America A}, vol.~2,
+  no.~7, pp. 1160+, July 1985. [Online]. Available:
+  \url{http://dx.doi.org/10.1364/josaa.2.001160}
+\BIBentrySTDinterwordspacing
+
 
 \bibitem{Davies2008Welsh}
 \BIBentryALTinterwordspacing
