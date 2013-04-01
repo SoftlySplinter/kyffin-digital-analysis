@@ -24,7 +24,23 @@
 \section{Evaluation of Tools}
 
 \subsection{Programming Language}
+I felt Python was a good choice of programming language; it's dynamically typed nature allows a
+lot less restrictions and though on the initial design, fitting well with my choice of 
+methodology.
 
+Python was also very useful for built-in features like list comprehension (see 
+listing~\ref{lst:python-list-comp} for an example) and other operations on lists such as 
+\texttt{zip} on two arrays to help graph results.
+
+\begin{lstlisting}[language=python,
+caption={Example of List Comprehension in Python},
+label=lst:python-list-comp]
+year = [painting.year for painting in self.paintings 
+        if is_absolute(painting.year)]
+\end{lstlisting}
+
+Python also boasts a good number of libraries by default; libraries like the \gls{csv} parsing 
+library used to read in data.
 
 \subsubsection{Dependency Management}
 
