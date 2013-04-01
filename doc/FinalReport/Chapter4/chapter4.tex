@@ -22,8 +22,9 @@ The move to the newer version was a good excuse to clean up some of the initial 
 Python programming practises; replacing messy loops with list comprehension where possible, using
 \gls{kwargs} and dictionaries instead of having utility methods, etc.
 
-From the original format show in table~\ref{tab:spreadsheet-format} (see 
-table~\ref{tab:spreadsheet} for the full document) the data was converted to the CSV format show
+From the original format show in table~\ref{tab:spreadsheet-format} 
+%(see table~\ref{tab:spreadsheet} for the full document) 
+the data was converted to the CSV format show
 in figure~\ref{fig:csv-spreadsheet}.
 
 \begin{table}[h]
@@ -136,11 +137,26 @@ method. Under the covers this uses a Chi Squared (equation~\ref{eq:chi_squared})
 compare to histograms of equal dimensions.
 
 \begin{equation}\label{eq:chi_squared}
-d(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I) + H_2(I)}}
+d(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I)}}
 \end{equation}
 
 
 \section{Texture Analysis}
+
+\subsection{Edge Count}
+The simplest technique to analyse texture is to apply an edge detection algorithm over the image
+and produce a count of all the marked edges regardless of orientation.
+
+The Canny edge detector\cite{Canny1986Computational} provided a good output for measuring this, 
+operators like Sobel provided less useful results and thus provided a worse analysis technique.
+
+From the generated image a histogram was produced with only 2 bins; one bin for the presence of an
+edge, the other for the absence of an edge.
+
+Open CV provides methods for applying the Canny edge detector to an image so this technique was 
+simple to implement.
+
+%TODO Image of the Canny'd image.
 
 \subsection{Edge Orientation}
 Edge orientation involves passing a filter over an image which is used to find the orientation of
@@ -216,7 +232,18 @@ There is the obvious trade off that steerable filters can only work in four dire
 does affect the performance quite severely.
 
 \subsection{Gabor Filters}
+To increase the orientations matched from steerable filters without the need for increasingly 
+large kernels, Gabor filters\cite{Daugman1985Uncertainty} were implemented. Gabor filters allow
+for an almost-infinite range of orientations without affecting the size of the filter. Equation
+\ref{eq:gabor} shows the mathematics behind Gabor Filters.
 
+
+\begin{align}\label{eq:gabor}
+g(x, y; \lambda, \theta, \psi, \sigma, \gamma) &= \exp \left( -\frac{x'^2+\gamma^2y'^2}{2\sigma^2} \right) \cos \left( 2\pi \frac{x'}{\lambda} + \psi \right)
+\intertext{where:}
+x' &= x \cos \theta + y \sin \theta \nonumber \\
+y' &= x \sin \theta + y \cos \theta \nonumber
+\end{align}
 
 
 \subsubsection{Histogram of Edge Orientation}
@@ -277,9 +304,10 @@ example which was an exemplar itself.
 \begin{algorithmic}
 \Function{NearestExemplarClassification}{$example$, $exemplars$}
 \If{$example \in exemplars$}
-\State \Return $\varnothing$
+\State \Return \Call{Nearest}{$example$, $exemplars \setminus example$}
+\Else
+\State \Return \Call{Nearest}{$example$, $exemplars$}
 \EndIf
-\State \Return \Call{Nearest}{$example, exemplars$}
 \EndFunction
 \end{algorithmic}
 \caption{Nearest Exemplar Classification Psuedocode}\label{fig:nec-psuedo}

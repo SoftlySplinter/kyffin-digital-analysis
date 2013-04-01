@@ -29,6 +29,16 @@ J.~Bacardit and X.~Llor\`{a}, ``{Large-scale data mining using genetics-based
   information on a Learning Classifier System (LCS) which Julie believes will
   yield good results with the Kyffin Williams project. \end{quotation}
 
+\bibitem{Belongie2001Matching}
+\BIBentryALTinterwordspacing
+S.~J. Belongie, J.~Malik, and J.~Puzicha, ``{Matching shapes},'' in
+  \emph{Computer Vision, 2001. ICCV 2001. Proceedings. Eighth IEEE
+  International Conference on}, vol.~1.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2001, pp. 454--461 vol.1. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/iccv.2001.937552}
+\BIBentrySTDinterwordspacing
+
+
 \bibitem{Berezhnoy2005Authentic}
 \BIBentryALTinterwordspacing
 I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``{Authentic:
@@ -59,6 +69,16 @@ A.~D. Brown, H.~M. Dee, G.~L. Roderick, and L.~M. Hughes, ``{Can we date an
   artist's work from catalogue photographs?}'' Apr. 2013.
  \begin{quotation}\noindent The paper submitted to ISPA as a part of this
   project. \end{quotation}
+
+\bibitem{Canny1986Computational}
+\BIBentryALTinterwordspacing
+J.~F. Canny, ``{A Computational Approach to Edge Detection},'' \emph{Pattern
+  Analysis and Machine Intelligence, IEEE Transactions on}, vol. PAMI-8, no.~6,
+  pp. 679--698, Nov. 1986. [Online]. Available:
+  \url{http://dx.doi.org/10.1109/tpami.1986.4767851}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Reference for the Canny Edge detection technique.
+  \end{quotation}
 
 \bibitem{Chilvers2009Dictionary}
 \BIBentryALTinterwordspacing
@@ -104,6 +124,17 @@ J.~Davies and A.~Gymreig, \emph{{The Welsh Academy encyclopaedia of
 \BIBentrySTDinterwordspacing
  \begin{quotation}\noindent References for Sir John Kyffin Williams.
   \end{quotation}
+
+\bibitem{Gamma1996Design}
+\BIBentryALTinterwordspacing
+E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, \emph{{Design Patterns:
+  Elements of Reusable Object-Oriented Software}}, ser. Addison-Wesley
+  professional computing series.\hskip 1em plus 0.5em minus 0.4em\relax
+  Addison-Wesley, 1996. [Online]. Available:
+  \url{http://www.worldcat.org/isbn/9780201633610} 9780201633610.
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Design Pattern reference for the architecture of
+  the program. \end{quotation}
 
 \bibitem{Hall2009WEKA}
 \BIBentryALTinterwordspacing
