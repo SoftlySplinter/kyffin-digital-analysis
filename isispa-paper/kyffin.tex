@@ -908,16 +908,9 @@ for a year. The former technique does not, strictly speaking, give us an
 exemplar; the latter chooses as exemplar the painting which best represents a
 particular year according to a particular feature space. 
 
-% 1950 Landscape with Cattle (155) matches exemplars for HOGs with 6 other paintings, classified correctly by 5 techniques.
-These exemplars give an interesting insight into the feature space, for example,
-the artistic exemplar \emph{Landscape with Cattle} for 1950 is often correctly 
-classified as the painting nearest to the statistical centroid.
-
-In contrast, the artistic exemplar for 1960 - \emph{Nant Ffrancon from Llandegfan}
-is commonly misclassified as \emph{Moelwyn Bach} and is never correctly classified as
-the statistical exemplar.
-
-% 1960 No matches to the artistic exemplar Nant Ffrancon from Llandegfan (206), commonly misclassified as Moelwyn Bach (180).
+Our intuition -- that using artistically chosen exemplars could help us to exploit
+knowledge about the way the paintings change over time -- turned out to be
+incorrect; results for the other feature spaces show a similar pattern.
 
 
 \textbf{XXX Alex - We need results:-)}
@@ -929,9 +922,24 @@ the statistical exemplar.
 The same distance measure used to run k-nearest neighbour on the feature-based classifiers was
 used to generate the error between the statistical and artistic exemplars.
 
+% 1950 Landscape with Cattle (155) matches exemplars for HOGs with 6 other paintings, classified correctly by 5 techniques.
+
+% 1960 No matches to the artistic exemplar Nant Ffrancon from Llandegfan (206), commonly misclassified as Moelwyn Bach (180).
+
+These exemplars give an interesting insight into the feature space, for example,
+the artistic exemplar \emph{Landscape with Cattle} for 1950 is often correctly 
+chosen as the statistical exemplar.
+
+In contrast, the artistic exemplar for 1960 - \emph{Nant Ffrancon from Llandegfan}
+is never chosen as the statistical exemplar. The statistical exemplar for 1960 is 
+commonly chosen as \emph{Moelwyn Bach} instead.
+
 \begin{figure}[h]
 \includegraphics[width=\linewidth]{img/exemplar.pdf}
-\caption{Statistical Exemplar Error by Year for Gabor Filters (8 orientations)}
+\caption{Distance in feature space from artistic to statistic exemplars (red); distance from
+artistic exemplar to centroid (green). Lower values indicate that the artistic
+exemplar is near to the mean painting for a particular year, higher values that an
+artistic exemplar painting could be an outlier}
 \end{figure}
 
 \textbf{XXX Alex... er... your to do list is longer than mine:-)}
