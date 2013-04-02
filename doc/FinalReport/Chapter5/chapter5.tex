@@ -11,11 +11,96 @@ classification techniques.
 
 
 \section{Validation}
+Cross-validation is a statistical concept used to assess how the results of statistical analysis
+generalise to an independent data set. Cross-validation is typically applied to machine learning
+classifiers to test if a technique is overfitting the data; that is how specific the technique is
+to the original data set and how it can cope with new examples. For example, a rote learner cannot
+classify any unseen examples as the classification is performed based solely on the training set.
+
+As the overall goal is to be able to classify any Williams painting it is important that the 
+program is able to handle new examples, not just those for which the year is known.
+
+There are many forms for calculating cross-validation, usually involving taking sub-samples of the
+original data set and removing them from the training set to create a validation set.
+
+$k$-fold cross-validation is a common method for performing this. It involves splitting the data
+set into $k$ sections or \emph{fold}. Each fold is removed from the data set, the classifier is
+trained on the remaining data, then the fold is classified using the trained data. 
+
+The other common form of cross-validation is to take random sub-samples from the data set and are
+removed from the training set and then classified using it. This process is performed repeatedly
+until a good number of samples has been taken. This has advantages and disadvantages over $k$-fold
+cross-validation, it has the problem that not all data points are considered during validation,
+but doesn't depend on the size of the data set.
 
 
+\subsection{Leave-One-Out Cross-Validation}
+Leave-one-out cross-validation is a form of $k$-fold cross-validation in which the number of folds
+is equal to the size of the data set. This leads to the behaviour of leaving a single data point
+each time and classifying it against the rest of the data set. Because data sets in machine 
+learning are typically very large this usually isn't an option due to time complexity.
 
-\subsection{Leave-One-Out Cross Validation}
+However, because of the use of $k$-Nearest Neighbour-based classifiers (which need no re-training 
+when data points are added or removed) and a small number of known data points, it is the best 
+method of cross-validation for this project.
+
+Leave-one-out cross-validation provides us with a classified year for each data point and, because
+we only use data points with known years, we can then work out the correlation between actual and
+classified years to get a value of performance.
+
+To produce this value Pearson's product-moment correlation was used (equation~\ref{eq:pearsons})
+the best techniques would produce a correlation value closer to $1$ than other techniques. Another
+part of Pearson's is that it is easy to generate statistical significance (the p-value). This
+describes the extent to which the observations could appear by chance in a given single null
+hypothesis.
+
+The results of the correlation between actual and classified year is defined to be $r$ 
+(formally: $r=\rho_{classified, actual}$). The p-value is defined to be $P(r)$. The ultimate goal 
+being to maximise $r$ whilst minimising $P(r)$.
+
+Of course, an exact correlation of $r=1$ would be unrealistic to achieve, especially for such a 
+humanities-based project. A good technique might reach correlations of $r \ge 0.5$ and a great
+technique might reach correlations of $r \ge 0.75$.
+
+\section{Results}
+
+One parameter for our classifier is the choice of $k$ for $k$-Nearest Neighbour. Simply setting 
+$k=1$ has the effect of assigning the year of the nearest painting in feature space to the current
+test painting, whilst setting $k=102$ has the effect of giving the painting the mean year of the 
+entire data set. Obvious, a point between the two is likely to be the best. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{../../isispa-paper/results/mean}
+\caption{Correlation Coefficients $r$ against $k$ values for $k$-Nearest Neighbour}\label{fig:r-graph}
+\end{figure}
+
+From figure~\ref{fig:r-graph} it is apparent that for many of the features spaces we have that the 
+optimum value of $k$ is around 7 or 8. Table~\ref{tab:r-results} shows the actual results for each 
+feature space for a $k$ of 7.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}\hline
+Technique     & $r$ & $P(r)$ \\ \hline
+%K=7
+Edge Strength					& 0.01072814442	& 0.910207365322    \\
+HSV						& 0.11224162320	& 0.236562323053    \\
+RGB						& 0.11775991536	& 0.214157639943    \\
+HSV Histograms					& 0.14603200925	& 0.122741593497    \\
+RGB Histograms					& 0.26953009140	& 0.00389039298815  \\
+HOG (Discrete Derivatives): 4 orientations	& 0.30736212605	& 0.000927910444337 \\
+Steerable filters: 4 orientations		& 0.31169031994	& 0.000777735274356 \\
+HOG (Discrete Derivatives): 8 orientations	& 0.34568068248	& 0.000176784815253 \\
+HOG (Discrete Derivatives): 16 orientations	& 0.36728931244	& 6.28825760028e-05 \\
+Gabor filters: 16 orientations			& 0.36951884354	& 5.62810915995e-05 \\
+Gabor filters: 8 orientations			& 0.43790920108	& 1.23123557269e-06 \\
+Gabor filters: 4 orientations			& 0.44084541429	& 1.02469784947e-06 \\
+\hline
+\end{tabular}
+\caption{Correlation Coefficients, ordered by strength for $k=7$}\label{tab:r-results}
+\end{table}
 
 
-\subsection{Validation using Weka}
+%\subsection{Validation using Weka}
 

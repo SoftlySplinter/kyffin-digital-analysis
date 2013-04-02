@@ -14,7 +14,7 @@ plot "mean/rgb.dat"      using 1:2 title "RGB" with lines,\
      "mean/steerable.dat" using 1:2 title "Steerable filters: 4 orientations" with lines,\
      "mean/gabor.dat" using 1:2 title "Gabor filters: 4 orientations" with lines,\
      "mean/gabor8.dat" using 1:2 title "Gabor filters: 8 orientations" with lines,\
-     "mean/hog.dat" using 1:2 title "HOG (Discrete Derivatives): 15 orientations" with lines,\
+     "mean/gabor16.dat" using 1:2 title "Gabor filters: 16 orientations" with lines,\
      "mean/hog4.dat" using 1:2 title "HOG (Discrete Derivatives): 4 orientations" with lines,\
      "mean/hog8.dat" using 1:2 title "HOG (Discrete Derivatives): 8 orientations" with lines,\
      "mean/hog16.dat" using 1:2 title "HOG (Discrete Derivatives): 16 orientations" with lines
