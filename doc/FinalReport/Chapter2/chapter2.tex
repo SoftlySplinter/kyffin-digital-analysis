@@ -8,7 +8,98 @@
 %You should briefly describe the design method you used and any support tools that you used. You should discuss your choice of implementation tools - programming language, compilers, database management system, program development environment, etc.
 
 \section{Introduction}
-%Introduce the specific model that you chose to use. 
+This project was developed using a mixture of iterative development and rapid prototyping. As a
+research project it does not need a heavy-weight development process as such a process would be
+too cumbersome to adapt to changing nature of research. Agile methodologies would have also 
+provided the adaptability required, but are designed for a team-based approach so would have
+needed a lot of modification to be applicable to a team of one.
+
+Having written many software systems in the past, I knew maintenance and testing were usually 
+large parts of the methodology chosen. However, this being a research project it was unlikely to
+be used much after the end of the project and if it was to be, I would likely be around to help 
+out anyone with the use of it. Maintenance, therefore, wasn't a large issue to this project.
+
+Due to the research nature of this project testing would prove to be difficult. Proving that a
+given technique would run was relatively straight-forward by leaning on the interpreter (or 
+compiler in cases of any statically typed elements), but proving a technique would do what it was
+expected to do would take so much time out of implementing other techniques that it would be a 
+pointless task, especially when a lot of the techniques would just call external libraries to
+implement the parts that were likely to fail (e.g. applying filters through \emph{OpenCV}).
+
+With both these two issues being lesser than usual it was easy to remove a lot of the traditional
+and formal methods from the list of potential methodologies; Waterfall and Spiral models, for 
+example, had too much of a focus on both these parts and on risk management.
+
+Iterative development involves developing a system through repeated cycles, at each iteration 
+design modifications are made and new functionality is added. Iterative development encourages 
+modular design and implementation, suiting this project well as it will have a number of 
+techniques to both analyse and classify data points.
+
+Rapid Prototyping involves quickly producing a working prototype of an area of a system to get a
+working implementation of that area. This can then be evolved to improve the design and 
+implementation as needed. This fits well as a method for implementing the various techniques in 
+the system, they can be rapidly prototyped to get a set of results, then improved to increase the
+performance and/or accuracy of the technique.
+
+The requirements for the iterations were typically decided in meetings with myself and Hannah, 
+typically taking the form of completing a given technique before the next meeting. The technique
+was then implemented as a prototype and any adjustments would be made to the system in line with
+the iterative process, including improving existing techniques that might have been earlier 
+prototyped in an evolutionary fashion.
+
+Initially there were a set of topics which were aimed to be completed:
+
+\begin{itemize}
+\item Colour-space analysis
+\item $k$-Nearest Neighbour classification
+\item Histogram-based colour-space analysis
+\item Texture analysis
+\item Brush-stroke analysis
+\end{itemize}
+
+Each of the above items had several parts to them; colour-space analysis included different 
+colour-modes: \gls{rgb} and \gls{hsv}. However as a research project new ideas were often 
+suggested during meetings or as a part of research so this list of requirements grew during the
+project.
+
+Python helped a lot with both methodologies, thanks to it's dynamic typing it is easy to deal with
+changing forms of data. It also has very readable syntax whilst still remaining compact in terms
+of lines of code, this makes locating areas which need changing very simple.
+
+The use of git and github allowed the remote viewing and access of source code, allowing for
+changes to be made quickly and easily regardless of the form of computer access I had. This 
+allowed for the constant evolution of the system.
+
+The use of Vim as an editor also allowed for good control of source code editing, especially being
+able to code almost anywhere with an internet connection and a proper keyboard thanks to SSH. Vim
+also helps a lot with moving code around with the use of buffers and marks, as well as being able
+to run command line tools without leaving the editor window.
+
+\emph{setuptools} allowed the easy creation of a command-line argument within the system itself,
+so that the program could be run easily by calling \texttt{kyffin <args>}. With this I could run
+the program anywhere to make sure newly implemented techniques would be interpreted correctly.
+
 
 \section{Modifications}
 %Did you have to modify the model to suit a one-person project. If so, what did you change and why? 
+
+The main modifications made to iterative development was to shift focus away from testing and into
+evolution and implementation. It was also changed to that each iteration was a rapid prototype,
+to allow merging of the two techniques. But the evolution step was focused on the whole system.
+A good example of this is when finding out about \emph{cv2} and going back to change all the old
+techniques to use the latest version of \emph{OpenCV}.
+
+Rapid prototyping was modified very little, however, as I had no official client and only met with
+Hannah once a week there was very little client focus and was just used as a tool for rapidly
+implementing techniques in a way which could be improved and evolved later on. Although this isn't
+exactly in the spirit of rapid prototyping, it does fit fairly well with iterative development.
+
+For a solo project, there wasn't any focus on team collaboration. Though iterative development 
+isn't an official agile methodology, it does act quite similarly to one. Therefore it is quite 
+tied to collaborating code as part of the iterative cycle. This project didn't take advantage of
+any of the collaborative parts, nor any review of coding standards. The only review of code was
+of my own standards. I do keep high coding standards, but due to the choice of language I didn't
+have a good knowledge to start with so keeping high standards proved to be difficult initially.
+
+The evolutionary nature of both the rapid prototyping and iterative development allowed for 
+changes to be made later on when I did have better knowledge of the language. 

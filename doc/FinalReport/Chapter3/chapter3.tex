@@ -98,4 +98,16 @@ Figure~\ref{fig:interfaces-arch} depicts the design after adding in these parts.
 \caption{Overall architecture with Interfaces for Analysers and Classifiers}\label{fig:interfaces-arch}
 \end{figure}
 
+From this the concrete techniques were implemented, at points it became necessary for additional 
+methods to be added to the interfaces with some abstract implementation. This was particularly
+apparent during the change to \emph{cv2} where all results from analysis techniques became 
+histograms. The distance method in the \texttt{Analyser} interface was then implemented to call
+the \emph{OpenCV} compare histogram method so that the distance technique was always uniform.
 
+With exemplars it was also useful to implement a centroid method as part of the \texttt{Analyser}
+interface so that the method of determining the centre point was the same. This highlights the 
+usefulness of constantly evolving the design using the rapid prototyping methodology.
+
+Until this point the inheritance had been unnecessary due to Python's duck typing and had been
+purely to help me to understand the architecture. After this point I was also leveraging the 
+properties of object-orientated hierarchy to reduce code-reuse.

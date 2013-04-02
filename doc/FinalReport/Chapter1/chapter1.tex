@@ -13,8 +13,6 @@ prolific painter and once claimed to have painted ``two pictures per week when i
 three per week when in Wales.'\cite[p.209]{Williams1993Across} With a career spanning from the 
 mid-1940s to approximately 2004, this rate amounts to a large body of work.
 
-
-
 His style evolved from a very representational style to something more
 expressive, which retained representational qualities: the computer scientists
 would say that the paintings became more \emph{blocky}; whilst art
@@ -181,6 +179,9 @@ Another venture was to look into PhD funding to build up a 3D map of some of Wil
 and being able to display it (perhaps via HTML5 and WebGL) so they can explore the painting 
 digitally how it is meant to be in real life.
 
+Research into stroke analysis between different brush types (e.g. paintbrush, palette knife, etc.)
+and being able to recognise the different implements would be another potential avenue to research
+into.
 
 
 \section{Existing Work}
@@ -442,29 +443,13 @@ and classified year has been suggested to be a good performance measure for this
 
 
 \subsection{Classification}
-One of the simplest methods of classification is $k$-Nearest Neighbour (figure~\ref{fig:knn}) from
+One of the simplest methods of classification is $k$-Nearest Neighbour from
 this one can take a poll of the years for each neighbour and assign the year of the painting to
 classify to be the average of these years.
 
 Depending which form of average you take (mathematical mean \eqref{eq:mean}, median or mode) will
 alter the result; although it should be noted that median is very unlikely to give a result on its
 own due to the sparseness of the data.
-
-\begin{figure}[h]
-\begin{algorithmic}
-\Require{$0 < k \leq \left|{data}\right|$} \Comment{$data$ is a set of all data points}
-\Function{KNearestNeighbour}{$k, data$}
-  \For{$i = 1 \to k$}
-    \State $nn_i \gets \Call{Nearest}{data}$
-    \State $data \gets data \setminus \left\{{nn_i}\right\}$
-    \State $i = i + 1$
-  \EndFor
-  \Statex
-  \Return $nn$
-\EndFunction
-\end{algorithmic}
-\caption{Pseudocode for $k$-Nearest Neighbour}\label{fig:knn}
-\end{figure}
 
 There are other techniques which could be applied to this problem, but the rewards for 
 implementing them is not likely to be outweighed by the time it would take to implement such
@@ -480,6 +465,11 @@ which has an implementation for Weka. This may prove to give very good results f
 analysis being performed on Williams's work.
 
 \subsubsection{Use of Weka}\label{sec:bg-weka}
+Weka is a machine learning toolkit which boasts an impressive number of learning techniques. As
+such is makes sense to use it to help classify the results of analysis techniques. This does mean
+adding additional logic to export data in a form Weka understands, but the results from Weka
+will provide a new and detailed insight into our own analysis techniques which $k$-Nearest 
+Neighbour cannot.
 
 %\subsubsection{Learning Classifier Systems (LCS)}
 
