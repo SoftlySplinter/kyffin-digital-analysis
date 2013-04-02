@@ -120,3 +120,77 @@ if __name__ == '__main__':
 \end{lstlisting}
 
 
+\section{Computer Vision Research Code}
+
+\subsection{OpenCV}
+\begin{lstlisting}[language=Python,
+breaklines=true,
+caption={Using OpenCV to blur an image},
+label=lst:opencv]
+import cv
+
+im = cv.LoadImageM("tux.png")
+blur = cv.CreateMat(im.rows, im.cols, im.type)
+cv.Smooth(im, blur, cv.CV_BLUR, 9)
+cv.SaveImage("tux_blurred_opencv.png", blur)
+\end{lstlisting}
+
+\subsection{cv2}
+\begin{lstlisting}[language=Python,
+caption={Using cv2 to blur an image},
+label=lst:cv2]
+import cv2
+
+im = cv2.imread("tux.png")
+blur = cv2.blur(im, 9)
+cv2.imwrite("tux_blurred_cv2.png", blur)
+\end{lstlisting}
+
+\subsection{FIJI}
+\begin{lstlisting}[language=Java,
+breaklines=true,
+caption={Using FIJI to blur an image},
+label=lst:fiji]
+package fiji;
+
+import ij.IJ;
+import ij.io.FileSaver;
+import imagescience.feature.Smoother;
+import imagescience.image.ColorImage;
+import imagescience.image.Image;
+
+public final class Blur {
+	public static final String IMG_PATH = "tux.png";
+	public static final String OUTPUT_PATH = "tux_fiji.png";
+
+	public static void main(String[] args) {
+		final Image image = new ColorImage(IJ.openImage(IMG_PATH));
+		final Smoother s = new Smoother();
+		final Image blurred = s.gauss(image, 9f);
+		final FileSaver fs = new FileSaver(blurred.imageplus());
+		fs.saveAsPng(OUTPUT_PATH);
+	}
+}
+\end{lstlisting}
+
+\subsection{IVT}
+\begin{lstlisting}[language=C++,
+breaklines=true,
+caption={Using IVT to blur an image},
+label=lst:ivt]
+#include <stdio.h>
+#include "Image/ByteImage.h"
+#include "Image/ImageProcessor.h"
+
+int main(int argc, char **argv) {
+	CByteImage in;
+	CByteImage out;
+	char* from = "tux.png";
+	char* to = "tux_ivt.png";
+
+	in.LoadFromFile(from)
+	out = CByteImage(in);
+	ImageProcessor::GaussianSmooth(&in, &out, 1.0f, 3);
+	out.SaveToFile(to)
+}
+\end{lstlisting}

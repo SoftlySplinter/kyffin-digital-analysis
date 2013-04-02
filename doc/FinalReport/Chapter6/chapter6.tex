@@ -24,13 +24,18 @@
 \section{Evaluation of Tools}
 
 \subsection{Programming Language}
+Python is a dynamic programming language which offers clear, reliable syntax; object orientation
+including multiple inheritance; full modularity; exception-based error handling; and a good range
+of dynamic data types.
+
 I felt Python was a good choice of programming language; it's dynamically typed nature allows a
 lot less restrictions and though on the initial design, fitting well with my choice of 
-methodology.
+methodology. 
 
 Python was also very useful for built-in features like list comprehension (see 
-listing~\ref{lst:python-list-comp} for an example) and other operations on lists such as 
-\texttt{zip} on two arrays to help graph results.
+listing~\ref{lst:python-list-comp} for an example), keeping the amount of code needed to build 
+list- and dictionary- based elements down to a minimum. As well as other built-in operations on 
+list- and dictionary- data types, for example\texttt{zip} on two arrays to help graph results.
 
 \begin{lstlisting}[language=python,
 caption={Example of List Comprehension in Python},
@@ -40,13 +45,97 @@ year = [painting.year for painting in self.paintings
 \end{lstlisting}
 
 Python also boasts a good number of libraries by default; libraries like the \gls{csv} parsing 
-library used to read in data.
+library used to read in data. These libraries provide a lot of extended functionality to the 
+language. There is also the \gls{pypi} which allows the easy install of 
+additional packages.
+
+A lack of experience in Python did hold me back a little at first and a lot of the early code 
+didn't use a lot of the useful features Python provides, however after spending a bit of time
+working on another open source project, also written in Python, my skills quickly developed with
+the help of my peers.
+
+Java would have been another option for this project; having had a lot of experience writing Java
+over that past 3 years. Though Java would have been more difficult to use as the image processing
+libraries aren't as polished as \emph{OpenCV}.
+
+C++ would have been another choice, which has native bindings for \emph{OpenCV}, however, I didn't
+feel confident enough in my knowledge of the language to chose it; unlike Python, C++ can be 
+unintuitive and has the added difficulty of a compiler which isn't as strict as the Java compiler.
+
+For similar reasons I decided not to chose C, the lack of object-orientation is also another 
+factor which goes against the language. If this were a project which needed efficiency then the
+choice of language would have been changed to either C or C++. Python is not known for brilliant
+efficiency due to it's interpreted nature. However, as this is a research project it doesn't 
+really matter how fast it completes.
+
+Newer, more popular languages like Ruby don't have the support for image processing libraries and
+the language features of Ruby don't particularly beat Python's. Many other languages suffer the
+same flaws of not having good support for image processing libraries.
 
 \subsubsection{Dependency Management}
+\emph{setuptools} is a Python package designed to allow the easy downloading, building, 
+installation, upgrading and uninstallation of Python packages from \gls{pypi}. It can be used to
+manage the dependencies of a Python project through the use of a set-up file specifying the 
+packages required for a project to run. On build of that project all required packages will be 
+downloaded and installed, along with any packages they in turn require.
 
+Again this is a bonus of using Python. Java has very bad dependency management, the only tool
+which is widely used to do this is Apache Maven, and is not widely adopted and therefore not all
+that useful. \Gls{osgi} is another technology which makes managing dependencies easier, but in 
+itself doesn't handle the download and install of packages.
+
+Languages like C and C++ tend to use packages through the operating system or user-based 
+compilation and therefore have very little dependency management normally.
+
+Newer languages, again using Ruby as an example, do have better dependency management and tend to
+be more tied to the language itself, rather than being a tool like \emph{setuptools}. There aren't
+many advantages to this as \gls{pypi} is widely known.
 
 \subsection{Image Processing/Computer Vision Libraries}
+Due to the number of libraries out there and my inexperience in computer vision and image 
+processing, I thought it be to research into some of the more popular libraries out there so I
+could get the feel for them. To do this I created a simple application to  perform blur on a 
+single image to test their use and documentation. From this I gained a good insight into how easy 
+that library would be to perform more complex tasks.
 
+Table~\ref{tab:libraries-overview} shows an overview of all the libraries I have currently 
+considered and experimented with.
+
+\begin{table}[h]
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+								  \hline
+\multirow{2}{*}{\textbf{Library}}	& \multicolumn{5}{|c|}{\textbf{Platform}}			& \multirow{2}{*}{\textbf{Language(s)}}	& \textbf{Example}	\\\cline{2-6}
+					&  Windows	& Mac 		& Linux 	& Android	& iOS	&			&			\\\hline
+OpenCV					& \checkmark	& \checkmark	& \checkmark	& 		& 	& C, C++, Python	& Listing~\ref{lst:opencv}\\\hline
+OpenCV - cv2				& \checkmark	& \checkmark	& \checkmark	& \checkmark	& \checkmark & C, C++, Python, Java	& Listing~\ref{lst:cv2}\\\hline
+FIJI					& \checkmark	& \checkmark	& \checkmark	& 		&	& Java			& Listing~\ref{lst:fiji}	\\\hline
+IVT					& \checkmark	& \checkmark	& \checkmark	& 		&	& C++			& Listing~\ref{lst:ivt}	\\\hline
+\end{tabular}
+\caption{Comparison of image processing/computer vision libraries.}
+\label{tab:libraries-overview}
+\end{table}
+
+Of these libraries OpenCV was the easiest to work with. OpenCV also boasts a wide range of 
+features, all of which are well documented. FIJI provided a lot of high-level functionality, but
+for use as a library it quickly became unwieldy and was difficult to find the correct classes just 
+for the simple task of blurring an image. On a side note, I only managed to get the blurring 
+outputting a greyscale image in the short period of time I spent using FIJI.
+
+IVT was somewhat similar to FIJI in that it had a good range of high-level features, but was less
+impressive as a library. Despite following the example code I struggled to compile my own example
+and eventually gave up trying to get a working binary due to time constraints.
+
+%TODO Actually use VXL and then write about it.
+
+Having weighed up these libraries I it became fairly apparent that OpenCV would be the best choice,
+not only did it act as an easy to use library, it is also seems that is is one of the most 
+prevalent libraries for Computer Vision. For the Kyffin Williams project OpenCV provides a lot of
+pre-built helpers which allow for very rapid production of the early elements of the project. For
+example it is able to handle loading images in different colour spaces, generating histograms of
+images and even comes with its own machine learning libraries.
+
+I have also added \emph{OpenCV cv2} to the research as it shows how simplified many of the 
+operations became after I discovered it.
 
 \subsection{Machine Learning Libraries}
 
