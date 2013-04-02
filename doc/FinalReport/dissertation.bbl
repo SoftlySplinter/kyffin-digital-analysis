@@ -18,6 +18,28 @@
 \fi
 #2}}
 
+\bibitem{2004Corpws}
+\BIBentryALTinterwordspacing
+``{Corpws Hanesyddol yr Iaith Gymraeg 1500-1850/A Historical Corpus of the
+  Welsh Language 1500-1850},'' 2004. [Online]. Available:
+  \url{http://people.ds.cam.ac.uk/dwew2/hcwl/menu.htm}
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{2012Research}
+\BIBentryALTinterwordspacing
+``{Research Programme in Digital Collections at NLW},'' Sept. 2012. [Online].
+  Available: \url{http://www.llgc.org.uk/research}
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{2013Your}
+\BIBentryALTinterwordspacing
+``{Your Paintings - Kyffin Williams},'' Mar. 2013. [Online]. Available:
+  \url{http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted_by/kyffin-williams_artists}
+\BIBentrySTDinterwordspacing
+
+
 \bibitem{Bacardit2013Largescale}
 \BIBentryALTinterwordspacing
 J.~Bacardit and X.~Llor\`{a}, ``{Large-scale data mining using genetics-based
@@ -94,21 +116,10 @@ J.~F. Canny, ``{A Computational Approach to Edge Detection},'' \emph{Pattern
  \begin{quotation}\noindent Reference for the Canny Edge detection technique.
   \end{quotation}
 
-\bibitem{Chilvers2009Dictionary}
-\BIBentryALTinterwordspacing
-I.~Chilvers, J.~Glaves-Smith, and I.~Chilvers, \emph{{A dictionary of modern
-  and contemporary art}}.\hskip 1em plus 0.5em minus 0.4em\relax Oxford
-  University Press, 2009. [Online]. Available:
-  \url{http://www.worldcat.org/isbn/0199239665} 0199239665.
-\BIBentrySTDinterwordspacing
- \begin{quotation}\noindent References for Sir John Kyffin Williams
-  \end{quotation}
-
 \bibitem{Contributors2012Gabor}
 \BIBentryALTinterwordspacing
 W.~Contributors, ``{Gabor filter},'' Online, Oct. 2012. [Online]. Available:
-  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342%
-109}
+  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342109}
 \BIBentrySTDinterwordspacing
  \begin{quotation}\noindent Reference for the example code for Gabor Filters. A
   better reference should be found if possible. \end{quotation}
@@ -139,14 +150,13 @@ J.~G. Daugman, ``{Uncertainty relation for resolution in space, spatial
 \BIBentrySTDinterwordspacing
 
 
-\bibitem{Davies2008Welsh}
+\bibitem{Davies2004100}
 \BIBentryALTinterwordspacing
-J.~Davies and A.~Gymreig, \emph{{The Welsh Academy encyclopaedia of
-  Wales}}.\hskip 1em plus 0.5em minus 0.4em\relax University of Wales Press,
-  2008, pp. 957--958. [Online]. Available:
-  \url{http://www.worldcat.org/isbn/9780708319536} 9780708319536.
+J.~Davies, \emph{{100 Welsh heroes}}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Culturenet Cymru, 2004. [Online]. Available:
+  \url{http://www.worldcat.org/oclc/753176001}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent References for Sir John Kyffin Williams.
+ \begin{quotation}\noindent Reference for Sir John Kyffin Williams
   \end{quotation}
 
 \bibitem{Gamma1996Design}
@@ -184,6 +194,14 @@ R.~Harris, ``{How Rolf learnt to paint like Sir Kyffin Williams},'' BBC
   Kyffin Williams' life and about his interesting style of painting.
   \end{quotation}
 
+\bibitem{Hughes2011Evaluating}
+\BIBentryALTinterwordspacing
+L.~M. Hughes. (2011) {Evaluating and measuring the value: use and impact of
+  digital collections}. [Online]. Available:
+  \url{http://www.worldcat.org/isbn/9781856047203}
+\BIBentrySTDinterwordspacing
+
+
 \bibitem{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy}
 E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy: Open source
   scientific tools for Python},'' 2001.
@@ -205,5 +223,23 @@ J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``{Rhythmic Brushstrokes
   Van Gogh. This technique could be very powerful when applied to Kyffin
   Williams' work. This could be one of the most important techniques for the
   whole of the Kyffin Williams project. \end{quotation}
+
+\bibitem{Unsworth2000Scholarly}
+\BIBentryALTinterwordspacing
+J.~Unsworth, ``{Scholarly Primitives: what methods do humanities researchers
+  have in common, and how might our tools reflect this?}'' May 2000. [Online].
+  Available:
+  \url{http://people.lis.illinois.edu/~unsworth//Kings.5-00/primitives.html}
+\BIBentrySTDinterwordspacing
+
+
+\bibitem{Williams1993Across}
+\BIBentryALTinterwordspacing
+K.~Williams, \emph{{Across the straits : an autobiography}}.\hskip 1em plus
+  0.5em minus 0.4em\relax Gomer, 1993. [Online]. Available:
+  \url{http://www.worldcat.org/isbn/0863839940} 0863839940.
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Sir John Kyffin Williams' autobiography which is a
+  very useful reference for periods of his life. \end{quotation}
 
 \end{thebibliography}
