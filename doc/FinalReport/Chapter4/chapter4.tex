@@ -574,11 +574,38 @@ commonly chosen as exemplars correctly and incorrectly, this should give a visio
 difference between the artistic and statistic exemplars and where the artistic exemplars are the
 outliers of that particular year.
 
+To do this a 1-Nearest Neighbour algorithm is applied to the data for that year from the centroid,
+this, of course, has the effect of picking the painting closest to the centroid, which is then
+used as the exemplar for that year. The same technique used to classify using artistic exemplars
+is then applied, only with these exemplars rather than the ones loaded from the exemplar file.
+
+This then opened up the option to use inheritance to cut down on code repetition. The artistic
+exemplar classifier could be extended by the centroid classifier, with a single method changed to
+generate the centroids instead of reading them from a file. This, in turn, could then be extended
+by the statistical exemplar classified (as described above) so that the 1-Nearest Neighbour
+algorithm could be applied at the end of the generation of exemplars. Here the use of super calls
+in Python gave me a little bit of trouble, listing~\ref{lst:py-super} shows one correct solution
+to this.
+
+\begin{lstlisting}[language=python, breaklines=true, label=lst:py-super, 
+caption={Super method calls in Python}]
+# Note A has to extend 'object' for super calls to work
+class Base(object):
+    def call(self, params):
+        # ...
+
+class Sub(Base):
+    def call(self, params):
+        # Before Base.call
+        super(self, Sub).call(params)
+        # After Base.call
+\end{lstlisting}
+
 
 
 \subsection{cv2 and Histogram Results}
 Whilst reading through the 
-\emph{numpy}\cite{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy} and \emph{OpenCV} 
+\emph{numpy} and \emph{OpenCV} 
 it turned out that, until this point, I had been using a deprecated version of OpenCV. \emph{cv2} 
 is the new version of \emph{OpenCV} for python, which provides bindings for \emph{OpenCV 2.4} and 
 uses \emph{numpy} arrays and multi-dimensional arrays to represent all data types rather than 
