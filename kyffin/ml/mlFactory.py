@@ -36,4 +36,4 @@ def getML( name, technique ):
     if "theoretical-exemplar" in name:
         return TheoreticalStatisticalExemplar(technique, "./exemplar.csv")
     else:
-        return KNearestNeighbour( technique )
+        raise Exception("Technique '{}' unknown".format(name))
