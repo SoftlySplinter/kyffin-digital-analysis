@@ -5,7 +5,7 @@ import matplotlib.mlab as mlab
 class ML(object):
     def visualise(self, actual, classified):
         (correlation, unknown) = self.correlation(classified, actual)
-        print '{0}\t{1}'.format(correlation, unknown)
+#        print '{0}\t{1}'.format(correlation, unknown)
 
         plot.figure(2)
         plot.plot(actual, classified, 'x')
@@ -27,6 +27,10 @@ class ML(object):
         plot.xlabel('Years out')
         plot.ylabel('Number of Paintings')
 #        plot.show()
+
+        print "Actual\tClassified"
+        for (a,y) in zip(actual, classified):
+            print "{}\t{}".format(a,y)
 
     def correlation(self, classified, actual):
         a = [float(x) for x in classified]

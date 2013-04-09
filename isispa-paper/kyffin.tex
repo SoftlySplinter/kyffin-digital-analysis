@@ -815,9 +815,9 @@ directions are then summarised in a histogram of oriented gradients, providing
 a yet richer representation of the texture of the image. This is similar to the
 method described in \cite{Dalal2005Histograms}. 
 
-\textbf{XXX Alex we use 15 bins; can we try different bin size? or is that just
-me being fussy? It'd be good to have Gabor (4, 8, 16); HOG (4, 8, 16); thus
-providing a direct comparator}
+% \textbf{XXX Alex we use 15 bins; can we try different bin size? or is that just
+% me being fussy? It'd be good to have Gabor (4, 8, 16); HOG (4, 8, 16); thus
+% providing a direct comparator}
 
 % Right oh now what we need is some graphs
 % I suggest for now doing results in-line, or have a table here showing 
@@ -878,7 +878,7 @@ Gabor filters: 4 orientations			& 0.44084541429	& 1.02469784947e-06 \\
 \hline
 \end{tabular}
 \vspace{0.5em}
-\caption{Correlation Coefficients, ordered by strength}\label{tab:results}
+\caption{Correlation Coefficients, ordered by strength, for K=7}\label{tab:results}
 \end{table}
 
 %\textbf{Alex - do we have HOG results for steerable, Gabor, and derivative masks?}
