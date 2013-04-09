@@ -72,6 +72,22 @@ Newer, more popular languages like Ruby don't have the support for image process
 the language features of Ruby don't particularly beat Python's. Many other languages suffer the
 same flaws of not having good support for image processing libraries.
 
+Python is not without its flaws, the lack of strictness, especially before running code, does mean
+a lot of errors are encountered at runtime. This is a disadvantage of the dynamically typed and
+interpreted nature of the language. Statically typed languages are a lot easier to pick up on
+typing errors, Python takes a step further than this and uses what is commonly known as duck
+typing: ``If it looks like a duck and quacks like a duck, it must be a duck.''\cite{2013Glossary},
+this means there's no need for the inheritance hierarchy. 
+
+Not having a compiler to lean on for picking up syntax errors before runtime is another
+disadvantage which Python suffers from. However, Python is generally quick enough to run that 
+hitting these errors at runtime isn't a huge issue, there are also tools available to help pick up
+on these errors. I did make use of PyLint once or twice during the project, but I mainly relied on
+just running the code to ensure it worked. I am aware that this wasn't the best strategy for 
+testing for this sort of thing, but it was the simplest way of doing so, especially as a lot of
+the complex operations just involved calling external libraries.
+
+
 \subsubsection{Dependency Management}
 \emph{setuptools} is a Python package designed to allow the easy downloading, building, 
 installation, upgrading and uninstallation of Python packages from \gls{pypi}. It can be used to
@@ -90,6 +106,7 @@ compilation and therefore have very little dependency management normally.
 Newer languages, again using Ruby as an example, do have better dependency management and tend to
 be more tied to the language itself, rather than being a tool like \emph{setuptools}. There aren't
 many advantages to this as \gls{pypi} is widely known.
+
 
 \subsection{Image Processing/Computer Vision Libraries}
 Due to the number of libraries out there and my inexperience in computer vision and image 
@@ -136,6 +153,40 @@ images and even comes with its own machine learning libraries.
 
 I have also added \emph{OpenCV cv2} to the research as it shows how simplified many of the 
 operations became after I discovered it.
+
+\subsubsection{OpenCV cv2}
+Knowing about \emph{OpenCV cv2} from the start would have been a useful piece of information, the
+updates to the library make it a lot easier to use. For example; calling the calculate histogram
+method in \emph{OpenCV} is shown in listings~\ref{lst:cv1-hist}, whilst the same operation in 
+\emph{OpenCV cv2} is shown in listings~\ref{lst:cv2-hist} and is evidently a lot easier to call
+and work with.
+
+\begin{lstlisting}[language=python, caption={Creating a Histogram in OpenCV}, label=lst:cv1-hist, 
+breaklines=true, frame=single]
+import cv
+
+image = cv.LoadImageM("file.png")
+
+planes = [cv.CreateMat(image.rows, image.cols, cv.CV_8UC1) for i in xrange(3)]
+planes = planes + [None]
+
+cv.Split(image, planes*)
+
+hist = cv.CreateHist([255,255,255], cv.CV_HIST_ARRAY, [[0,255],[0,255],[0,255]], 1)
+cv.CalcHist([cv.GetImage(i) for i in planes], hist)
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[language=python, caption={Creating a Histogram in OpenCV cv2},
+label=lst:cv2-hist, breaklines=true, frame=single]
+import cv2
+
+image = cv2.imread("file.png")
+hist = cv2.calcHist([channel for channel in cv2.split(image)], [0], None, [255,255,255], [0,255,0,255,0,255])
+\end{lstlisting}
+
+
 
 \subsection{Machine Learning Libraries}
 

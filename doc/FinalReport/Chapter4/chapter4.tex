@@ -531,6 +531,51 @@ This may become a long operation depending on how many dimensions the feature sp
 technique like \gls{pca} may be useful to help cut down the number of dimensions needed that this
 algorithm uses.
 
+Initially, as I wasn't producing histogram results from analysis techniques, this was a little
+complex to do; each analysis technique had to have its own method of generating the centroid and
+returning the data for this centroid. The change to histogram results made everything a lot easier
+and, combined with the \texttt{mean} method from \emph{numpy}, which can handle the mean along 
+different axes, rather than just over a flattened array. This is the perfect too for the job as
+histograms are returned as numpy arrays and the data passed into the centroid method is now an 
+array of these histograms. Calculating the mean across the first axis has the effect of 
+calculating the centroid. Equation~\ref{eq:mean-matricies} shows this mathematically on 2D 
+Matrices where $\bar{x}_n$ is the mathematical mean of $x$ along axis $n$.
+
+\begin{align}
+x=&\begin{bmatrix}
+\begin{bmatrix}
+1.0 & 1.0 & 0.0 \\
+0.0 & 1.0 & 1.0 \\
+0.0 & 0.4 & 0.0 \\
+\end{bmatrix} & 
+\begin{bmatrix}
+0.0 & 1.0 & 0.0 \\
+1.0 & 1.0 & 1.0 \\
+0.6 & 0.0 & 1.0 \\
+\end{bmatrix}
+\end{bmatrix} \nonumber \\
+\bar{x}_1 =& 
+\begin{bmatrix}
+0.5 & 1.0 & 0.0 \\
+0.5 & 1.0 & 1.0 \\
+0.3 & 0.2 & 0.5 \\
+\end{bmatrix}
+\label{eq:mean-matricies}
+\end{align}
+
+Whilst this is a useful theoretical exemplar, it doesn't fit with the idea of an artistic 
+exemplar, it is quite possible that the art historians would be able to imagine a theoretical
+painting which suits that year but they were limited to real paintings so it should follow that
+the statistical exemplars can also be constrained in the same fashion.
+
+This could be seen as a form of generalisation. Though this may affect the results for the worse
+it may help prevent overfitting of the classification technique. It also shows which years are 
+commonly chosen as exemplars correctly and incorrectly, this should give a vision of the 
+difference between the artistic and statistic exemplars and where the artistic exemplars are the
+outliers of that particular year.
+
+
+
 \subsection{cv2 and Histogram Results}
 Whilst reading through the 
 \emph{numpy}\cite{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy} and \emph{OpenCV} 

@@ -20,40 +20,38 @@
 
 \bibitem{2004Corpws}
 \BIBentryALTinterwordspacing
-``{Corpws Hanesyddol yr Iaith Gymraeg 1500-1850/A Historical Corpus of the
-  Welsh Language 1500-1850},'' 2004. [Online]. Available:
+``Corpws hanesyddol yr iaith gymraeg {1500-1850/A} historical corpus of the
+  welsh language 1500-1850,'' 2004. [Online]. Available:
   \url{http://people.ds.cam.ac.uk/dwew2/hcwl/menu.htm}
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{2012Research}
 \BIBentryALTinterwordspacing
-``{Research Programme in Digital Collections at NLW},'' Sept. 2012. [Online].
+``Research programme in digital collections at {NLW},'' Sept. 2012. [Online].
   Available: \url{http://www.llgc.org.uk/research}
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{2013Your}
 \BIBentryALTinterwordspacing
-``{Your Paintings - Kyffin Williams},'' Mar. 2013. [Online]. Available:
+``Your paintings - kyffin williams,'' Mar. 2013. [Online]. Available:
   \url{http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted_by/kyffin-williams_artists}
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{Bacardit2013Largescale}
 \BIBentryALTinterwordspacing
-J.~Bacardit and X.~Llor\`{a}, ``{Large-scale data mining using genetics-based
-  machine learning},'' \emph{Wiley Interdisciplinary Reviews: Data Mining and
+J.~Bacardit and X.~Llor\`{a}, ``Large-scale data mining using genetics-based
+  machine learning,'' \emph{Wiley Interdisciplinary Reviews: Data Mining and
   Knowledge Discovery}, vol.~3, no.~1, pp. 37--61, Jan. 2013. [Online].
   Available: \url{http://dx.doi.org/10.1002/widm.1078}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent A paper recommended by Julie Greensmith for
-  information on a Learning Classifier System (LCS) which Julie believes will
-  yield good results with the Kyffin Williams project. \end{quotation}
+
 
 \bibitem{Belongie2001Matching}
 \BIBentryALTinterwordspacing
-S.~J. Belongie, J.~Malik, and J.~Puzicha, ``{Matching shapes},'' in
+S.~J. Belongie, J.~Malik, and J.~Puzicha, ``Matching shapes,'' in
   \emph{Computer Vision, 2001. ICCV 2001. Proceedings. Eighth IEEE
   International Conference on}, vol.~1.\hskip 1em plus 0.5em minus 0.4em\relax
   IEEE, 2001, pp. 454--461 vol.1. [Online]. Available:
@@ -63,171 +61,139 @@ S.~J. Belongie, J.~Malik, and J.~Puzicha, ``{Matching shapes},'' in
 
 \bibitem{Berezhnoy2005Authentic}
 \BIBentryALTinterwordspacing
-I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``{Authentic:
-  Computerized Brushstroke Analysis},'' in \emph{Multimedia and Expo, 2005.
-  ICME 2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
+I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``Authentic:
+  Computerized brushstroke analysis,'' in \emph{Multimedia and Expo, 2005. ICME
+  2005. IEEE International Conference on}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, July 2005, pp. 1586--1588. [Online]. Available:
   \url{http://dx.doi.org/10.1109/icme.2005.1521739}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Defines a method of analysing brushstrokes by
-  applying a circular filter across a digital image to pick up the ridges of a
-  brushstroke. This can then be used to pick out individual brushstrokes in
-  order to be able to fit a nth order polynomial to them. Though this paper
-  focuses on authenticating Van Gogh's paintings, it could easily be applied to
-  the work of Kyffin Williams and may allow for some interesting analysis.
-  \end{quotation}
+
 
 \bibitem{Berezhnoy2009Automatic}
 \BIBentryALTinterwordspacing
-I.~Berezhnoy, E.~Postma, and Herik, ``{Automatic extraction of brushstroke
-  orientation from paintings},'' vol.~20, no.~1, pp. 1--9, 2009. [Online].
+I.~Berezhnoy, E.~Postma, and Herik, ``Automatic extraction of brushstroke
+  orientation from paintings,'' vol.~20, no.~1, pp. 1--9, 2009. [Online].
   Available: \url{http://dx.doi.org/10.1007/s00138-007-0098-7}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Defines a method of analysing brushstrokes by
-  applying a circular filter across a digital image to pick up the ridges of a
-  brushstroke. This can then be used to pick out individual brushstrokes in
-  order to be able to fit a nth order polynomial to them. Though this paper
-  focuses on authenticating Van Gogh's paintings, it could easily be applied to
-  the work of Kyffin Williams and may allow for some interesting analysis.
-  \end{quotation}
+
 
 \bibitem{opencv_library}
 G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
   Tools}, 2000.
- \begin{quotation}\noindent Used Python
-  (http://opencv.willowgarage.com/documentation/python) and C++
-  (http://opencv.willowgarage.com/documentation) documentation for library
-  reference and some learning on image processing/computer vision. Used since
-  11 October 2012. \end{quotation}
+
 
 \bibitem{Brown2013Can}
-A.~D. Brown, H.~M. Dee, G.~L. Roderick, and L.~M. Hughes, ``{Can we date an
-  artist's work from catalogue photographs?}'' Apr. 2013.
- \begin{quotation}\noindent The paper submitted to ISPA as a part of this
-  project. \end{quotation}
+A.~D. Brown, H.~M. Dee, G.~L. Roderick, and L.~M. Hughes, ``Can we date an
+  artist's work from catalogue photographs?'' Apr. 2013.
+
 
 \bibitem{Canny1986Computational}
 \BIBentryALTinterwordspacing
-J.~F. Canny, ``{A Computational Approach to Edge Detection},'' \emph{Pattern
+J.~F. Canny, ``A computational approach to edge detection,'' \emph{Pattern
   Analysis and Machine Intelligence, IEEE Transactions on}, vol. PAMI-8, no.~6,
   pp. 679--698, Nov. 1986. [Online]. Available:
   \url{http://dx.doi.org/10.1109/tpami.1986.4767851}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Reference for the Canny Edge detection technique.
-  \end{quotation}
+
 
 \bibitem{Contributors2012Gabor}
 \BIBentryALTinterwordspacing
-W.~Contributors, ``{Gabor filter},'' Online, Oct. 2012. [Online]. Available:
+W.~Contributors, ``Gabor filter,'' Online, Oct. 2012. [Online]. Available:
   \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342109}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Reference for the example code for Gabor Filters. A
-  better reference should be found if possible. \end{quotation}
+
 
 \bibitem{Dalal2005Histograms}
 \BIBentryALTinterwordspacing
-N.~Dalal and B.~Triggs, ``{Histograms of oriented gradients for human
-  detection},'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
+N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human
+  detection,'' in \emph{Computer Vision and Pattern Recognition, 2005. CVPR
   2005. IEEE Computer Society Conference on}, ser. CVPR '05, vol.~1.\hskip 1em
   plus 0.5em minus 0.4em\relax Washington, DC, USA: IEEE, June 2005, pp.
   886--893 vol. 1. [Online]. Available:
   \url{http://dx.doi.org/10.1109/cvpr.2005.177}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Describes a method of producing histograms of edge
-  orientations which may prove to be a useful analysis technique for Kyffin
-  Williams' art. The most interesting part of this paper is the use of
-  segmentation and binning of gradients which seems like it could be useful to
-  differentiate different parts of the image which may be painted in different
-  styles. \end{quotation}
+
 
 \bibitem{Daugman1985Uncertainty}
 \BIBentryALTinterwordspacing
-J.~G. Daugman, ``{Uncertainty relation for resolution in space, spatial
+J.~G. Daugman, ``Uncertainty relation for resolution in space, spatial
   frequency, and orientation optimized by two-dimensional visual cortical
-  filters},'' \emph{Journal of the Optical Society of America A}, vol.~2,
-  no.~7, pp. 1160+, July 1985. [Online]. Available:
+  filters,'' \emph{Journal of the Optical Society of America A}, vol.~2, no.~7,
+  pp. 1160+, July 1985. [Online]. Available:
   \url{http://dx.doi.org/10.1364/josaa.2.001160}
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{Davies2004100}
 \BIBentryALTinterwordspacing
-J.~Davies, \emph{{100 Welsh heroes}}.\hskip 1em plus 0.5em minus 0.4em\relax
+J.~Davies, \emph{100 Welsh heroes}.\hskip 1em plus 0.5em minus 0.4em\relax
   Culturenet Cymru, 2004. [Online]. Available:
   \url{http://www.worldcat.org/oclc/753176001}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Reference for Sir John Kyffin Williams
-  \end{quotation}
+
 
 \bibitem{Gamma1996Design}
 \BIBentryALTinterwordspacing
-E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, \emph{{Design Patterns:
-  Elements of Reusable Object-Oriented Software}}, ser. Addison-Wesley
+E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, \emph{Design Patterns:
+  Elements of Reusable {Object-Oriented} Software}, ser. Addison-Wesley
   professional computing series.\hskip 1em plus 0.5em minus 0.4em\relax
   Addison-Wesley, 1996. [Online]. Available:
   \url{http://www.worldcat.org/isbn/9780201633610} 9780201633610.
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Design Pattern reference for the architecture of
-  the program. \end{quotation}
+
 
 \bibitem{Hall2009WEKA}
 \BIBentryALTinterwordspacing
 M.~Hall, E.~Frank, G.~Holmes, B.~Pfahringer, P.~Reutemann, and I.~H. Witten,
-  ``{The WEKA data mining software: an update},'' \emph{SIGKDD Explor. Newsl.},
+  ``The {WEKA} data mining software: an update,'' \emph{SIGKDD Explor. Newsl.},
   vol.~11, no.~1, pp. 10--18, Nov. 2009. [Online]. Available:
   \url{http://dx.doi.org/10.1145/1656274.1656278}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Citation for the Weka data mining software. Weka is
-  a Java based tool which can be used to run a lot of classifiers to a dataset,
-  making it a very useful tool to apply to the Kyffin Williams project. Weka
-  allows the application of complex machine learning techniques without having
-  to spend a lot of time learning, understand and implementing said techniques.
-  \end{quotation}
+
 
 \bibitem{Harris2011How}
 \BIBentryALTinterwordspacing
-R.~Harris, ``{How Rolf learnt to paint like Sir Kyffin Williams},'' BBC
+R.~Harris, ``How rolf learnt to paint like sir kyffin williams,'' BBC
   Broadcast, Feb. 2011. [Online]. Available:
   \url{http://www.bbc.co.uk/programmes/p00f6nyt}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent A video on the BBC by Rolf Harris about some of
-  Kyffin Williams' life and about his interesting style of painting.
-  \end{quotation}
+
 
 \bibitem{Hughes2011Evaluating}
 \BIBentryALTinterwordspacing
-L.~M. Hughes. (2011) {Evaluating and measuring the value: use and impact of
-  digital collections}. [Online]. Available:
+L.~M. Hughes. (2011) Evaluating and measuring the value: use and impact of
+  digital collections. [Online]. Available:
   \url{http://www.worldcat.org/isbn/9781856047203}
 \BIBentrySTDinterwordspacing
 
 
 \bibitem{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy}
-E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy: Open source
-  scientific tools for Python},'' 2001.
- \begin{quotation}\noindent Reference for SciPy and NumPy; two useful libraries
-  which implement complex scientific and mathematical functions. NumPy is also
-  heavily tied to OpenCV version 2.4 so it is a necessity to include as part of
-  this project. \end{quotation}
+E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy}: Open source
+  scientific tools for python,'' 2001.
+
 
 \bibitem{Li2012Rhythmic}
 \BIBentryALTinterwordspacing
-J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``{Rhythmic Brushstrokes
-  Distinguish van Gogh from His Contemporaries: Findings via Automated
-  Brushstroke Extraction},'' \emph{Pattern Analysis and Machine Intelligence,
-  IEEE Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
+J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
+  van gogh from his contemporaries: Findings via automated brushstroke
+  extraction,'' \emph{Pattern Analysis and Machine Intelligence, IEEE
+  Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
   Available: \url{http://dx.doi.org/10.1109/tpami.2011.203}
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Defines a complex method for analysing individual
-  brush strokes which has been used to classify the period of two paintings by
-  Van Gogh. This technique could be very powerful when applied to Kyffin
-  Williams' work. This could be one of the most important techniques for the
-  whole of the Kyffin Williams project. \end{quotation}
+
+
+\bibitem{2013Glossary}
+\BIBentryALTinterwordspacing
+``Glossary -- python v2.7.4 documentation,'' Python Software Foundation, Apr.
+  2013. [Online]. Available:
+  \url{http://docs.python.org/2/glossary.html#term-duck-typing}
+\BIBentrySTDinterwordspacing
+
 
 \bibitem{Unsworth2000Scholarly}
 \BIBentryALTinterwordspacing
-J.~Unsworth, ``{Scholarly Primitives: what methods do humanities researchers
-  have in common, and how might our tools reflect this?}'' May 2000. [Online].
+J.~Unsworth, ``Scholarly primitives: what methods do humanities researchers
+  have in common, and how might our tools reflect this?'' May 2000. [Online].
   Available:
   \url{http://people.lis.illinois.edu/~unsworth//Kings.5-00/primitives.html}
 \BIBentrySTDinterwordspacing
@@ -235,11 +201,10 @@ J.~Unsworth, ``{Scholarly Primitives: what methods do humanities researchers
 
 \bibitem{Williams1993Across}
 \BIBentryALTinterwordspacing
-K.~Williams, \emph{{Across the straits : an autobiography}}.\hskip 1em plus
-  0.5em minus 0.4em\relax Gomer, 1993. [Online]. Available:
+K.~Williams, \emph{Across the straits : an autobiography}.\hskip 1em plus 0.5em
+  minus 0.4em\relax Gomer, 1993. [Online]. Available:
   \url{http://www.worldcat.org/isbn/0863839940} 0863839940.
 \BIBentrySTDinterwordspacing
- \begin{quotation}\noindent Sir John Kyffin Williams' autobiography which is a
-  very useful reference for periods of his life. \end{quotation}
+
 
 \end{thebibliography}
