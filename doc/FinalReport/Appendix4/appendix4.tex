@@ -2,7 +2,8 @@
 
 \section{Example CSV Parsing Code}
 \begin{lstlisting}[language=python,breaklines=true,
-caption={Example CSV Parsing Code from http://docs.python.org/2/library/csv.html},label=lst:csv_example_code]
+caption={Example CSV Parsing Code from http://docs.python.org/2/library/csv.html},
+label=lst:csv_example_code, frame=single]
 >>> import csv
 >>> with open('eggs.csv', 'rb') as csvfile:
 ...     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
@@ -15,7 +16,7 @@ Spam, Lovely Spam, Wonderful Spam
 \section{argparse Example Code}
 \begin{lstlisting}[language=python,
 caption={Example argparse Code from http://docs.python.org/2/library/argparse.html},
-label=lst:argparse_example_code]
+label=lst:argparse_example_code, frame=single, breaklines=true]
 import argparse
 
 parser = argparse.ArgumentParser(description='Process some integers.')
@@ -36,26 +37,33 @@ print args.accumulate(args.integers)
 
 \section{Gabor Filter Example Implementation}
 \begin{lstlisting}[language=MATLAB,breaklines=true,
-caption={Example implementation of a Gabor Filter in MATLAB from wikipedia\cite{Contributors2012Gabor}}]
-function gb=gabor_fn(sigma,theta,lambda,psi,gamma)
- 
+caption={Example implementation of a Gabor Filter in MATLAB\cite{Yang2010Gabor}}, frame=single]
+function gb=gabor_fn(bw,gamma,psi,lambda,theta)
+% bw    = bandwidth, (1)
+% gamma = aspect ratio, (0.5)
+% psi   = phase shift, (0)
+% lambda= wave length, (>=2)
+% theta = angle in rad, [0 pi)
+
+sigma = lambda/pi*sqrt(log(2)/2)*(2^bw+1)/(2^bw-1);
 sigma_x = sigma;
 sigma_y = sigma/gamma;
- 
-% Bounding box
-nstds = 3;
-xmax = max(abs(nstds*sigma_x*cos(theta)),abs(nstds*sigma_y*sin(theta)));
-xmax = ceil(max(1,xmax));
-ymax = max(abs(nstds*sigma_x*sin(theta)),abs(nstds*sigma_y*cos(theta)));
-ymax = ceil(max(1,ymax));
-xmin = -xmax; ymin = -ymax;
-[x,y] = meshgrid(xmin:xmax,ymin:ymax);
- 
+
+sz=fix(8*max(sigma_y,sigma_x));
+if mod(sz,2)==0, sz=sz+1;end
+
+% alternatively, use a fixed size
+% sz = 60;
+
+[x y]=meshgrid(-fix(sz/2):fix(sz/2),fix(sz/2):-1:fix(-sz/2));
+% x (right +)
+% y (up +)
+
 % Rotation 
 x_theta=x*cos(theta)+y*sin(theta);
 y_theta=-x*sin(theta)+y*cos(theta);
  
-gb= exp(-.5*(x_theta.^2/sigma_x^2+y_theta.^2/sigma_y^2)).*cos(2*pi/lambda*x_theta+psi);
+gb=exp(-0.5*(x_theta.^2/sigma_x^2+y_theta.^2/sigma_y^2)).*cos(2*pi/lambda*x_theta+psi);
 \end{lstlisting}
 
 
@@ -63,7 +71,7 @@ gb= exp(-.5*(x_theta.^2/sigma_x^2+y_theta.^2/sigma_y^2)).*cos(2*pi/lambda*x_thet
 
 
 \begin{lstlisting}[language=python,breaklines=true,label=lst:opencv_histogram,
-caption={Example Histogram calculation and displaying code from OpenCV\cite{opencv_library}.}] 
+caption={Example Histogram calculation and displaying code from OpenCV\cite{opencv_library}.}, frame=single] 
 # Taken from: http://opencv.willowgarage.com/documentation/python/imgproc_histograms.html#calchist
 # Calculating and displaying 2D Hue-Saturation histogram of a color image
 
@@ -126,7 +134,7 @@ if __name__ == '__main__':
 \begin{lstlisting}[language=Python,
 breaklines=true,
 caption={Using OpenCV to blur an image},
-label=lst:opencv]
+label=lst:opencv, frame=single]
 import cv
 
 im = cv.LoadImageM("tux.png")
@@ -138,7 +146,7 @@ cv.SaveImage("tux_blurred_opencv.png", blur)
 \subsection{cv2}
 \begin{lstlisting}[language=Python,
 caption={Using cv2 to blur an image},
-label=lst:cv2]
+label=lst:cv2, frame=single]
 import cv2
 
 im = cv2.imread("tux.png")
@@ -150,7 +158,7 @@ cv2.imwrite("tux_blurred_cv2.png", blur)
 \begin{lstlisting}[language=Java,
 breaklines=true,
 caption={Using FIJI to blur an image},
-label=lst:fiji]
+label=lst:fiji, frame=single]
 package fiji;
 
 import ij.IJ;
@@ -177,7 +185,7 @@ public final class Blur {
 \begin{lstlisting}[language=C++,
 breaklines=true,
 caption={Using IVT to blur an image},
-label=lst:ivt]
+label=lst:ivt, frame=single]
 #include <stdio.h>
 #include "Image/ByteImage.h"
 #include "Image/ImageProcessor.h"

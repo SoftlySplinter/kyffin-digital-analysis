@@ -88,7 +88,8 @@ Export           & \verb+-e+  & \verb+--export    +& Export analysed data\\\hlin
 The \texttt{argparse} library handles this nicely, the example code shown in 
 listing~\ref{lst:argparse_example_code} shows the usage of this library.
 
-These flags then hook into the factory methods to actually create the instances.
+These flags then hook into the factory methods to actually create the instances and return them to
+the central point which then called them where required.
 
 
 \section{Colour Space Analysis}
@@ -585,10 +586,11 @@ generate the centroids instead of reading them from a file. This, in turn, could
 by the statistical exemplar classified (as described above) so that the 1-Nearest Neighbour
 algorithm could be applied at the end of the generation of exemplars. Here the use of super calls
 in Python gave me a little bit of trouble, listing~\ref{lst:py-super} shows one correct solution
-to this.
+to this\footnote{There are, of course, other correct methods, but the one listed is one of the 
+better solutions}.
 
 \begin{lstlisting}[language=python, breaklines=true, label=lst:py-super, 
-caption={Super method calls in Python}]
+caption={Super method calls in Python}, frame=single]
 # Note A has to extend 'object' for super calls to work
 class Base(object):
     def call(self, params):
@@ -600,7 +602,6 @@ class Sub(Base):
         super(self, Sub).call(params)
         # After Base.call
 \end{lstlisting}
-
 
 
 \subsection{cv2 and Histogram Results}
