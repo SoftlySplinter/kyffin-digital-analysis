@@ -22,7 +22,7 @@ def main():
             tech = techniqueFactory.getTechnique(options.technique)
             gui = guiFactory.getGUI(options.gui, options.technique)
             ml = mlFactory.getML(options.ml, tech)
-            analyser = Analyser(tech, gui, ml, options.five_flag, options.export_path)
+            analyser = Analyser(tech, gui, ml, options.five_flag, options.export_path, options.classify)
             analyser.run(options.csv)
         else:
             raise BaseException('No data file specified')
@@ -36,6 +36,7 @@ def parse():
     parser.add_option('-m', '--ml', dest='ml', help='Set Machine Learning type (defaults to kNN.')
     parser.add_option('-5', '--bin-years', dest='five_flag', default=False, action='store_true', help='Bin paintings into years of five.')
     parser.add_option('-e', '--export', dest='export_path', default=False, help='Export analysed data to a file.')
+    parser.add_option('-c', '--classify', dest='classify', default=None, help='Painting to Classify.')
     return parser.parse_args()
 
 def loadVersion():
