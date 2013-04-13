@@ -429,15 +429,24 @@ lorna.hughes@llgc.org.uk}}
 
 \begin{abstract}
 %\boldmath
-Kyffin Williams, art changes over time, blah blah blah. Features, colour, edges, histograms of oriented gradients; strong correlation using leave-one-out methodology.
-Exemplars; artistic and statistic. 
+Computer vision has addressed many problems in art, but has not yet looked in
+detail at the way artistic style can develop and evolve over the course of an
+artist's career. In this paper we take a computational approach to modelling
+stylistic change in the body of work amassed by Sir John ``Kyffin'' Williams, a
+nationally renowned and prolific Welsh artist. Using images gathered from
+catalogues and online sources, we use a leave-one-out methodology to classify
+paintings by year; despite the variation in image source, size, and quality we
+are able to obtain significant correlations between predicted year and actual
+year, and we are able to guess the age of the painting within 15 years, for
+around 70\% of our dataset.  We also investigate the incorporation of expert
+knowledge within this framework by consdering a subset of paintings chosen as
+\emph{exemplars} by a scholar familiar with Williams' work.  
 \end{abstract}
-% IEEEtran.cls defaults to using nonbold math in the Abstract.
-% This preserves the distinction between vectors and scalars. However,
-% if the conference you are submitting to favors bold math in the abstract,
-% then you can use LaTeX's standard command \boldmath at the very start
-% of the abstract to achieve this. Many IEEE journals/conferences frown on
-% math in the abstract anyway.
+% IEEEtran.cls defaults to using nonbold math in the Abstract.  This preserves
+% the distinction between vectors and scalars. However, if the conference you
+% are submitting to favors bold math in the abstract, then you can use LaTeX's
+% standard command \boldmath at the very start of the abstract to achieve this.
+% Many IEEE journals/conferences frown on math in the abstract anyway.
 
 % no keywords
 
@@ -472,7 +481,7 @@ in London, and three per week when in Wales.'\cite[p.209]{Williams1993Across}
 With a career spanning from the mid-1940s to approximately 2004, this rate
 amounts to a large body of work.
 
-His style evolved from a very representational style to something more
+His technique evolved from a very representational style to something more
 expressive, which retained representational qualities: the computer scientists
 on our team would say that the paintings became more \emph{blocky}; the art
 historians that his landscapes are almost constructed with swathes of textural
@@ -522,18 +531,25 @@ black outlines to figures and landscapes features. Greens, browns and greys
 often form the palette of his paintings of the Welsh landscape. These colour
 selections seem appropriate for the artist’s claim that melancholy, derived
 from the ``dark hills, heavy clouds and enveloping sea mists'', is a national
-characteristic of the Welsh.\cite{Williams1993Across} This combination of
+characteristic of the Welsh \cite{Williams1993Across}. This combination of
 colour selection and technique seems appropriate for the depiction of the areas
 where he painted. Many of his most successful paintings are said to have a
 ``dark quality'' in depicting ``rain lashed hillsides,'' and it was this
 darkness which ``makes his landscapes so distinctively
-Welsh.''\cite{Davies2004100} 
+Welsh'' \cite{Davies2004100}. Figure~\ref{early_example} shows an early Williams painting, complete with rain lashed hillsides. 
+
+\begin{figure*}
+\includegraphics[width=18.5cm]{img/snowdon_horse.jpeg}
+\caption{``\emph{Snowdon, the Traeth and the Frightened Horse}'', Sir John Kyffin Williams, 1948: note curved strokes, rather than blocky application
+\label{early_example} }
+\end{figure*}
+
 
 %Both of the above descriptions could be applicable
 %to paintings in the collections of the National Library of Wales such as
 %Snowdonian Summits (1970-1990) or Yr Wyddfa a Grib Goch (1950-1960).
 
-The aesthetic of Williams’s Welsh landscapes is contrasted by the paintings he
+The aesthetic of Williams's Welsh landscapes is contrasted by the paintings he
 made following a trip to Patagonia to paint the landscape and people of the
 Welsh communities there in 1968 as part of a Winston Churchill Foundation
 scholarship. The colours and application of paint in pictures produced in
@@ -545,14 +561,14 @@ that the Patagonian pictures were produced during a definite period of time has
 reinforced our interest in the analysis of the formal qualities of pictures
 from different collections remotely, using digital images. 
 
-Williams’s work is well represented in public collections in Wales
+Williams's work is well represented in public collections in Wales
 (particularly at the National Library of Wales, the National Museums and
 Galleries of Wales and Oriel Ynys M\^{o}n, Anglesey). His pictures, often
 depicting the landscape and people of north-west Wales were also tremendously
 popular with the art buying public. Of the 325 paintings by Williams in public
 collections in the UK listed on the BBC/Public Catalogue Foundation's ``Your
 Paintings'' website, 212 of them are in the collections of the National Library
-of Wales\cite{2013Your}. Many of these paintings were bequeathed to the Library
+of Wales \cite{2013Your}. Many of these paintings were bequeathed to the Library
 as part of a larger bequest by the artist (including works on paper and other
 archival material). Many of the pictures which came to the library from the
 artist’s studio had little in the way of metadata, and as such have been
@@ -570,17 +586,17 @@ distinct types of inquiry. The first is to carry out \emph{traditional}
 humanities research more effectively or efficiently, by applying computational
 methods or approaches to digitized humanities sources (originally text, image,
 or audio-visual content from archives or libraries). Using John Unsworth’s
-definition of ``scholarly primitives''\cite{unsworth00} digital humanities
+definition of ``scholarly primitives'' \cite{unsworth00} digital humanities
 scholarship customarily involves the use of digital tools and methods for
 discovering, annotating, comparing, referring, sampling, illustrating, or
 representing humanities data. A classic example of this sort of work would be
 the use of concordances and other computer-based analysis of digitized primary
 sources that have been processed by optical character recognition software to
 count, classify, or interpret digital texts (see, for example, the Historical
-Concordance of the Welsh language\cite{welshconcordance}).  The second strand
+Concordance of the Welsh language \cite{welshconcordance}).  The second strand
 of digital humanities inquiry is the development of new research questions that
 can only be developed through the synthesis of digital content, tools and
-methods: work that would have otherwise been unimaginable\cite{hughes11}. This
+methods: work that would have otherwise been unimaginable \cite{hughes11}. This
 type of research is by necessity multi-disciplinary, drawing together expertise
 to be found across humanities, scientific and engineering disciplines, as well
 as involving content experts from libraries, archives and museums. However, in
@@ -606,7 +622,15 @@ complex humanities data set.
 %Kyffin Williams' paintings that his brush-strokes change over time, his early work having lots of
 %smaller strokes over the canvas to large bold strokes in his later work.
 
-\textbf{XXX Hannah to read \cite{Stork2009Computer}, cite it sensibly, and pull some other references which are relevant}
+Stork, in his 2009 review paper, presents an overview of the field of digital
+painting analysis \cite{Stork2009Computer}. Leaving aside structural aspects of
+painting analysis (for example, there is a rich seam of work looking at the
+geometry of figurative art, for example \cite{criminisi}) most work in the area
+of style analysis is aimed at authentication. With the problem of
+authentication, one tries to build a two class classifier for a painter where
+the classes in question are ``painted by artist X'' or ``not painted by X''
+(e.g. Irfan and Stork's feature based classifier for authenticating Jackson
+Pollock artworks, \cite{irfan09}).
 
 When we consider computer vision-based analysis of painterly style we find that
 the vast majority of  work concentrates on brush stroke detection and analysis.
@@ -621,7 +645,9 @@ clustering in colour space to determine strokes; a number of heuristics
 involving branching, stroke-width modeling, and gap filling are then used to
 refine the original brush stroke estimates. One interesting element of this
 work, from our perspective, is the ability to date some of Van Gogh's paintings
-to a known period in his career.
+to a known period in his career. To the best of our knowledge this is the only
+other work which aims, like us, to date work: that is, to automatically place
+an artwork in the context of the artists' own body of work.
 
 Techniques based upon stroke analysis, whilst applicable to the work of some
 artists, are not applicable to all. In particular, Kyffin Williams painted with
@@ -648,7 +674,7 @@ life Kyffin painted using exceptionally thick and textural strokes, which gives
 specularities on the catalogue images); they are at varying resolutions; and
 come from a range of different cameras. Image size bears little relation to the
 original painting size, and some images are even optimised for the web.
-Table~\ref{summary_t} below summarises the dataset
+Table~\ref{summary_t} below summarises the dataset; Figure~\ref{late_example} shows a late Williams painting.
 
 \begin{table}[h]
 \centering
@@ -665,12 +691,15 @@ Other       &   8 &  0 & Other or studies \\
 \hline
 \end{tabular}
 \vspace{0.5em}
-\caption{A summary of our Kyffin Williams painting dataset}
-\label{summary_t}
+\caption{A summary of our Kyffin Williams painting dataset
+\label{summary_t}}
 \end{table}
 
-\textbf{XXX It may be worth putting in something here about image size vs painting size?}
-
+\begin{figure}
+\includegraphics[width=9cm]{img/above_carneddi_no_2.jpeg}
+\caption{``\emph{Above Carneddi, No. 2}'', Sir John Kyffin Williams 1985: note much blockier style and changed use of colour
+\label{late_example}}
+\end{figure}
 
 \section{Methodology}
 % 0.5 Page on the validation - LOOCV
@@ -695,8 +724,8 @@ classification or regression itself.
  
 \begin{figure}
 \includegraphics[width=8cm]{img/kyffin_overview.pdf}
-\caption{Overview of the classification methodology}
-\label{LOOCV}
+\caption{Overview of the classification methodology
+\label{LOOCV}}
 \end{figure}
 
 Thus for each feature set, we take all paintings for which we know the year of
@@ -710,8 +739,8 @@ We also know that painting's actual year, and we can plot actual against
 predicted year for all known-year paintings.  To measure goodness of fit, the
 Pearson's product-moment correlation coefficient was calculated on these
 orderings; this provides us with a performance measure of each classifier.  It
-is also possible to test Pearson's R for statistical significance; thus
-significance levels are reported alongside R in this paper.  With all of the
+is also possible to test Pearson's $r$ for statistical significance; thus
+significance levels are reported alongside $r$ in this paper.  With all of the
 feature spaces we consider, it is possible treat the painting descriptors as
 histograms.  This allows us to use a single distance measure, namely
 chi-squared, in our K-nearest neighbour classification.
@@ -728,38 +757,39 @@ through edge detection, to texture analysis. We have concentrated on lower
 level image features -- colours, textures, and edges -- rather than attempt to
 extract brush strokes. As mentioned earlier, Williams painted with a pallette
 knife rather than a brush, and his work is characterised by angularity rather
-than identifiable ``strokes''.  In this section we describe the various feature
-sets and feature spaces we have explored; results for each of these are
-presented in Section~\ref{results} below.
+than identifiable ``strokes''.  Our motivation for this is not only due to
+these issues with painterly style, but also because of the variation in image
+quality. By concentrating on simpler features we hope to retain some robustness
+to variation in image capture and quality.  In this section we describe the
+various feature sets and feature spaces we have explored; results for each of
+these are presented in Section~\ref{results} below.
 
 There is a clear (to the eye) trend in colour usage, as the paintings get
-``gloomier'' over time, so we started with simple colour-space analysis: taking
-the mean RGB for each painting and using this with our KNN classfier; we also
-tested other colour spaces, such as HSV. Promisingly this provided us with a
-positive correlation. 
- 
-Staying with the colour variation theme, we then used colour histograms, which
-provide a more precise representation of the way Kyffin Williams used colour.
-These histograms were developed by counting the number of pixels within a
-particular colour range for each painting, and then building a normalised
-histogram representing the colour usage. 
+``gloomier'' over time. Thus, we started with simple colour-space analysis:
+taking the mean RGB for each painting and using this with our KNN classfier; we
+also tested other colour spaces, such as HSV. Promisingly this provided us with
+a positive correlation.  Remaining with the colour variation theme, we then
+used colour histograms, which provide a more precise representation of the way
+Williams used colour.  These histograms were developed by counting the
+number of pixels within a particular colour range for each painting, and then
+building a normalised histogram representing the colour usage. 
 
 %\textbf{Alex how many bins? }
  
 As a lot of Kyffin Williams' paintings are highly textural, edge detection and
-texture analysis was thought to be a good avenue to explore.  Firstly, we
+texture analysis were also thought to be a good avenue to explore.  Firstly, we
 investigated simple \emph{edginess}; as a rough estimate of the the edge
 properties of the artworks we apply a Canny \cite{Canny1986Computational} edge
 detector to the paintings, and then use a count of edge pixels as our feature. 
 
-Texture analysis is a continuation of edge detection. Instead of taking simply
-the strength and number of edges, we create a histogram of orientated gradients
-as in \cite{Dalal2005Histograms}. In this way we begin to build up a richer
-representation of the texture of a painting. Given the change in style of
-Kyffin Williams' work, moving away from figurative representations with curved
-lines towards more blocky rectilinear brush strokes, we expect these edge
-orientation frequencies to change over time. To this end we used simple
-steerable filters $S$, applied to the image at $0$, $\frac{\pi}{4}$,
+Texture analysis can be thought of as a continuation of edge detection. Instead
+of taking simply the strength and number of edges, we create a histogram of
+orientated gradients as in \cite{Dalal2005Histograms}. In this way we begin to
+build up a richer representation of the texture of a painting. Given the change
+in style of Kyffin Williams' work, moving away from figurative representations
+with curved lines towards more blocky rectilinear ``brush'' strokes, we expect
+these edge orientation frequencies to change over time. To this end we used
+simple steerable filters $S$, applied to the image at $0$, $\frac{\pi}{4}$,
 $\frac{\pi}{2}$ and $\frac{3\pi}{4}$. 
 
 \begin{equation}
@@ -774,18 +804,21 @@ Equation~\ref{filter_ex} shows a sample steerable filter, in this case
 $S(\frac{\pi}{2})$, the filter which gives the highest response when presented
 with horizontal lines. By convolving each image with filters tuned to different
 orientations, we can build a histogram recording the frequency of lines at each
-orientation.
+orientation. Figures~\ref{fig:example-img} and \ref{steerablestrength} show a
+painting, and the resulting edge orientation histogram; it is clear from this
+that there are more horizontal edges in this particular image due to the clear
+peak at $\frac{\pi}{2}$.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.45\textwidth]{img/steerable.jpg}
-\caption{Example image -- Coastal Sunset, 1990-2006}\label{fig:example-img}
+\caption{``\emph{Coastal Sunset}'', Sir John Kyffin Williams. Date unknown, thought to be in the range 1990-2006\label{fig:example-img}}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.45\textwidth]{img/steerable.pdf}
-\caption{Steerable filter strength $S(\theta)$ on the example image in figure~\ref{fig:example-img}}
+\caption{Steerable filter strength $S(\theta)$ on the example image in figure~\ref{fig:example-img}\label{steerablestrength}}
 \end{figure}
 
 Gabor filters are linear filters which can be tuned to a greater range of
@@ -799,91 +832,74 @@ g_e(x) = \frac{1}{2\pi\sigma_x \sigma_y}e^{-\frac{1}{2}\left(\frac{x^2}{\sigma_x
 \end{equation}
 
 Where $(\omega_{x_0},\omega_{y_0})$\ defines the centre frequency, and
-$(\sigma_x,\sigma_y)$ the spread of the Gaussian window. In this work we use
-Gabor filters tuned to equally spaced orientations to build a histogram
-representing line orientations in each painting, and present results below for
-histograms built from the output of both 4 and 8 filter orientations.
-
-\textbf{XXX Hannah to look at a textbook for a better version of the above scary maths and cite.}
-
-% \textbf{Alex to run Gabor with 4 and 8.}
+$(\sigma_x,\sigma_y)$ the spread of the Gaussian window \cite{jaingabor}. In
+this work we use Gabor filters tuned to equally spaced orientations to build a
+histogram representing line orientations in each painting, and present results
+below for histograms built from the output of 4, 8 and 16 filter orientations.
 
 The final method for producing histograms we consider involves the application
 of two discrete derivative masks to the image to get the gradient of $x$ and
 $y$, and then to work out the gradient direction at each point. These gradient
 directions are then summarised in a histogram of oriented gradients, providing
 a yet richer representation of the texture of the image. This is similar to the
-method described in \cite{Dalal2005Histograms}. 
+method described in \cite{Dalal2005Histograms}; again we present results on the output of 4, 8 and 16 orientations. 
 
-% \textbf{XXX Alex we use 15 bins; can we try different bin size? or is that just
-% me being fussy? It'd be good to have Gabor (4, 8, 16); HOG (4, 8, 16); thus
-% providing a direct comparator}
-
-% Right oh now what we need is some graphs
-% I suggest for now doing results in-line, or have a table here showing 
-% correlation coefficients 
-
-% \textbf{Alex is going to combine the various correlation-against-K graphs so that we have one graph with all techniques on the same axes}
 
 \section{Year classification results}
 \label{results}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{results/mean.pdf}
-\label{pearsons-k}
-\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour}
-\end{figure}
-
-% you're not going to like me for this but can you plot the other feature
-%spaces too?
-
 The one parameter of our classifier is the choice of K in K-nearest neighbour.
 Simply setting $K=1$\ has the effect of assigning the year of the nearest
 painting in feature space to the current test painting, whereas setting
 $K=102$\ has the effect of giving each painting the mean value of the entire
 dataset. Clearly a point between these two extremes would be best; from
 Figure~\ref{pearsons-k} we can see that for many of the feature spaces we
-consider, the optimum K value is around 7 or 8.
+consider, the optimum K value is around 7 or 8. Pearson's correlation
+coefficients $r$\ for K=7, alongside $P(r)$\, are presented in
+Table~\ref{tab:results}. A further measure of classification accuracy is also
+presented: this is the percentage of paintings for which our classifier manages
+to date the artwork in question within 15 years of actual painting date. This
+measure, $C(n)$, provides an easy to understand measure of classification
+accuracy. 
 
-%\textbf{Alex - can we get the results table for K=7?}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{results/mean.pdf}
+\caption{Correlation Coefficients $r$ against K values for K-Nearest Neighbour
+\label{pearsons-k}}
+\end{figure}
+
+
+
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|p{3.5cm}|c|c|}
+\begin{tabular}{|p{3.5cm}|c|c|c|}
 \hline
-Technique     & $r$ & $P(r)$ \\ \hline
+Technique     & $r$ & $P(r)$ & $C(15)$\\ \hline
 %K=7
-Edge Strength					& 0.01072814442	& 0.910207365322    \\
-HSV						& 0.11224162320	& 0.236562323053    \\
-RGB						& 0.11775991536	& 0.214157639943    \\
-HSV Histograms					& 0.14603200925	& 0.122741593497    \\
-RGB Histograms					& 0.26953009140	& 0.00389039298815  \\
-HOG (Discrete Derivatives): 4 orientations	& 0.30736212605	& 0.000927910444337 \\
-Steerable filters: 4 orientations		& 0.31169031994	& 0.000777735274356 \\
-HOG (Discrete Derivatives): 8 orientations	& 0.34568068248	& 0.000176784815253 \\
-HOG (Discrete Derivatives): 16 orientations	& 0.36728931244	& 6.28825760028e-05 \\
-Gabor filters: 16 orientations			& 0.36951884354	& 5.62810915995e-05 \\
-Gabor filters: 8 orientations			& 0.43790920108	& 1.23123557269e-06 \\
-Gabor filters: 4 orientations			& 0.44084541429	& 1.02469784947e-06 \\
-%K=10
-%Edge Strength & 0.060 & 0.52877 \\
-%HSV           & 0.158 & 0.09518 \\
-%RGB           & 0.179 & 0.05757 \\
-%HSV Histogram & 0.364 & 0.00007 \\
-%Steerable filters: 4 orientations & & \\
-%Gabor filters: 4 orientations & & \\
-%Gabor filters: 8 orientations & & \\
-%HOG (Discrete Derivatives): 15 orientations & 0.479 & 0.00000008 \\
+Edge Strength & 0.0107	& 0.910  & 60\%\\
+HSV & 0.112	& 0.237  & 64\%  \\
+RGB & 0.118	& 0.214 & 63\%   \\
+HSV Histograms	& 0.146	& 0.123 & 64\%    \\
+RGB Histograms	& 0.270	& 0.004 & 62\% \\
+HOG (Discrete Derivatives): 4 orientations & 0.307	& 0.001 & 65\%\\
+Steerable filters: 4 orientations & 0.312	& 0.001 & 68\%\\
+HOG (Discrete Derivatives): 8 orientations & 0.346	& \textless0.001 & 65\%\\
+HOG (Discrete Derivatives): 16 orientations & 0.367	& \textless0.001 & 64\% \\
+Gabor filters: 16 orientations	& 0.370	& \textless0.001 & 67\%\\
+Gabor filters: 8 orientations	& 0.438	& \textless0.001 & 70\%\\
+Gabor filters: 4 orientations	& 0.441	& \textless0.001 & 71\%\\
 \hline
 \end{tabular}
 \vspace{0.5em}
-\caption{Correlation Coefficients, ordered by strength, for K=7}\label{tab:results}
+\caption{Correlation Coefficients, ordered by strength, for K=7\label{tab:results}}
 \end{table}
 
-%\textbf{Alex - do we have HOG results for steerable, Gabor, and derivative masks?}
-
-% \textbf{Alex - do we have any ensemble methods? IIRC combining HOG with HSV gave us impressive correlations}
+From Table~\ref{results} it is clear to see that whilst the dates predicted by
+our methods correlated fairly well with the actual painting dates, and these
+correlations are mostly significant, we are able to date paintings within 15
+years in 71\% of cases.  Whilst this result is not yet good enough to be of use
+to the art history world, it is promising. 
 
 \section{Exemplars: can we improve results by incorporating expert knowledge? }
 
@@ -898,100 +914,104 @@ short), which we can then use as a representation of that particular year.
 
 The data on artistic exemplars opens up the options for different methods of
 classification. Rather than using K-nearest neighbour to classify each point in
-the feature space, we can take the year of the nearest exemplar to assign that year
-to the painting in question. 
+the feature space, we take the year of the nearest exemplar, and assign that
+year to the painting in question. If these exemplars are indeed indicative of
+the artists' output for that year, they should prove to be useful
+\emph{anchors} in our feature spaces. To compare with this, we can also
+determine \emph{statistical exemplars} either by using the centroid in
+feature space for a particular year (which provides us with a point in feature
+space which will not correspond to an actual painting), or the nearest actual
+painting to the feature space centroid for a year. The former technique does
+not, strictly speaking, give us an exemplar; the latter chooses as exemplar the
+painting which best represents a particular year according to a particular
+feature space. 
 
-This then raises the question of whether we can determine \emph{statistical
-exemplars} to compare with our \emph{artistic exemplars}, and if so what the
-digitally-chosen exemplars would be.  We can either use cluster centres (which
-provides us with a point in feature space which will not correspond to an
-actual painting), or the nearest actual painting to the feature space centroid
-for a year. The former technique does not, strictly speaking, give us an
-exemplar; the latter chooses as exemplar the painting which best represents a
-particular year according to a particular feature space. 
-
-Our intuition -- that using artistically chosen exemplars could help us to exploit
-knowledge about the way the paintings change over time -- turned out to be
-incorrect; results for the other feature spaces show a similar pattern.
-
-
-\textbf{XXX Alex - We need results:-)}
-
-\textbf{XXX Alex again - can we get an indication of any situations where our statistic exemplars match the artistic ones, and the converse situation (artistic exemplars nowhere near centres of feature space)? This is a good place for us to include a couple of extra photos of paintings}
-
-\subsection{Comparing Artistic and Statistical Exemplars}
-
-The same distance measure used to run k-nearest neighbour on the feature-based classifiers was
-used to generate the error between the statistical and artistic exemplars.
-
-% 1950 Landscape with Cattle (155) matches exemplars for HOGs with 6 other paintings, classified correctly by 5 techniques.
-
-% 1960 No matches to the artistic exemplar Nant Ffrancon from Llandegfan (206), commonly misclassified as Moelwyn Bach (180).
-
-These exemplars give an interesting insight into the feature space, for example,
-the artistic exemplar \emph{Landscape with Cattle} for 1950 is often correctly 
-chosen as the statistical exemplar.
-
-In contrast, the artistic exemplar for 1960 - \emph{Nant Ffrancon from Llandegfan}
-is never chosen as the statistical exemplar. The statistical exemplar for 1960 is 
-commonly chosen as \emph{Moelwyn Bach} instead.
+Our intuition -- that using artistically chosen exemplars could help us to
+exploit knowledge about the way the paintings change over time -- turned out to
+be incorrect; results for Gabor filters with 4 orientations (the best
+performing method in our previous experiment) are shown in
+Table~\ref{artistic_exemplars}.  Results for the other feature spaces show a
+similar pattern, the same distance measure ($\chi^2$) has been used throughout. 
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|p{3.5cm}|c|c|}
+\begin{tabular}{|p{3.5cm}|c|c|c|}
 \hline
-Technique     & $r$ & $P(r)$ \\ \hline
+Technique     & $r$ & $P(r)$ & $C(15)$ \\ \hline
 %K=7
-Artistic Exemplars	& 0.328211368651	& 0.000386723188483\\
-Statistical Exemplars	& 0.382587693854	& 2.88959376009e-05 \\
-Centroid		& 0.403023217695	& 9.610186209e-06\\
+Artistic Exemplars	& 0.328	& \textless0.001 & 57\%\\
+Statistical Exemplars	& 0.383	& \textless0.001 & 61\%\\
+Centroid		& 0.403	& \textless0.001 & 64\%\\
 \hline
 \end{tabular}
-\caption{Correlation coefficients, ordered by strength, for Exemplars}
+\vspace{0.5em}
+\caption{Correlation coefficients, ordered by strength, for Exemplars
+\label{artistic_exemplars}}
 \end{table}
+
+These exemplars give an interesting insight into the feature space.  The
+paintings shown in Figures~\ref{early_example} and~\ref{late_example} are both
+artistic exemplars, however the earlier painting ``\emph{Snowdon, the Traeth
+and the Frightened Horse}'', from 1948, is far from the feature space centroid
+for that year, whereas the later painting is very close to the feature space
+centroid for 1985. A visualisation of artistic exemplars and their
+corresponding statistical representations is given in
+Figure~\ref{art_ex_stat_ex}. From this you can see that artistic information
+does not necessarily correspond well to the feature space(s) we use.  Note that
+whilst Figure~\ref{art_ex_stat_ex} uses the feature space defined by Gabor
+filters with 4 orientations, our best performing: the pattern is similar for
+all other feature spaces.
 
 \begin{figure}[h]
 \includegraphics[width=\linewidth]{img/exemplar.pdf}
 \caption{Distance in feature space from artistic to statistic exemplars (red); distance from
 artistic exemplar to centroid (green). Lower values indicate that the artistic
 exemplar is near to the mean painting for a particular year, higher values that an
-artistic exemplar painting could be an outlier}
+artistic exemplar painting is an outlier for this particular feature space\label{art_ex_stat_ex}}
 \end{figure}
-
-% \textbf{Alex... er... your to do list is longer than mine:-)}
 
 \section{Conclusions and future directions}
 
 To the best of our knowledge this is the first work that attempts to date work
 by an artist by year. Similarly, we believe we are the first to try and perform
-digital analysis of paintings from a range of catalogue and web images. The
-results presented here show that computer vision \emph{can} help with the job
-of dating art within an artist's body of work. 
+digital analysis of paintings from a range of catalogue and web images. 
 
-Future directions will involve testing the methods presented here on the works
-of other artists who have shown great stylistic variation over the course of
-their career: we would like to build a dataset of, for example, David Hockney
-works.  Whilst we have not yet performed this test we are hopeful of success;
-by avoiding brushstroke detection (which we expect to be artist specific) we
-hope to have developed techniques with application across a broader range of
-artistic styles. 
+The results presented here show that computer vision \emph{can} help with the
+job of dating art within an artist's body of work. We are able to show strong,
+statistically significant correlations between our method's allocation of year
+and the actual year of painting; we are also able to classify 70\% of paintings
+to within their actual year of painting (within a dataset that spans 6
+decades). These results are not yet of great use to art historians, but we are
+hopeful that future work will be able to improve upon this.  Several
+statistical avenues remain to be explored: we will look into feature
+combination and selection, and also investigate the potential for treating the
+year classification problem not as a nearest neighbour problem, but as an
+ordinal regression problem. 
 
+Future directions will also involve testing the methods presented here on the
+works of other artists who have shown great stylistic variation over the course
+of their career: we would like to build a dataset of, for example, David
+Hockney works.  Whilst we have not yet performed this test we are hopeful of
+success: by avoiding brushstroke detection (which we expect to be artist
+specific) we hope to have developed techniques with application across a
+broader range of artistic styles, and by building techniques which work on
+catalogue images rather than those captured in controlled conditions, we are
+open to working with paintings from a wider range of artists.
 
 
 % conference papers do not normally have an appendix
 
 
 % use section* for acknowledgement
-\section*{Acknowledgment}
+\section*{Acknowledgments}
 
 
 The authors would like to thank Dr Paul Joyner of the National Library of Wales
 for his invaluable expert assistance. We would also like to thank Professor
-Robert Meyrick of the School of Art, Aberystywth University.
-
-
-
-
+Robert Meyrick of the School of Art, Aberystwyth University.
+Figure~\ref{early_example} is in the School of Art, Aberystwyth University;
+Figures~\ref{late_example} and \ref{fig:example-img} are in the National Library of
+Wales collection.
 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.19)  9 APR 2013 14:07
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.19)  11 APR 2013 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -271,16 +271,21 @@ e
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ™ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ™ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ™ in font ptmr7t!
 
+<img/snowdon_horse.jpeg, id=1, 947.54pt x 391.4625pt>
+File: img/snowdon_horse.jpeg Graphic file (type jpg)
+
+<use img/snowdon_horse.jpeg>
+Package pdftex.def Info: img/snowdon_horse.jpeg used on input line 542.
+(pdftex.def)             Requested size: 526.37598pt x 217.46735pt.
+
+Overfull \hbox (2.27623pt too wide) in paragraph at lines 542--544
+[][] 
+ []
+
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ™ in font ptmr7t!
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -288,81 +293,97 @@ Missing character: There is no ™ in font ptmr7t!
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
+
+
+LaTeX Warning: Citation `criminisi' on page 2 undefined on input line 628.
+
+
+LaTeX Warning: Citation `irfan09' on page 2 undefined on input line 633.
+
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 616.
+(Font)              <7> on input line 640.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 616.
- [2]
-<img/kyffin_overview.pdf, id=14, 299.1175pt x 333.245pt>
+(Font)              <5> on input line 640.
+[2 <./img/snowdon_horse.jpeg>]
+<img/above_carneddi_no_2.jpeg, id=14, 947.54pt x 629.35126pt>
+File: img/above_carneddi_no_2.jpeg Graphic file (type jpg)
+
+<use img/above_carneddi_no_2.jpeg>
+Package pdftex.def Info: img/above_carneddi_no_2.jpeg used on input line 699.
+(pdftex.def)             Requested size: 256.0748pt x 170.08075pt.
+
+Overfull \hbox (3.02493pt too wide) in paragraph at lines 699--701
+[][] 
+ []
+
+<img/kyffin_overview.pdf, id=15, 299.1175pt x 333.245pt>
 File: img/kyffin_overview.pdf Graphic file (type pdf)
 
 <use img/kyffin_overview.pdf>
-Package pdftex.def Info: img/kyffin_overview.pdf used on input line 697.
+Package pdftex.def Info: img/kyffin_overview.pdf used on input line 726.
 (pdftex.def)             Requested size: 227.62204pt x 253.59425pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-<img/steerable.jpg, id=15, 947.54pt x 634.37pt>
+ [3 <./img/above_carneddi_no_2.jpeg>]
+<img/steerable.jpg, id=20, 947.54pt x 634.37pt>
 File: img/steerable.jpg Graphic file (type jpg)
  <use img/steerable.jpg>
-Package pdftex.def Info: img/steerable.jpg used on input line 781.
+Package pdftex.def Info: img/steerable.jpg used on input line 814.
 (pdftex.def)             Requested size: 235.84328pt x 157.89516pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<img/steerable.pdf, id=16, 361.35pt x 144.54pt>
+<img/steerable.pdf, id=21, 361.35pt x 144.54pt>
 File: img/steerable.pdf Graphic file (type pdf)
  <use img/steerable.pdf>
-Package pdftex.def Info: img/steerable.pdf used on input line 787.
+Package pdftex.def Info: img/steerable.pdf used on input line 820.
 (pdftex.def)             Requested size: 235.84328pt x 94.33804pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 788.
+(Font)              <8> on input line 821.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 788.
+(Font)              <6> on input line 821.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `jaingabor' on page 4 undefined on input line 835.
 
-[3 <./img/kyffin_overview.pdf>]
-Underfull \hbox (badness 2932) in paragraph at lines 801--806
+
+Underfull \hbox (badness 2932) in paragraph at lines 834--839
 []\OT1/ptm/m/n/10 Where $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ![]; ![]\OT1/cmr/m/n
 /10 )$ \OT1/ptm/m/n/10 de-fines the cen-tre fre-quency, and
  []
 
-<results/mean.pdf, id=26, 433.62pt x 433.62pt>
+[4 <./img/kyffin_overview.pdf> <./img/steerable.jpg> <./img/steerable.pdf>]
+<results/mean.pdf, id=45, 433.62pt x 433.62pt>
 File: results/mean.pdf Graphic file (type pdf)
  <use results/mean.pdf>
-Package pdftex.def Info: results/mean.pdf used on input line 833.
+Package pdftex.def Info: results/mean.pdf used on input line 866.
 (pdftex.def)             Requested size: 262.04987pt x 262.05971pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 833--835
+Overfull \hbox (9.0pt too wide) in paragraph at lines 866--868
  [][] 
  []
 
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 887.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <7> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 887.
 
-
-Underfull \hbox (badness 1960) in paragraph at lines 865--865
+Underfull \hbox (badness 1960) in paragraph at lines 888--888
 []\OT1/ptm/m/n/7 HOG (Dis-crete Deriva-tives): 16
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4 <./img/steerable.jpg> <./img/steerable.pdf> <./results/mean.pdf
 
-pdfTeX warning: pdflatex (file ./results/mean.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->] <img/exemplar.pdf, id=58, 361.35pt x 216.81pt>
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./results/mean.pdf>] <img/exemplar.pdf, id=64, 361.35pt x 216.81pt>
 File: img/exemplar.pdf Graphic file (type pdf)
- <use img/exemplar.pdf>
-Package pdftex.def Info: img/exemplar.pdf used on input line 954.
-(pdftex.def)             Requested size: 253.04987pt x 151.83212pt.
 
-(./kyffin.bbl
+<use img/exemplar.pdf>
+Package pdftex.def Info: img/exemplar.pdf used on input line 966.
+(pdftex.def)             Requested size: 253.04987pt x 151.83212pt.
+ (./kyffin.bbl
 Overfull \hbox (12.97964pt too wide) in paragraph at lines 34--37
 \OT1/ptm/m/n/8 http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted
 []by/kyffin-
@@ -393,33 +414,40 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5 <./img/exemplar.pdf>] (./kyffin.aux) ) 
+[6 <./img/exemplar.pdf>] (./kyffin.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2831 strings out of 493485
- 42187 string characters out of 3143526
- 110001 words of memory out of 3000000
- 6109 multiletter control sequences out of 15000+200000
+ 2866 strings out of 493485
+ 42858 string characters out of 3143526
+ 111042 words of memory out of 3000000
+ 6138 multiletter control sequences out of 15000+200000
  39875 words of font info for 73 fonts, out of 3000000 for 9000
  960 hyphenation exceptions out of 8191
- 38i,9n,23p,399b,267s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texlive/texmf-dist/fonts/e
-nc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on kyffin.pdf (5 pages, 323333 bytes).
+ 38i,9n,23p,427b,267s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on kyffin.pdf (6 pages, 505619 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 122 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
