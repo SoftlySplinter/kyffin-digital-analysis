@@ -1,17 +1,15 @@
 from kyffin.techniques import Technique
+import numpy
 
 class Ensemble(Technique):
     def __init__(self, *kargs):
         self.techniques = kargs
 
     def analyse(self, painting):
-        return [technique.analyse(painting) for technique in self.techniques]
-        
-    def distance(self, current, other):
-        distance = 0
-        for i in range(len(self.techniques)):
-            distance = distance + self.techniques[i].distance(current[i], other[i])
-        return distance
+        arr = [technique.analyse(painting).flatten() for technique in self.techniques]
+#        print arr
+#        print numpy.concatenate(arr)
+        return numpy.concatenate(arr)
 
     def export(self, data):
         return [technique.export(data) for technique in self.techniques]

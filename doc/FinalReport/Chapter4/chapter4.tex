@@ -284,7 +284,7 @@ matching vertical lines best).
 \EndFor
 \EndFunction
 \end{algorithmic}
-\caption{Psuedocode for Gabor Filter initialisation including number of orientations to produce 
+\caption[Psuedocode for Gabor Filter initialisation]{Psuedocode for Gabor Filter initialisation including number of orientations to produce 
 filters for}\label{fig:gabor-init}
 \end{figure}
 
@@ -318,6 +318,40 @@ not be applicable to Williams' work due to his use of the palette knife. Whilst 
 obviously clear strokes in his work, comparing these strokes to the likes of Van Gogh are unlikely
 to pay off due to the \emph{blockier} strokes of the palette knife. Another reason this analysis
 technique was side-lined in favour of exemplars.
+
+
+\section{Ensemble Methods}
+Ensemble methods are commonly used in statistical and machine learning to improve the performance,
+the main concept of an ensemble method is to combine two or more models to produce better results
+than would be gained from a single model.
+
+Practically, ensemble methods just involve running all models in the ensemble, combining them into
+one large histogram and then perform the normal distance measure on them. However, due to some 
+problems with the \emph{OpenCV cv2} histogram calculation method, it was a lot easier to flatten
+(to collapse a multi-dimensional array into a one-dimensional array) the results from each 
+technique have use this as the model.
+
+This does affect the performance a little, but it is better than the other solution of adding 
+resulting distance from each model together as the distances are not normalised. This was my 
+initial solution to the problem and hugely affected the results as the distance returned from
+statistical colour-space methods is a lot less than those returned from colour histograms and so
+on.
+
+Of course it would also be possible to normalise each distance measure of each technique, but this
+would be difficult as the mean and variance of the distance for an analysis technique is not 
+tracked. It may also cause problems when new examples are added (during validation, for example)
+which affect both these values.
+
+This method is commonly known as \gls{bagging}; where each model has a ``vote'' with equal weight.
+
+One part I considered adding to this, but didn't have the time to complete, would be to weight the
+vote of each technique (likely via a machine learning technique) in the ensemble so that the 
+better performing techniques affect the results more.
+
+Another method commonly used in machine learning is Boosting, where the model is built 
+incrementally, with the focus being on examples which were mis-classified by the previous models.
+This method does improve accuracy, but is known to over-fit the data set. 
+
 
 \section{Classification and Validation}
 With the results of analysis techniques there's also a need to be able to classify paintings based
@@ -487,7 +521,7 @@ which matched the current example.
 \State \Return $n_{year}$
 \EndFunction
 \end{algorithmic}
-\caption{Nearest Exemplar Classification Psuedocode with Logic to Remove $p$ from $exemplars$}\label{fig:nec-psuedo}
+\caption[Psuedocode for Nearest Exemplar Classification with Added Logic]{Psuedocode for Nearest Exemplar Classification with Logic to Remove $p$ from $exemplars$}\label{fig:nec-psuedo}
 \end{figure}
 
 This proved to give slightly worse correlation per technique than $k$-Nearest Neighbour. This 
@@ -591,7 +625,7 @@ better solutions}.
 
 \begin{lstlisting}[language=python, breaklines=true, label=lst:py-super, 
 caption={Super method calls in Python}, frame=single]
-# Note A has to extend 'object' for super calls to work
+# Note Base has to extend 'object' for super calls to work
 class Base(object):
     def call(self, params):
         # ...
