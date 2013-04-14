@@ -1,241 +1,115 @@
-\chapter{Evaluation}
+\chapter{Results}
 
-%Examiners expect to find in your dissertation a section addressing such questions as:
+\section{Correlation Coefficient Results}
+One parameter for our classifier is the choice of $k$ for $k$-Nearest Neighbour. Simply setting 
+$k=1$ has the effect of assigning the year of the nearest painting in feature space to the current
+test painting, whilst setting $k=102$ has the effect of giving the painting the mean year of the 
+entire data set. Obvious, a point between the two is likely to be the best. 
 
-%\begin{itemize}
-%   \item Were the requirements correctly identified? 
-%   \item Were the design decisions correct?
-%   \item Could a more suitable set of tools have been chosen?
-%   \item How well did the software meet the needs of those who were expecting to use it?
-%   \item How well were any other project aims achieved?
-%   \item If you were starting again, what would you do differently?
-%\end{itemize}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{../../isispa-paper/results/mean}
+\caption{Correlation Coefficients $r$ against $k$ values for $k$-Nearest Neighbour}\label{fig:r-graph}
+\end{figure}
 
-%Such material is regarded as the most important part of the dissertation; it should demonstrate that you are capable not only of carrying out a piece of work but also of thinking critically about how you did it and how you might have done it better. This is seen as an important part of an honours degree. You are expected to realise in which ways it falls short of perfection and of things that you did wrong.
+From figure~\ref{fig:r-graph} it is apparent that for many of the features spaces we have that the 
+optimum value of $k$ is around 7 or 8. Table~\ref{tab:r-results} shows the actual results for each 
+feature space for a $k$ of 7, where $r$ is the correlation coefficient given by Pearson's, 
+$P(r)$ is the p-value significance of $r$.
 
-%Sadly, the critical evaluation is the weakest aspect of most project dissertations. Because of its importance, some examples are provided on the project website.
+$C(n)$ is the percentage of paintings correctly classified within $n$ years of the actual year 
+(where $E(X)-n \le X \le E(X)+n$).
 
-\section{Evaluation of Requirements}
-Due to this being a research project, the requirements were not well defined other than the end 
-result of being able to classify paintings. Other requirements were added during meetings as new
-problem areas were encountered but were never formally defined, this would have been a problem if 
-the methodology used wasn't able to keep up with changing requirements.
-
-Most of the aims that were defined to begin with were achieved; in fact all but brush-stroke 
-analysis were completed effectively. However, on further investigation the completion of 
-brush-stroke analysis was infeasible for this project, the area is rather large and complex and, 
-with various time constraints, turned out that exemplars were a more revealing, less 
-time-consuming area of investigation.
-
-
-\section{Evaluation of Design}
-The initial design evolved very little over the course of the project, the main changes made were
-to actually make use of inheritance to cut down on code-reused. The design actively encouraged
-this as it was set up to allow this activity.
-
-The design wasn't perfect, until most of the way through the project objects in parameters were 
-manipulated to have properties set during the operation instead of using return values from 
-functions. Eventually this began to cause problems and was changed to correctly use return values
-instead. Listing~\ref{lst:param-vs-ret} shows the changes made.
-
-\begin{lstlisting}[caption={Using return values instead of manipulating parameters},
-label=lst:param-vs-ret,
-breaklines=true,
-language=python,
-frame=single]
-# Manipulating parameters
-def analyse(self, painting):
-    img = imread(painting.file_path)
-    painting.data = # specific analysis on img
-
-# Using return correctly
-def analyse(self, painting):
-    img = imread(painting.file_path)
-    return # specific analysis on img
-\end{lstlisting}
-
-Though this seems like a trivial change, it does affect how the code is called, especially in the
-exemplar classification where affecting the painting data is not wanted.
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}\hline
+Technique     					& $r$    & $P(r)$ & $C(15)$ \\ \hline
+Edge Strength 					& 0.0107 & 0.910  & 60\%    \\
+HSV 						& 0.112	 & 0.237  & 64\%    \\
+RGB 						& 0.118  & 0.214  & 63\%    \\
+HSV Histograms					& 0.146	 & 0.123  & 64\%    \\
+RGB Histograms					& 0.270	 & 0.004  & 62\%    \\
+HOG (Discrete Derivatives): 4 orientations 	& 0.307	 & 0.001  & 65\%    \\
+Steerable filters: 4 orientations 		& 0.312	 & 0.001  & 68\%    \\
+HOG (Discrete Derivatives): 8 orientations 	& 0.346	 & \textless0.001 & 65\% \\
+HOG (Discrete Derivatives): 16 orientations 	& 0.367	 & \textless0.001 & 64\% \\
+Gabor filters: 16 orientations			& 0.370  & \textless0.001 & 67\% \\
+Gabor filters: 8 orientations			& 0.438	 & \textless0.001 & 70\% \\
+Gabor filters: 4 orientations			& 0.441	 & \textless0.001 & 71\% \\
+\hline
+\end{tabular}
+\caption{Correlation Coefficients, ordered by strength for $k=7$}\label{tab:r-results}
+\end{table}
 
 
-\section{Evaluation of Tools}
+\newpage
+\section{Ensemble Results}
+Using ensemble methods can both improve and weaken the correlation coefficients depending on the
+techniques used. The inclusion of colour histogram analysis and HSV colour-space statistical
+analysis typically weakens the results, whilst combining \gls{hog} and Gabor filters typically 
+improves the correlation coefficients beyond each technique individually. 
+Table~\ref{tab:ensemble-results} shows some examples of this.
 
-\subsection{Programming Language}
-Python is a dynamic programming language which offers clear, reliable syntax; object orientation
-including multiple inheritance; full modularity; exception-based error handling; and a good range
-of dynamic data types.
+This does show that ensemble methods can help to improve the strength of analysis techniques, as
+expected.
 
-Python was a good choice of programming language; it's dynamically typed nature allows a lot fewer
-restrictions and though on the initial design, fitting well with the choice of methodology. 
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}\hline
+Method	& $r$	& $P(r)$ \\ \hline
+RGB 						& 0.118  & 0.214 \\
+Ensemble RGB Histogram and HOG (16)		& 0.256 & 0.006 \\
+RGB Histograms					& 0.269 & 0.004 \\
+HOG (Discrete Derivatives): 16 orientations	& 0.367 & \textless0.001 \\
+Ensemble RGB and HOG (16)			& 0.372 & \textless0.001 \\
+Gabor filters: 4 orientations			& 0.441 & \textless0.001 \\
+Ensemble RGB and Gabor (4)			& 0.443	& \textless0.001 \\
+Ensemble RGB, Gabor (4) and HOG (16)		& 0.464	& \textless0.001 \\
+\hline
+\end{tabular}
+\caption[Correlation Coefficients comparing individual and ensemble methods]{Correlation Coefficients comparing individual and ensemble methods. Note how the 
+combination of RGB Histograms and \gls{hog} has decreased performance, whilst the combination of
+\gls{hog} and Gabor filters has improved performance.}\label{tab:ensemble-results}
+\end{table}
 
-Python was also very useful for built-in features like list comprehension (see 
-listing~\ref{lst:python-list-comp} for an example), keeping the amount of code needed to build 
-list- and dictionary- based elements down to a minimum. As well as other built-in operations on 
-list- and dictionary- data types, for example\texttt{zip} on two arrays to help graph results.
+\newpage
+\section{Exemplar Results}
+The intuition -- that using artistically chosen exemplars could help to exploit knowledge about 
+the way the paintings change over time -- turned out to be incorrect; results for Gabor filters 
+with 4 orientations (the best performing method in our previous experiment) are shown in 
+Table~\ref{artistic_exemplars}.  Results for the other feature spaces show a similar pattern, the 
+same distance measure ($\chi^2$) has been used throughout. 
 
-\begin{lstlisting}[language=python,
-caption={Example of List Comprehension in Python},
-label=lst:python-list-comp]
-year = [painting.year for painting in self.paintings 
-        if is_absolute(painting.year)]
-\end{lstlisting}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3.5cm}|c|c|c|}
+\hline
+Technique     & $r$ & $P(r)$ & $C(15)$ \\ \hline
+%K=7
+Artistic Exemplars	& 0.328	& \textless0.001 & 57\%\\
+Statistical Exemplars	& 0.383	& \textless0.001 & 61\%\\
+Centroid		& 0.403	& \textless0.001 & 64\%\\
+\hline
+\end{tabular}
+\vspace{0.5em}
+\caption{Correlation coefficients, ordered by strength, for Exemplars
+\label{artistic_exemplars}}
+\end{table}
 
-Python also boasts a good number of libraries by default; libraries like the \gls{csv} parsing 
-library used to read in data. These libraries provide a lot of extended functionality to the 
-language. There is also the \gls{pypi} which allows the easy install of 
-additional packages.
+These exemplars give an interesting insight into the feature space. The paintings shown in 
+Figures~\ref{early_example} and~\ref{late_example} are both artistic exemplars, however the 
+earlier painting ``\emph{Snowdon, the Traeth and the Frightened Horse}'', from 1948, is far from 
+the feature space centroid for that year, whereas the later painting is very close to the feature 
+space centroid for 1985. A visualisation of artistic exemplars and their corresponding statistical
+representations is given in Figure~\ref{art_ex_stat_ex}. From this you can see that artistic 
+information does not necessarily correspond well to the feature space(s) we use. Note that whilst 
+Figure~\ref{art_ex_stat_ex} uses the feature space defined by Gabor filters with 4 orientations, 
+our best performing: the pattern is similar for all other feature spaces.
 
-A lack of experience in Python was a problem to begin with at first and a lot of the early code 
-didn't utilise a lot of the useful features Python provides, however after spending time 
-contributing to an open source project, also written in Python, these skills quickly developed 
-through feedback from commit and being able to read better written source code.
-
-Java was a commonly suggested language, in part due to the wealth of experience there is within
-the department. However, on investigation into image processing libraries, it was found that most
-of these libraries were either difficult to work with or were not as complete as other available
-options.
-
-A recent beta version of \gls{opencv} 2.4.4 provides support for the Java programming language
-for desktop user. However, this is vastly more complex to include as part of a project, requiring
-additional tools like the Apache Ant built system. The use of a beta library would have run the 
-risk of running into bugs in the software and relying on the project to fix them (or writing 
-patches and contributing to the project). Due to constrained time it was the right decision not to
-use \gls{opencv} with Java.
-
-Java is also very constrained in the nature of typing and lacks a lot of the mathematical features
-Python offers (list comprehension, lambda functions, etc.) which helps keep the code-base clean.
-This combined with the verbose nature of Java would have increased the size of the project to
-less manageable sizes.
-
-Newer \gls{jvm} based languages, Scala for example, could have helped with this problem, but most
-of the advantages gained by choosing Java as a language - especially knowledge - would have been
-lost in doing so and still lack the mathematical features of Python.
-
-As \gls{opencv} is natively written in C++, it might have made sense to use either C or C++ to write 
-this project in and both were strongly considered at the start of the project.
-
-C lacks native object-orientation\footnote{Using structures and functions points it can mimic the 
-behaviour to a certain extent, but still lacks inheritance} and is generally difficult to write 
-``correctly''. Other issues like cross-platform support were also factors in the choice against C.
-
-C++ has similar problems to C, though it does have more advanced features, including 
-object-orientation, which do make it easier to work with, it can still be difficult to produce 
-programs without problems. Both C and C++ have a decent set of compilers, from the standard 
-\gls{gcc}, which give very basic error helping features, to LLVM based compilers like clang which 
-ease the process of finding bugs.
-
-It was decided that, if the project ever managed to produce anything worthy of making into a
-library, it would be ported to C++ and investigation would be made into contributing it back into
-\gls{opencv}. This would have likely been related to the brush-stroke section of work in the project. 
-The only other reason for using C++ or C over Python for this project is if the processing needed
-to be completed within a short period of time, as this is a research project it matters very 
-little how fast each technique completes in\footnote{And, if a technique does take too long there 
-are solutions to this problem through the canning of results, as was performed on \gls{hog} 
-analysis (see section~\ref{sec:hog-canning})}.
-
-Newer, more popular languages like Ruby, don't have the support for image processing libraries and
-the language features of Ruby don't particularly beat Python's. Many other languages suffer the
-same flaws of not having good support for image processing libraries.
-
-Python is not without its flaws, the lack of strictness, especially before running code, does mean
-a lot of errors are encountered at runtime. This is a disadvantage of the dynamically typed and
-interpreted nature of the language. Statically typed languages are a lot easier to pick up on
-typing errors, Python takes a step further than this and uses what is commonly known as duck
-typing: ``If it looks like a duck and quacks like a duck, it must be a duck.''\cite{2013Glossary},
-this means there's no need for the inheritance hierarchy. 
-
-Not having a compiler to lean on for picking up syntax errors before runtime is another
-disadvantage which Python suffers from. However, Python is generally quick enough to run that 
-hitting these errors at runtime isn't a huge issue, there are also tools available to help pick up
-on these errors. PyLint was used during the project to find syntax errors and clean up code to
-typical Python standards, this was useful as most of the code was difficult to test cleanly so
-runtime errors were fairly common. The interpreter also has some checking for invalid syntax 
-before runtime so it was useful to lean on that on occasion.
-
-
-\subsubsection{Dependency Management}
-setuptools is a Python package designed to allow the easy downloading, building, 
-installation, upgrading and uninstallation of Python packages from \gls{pypi}. It can be used to
-manage the dependencies of a Python project through the use of a set-up file specifying the 
-packages required for a project to run. On build of that project all required packages will be 
-downloaded and installed, along with any packages they in turn require.
-
-Again this is a bonus of using Python. Java has very bad dependency management, the only tool
-which is widely used to do this is Apache Maven, and is not widely adopted and therefore not all
-that useful. \Gls{osgi} is another technology which makes managing dependencies easier, but in 
-itself doesn't handle the download and install of packages.
-
-Languages like C and C++ tend to use packages through the operating system or user-based 
-compilation, this can lead to a lot of dependency issues if the user is not well versed in the
-installation of libraries from source, especially on less common packages which are not provided
-through a package manager\footnote{Or on Windows, which has no standardised package manager}.
-
-Newer languages, again using Ruby as an example, do have better dependency management and tend to
-be more tied to the language itself, rather than being a tool like setuptools. There aren't
-many advantages to this as \gls{pypi} is widely known.
-
-
-\subsection{Image Processing/Computer Vision Libraries}
-There are numerous image processing and/or computer vision libraries available for use, each with
-their own flavours and supported programming languages. \gls{opencv} was the eventual choice after a lot
-of research into these libraries (as discussed in section~\ref{sec:cv-lib}). \gls{opencv} is one
-of the leading computer vision libraries freely available (released under the BSD License) and 
-boasts an impressive number of methods and has the benefit of being highly optimised and 
-cross-platform.
-
-In comparison to most other computer vision libraries \gls{opencv} feels well thought out and 
-polished; with good, well written, documentation for all interfaces (C, C++ and Python). Some of
-the Python documentation was a little difficult to use before discovering \gls{cv2}, but this was 
-partly because it was no longer being maintained.
-
-Other libraries, notably \gls{fiji}, lacked comprehensive, well laid out documentation. Method 
-calls were either not obviously named or buried in some many namespaces that it was impossible to
-find the correct call without documentation.
-
-
-\subsubsection{OpenCV cv2}
-Knowing about \gls{cv2} from the start would have been a useful piece of information, the
-updates to the library make it a lot easier to use. For example; calling the calculate histogram
-method in \gls{opencv} is shown in listings~\ref{lst:cv1-hist}, whilst the same operation in 
-\gls{cv2} is shown in listings~\ref{lst:cv2-hist} and is evidently a lot easier to call
-and work with.
-
-
-
-\begin{lstlisting}[language=python, caption={Creating a Histogram in OpenCV}, label=lst:cv1-hist, 
-breaklines=true, frame=single]
-import cv
-
-image = cv.LoadImageM("file.png")
-
-planes = [cv.CreateMat(image.rows, image.cols, cv.CV_8UC1) for i in xrange(3)]
-planes = planes + [None]
-
-cv.Split(image, planes)
-
-hist = cv.CreateHist([255,255,255], cv.CV_HIST_ARRAY, [[0,255],[0,255],[0,255]], 1)
-cv.CalcHist([cv.GetImage(i) for i in planes], hist)
-\end{lstlisting}
-
-
-\begin{lstlisting}[language=python, caption={Creating a Histogram in OpenCV cv2},
-label=lst:cv2-hist, breaklines=true, frame=single]
-import cv2
-
-image = cv2.imread("file.png")
-hist = cv2.calcHist([plane for plane in cv2.split(image)], [0], None, [255,255,255], [0,255,0,255,0,255])
-\end{lstlisting}
-
-Another advantage \gls{cv2} has is its tight integration with numpy - a numeric library for Python
-and part of the scipy library. This integration allows many more complex operations to be 
-performed on analysis results, operations which \gls{opencv} does not provide or provides in ways
-only specific to image processing, a notable example of this is being able to take the mean along
-an axis to generate the centroid in statistical exemplar classification.
-
-numpy is also useful for non-image processing use; many complex mathematical functions are 
-pre-defined which are useful for generating the statistical results for a given set of analysis
-and classification techniques after leave-one-out cross validation is performed. The main use was
-for Pearson's product-moment correlation coefficient and p-value significance.
-
-Other libraries exist for these functions, but could not reasonably be considered due to the 
-integration with \gls{cv2}.
+\begin{figure}[h]
+\includegraphics[width=\linewidth]{img/exemplar.pdf}
+\caption[Distance in feature space from artistic to statistic exemplars]{Distance in feature space from artistic to statistic exemplars (red); distance from 
+artistic exemplar to centroid (green). Lower values indicate that the artistic exemplar is near to
+the mean painting for a particular year, higher values that an artistic exemplar painting is an 
+outlier for this particular feature space\label{art_ex_stat_ex}}
+\end{figure}
