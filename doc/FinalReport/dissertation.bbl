@@ -48,7 +48,9 @@ J.~Bacardit and X.~Llor\`{a}, ``Large-scale data mining using genetics-based
   Knowledge Discovery}, vol.~3, no.~1, pp. 37--61, Jan. 2013. [Online].
   Available: \url{http://dx.doi.org/10.1002/widm.1078}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent A paper recommended by Julie Greensmith for
+  information on a Learning Classifier System (LCS) which Julie believes will
+  yield good results with the Kyffin Williams project. \end{quotation}
 
 \bibitem{Belongie2001Matching}
 \BIBentryALTinterwordspacing
@@ -68,7 +70,13 @@ I.~E. Berezhnoy, E.~O. Postma, and H.~J. van~den Herik, ``Authentic:
   0.4em\relax IEEE, July 2005, pp. 1586--1588. [Online]. Available:
   \url{http://dx.doi.org/10.1109/icme.2005.1521739}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines a method of analysing brushstrokes by
+  applying a circular filter across a digital image to pick up the ridges of a
+  brushstroke. This can then be used to pick out individual brushstrokes in
+  order to be able to fit a nth order polynomial to them. Though this paper
+  focuses on authenticating Van Gogh's paintings, it could easily be applied to
+  the work of Kyffin Williams and may allow for some interesting analysis.
+  \end{quotation}
 
 \bibitem{Berezhnoy2009Automatic}
 \BIBentryALTinterwordspacing
@@ -76,17 +84,28 @@ I.~Berezhnoy, E.~Postma, and Herik, ``Automatic extraction of brushstroke
   orientation from paintings,'' vol.~20, no.~1, pp. 1--9, 2009. [Online].
   Available: \url{http://dx.doi.org/10.1007/s00138-007-0098-7}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines a method of analysing brushstrokes by
+  applying a circular filter across a digital image to pick up the ridges of a
+  brushstroke. This can then be used to pick out individual brushstrokes in
+  order to be able to fit a nth order polynomial to them. Though this paper
+  focuses on authenticating Van Gogh's paintings, it could easily be applied to
+  the work of Kyffin Williams and may allow for some interesting analysis.
+  \end{quotation}
 
 \bibitem{opencv_library}
 G.~Bradski, ``{The OpenCV Library},'' \emph{Dr. Dobb's Journal of Software
   Tools}, 2000.
-
+ \begin{quotation}\noindent Used Python
+  (http://opencv.willowgarage.com/documentation/python) and C++
+  (http://opencv.willowgarage.com/documentation) documentation for library
+  reference and some learning on image processing/computer vision. Used since
+  11 October 2012. \end{quotation}
 
 \bibitem{Brown2013Can}
 A.~D. Brown, H.~M. Dee, G.~L. Roderick, and L.~M. Hughes, ``Can we date an
   artist's work from catalogue photographs?'' Apr. 2013.
-
+ \begin{quotation}\noindent The paper submitted to ISPA as a part of this
+  project. \end{quotation}
 
 \bibitem{Canny1986Computational}
 \BIBentryALTinterwordspacing
@@ -95,7 +114,8 @@ J.~F. Canny, ``A computational approach to edge detection,'' \emph{Pattern
   pp. 679--698, Nov. 1986. [Online]. Available:
   \url{http://dx.doi.org/10.1109/tpami.1986.4767851}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Reference for the Canny Edge detection technique.
+  \end{quotation}
 
 \bibitem{Dalal2005Histograms}
 \BIBentryALTinterwordspacing
@@ -106,7 +126,12 @@ N.~Dalal and B.~Triggs, ``Histograms of oriented gradients for human
   886--893 vol. 1. [Online]. Available:
   \url{http://dx.doi.org/10.1109/cvpr.2005.177}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Describes a method of producing histograms of edge
+  orientations which may prove to be a useful analysis technique for Kyffin
+  Williams' art. The most interesting part of this paper is the use of
+  segmentation and binning of gradients which seems like it could be useful to
+  differentiate different parts of the image which may be painted in different
+  styles. \end{quotation}
 
 \bibitem{Daugman1985Uncertainty}
 \BIBentryALTinterwordspacing
@@ -124,7 +149,8 @@ J.~Davies, \emph{100 Welsh heroes}.\hskip 1em plus 0.5em minus 0.4em\relax
   Culturenet Cymru, 2004. [Online]. Available:
   \url{http://www.worldcat.org/oclc/753176001}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Reference for Sir John Kyffin Williams
+  \end{quotation}
 
 \bibitem{Gamma1996Design}
 \BIBentryALTinterwordspacing
@@ -134,7 +160,8 @@ E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, \emph{Design Patterns:
   Addison-Wesley, 1996. [Online]. Available:
   \url{http://www.worldcat.org/isbn/9780201633610} 9780201633610.
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Design Pattern reference for the architecture of
+  the program. \end{quotation}
 
 \bibitem{Hall2009WEKA}
 \BIBentryALTinterwordspacing
@@ -143,7 +170,12 @@ M.~Hall, E.~Frank, G.~Holmes, B.~Pfahringer, P.~Reutemann, and I.~H. Witten,
   vol.~11, no.~1, pp. 10--18, Nov. 2009. [Online]. Available:
   \url{http://dx.doi.org/10.1145/1656274.1656278}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Citation for the Weka data mining software. Weka is
+  a Java based tool which can be used to run a lot of classifiers to a dataset,
+  making it a very useful tool to apply to the Kyffin Williams project. Weka
+  allows the application of complex machine learning techniques without having
+  to spend a lot of time learning, understand and implementing said techniques.
+  \end{quotation}
 
 \bibitem{Harris2011How}
 \BIBentryALTinterwordspacing
@@ -151,7 +183,9 @@ R.~Harris, ``How rolf learnt to paint like sir kyffin williams,'' BBC
   Broadcast, Feb. 2011. [Online]. Available:
   \url{http://www.bbc.co.uk/programmes/p00f6nyt}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent A video on the BBC by Rolf Harris about some of
+  Kyffin Williams' life and about his interesting style of painting.
+  \end{quotation}
 
 \bibitem{Hughes2011Evaluating}
 \BIBentryALTinterwordspacing
@@ -164,7 +198,10 @@ L.~M. Hughes. (2011) Evaluating and measuring the value: use and impact of
 \bibitem{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy}
 E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy}: Open source
   scientific tools for python,'' 2001.
-
+ \begin{quotation}\noindent Reference for SciPy and NumPy; two useful libraries
+  which implement complex scientific and mathematical functions. NumPy is also
+  heavily tied to OpenCV version 2.4 so it is a necessity to include as part of
+  this project. \end{quotation}
 
 \bibitem{Li2012Rhythmic}
 \BIBentryALTinterwordspacing
@@ -174,7 +211,11 @@ J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
   Transactions on}, vol.~34, no.~6, pp. 1159--1176, June 2012. [Online].
   Available: \url{http://dx.doi.org/10.1109/tpami.2011.203}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines a complex method for analysing individual
+  brush strokes which has been used to classify the period of two paintings by
+  Van Gogh. This technique could be very powerful when applied to Kyffin
+  Williams' work. This could be one of the most important techniques for the
+  whole of the Kyffin Williams project. \end{quotation}
 
 \bibitem{2013Glossary}
 \BIBentryALTinterwordspacing
@@ -199,7 +240,8 @@ K.~Williams, \emph{Across the straits : an autobiography}.\hskip 1em plus 0.5em
   minus 0.4em\relax Gomer, 1993. [Online]. Available:
   \url{http://www.worldcat.org/isbn/0863839940} 0863839940.
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Sir John Kyffin Williams' autobiography which is a
+  very useful reference for periods of his life. \end{quotation}
 
 \bibitem{Yang2010Gabor}
 \BIBentryALTinterwordspacing
