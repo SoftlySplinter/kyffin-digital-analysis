@@ -4,6 +4,53 @@
 
 %It is more likely that things were more complex than you first thought. In particular, were there any problems or difficulties that you found during implementation that you had to address? Did such problems simply delay you or were they more significant? Your implementation might well be described in the same chapter as Problems (see below).
 
+\section{Research into Image Processing Libraries}\label{sec:cv-lib}
+
+Due to the number of libraries out there and my inexperience in computer vision and image 
+processing, I thought it be to research into some of the more popular libraries out there so I
+could get the feel for them. To do this I created a simple application to  perform blur on a 
+single image to test their use and documentation. From this I gained a good insight into how easy 
+that library would be to perform more complex tasks.
+
+Table~\ref{tab:libraries-overview} shows an overview of all the libraries I have currently 
+considered and experimented with.
+
+\begin{table}[h]
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+								  \hline
+\multirow{2}{*}{\textbf{Library}}	& \multicolumn{5}{|c|}{\textbf{Platform}}			& \multirow{2}{*}{\textbf{Language(s)}}	& \textbf{Example}	\\\cline{2-6}
+					&  Windows	& Mac 		& Linux 	& Android	& iOS	&			&			\\\hline
+OpenCV					& \checkmark	& \checkmark	& \checkmark	& 		& 	& C, C++, Python	& Listing~\ref{lst:opencv}\\\hline
+OpenCV - cv2				& \checkmark	& \checkmark	& \checkmark	& \checkmark	& \checkmark & C, C++, Python, Java	& Listing~\ref{lst:cv2}\\\hline
+FIJI					& \checkmark	& \checkmark	& \checkmark	& 		&	& Java			& Listing~\ref{lst:fiji}	\\\hline
+IVT					& \checkmark	& \checkmark	& \checkmark	& 		&	& C++			& Listing~\ref{lst:ivt}	\\\hline
+\end{tabular}
+\caption{Comparison of image processing/computer vision libraries.}
+\label{tab:libraries-overview}
+\end{table}
+
+Of these libraries OpenCV was the easiest to work with. OpenCV also boasts a wide range of 
+features, all of which are well documented. FIJI provided a lot of high-level functionality, but
+for use as a library it quickly became unwieldy and was difficult to find the correct classes just 
+for the simple task of blurring an image. On a side note, I only managed to get the blurring 
+outputting a greyscale image in the short period of time I spent using FIJI.
+
+IVT was somewhat similar to FIJI in that it had a good range of high-level features, but was less
+impressive as a library. Despite following the example code I struggled to compile my own example
+and eventually gave up trying to get a working binary due to time constraints.
+
+%TODO Actually use VXL and then write about it.
+
+Having weighed up these libraries I it became fairly apparent that OpenCV would be the best choice,
+not only did it act as an easy to use library, it is also seems that is is one of the most 
+prevalent libraries for Computer Vision. For the Kyffin Williams project OpenCV provides a lot of
+pre-built helpers which allow for very rapid production of the early elements of the project. For
+example it is able to handle loading images in different colour spaces, generating histograms of
+images and even comes with its own machine learning libraries.
+
+I have also added \emph{OpenCV cv2} to the research as it shows how simplified many of the 
+operations became after I discovered it.
+
 \section{Basic Structure}
 
 \subsection{Loading Data}
@@ -189,6 +236,7 @@ equation~\ref{eq:grad_dir}, to work out the actual direction of the gradient.
 \theta = {\rm atan2}\left( \frac{\delta f}{\delta x}, \frac{\delta f}{\delta y} \right)
 \end{equation}
 
+\subsubsection{Canning of Histogram of Orientated Gradient Results}\label{sec:hog-canning}
 Working out the exact orientation of a gradient is a costly operation and it became useful to
 \emph{can} (persist) the results to allow the technique to complete in a decent amount of time.
 This change was made after the change to \emph{cv2} and was done using \emph{numpy} methods for

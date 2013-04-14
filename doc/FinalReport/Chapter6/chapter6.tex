@@ -17,15 +17,15 @@
 
 \section{Evaluation of Requirements}
 Due to this being a research project, the requirements were not well defined other than the end 
-result of being able to classify paintings. Other requirements were added by myself and Hannah but
-were never formally defined, this would have been a problem if the methodology used wasn't able to
-keep up with changing requirements.
+result of being able to classify paintings. Other requirements were added during meetings as new
+problem areas were encountered but were never formally defined, this would have been a problem if 
+the methodology used wasn't able to keep up with changing requirements.
 
-Most of the aims I defined to begin with were achieved; in fact all but brush-stroke analysis were
-completed effectively. However, on further investigation the completion of brush-stroke analysis
-was infeasible for this project, the area is rather large and complex and, with various time 
-constraints, it turned out that exemplars were a more revealing, less time-consuming area of 
-investigation.
+Most of the aims that were defined to begin with were achieved; in fact all but brush-stroke 
+analysis were completed effectively. However, on further investigation the completion of 
+brush-stroke analysis was infeasible for this project, the area is rather large and complex and, 
+with various time constraints, turned out that exemplars were a more revealing, less 
+time-consuming area of investigation.
 
 
 \section{Evaluation of Design}
@@ -38,9 +38,8 @@ Python is a dynamic programming language which offers clear, reliable syntax; ob
 including multiple inheritance; full modularity; exception-based error handling; and a good range
 of dynamic data types.
 
-I felt Python was a good choice of programming language; it's dynamically typed nature allows a
-lot less restrictions and though on the initial design, fitting well with my choice of 
-methodology. 
+Python was a good choice of programming language; it's dynamically typed nature allows a lot fewer
+restrictions and though on the initial design, fitting well with the choice of methodology. 
 
 Python was also very useful for built-in features like list comprehension (see 
 listing~\ref{lst:python-list-comp} for an example), keeping the amount of code needed to build 
@@ -59,26 +58,55 @@ library used to read in data. These libraries provide a lot of extended function
 language. There is also the \gls{pypi} which allows the easy install of 
 additional packages.
 
-A lack of experience in Python did hold me back a little at first and a lot of the early code 
-didn't use a lot of the useful features Python provides, however after spending a bit of time
-working on another open source project, also written in Python, my skills quickly developed with
-the help of my peers.
+A lack of experience in Python was a problem to begin with at first and a lot of the early code 
+didn't utilise a lot of the useful features Python provides, however after spending time 
+contributing to an open source project, also written in Python, these skills quickly developed 
+through feedback from commit and being able to read better written source code.
 
-Java would have been another option for this project; having had a lot of experience writing Java
-over that past 3 years. Though Java would have been more difficult to use as the image processing
-libraries aren't as polished as \emph{OpenCV}.
+Java was a commonly suggested language, in part due to the wealth of experience there is within
+the department. However, on investigation into image processing libraries, it was found that most
+of these libraries were either difficult to work with or were not as complete as other available
+options.
 
-C++ would have been another choice, which has native bindings for \emph{OpenCV}, however, I didn't
-feel confident enough in my knowledge of the language to chose it; unlike Python, C++ can be 
-unintuitive and has the added difficulty of a compiler which isn't as strict as the Java compiler.
+A recent beta version of \gls{opencv} 2.4.4 provides support for the Java programming language
+for desktop user. However, this is vastly more complex to include as part of a project, requiring
+additional tools like the Apache Ant built system. The use of a beta library would have run the 
+risk of running into bugs in the software and relying on the project to fix them (or writing 
+patches and contributing to the project). Due to constrained time it was the right decision not to
+use \gls{opencv} with Java.
 
-For similar reasons I decided not to chose C, the lack of object-orientation is also another 
-factor which goes against the language. If this were a project which needed efficiency then the
-choice of language would have been changed to either C or C++. Python is not known for brilliant
-efficiency due to it's interpreted nature. However, as this is a research project it doesn't 
-really matter how fast it completes.
+Java is also very constrained in the nature of typing and lacks a lot of the mathematical features
+Python offers (list comprehension, lambda functions, etc.) which helps keep the code-base clean.
+This combined with the verbose nature of Java would have increased the size of the project to
+less manageable sizes.
 
-Newer, more popular languages like Ruby don't have the support for image processing libraries and
+Newer \gls{jvm} based languages, Scala for example, could have helped with this problem, but most
+of the advantages gained by choosing Java as a language - especially knowledge - would have been
+lost in doing so and still lack the mathematical features of Python.
+
+As \gls{opencv} is natively written in C++, it might have made sense to use either C or C++ to write 
+this project in and both were strongly considered at the start of the project.
+
+C lacks native object-orientation\footnote{Using structures and functions points it can mimic the 
+behaviour to a certain extent, but still lacks inheritance} and is generally difficult to write 
+``correctly''. Other issues like cross-platform support were also factors in the choice against C.
+
+C++ has similar problems to C, though it does have more advanced features, including 
+object-orientation, which do make it easier to work with, it can still be difficult to produce 
+programs without problems. Both C and C++ have a decent set of compilers, from the standard 
+\gls{gcc}, which give very basic error helping features, to LLVM based compilers like clang which 
+ease the process of finding bugs.
+
+It was decided that, if the project ever managed to produce anything worthy of making into a
+library, it would be ported to C++ and investigation would be made into contributing it back into
+\gls{opencv}. This would have likely been related to the brush-stroke section of work in the project. 
+The only other reason for using C++ or C over Python for this project is if the processing needed
+to be completed within a short period of time, as this is a research project it matters very 
+little how fast each technique completes in\footnote{And, if a technique does take too long there 
+are solutions to this problem through the canning of results, as was performed on \gls{hog} 
+analysis (see section~\ref{sec:hog-canning})}.
+
+Newer, more popular languages like Ruby, don't have the support for image processing libraries and
 the language features of Ruby don't particularly beat Python's. Many other languages suffer the
 same flaws of not having good support for image processing libraries.
 
@@ -92,14 +120,14 @@ this means there's no need for the inheritance hierarchy.
 Not having a compiler to lean on for picking up syntax errors before runtime is another
 disadvantage which Python suffers from. However, Python is generally quick enough to run that 
 hitting these errors at runtime isn't a huge issue, there are also tools available to help pick up
-on these errors. I did make use of PyLint once or twice during the project, but I mainly relied on
-just running the code to ensure it worked. I am aware that this wasn't the best strategy for 
-testing for this sort of thing, but it was the simplest way of doing so, especially as a lot of
-the complex operations just involved calling external libraries.
+on these errors. PyLint was used during the project to find syntax errors and clean up code to
+typical Python standards, this was useful as most of the code was difficult to test cleanly so
+runtime errors were fairly common. The interpreter also has some checking for invalid syntax 
+before runtime so it was useful to lean on that on occasion.
 
 
 \subsubsection{Dependency Management}
-\emph{setuptools} is a Python package designed to allow the easy downloading, building, 
+setuptools is a Python package designed to allow the easy downloading, building, 
 installation, upgrading and uninstallation of Python packages from \gls{pypi}. It can be used to
 manage the dependencies of a Python project through the use of a set-up file specifying the 
 packages required for a project to run. On build of that project all required packages will be 
@@ -111,65 +139,41 @@ that useful. \Gls{osgi} is another technology which makes managing dependencies 
 itself doesn't handle the download and install of packages.
 
 Languages like C and C++ tend to use packages through the operating system or user-based 
-compilation and therefore have very little dependency management normally.
+compilation, this can lead to a lot of dependency issues if the user is not well versed in the
+installation of libraries from source, especially on less common packages which are not provided
+through a package manager\footnote{Or on Windows, which has no standardised package manager}.
 
 Newer languages, again using Ruby as an example, do have better dependency management and tend to
-be more tied to the language itself, rather than being a tool like \emph{setuptools}. There aren't
+be more tied to the language itself, rather than being a tool like setuptools. There aren't
 many advantages to this as \gls{pypi} is widely known.
 
 
 \subsection{Image Processing/Computer Vision Libraries}
-Due to the number of libraries out there and my inexperience in computer vision and image 
-processing, I thought it be to research into some of the more popular libraries out there so I
-could get the feel for them. To do this I created a simple application to  perform blur on a 
-single image to test their use and documentation. From this I gained a good insight into how easy 
-that library would be to perform more complex tasks.
+There are numerous image processing and/or computer vision libraries available for use, each with
+their own flavours and supported programming languages. \gls{opencv} was the eventual choice after a lot
+of research into these libraries (as discussed in section~\ref{sec:cv-lib}). \gls{opencv} is one
+of the leading computer vision libraries freely available (released under the BSD License) and 
+boasts an impressive number of methods and has the benefit of being highly optimised and 
+cross-platform.
 
-Table~\ref{tab:libraries-overview} shows an overview of all the libraries I have currently 
-considered and experimented with.
+In comparison to most other computer vision libraries \gls{opencv} feels well thought out and 
+polished; with good, well written, documentation for all interfaces (C, C++ and Python). Some of
+the Python documentation was a little difficult to use before discovering \gls{cv2}, but this was 
+partly because it was no longer being maintained.
 
-\begin{table}[h]
-\begin{tabular}{| c | c | c | c | c | c | c | c |}
-								  \hline
-\multirow{2}{*}{\textbf{Library}}	& \multicolumn{5}{|c|}{\textbf{Platform}}			& \multirow{2}{*}{\textbf{Language(s)}}	& \textbf{Example}	\\\cline{2-6}
-					&  Windows	& Mac 		& Linux 	& Android	& iOS	&			&			\\\hline
-OpenCV					& \checkmark	& \checkmark	& \checkmark	& 		& 	& C, C++, Python	& Listing~\ref{lst:opencv}\\\hline
-OpenCV - cv2				& \checkmark	& \checkmark	& \checkmark	& \checkmark	& \checkmark & C, C++, Python, Java	& Listing~\ref{lst:cv2}\\\hline
-FIJI					& \checkmark	& \checkmark	& \checkmark	& 		&	& Java			& Listing~\ref{lst:fiji}	\\\hline
-IVT					& \checkmark	& \checkmark	& \checkmark	& 		&	& C++			& Listing~\ref{lst:ivt}	\\\hline
-\end{tabular}
-\caption{Comparison of image processing/computer vision libraries.}
-\label{tab:libraries-overview}
-\end{table}
+Other libraries, notably \gls{fiji}, lacked comprehensive, well laid out documentation. Method 
+calls were either not obviously named or buried in some many namespaces that it was impossible to
+find the correct call without documentation.
 
-Of these libraries OpenCV was the easiest to work with. OpenCV also boasts a wide range of 
-features, all of which are well documented. FIJI provided a lot of high-level functionality, but
-for use as a library it quickly became unwieldy and was difficult to find the correct classes just 
-for the simple task of blurring an image. On a side note, I only managed to get the blurring 
-outputting a greyscale image in the short period of time I spent using FIJI.
-
-IVT was somewhat similar to FIJI in that it had a good range of high-level features, but was less
-impressive as a library. Despite following the example code I struggled to compile my own example
-and eventually gave up trying to get a working binary due to time constraints.
-
-%TODO Actually use VXL and then write about it.
-
-Having weighed up these libraries I it became fairly apparent that OpenCV would be the best choice,
-not only did it act as an easy to use library, it is also seems that is is one of the most 
-prevalent libraries for Computer Vision. For the Kyffin Williams project OpenCV provides a lot of
-pre-built helpers which allow for very rapid production of the early elements of the project. For
-example it is able to handle loading images in different colour spaces, generating histograms of
-images and even comes with its own machine learning libraries.
-
-I have also added \emph{OpenCV cv2} to the research as it shows how simplified many of the 
-operations became after I discovered it.
 
 \subsubsection{OpenCV cv2}
-Knowing about \emph{OpenCV cv2} from the start would have been a useful piece of information, the
+Knowing about \gls{cv2} from the start would have been a useful piece of information, the
 updates to the library make it a lot easier to use. For example; calling the calculate histogram
-method in \emph{OpenCV} is shown in listings~\ref{lst:cv1-hist}, whilst the same operation in 
-\emph{OpenCV cv2} is shown in listings~\ref{lst:cv2-hist} and is evidently a lot easier to call
+method in \gls{opencv} is shown in listings~\ref{lst:cv1-hist}, whilst the same operation in 
+\gls{cv2} is shown in listings~\ref{lst:cv2-hist} and is evidently a lot easier to call
 and work with.
+
+
 
 \begin{lstlisting}[language=python, caption={Creating a Histogram in OpenCV}, label=lst:cv1-hist, 
 breaklines=true, frame=single]
@@ -180,12 +184,11 @@ image = cv.LoadImageM("file.png")
 planes = [cv.CreateMat(image.rows, image.cols, cv.CV_8UC1) for i in xrange(3)]
 planes = planes + [None]
 
-cv.Split(image, planes*)
+cv.Split(image, planes)
 
 hist = cv.CreateHist([255,255,255], cv.CV_HIST_ARRAY, [[0,255],[0,255],[0,255]], 1)
 cv.CalcHist([cv.GetImage(i) for i in planes], hist)
 \end{lstlisting}
-
 
 
 \begin{lstlisting}[language=python, caption={Creating a Histogram in OpenCV cv2},
@@ -193,13 +196,19 @@ label=lst:cv2-hist, breaklines=true, frame=single]
 import cv2
 
 image = cv2.imread("file.png")
-hist = cv2.calcHist([channel for channel in cv2.split(image)], [0], None, [255,255,255], [0,255,0,255,0,255])
+hist = cv2.calcHist([plane for plane in cv2.split(image)], [0], None, [255,255,255], [0,255,0,255,0,255])
 \end{lstlisting}
 
+Another advantage \gls{cv2} has is its tight integration with numpy - a numeric library for Python
+and part of the scipy library. This integration allows many more complex operations to be 
+performed on analysis results, operations which \gls{opencv} does not provide or provides in ways
+only specific to image processing, a notable example of this is being able to take the mean along
+an axis to generate the centroid in statistical exemplar classification.
 
+numpy is also useful for non-image processing use; many complex mathematical functions are 
+pre-defined which are useful for generating the statistical results for a given set of analysis
+and classification techniques after leave-one-out cross validation is performed. The main use was
+for Pearson's product-moment correlation coefficient and p-value significance.
 
-\subsection{Machine Learning Libraries}
-
-\subsection{Scientific and Numeric Libraries}
-
-
+Other libraries exist for these functions, but could not reasonably be considered due to the 
+integration with \gls{cv2}.
