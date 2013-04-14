@@ -36,7 +36,8 @@
 \bibitem{2013Your}
 \BIBentryALTinterwordspacing
 ``Your paintings - kyffin williams,'' Mar. 2013. [Online]. Available:
-  \url{http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted_by/kyffin-williams_artists}
+  \url{http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted_by/kyf%
+fin-williams_artists}
 \BIBentrySTDinterwordspacing
 
 
@@ -93,13 +94,6 @@ J.~F. Canny, ``A computational approach to edge detection,'' \emph{Pattern
   Analysis and Machine Intelligence, IEEE Transactions on}, vol. PAMI-8, no.~6,
   pp. 679--698, Nov. 1986. [Online]. Available:
   \url{http://dx.doi.org/10.1109/tpami.1986.4767851}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Contributors2012Gabor}
-\BIBentryALTinterwordspacing
-W.~Contributors, ``Gabor filter,'' Online, Oct. 2012. [Online]. Available:
-  \url{http://en.wikipedia.org/w/index.php?title=Gabor_filter&#38;oldid=517342109}
 \BIBentrySTDinterwordspacing
 
 
@@ -211,7 +205,8 @@ K.~Williams, \emph{Across the straits : an autobiography}.\hskip 1em plus 0.5em
 \BIBentryALTinterwordspacing
 G.~Yang, ``Gabor filter - file exchange - {MATLAB} central,'' Nov. 2010.
   [Online]. Available:
-  \url{http://www.mathworks.co.uk/matlabcentral/fileexchange/23253-gabor-filter/content/Gabor%20Filter/gabor_fn.m}
+  \url{http://www.mathworks.co.uk/matlabcentral/fileexchange/23253-gabor-filte%
+r/content/Gabor%20Filter/gabor_fn.m}
 \BIBentrySTDinterwordspacing
 
 

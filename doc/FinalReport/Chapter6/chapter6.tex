@@ -29,6 +29,33 @@ time-consuming area of investigation.
 
 
 \section{Evaluation of Design}
+The initial design evolved very little over the course of the project, the main changes made were
+to actually make use of inheritance to cut down on code-reused. The design actively encouraged
+this as it was set up to allow this activity.
+
+The design wasn't perfect, until most of the way through the project objects in parameters were 
+manipulated to have properties set during the operation instead of using return values from 
+functions. Eventually this began to cause problems and was changed to correctly use return values
+instead. Listing~\ref{lst:param-vs-ret} shows the changes made.
+
+\begin{lstlisting}[caption={Using return values instead of manipulating parameters},
+label=lst:param-vs-ret,
+breaklines=true,
+language=python,
+frame=single]
+# Manipulating parameters
+def analyse(self, painting):
+    img = imread(painting.file_path)
+    painting.data = # specific analysis on img
+
+# Using return correctly
+def analyse(self, painting):
+    img = imread(painting.file_path)
+    return # specific analysis on img
+\end{lstlisting}
+
+Though this seems like a trivial change, it does affect how the code is called, especially in the
+exemplar classification where affecting the painting data is not wanted.
 
 
 \section{Evaluation of Tools}

@@ -6,22 +6,23 @@
 
 \section{Research into Image Processing Libraries}\label{sec:cv-lib}
 
-Due to the number of libraries out there and my inexperience in computer vision and image 
-processing, I thought it be to research into some of the more popular libraries out there so I
-could get the feel for them. To do this I created a simple application to  perform blur on a 
-single image to test their use and documentation. From this I gained a good insight into how easy 
-that library would be to perform more complex tasks.
+Due to the number of libraries out there and lack of experience in the area of computer vision and 
+image processing, it was beneficial to research into some of the more popular libraries out there 
+to get a feel for each library and image processing in general. This was done by creating a simple
+application to perform Gaussian blur on an image, from this it was easy to gauge the use of the 
+library and its documentation and could be extrapolated to see how difficult the library in 
+question would be to use for more complex applications.
 
-Table~\ref{tab:libraries-overview} shows an overview of all the libraries I have currently 
-considered and experimented with.
+Table~\ref{tab:libraries-overview} shows an overview of all the libraries which were researched 
+into.
 
 \begin{table}[h]
 \begin{tabular}{| c | c | c | c | c | c | c | c |}
 								  \hline
 \multirow{2}{*}{\textbf{Library}}	& \multicolumn{5}{|c|}{\textbf{Platform}}			& \multirow{2}{*}{\textbf{Language(s)}}	& \textbf{Example}	\\\cline{2-6}
 					&  Windows	& Mac 		& Linux 	& Android	& iOS	&			&			\\\hline
-OpenCV					& \checkmark	& \checkmark	& \checkmark	& 		& 	& C, C++, Python	& Listing~\ref{lst:opencv}\\\hline
-OpenCV - cv2				& \checkmark	& \checkmark	& \checkmark	& \checkmark	& \checkmark & C, C++, Python, Java	& Listing~\ref{lst:cv2}\\\hline
+\gls{opencv}					& \checkmark	& \checkmark	& \checkmark	& 		& 	& C, C++, Python	& Listing~\ref{lst:opencv}\\\hline
+\gls{opencv} - cv2				& \checkmark	& \checkmark	& \checkmark	& \checkmark	& \checkmark & C, C++, Python, Java	& Listing~\ref{lst:cv2}\\\hline
 FIJI					& \checkmark	& \checkmark	& \checkmark	& 		&	& Java			& Listing~\ref{lst:fiji}	\\\hline
 IVT					& \checkmark	& \checkmark	& \checkmark	& 		&	& C++			& Listing~\ref{lst:ivt}	\\\hline
 \end{tabular}
@@ -29,50 +30,49 @@ IVT					& \checkmark	& \checkmark	& \checkmark	& 		&	& C++			& Listing~\ref{lst:
 \label{tab:libraries-overview}
 \end{table}
 
-Of these libraries OpenCV was the easiest to work with. OpenCV also boasts a wide range of 
-features, all of which are well documented. FIJI provided a lot of high-level functionality, but
-for use as a library it quickly became unwieldy and was difficult to find the correct classes just 
-for the simple task of blurring an image. On a side note, I only managed to get the blurring 
-outputting a greyscale image in the short period of time I spent using FIJI.
+\gls{opencv} appeared to be the most polished of all the libraries researched into, boasting a 
+wide range of features with comprehensive documentation, especially for \gls{cv2}. 
 
-IVT was somewhat similar to FIJI in that it had a good range of high-level features, but was less
-impressive as a library. Despite following the example code I struggled to compile my own example
-and eventually gave up trying to get a working binary due to time constraints.
+\gls{fiji} has a good range of high-level features, especially through their GUI elements, however
+for use as a library it was rather unwieldy and difficult to find the classes which performed 
+simple functionality. Combined with equally bad documentation it was already unlikely to be used
+but when, after fifteen minutes of struggling with the API images could only be blurred into a
+grey-scale output, it was completely discounted.
 
-%TODO Actually use VXL and then write about it.
+It should be noted that most of the \gls{fiji} features weren't used at all and the actual code
+seemed to just use ImageJ libraries.
 
-Having weighed up these libraries I it became fairly apparent that OpenCV would be the best choice,
-not only did it act as an easy to use library, it is also seems that is is one of the most 
-prevalent libraries for Computer Vision. For the Kyffin Williams project OpenCV provides a lot of
-pre-built helpers which allow for very rapid production of the early elements of the project. For
-example it is able to handle loading images in different colour spaces, generating histograms of
-images and even comes with its own machine learning libraries.
+\gls{ivt} was somewhat similar to \gls{fiji} in that it had a good range of high-level features, 
+but was less impressive as a library. Despite following the example code it was difficult to 
+compile against \gls{ivt}, despite using the makefiles provided in their own examples.
 
-I have also added \emph{OpenCV cv2} to the research as it shows how simplified many of the 
-operations became after I discovered it.
+It was, therefore, an simple choice with only library being workable for this project. Not only
+was \gls{opencv} the top choice from the above research, it is also one of the most prevalent
+libraries for computer vision problems.
+
+\gls{cv2} has been added to the above research as it shows how simplified many of the operations 
+became after its discovery towards the end of the project.
 
 \section{Basic Structure}
 
 \subsection{Loading Data}
 One of the more key parts to implement before all others in this project is the ability to load in
-data from Lloyds spreadsheet. The first step of this was to convert it to a \gls{csv} file-type,
-which is easier to read programatically.
+data from the initial spreadsheet. The first step of this was to convert it to a \gls{csv} 
+file-type, which is easier to read programatically.
 
 The initial spreadsheet was slightly different from the version depicted below, Lloyd was kind 
 enough to update it so it was easier to handle digitally. In this version of the spreadsheet the
-filenames were much longer and were in sub-folders depending on their collection. Extra logic was
-needed to locate the file (a simple matter of concatenating the collection to the filename as a
-directory). The image files in the second version were just flat files which I decided would be
-better placed in a data directory.
+file names were much longer and were in sub-folders depending on their collection. Extra logic was
+needed to locate the file (a simple matter of concatenating the collection to the file name as a
+directory). The image files in the second version were just flat files which were better placed in
+a separate data directory.
 
 The move to the newer version was a good excuse to clean up some of the initial code to use better
 Python programming practises; replacing messy loops with list comprehension where possible, using
 \gls{kwargs} and dictionaries instead of having utility methods, etc.
 
-From the original format show in table~\ref{tab:spreadsheet-format} 
-%(see table~\ref{tab:spreadsheet} for the full document) 
-the data was converted to the CSV format show
-in figure~\ref{fig:csv-spreadsheet}.
+From the original format show in table~\ref{tab:spreadsheet-format} the data was converted to the 
+\gls{csv} format show in figure~\ref{fig:csv-spreadsheet}.
 
 \begin{table}[h]
 \resizebox{\textwidth}{!}{
@@ -94,23 +94,24 @@ NLW,687,944,1.3741}
 \caption{Painting Data in CSV Format}\label{fig:csv-spreadsheet}
 \end{figure}
 
-This \gls{csv} was then parsed using the Python 2.7 in-built \texttt{csv} module with relative 
-ease. The example code (see listing~\ref{lst:csv_example_code}) helped with correct resource 
-management as, at this point, my Python knowledge was fairly low.
+This \gls{csv} file was then parsed using the Python 2.7 in-built \texttt{csv} module with 
+relative ease. The example code (see listing~\ref{lst:csv_example_code}) helped to ensure correct
+resource management as well as showing how the library parsed files.
 
 
 \subsection{Top-Level Classes}
-Being used to Java, an initial instinct of mine was to set up interfaces for the majority of 
+Being used to Java, the initial instinct was to set up interfaces for the majority of 
 top-level classes (namely the \texttt{Analyser} and \texttt{Classifier} classes). However, 
-because of Python's duck typing, there wasn't possibly to create these classes as interfaces. I 
-decided to create them as abstract stub classes which just held placeholder method definitions 
+Python does not have the concept of interfaces, so normal classes were used to represent these
+instead. These classes acted as abstract stub classes and just held place-holder method definitions
 which needed to be overridden in the concrete sub-classes. This was a slightly pointless exercise 
-due to the weak typing, but useful for me to get my head around the architecture.
+due to the duck typing, but was useful to depict the architecture in code. It also became more 
+useful when these classes began to define a lot of the common methods.
 
-I also implemented the \texttt{Painting} class and had a method to take an array (from the CSV 
-file) and create a new instance of it from this. Later this was changed to use Python 
-\gls{kwargs} instead as it made more sense for the job. This change was done during the change to 
-the second version of Lloyds database.
+A \texttt{Painting} class was also implemented and had a builder method to take an array (from the
+\gls{csv} file) and create a new instance of it from this. Later this was changed to make use 
+Python \gls{kwargs} instead to make it easier to both read and process, especially in the exemplar
+work where mock objects were used.
 
 
 \subsection{Command Line Interface}
@@ -122,12 +123,14 @@ switch the functionality of the program. These arguments are depicted in table~\
 \centering
 \begin{tabular}{|c|c|c|c|} \hline
 Name             & Short Flag & Long Flag         & Description\\\hline
-Analyser         & \verb+-a+  & \verb+--analyser  +& Switch the analysis technique\\\hline
-Machine Learning & \verb+-m+  & \verb+--ml        +& Switch the machine learning technique\\\hline
-Data             & \verb+-d+  & \verb+--csv       +& The data file to use\\\hline
-GUI              & \verb+-g+  & \verb+--gui       +& Switch the GUI visualisation\\\hline
-Binning          & \verb+-5+  & \verb+--bin-years +& Put paintings in 5 year bins\\\hline
-Export           & \verb+-e+  & \verb+--export    +& Export analysed data\\\hline
+Analyser         & \verb+-a+  & \verb+--analyser  +& Switch the analysis technique\\
+Machine Learning & \verb+-m+  & \verb+--ml        +& Switch the machine learning technique\\
+Data             & \verb+-d+  & \verb+--csv       +& The data file to use\\
+GUI              & \verb+-g+  & \verb+--gui       +& Switch the GUI visualisation\\
+Binning          & \verb+-5+  & \verb+--bin-years +& Put paintings in 5 year bins\\
+Export           & \verb+-e+  & \verb+--export    +& Export analysed data\\
+Classify         & \verb+-c+  & \verb+--classify  +& Classify the specified image\\
+\hline
 \end{tabular}
 \caption{Command Line Arguments}\label{tab:args}
 \end{table}
@@ -136,18 +139,20 @@ The \texttt{argparse} library handles this nicely, the example code shown in
 listing~\ref{lst:argparse_example_code} shows the usage of this library.
 
 These flags then hook into the factory methods to actually create the instances and return them to
-the central point which then called them where required.
+the central point which then called them where required. A 
+fa\c{c}ade\cite[p.185-194]{Gamma1996Design} was used to hold and call these instances, as well as
+handling the calls to the factories.
 
 
 \section{Colour Space Analysis}
 Colour space analysis involves performing statistical analysis on different colour models 
 (\gls{rgb}, \gls{hsv}, etc.). This gives a very simplistic view of the entire image.
 
-OpenCV offers the \texttt{Avg} method to perform the average across the image, however with a 
-further look into the documentation there is also the \texttt{AvgStd} method which performs both 
+\gls{opencv} offers a method to perform the average across the image, however with a
+further look into the documentation there is also a method which performs both 
 mean and standard deviation on an image.
 
-The analysed data was just the tuple returned by the \texttt{AvgStd} method. The distance measure
+The analysed data was just the tuple returned by this method. The distance measure
 was defined to be the sum of all elements in the tuple (in the case of an \gls{rgb} colour model
 the mean red, green and blue and the standard deviation of red, green and blue).
 
@@ -156,17 +161,17 @@ There are many colour models to consider with digital image processing. \Gls{rgb
 better know colour spaces as it is often how images are captured. It does have a problem in that
 all three values can change when the brightness changes.
 
-As one of the main principals of this project is that Kyffin Williams' work darkened over time, it
+As one of the main principals of this project is that Williams' work darkened over time, it
 should follow that \gls{rgb} may not be the best colour model to use.
 
 To account for this it was decided to also use a \gls{hsv} colour model to compare and contrast to
 \gls{rgb}.
 
-OpenCV handles colour spaces slightly oddly. Initially it uses \texttt{LoadImageM} to load the 
+\gls{opencv} handles colour spaces slightly oddly. Initially it uses a method to load the 
 image, which uses an integer argument as a flag to define whether the image should be loaded in 
-colour or grayscale.
+colour or grey-scale.
 
-From this image you then can use \texttt{CvtColor} to convert the colour model of an image, which 
+From this image you then can use a function to convert the colour model of an image, which 
 uses an integer argument as a flag to define a number of different colour spaces.
 
 Once converted, all methods act exactly the same as they would on a \gls{rgb} image.
@@ -175,18 +180,21 @@ Once converted, all methods act exactly the same as they would on a \gls{rgb} im
 Colour Histograms are a representation of the distribution of colour across an image; this makes
 them very powerful for analysing the colour space of an image.
 
-OpenCV provides a number of methods for both calculating and operating upon colour histograms. 
-Here the example code (figure~\ref{lst:opencv_histogram}) from the OpenCV documentation was a
-useful reference as some of the details of creating histograms in OpenCV are not noted implicitly
+\gls{opencv} provides a number of methods for both calculating and operating upon colour histograms. 
+Here the example code (figure~\ref{lst:opencv_histogram}) from the \gls{opencv} documentation was a
+useful reference as some of the details of creating histograms in \gls{opencv} are not noted implicitly
 in the python documentation.
 
-The distance measure between colour histograms is also handled by OpenCV using a compare histogram
-method. Under the covers this uses a Chi Squared (equation~\ref{eq:chi_squared}) method to
+The distance measure between colour histograms is also handled by \gls{opencv} using a compare histogram
+method. Under the covers this uses a Chi Squared ($\chi^2$) (equation~\ref{eq:chi_squared}) method to
 compare to histograms of equal dimensions.
 
 \begin{equation}\label{eq:chi_squared}
-d(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I)}}
+\chi^2(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I)}}
 \end{equation}
+
+It should be noted that this method includes normalisation so any histograms passed into $\chi^2$
+do not need to be, themselves, normalised.
 
 
 \section{Texture Analysis}
@@ -226,11 +234,11 @@ filters, which provide better flexibility and matching.
 
 Using discrete derivative masks it is fairly simple to work out to orientation of a gradient 
 mathematically. First pass a mask of the form $\begin{bmatrix}-1\\0\\1\end{bmatrix}$, followed
-by one in the form $\begin{bmatrix}-1 & 0 & 1\end{bmatrix}$. These give you 
+by one in the form $\begin{bmatrix}-1 & 0 & 1\end{bmatrix}$. These give 
 $\frac{\delta f}{\delta x}$ and $\frac{\delta f}{\delta y}$ respectively.
 
-From these values you can then use a gradient direction function, shown in 
-equation~\ref{eq:grad_dir}, to work out the actual direction of the gradient.
+A gradient direction function, shown in equation~\ref{eq:grad_dir}, can then be used on both these
+values to work out the actual direction of the gradient.
 
 \begin{equation} \label{eq:grad_dir}
 \theta = {\rm atan2}\left( \frac{\delta f}{\delta x}, \frac{\delta f}{\delta y} \right)
@@ -299,7 +307,7 @@ does affect the performance quite severely.
 To increase the orientations matched from steerable filters without the need for increasingly 
 large kernels, Gabor filters\cite{Daugman1985Uncertainty} were implemented. Gabor filters allow
 for an almost-infinite range of orientations without affecting the size of the filter. Equation
-\ref{eq:gabor} shows the mathematics behind Gabor Filters.
+\ref{eq:gabor} shows the mathematics used to generate a Gabor Filter.
 
 
 \begin{align}\label{eq:gabor}
@@ -318,7 +326,7 @@ $\frac{\pi}{2}$ and $\frac{3\pi}{4}$), however this has two problems:
 \item Divide by 0 errors from python.
 \end{enumerate}
 
-To solve both of these issues I changed to way Gabor filters were initialised, adding in a 
+To solve both of these issues the way Gabor filters were initialised was changed by adding in a 
 parameter which defined the number of orientations that instance of the Gabor filter would have,
 the logic of which is defined in figure~\ref{fig:gabor-init}, note how the range is $1\dots b$, 
 solving the divide by 0 issue as $\theta=0$ and $\theta=\pi$ will produce the same result (both
@@ -375,7 +383,7 @@ than would be gained from a single model.
 
 Practically, ensemble methods just involve running all models in the ensemble, combining them into
 one large histogram and then perform the normal distance measure on them. However, due to some 
-problems with the \emph{OpenCV cv2} histogram calculation method, it was a lot easier to flatten
+problems with the \emph{\gls{opencv} cv2} histogram calculation method, it was a lot easier to flatten
 (to collapse a multi-dimensional array into a one-dimensional array) the results from each 
 technique have use this as the model.
 
@@ -688,9 +696,9 @@ class Sub(Base):
 
 \subsection{cv2 and Histogram Results}
 Whilst reading through the 
-\emph{numpy} and \emph{OpenCV} 
-it turned out that, until this point, I had been using a deprecated version of OpenCV. \emph{cv2} 
-is the new version of \emph{OpenCV} for python, which provides bindings for \emph{OpenCV 2.4} and 
+\emph{numpy} and \emph{\gls{opencv}} 
+it turned out that, until this point, I had been using a deprecated version of \gls{opencv}. \emph{cv2} 
+is the new version of \emph{\gls{opencv}} for python, which provides bindings for \emph{\gls{opencv} 2.4} and 
 uses \emph{numpy} arrays and multi-dimensional arrays to represent all data types rather than 
 in-built data structures.
 
