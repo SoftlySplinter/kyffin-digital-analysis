@@ -10,11 +10,45 @@
 
 %How much material you include on detailed design and implementation will depend very much on the nature of the project. It should not be padded out. Think about the significant aspects of your system. For example, describe the design of the user interface if it is a critical aspect of your system, or provide detail about methods and data structures that are not trivial. Do not spend time on long lists of trivial items and repetitive descriptions. If in doubt about what is appropriate, speak to your supervisor.
 
+
+\section{The Image Dataset}
+The image dataset consists of 325 paintings, with associated metadata. Metadata
+includes title, year or year ranges (for those works where year is unknown but
+can be estimated by curators), genre, original painting size, painting
+materials and image size.
+
+These photographs of paintings are challenging in and of themselves: they are
+not colour calibrated; some suffer from reflections (towards the end of his
+life Kyffin painted using exceptionally thick and textural strokes, which gives
+specularities on the catalogue images); they are at varying resolutions; and
+come from a range of different cameras. Image size bears little relation to the
+original painting size, and some images are even optimised for the web.
+Table~\ref{summary_t} below summarises the dataset.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | c | c | p{3cm} |}
+\hline
+Type & Number & Number & Notes \\
+  & & (Known date) &  \\
+\hline
+Landscapes  & 247 & 64 & \\
+Portraits   &  52 & 35 & \\
+Seascapes   &  11 &  2 & \\
+Still lifes &   4 &  1 & \\
+Other       &   8 &  0 & Other or studies \\
+\hline
+\end{tabular}
+\caption{A summary of the Kyffin Williams painting dataset
+\label{summary_t}}
+\end{table}
+
 \section{Methodology}
 
 Within the database of 325 paintings, the actual year of painting is known for 102 artworks. 
-To judge how well an analysis technique performs I have used a leave-one-out cross validation 
-methodology, only working with these 102 artworks so that any amount of uncertainty is removed.
+To judge how well an analysis technique performs a leave-one-out cross validation methodology is
+applied to each technique, only working with these 102 artworks so that any amount of uncertainty 
+is removed.
 
 Leave-one-out cross validation involves taking a painting for which the year is known, then use
 the classifier to guess the year; this allows the result to be validated against the known year,
@@ -28,23 +62,6 @@ similarly located to paintings from around the same period of time is the analys
 performing well.
 
 Figure \ref{img:classification-overview} give a pictorial view of this process.
-
-%In order to determine the accuracy of our results, rather than
-%work with the full dataset (and work with images with uncertain metadata in the
-%form of date ranges), we have used a leave-one-out cross validation
-%methodology. This involves us taking a painting for which we know the year, and
-%then using our classifier to guess that year; thus we are able to tell whether
-%we are right. We are also able, if we are wrong, to determine exactly how wrong
-%we are.  
-
-%To simplify the classification stage we use a K-Nearest Neighbour (KNN)
-%classifier with the other 101 paintings for which we know the date. KNN is a
-%fast, non-parametric classifier which makes no assumptions about the underlying
-%patterns in the data, merely that paintings from around the same time will be
-%similarly located in our feature space(s). Whilst we suspect that there may be
-%some broader underlying trend in the change of style, for this work have
-%concentrated on features for classification rather than the question of
-%classification or regression itself. See figure~\ref{img:classification-overview}.
 
 \begin{figure}[h]
 \centering
@@ -100,26 +117,26 @@ Figure~\ref{fig:interfaces-arch} depicts the design after adding in these parts.
 
 From this the concrete techniques were implemented, at points it became necessary for additional 
 methods to be added to the interfaces with some abstract implementation. This was particularly
-apparent during the change to \emph{cv2} where all results from analysis techniques became 
+apparent during the change to \gls{cv2} where all results from analysis techniques became 
 histograms. The distance method in the \texttt{Analyser} interface was then implemented to call
-the \emph{OpenCV} compare histogram method so that the distance technique was always uniform.
+the \gls{opencv} compare histogram method so that the distance technique was always uniform.
 
 With exemplars it was also useful to implement a centroid method as part of the \texttt{Analyser}
 interface so that the method of determining the centre point was the same. This highlights the 
 usefulness of constantly evolving the design using the rapid prototyping methodology.
 
 Until this point the inheritance had been unnecessary due to Python's duck typing and had been
-purely to help me to understand the architecture. After this point I was also leveraging the 
-properties of object-orientated hierarchy to reduce code-reuse.
+purely to help me to understand the architecture. After this point the properties of 
+object-orientation were being leveraged to help reduce the amount of repeated code.
 
 \subsection{GUI Elements}
 
-Initially I also had a GUI Factory to display the results from the techniques graphically, using
-the same sort of method as I had for the analysis and classification techniques. However, as I
-continued on with the project my focus shifted away from this section. Initially this was a part
-of the design and was included as part of the design in the progress report; shown in 
-figure~\ref{fig:prog-design}. This also includes details of which methods each interface would 
-include.
+Initially a GUI Factory was implemented to display the results from the techniques graphically, 
+using the same sort of method as that had been used for the analysis and classification 
+techniques. However, the project was continued the focus shifted away from this section due to
+the importance of other sections of work. Initially this was a part of the design and was included 
+as a part of the design in the progress report; shown in figure~\ref{fig:prog-design}. This also 
+includes details of which methods each interface would include.
 
 These methods inevitably changed as the design evolved; mainly to add extra functionality whilst
 keeping the re-use of code down, as good object-orientated design should do.
