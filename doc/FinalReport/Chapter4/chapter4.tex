@@ -233,8 +233,8 @@ are a more adjustable implementation of this. There are also more complex filter
 filters, which provide better flexibility and matching.
 
 Using discrete derivative masks it is fairly simple to work out to orientation of a gradient 
-mathematically. First pass a mask of the form $\begin{bmatrix}-1\\0\\1\end{bmatrix}$, followed
-by one in the form $\begin{bmatrix}-1 & 0 & 1\end{bmatrix}$. These give 
+mathematically. First pass a mask of the form $\left[\begin{smallmatrix}-1\\0\\1\end{smallmatrix}\right]$, followed
+by one in the form $\left[\begin{smallmatrix}-1 & 0 & 1\end{smallmatrix}\right]$. These give 
 $\frac{\delta f}{\delta x}$ and $\frac{\delta f}{\delta y}$ respectively.
 
 A gradient direction function, shown in equation~\ref{eq:grad_dir}, can then be used on both these
@@ -247,7 +247,7 @@ values to work out the actual direction of the gradient.
 \subsubsection{Canning of Histogram of Orientated Gradient Results}\label{sec:hog-canning}
 Working out the exact orientation of a gradient is a costly operation and it became useful to
 \emph{can} (persist) the results to allow the technique to complete in a decent amount of time.
-This change was made after the change to \emph{cv2} and was done using \emph{numpy} methods for
+This change was made after the change to \gls{cv2} and was done using numpy methods for
 simplicity. 
 
 Rather than can the resulting histograms it was actually easier to can the output gradients as 
@@ -383,7 +383,7 @@ than would be gained from a single model.
 
 Practically, ensemble methods just involve running all models in the ensemble, combining them into
 one large histogram and then perform the normal distance measure on them. However, due to some 
-problems with the \emph{\gls{opencv} cv2} histogram calculation method, it was a lot easier to flatten
+problems with the \gls{cv2} histogram calculation method, it was a lot easier to flatten
 (to collapse a multi-dimensional array into a one-dimensional array) the results from each 
 technique have use this as the model.
 
@@ -476,10 +476,10 @@ having the classified years exactly match the actual years.
 Both of these are easy to implement - leave-one-out cross validation just involves iterating over
 the entire list of known paintings, popping the current painting from the list and running the 
 classifier on it, then pushing it back into the list at it's original position. Pearson's 
-correlation is implemented by \emph{numpy} with Pearson's R for statistical significance included
+correlation is implemented by numpy with Pearson's R for statistical significance included
 as a part of the method.
 
-As a part of this \emph{matplotlib} was used to plot this data graphically; as a scatter plot for
+As a part of this matplotlib was used to plot this data graphically; as a scatter plot for
 actual versus classified year and as a histogram for the number of years out the classifier was.
 
 %TODO Scatter plot
@@ -495,15 +495,32 @@ input data from the analysis techniques into Weka.
 
 
 \subsubsection{Attribute-Relation File Format (ARFF)}
-Part of inputting data into Weka is to produce Attribute-Relation File Format (ARFF) from the
-analysis techniques. ARFF is the main format supported by Weka, so it is one of the easiest ways
+Part of inputting data into Weka is to produce \gls{arff} from the
+analysis techniques. \gls{arff} is the main format supported by Weka, so it is one of the easiest ways
 of importing the data into Weka.
 
-A few libraries exist for ARFF conversion in Python, however they all have their own quirks. 
-\emph{liac-arff} was one of the easiest to use, but doesn't support the date attribute. This isn't
+A few libraries exist for \gls{arff} conversion in Python, however they all have their own quirks. 
+liac-arff was one of the easiest to use, but doesn't support the date attribute. This isn't
 a problem for our current project as we only use year which can easily be represented as an 
 integer instead. I did intend to contribute a working patch for dates for the library, but it 
 would have taken too much time out of the project to get it working correctly.
+
+To be able to export in \gls{arff} file some translation from \gls{opencv} structures to raw data is 
+needed. To begin with (whilst still not using \gls{cv2}) this was easiest done by exporting 
+complex \gls{opencv} to a file using the functions provided by \gls{opencv}, then read back from
+this file in for each painting.
+
+To do this the Python operating system library was used to create a named temporary file, then to
+pass the name of this file to \gls{opencv} (which only takes a file name and not a file descriptor
+or any other form of pointer). 
+
+The output from \gls{opencv} export methods is a \gls{yaml} - a human-readable data serialisation
+format - which is well supported by Python. This data can then be read back in a non-\gls{opencv}
+data structure and then re-exported using the \gls{arff} method described above.
+
+The other option would be to find a parser which converts the \gls{yaml} format to an \gls{arff} 
+one. However no such parser currently exists. Whilst this would be a nice tool to write and
+contribute back to Python, the time it would take to do so would not outweigh the benefits.
 
 
 \subsection{Exemplars}
@@ -594,29 +611,42 @@ artists history can be very subjective and may not relate to anything put down i
 \subsection{Statistically Classified Exemplars}\label{sec:sce}
 
 Another approach to exemplars is to work out a theoretical exemplar for a given period; the 
-centroid of paintings within the given feature space for a single year, for example.
-
-The simplest way of working this out is showing in figure~\ref{fig:sce-psuedo}, this works by 
-taking the mean (equation~\ref{eq:mean}) of each feature in the set of paintings for a single 
-year, this will give the point in feature space that is most central. This is the same technique
-used to generate centroids in a clustering algorithm ($k$-Means Clustering, for example).
+centroid of paintings within the given feature space for a single year, for example. 
+Figure~\ref{fig:centroid} shows how a centroid is generated for three points in a 2D feature
+space. However, for a high-dimension feature space this method needs to be simplified.
 
 \begin{figure}[h]
-\begin{algorithmic}
-\Function{StatisticalClassifyExemplar}{$examples$}
-\ForAll{$example \in examples$}
-\ForAll{$feature \in example_{features}$}
-\State $average_{feature} \gets average_{feature} + example_{feature}$
-\EndFor
-\EndFor
-\ForAll{$feature \in average$}
-\State$average_{feature} \gets \frac{average_{feature}}{\Call{Length}{examples}}$
-\EndFor
-\State \Return $average$
-\EndFunction
-\end{algorithmic}
-\caption{Psuedocode for generating a Statistically Classified Exemplar}\label{fig:sce-psuedo}
+\centering
+\includegraphics[width=0.5\textwidth]{img/centroid.pdf}
+\caption{Centroid for three points in a 2 dimensional feature space}\label{fig:centroid}
 \end{figure}
+
+Equation~\ref{eq:sce} shows how the centroid ($C$) can be generated in a high-dimensional feature 
+space (of $D$ dimensions), this works by taking the mean (equation~\ref{eq:mean}) of each feature 
+in the set of paintings ($x_1, x_2,\dotsc,x_k$) for a single year, this will give the point in 
+feature space that is most central. This is the same technique used to generate centroids in most 
+clustering algorithms ($k$-Means Clustering, for example).
+
+\begin{equation}\label{eq:sce}
+\forall_{d \in D}\;C_d = \frac{1}{k}\sum^{k}_{i=1}{x_{i_{d}}}
+\end{equation}
+
+%\begin{figure}[h]
+%\begin{algorithmic}
+%\Function{StatisticalClassifyExemplar}{$examples$}
+%\ForAll{$example \in examples$}
+%\ForAll{$feature \in example_{features}$}
+%\State $average_{feature} \gets average_{feature} + example_{feature}$
+%\EndFor
+%\EndFor
+%\ForAll{$feature \in average$}
+%\State$average_{feature} \gets \frac{average_{feature}}{\Call{Length}{examples}}$
+%\EndFor
+%\State \Return $average$
+%\EndFunction
+%\end{algorithmic}
+%\caption{Psuedocode for generating a Statistically Classified Exemplar}\label{fig:sce-psuedo}
+%\end{figure}
 
 This may become a long operation depending on how many dimensions the feature space has. A
 technique like \gls{pca} may be useful to help cut down the number of dimensions needed that this
@@ -625,7 +655,7 @@ algorithm uses.
 Initially, as I wasn't producing histogram results from analysis techniques, this was a little
 complex to do; each analysis technique had to have its own method of generating the centroid and
 returning the data for this centroid. The change to histogram results made everything a lot easier
-and, combined with the \texttt{mean} method from \emph{numpy}, which can handle the mean along 
+and, combined with the mean method from numpy, which can handle the mean along 
 different axes, rather than just over a flattened array. This is the perfect too for the job as
 histograms are returned as numpy arrays and the data passed into the centroid method is now an 
 array of these histograms. Calculating the mean across the first axis has the effect of 
@@ -695,13 +725,33 @@ class Sub(Base):
 
 
 \subsection{cv2 and Histogram Results}
-Whilst reading through the 
-\emph{numpy} and \emph{\gls{opencv}} 
-it turned out that, until this point, I had been using a deprecated version of \gls{opencv}. \emph{cv2} 
-is the new version of \emph{\gls{opencv}} for python, which provides bindings for \emph{\gls{opencv} 2.4} and 
-uses \emph{numpy} arrays and multi-dimensional arrays to represent all data types rather than 
-in-built data structures.
+Whilst reading through the numpy and \gls{opencv} it turned out that, until this point, I had been
+using a deprecated version of \gls{opencv}. \gls{cv2} is the new version of \gls{opencv} for 
+python, which provides bindings for \gls{opencv} 2.4 and uses numpy arrays and multi-dimensional 
+arrays to represent all data types rather than in-built data structures.
 
-This makes everything a lot easier to work with as all \emph{numpy} arrays (with the correct data type)
-can be passed into the \emph{cv2} methods.
+This makes everything a lot easier to work with as all numpy arrays (with the correct data type)
+can be passed into the \gls{cv2} methods.
 
+
+\section{Filtering}
+One area that was experimented with was the ability to filter paintings by certain pieces of 
+metadata for that painting. Typically with would allow the filtering of just a single type of
+painting (e.g. filtering out any painting which isn't a landscape to remove potential outliers).
+
+Unfortunately, with most techniques this produces worst correlation than not filtering by type,
+this may be due to the limited size of the data set and purely by removing the non-landscape 
+paintings leaves such a gap in the years that $k$-Nearest Neighbour cannot classify the painting
+correctly.
+
+A potential way of helping with this (and effectively filtering the data in a slightly different
+fashion) is to round the year ($y$) of a painting to the nearest 5 years ($y_{_{5}}$). The maths 
+to do this is shown in equation~\ref{5-years}. 
+
+\begin{equation}\label{5-years}
+y_{_{5}} = 5\left\lfloor\frac{y}{5} \right\rfloor
+\end{equation}
+
+This does improve the correlation by a little as it helps to counteract the sparseness of the data
+in the data set. Whilst the improvements in correlation are nice, the information lost by rounding
+is not really gained back by this increase in correlation.
