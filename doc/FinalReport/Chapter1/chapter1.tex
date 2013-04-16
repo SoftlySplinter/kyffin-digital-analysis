@@ -64,13 +64,19 @@ The aesthetic of Williams's Welsh landscapes is contrasted by the paintings he
 made following a trip to Patagonia to paint the landscape and people of the
 Welsh communities there in 1968 as part of a Winston Churchill Foundation
 scholarship. The colours and application of paint in pictures produced in
-following this journey (such as \emph{Lle Cul}, \emph{Henry Roberts},
+following this journey (such as \emph{Lle Cul} (figure~\ref{fig:lle-cul}, \emph{Henry Roberts},
 \emph{Bryngwyn Patagonia}, \emph{Euros Hughes Irrigating his Fields}, all 1969,
 National Library of Wales) differ starkly from paintings of Welsh landscapes,
 incorporating pinks, purples and oranges. This contrast, combined with the fact
 that the Patagonian pictures were produced during a definite period of time has
 reinforced our interest in the analysis of the formal qualities of pictures
 from different collections remotely, using digital images. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{img/lle-cul.jpg}
+\caption[``\emph{Lle Cul, Patagonia}'']{``\emph{Lle Cul, Patagonia}'', Sir John Kyffin Williams 1969}
+\end{figure}
 
 Williams's work is well represented in public collections in Wales
 (particularly at the National Library of Wales, the National Museums and
@@ -82,9 +88,9 @@ Paintings'' website, 212 of them are in the collections of the National Library
 of Wales\cite{2013Your}. Many of these paintings were bequeathed to the Library
 as part of a larger bequest by the artist (including works on paper and other
 archival material). Many of the pictures which came to the library from the
-artist’s studio had little in the way of metadata, and as such have been
+artist's studio had little in the way of meta-data, and as such have been
 catalogued with large date-ranges estimating the dates of production.  This
-uncertainty in metadata is another motivating force behind the current project.
+uncertainty in meta-data is another motivating force behind the current project.
 
 
 \subsection{Taking a digital humanities approach to art history}
@@ -128,77 +134,79 @@ complex humanities data set.
 
 \section{Interdisciplinary work with the National Library of Wales}
 
-% FIXME Lloyd's Thesis Title
-This project was initially suggested through a conversation between Hannah Dee and Gareth Lloyd
-Roderick about image processing and art. Lloyd is a PhD student at the \gls{nlw}.
-Their initial idea was to try to geolocate one of Williams's paintings on a map to build up a geographical 
-representation of his work.
+This project originated through conversations between Hannah Dee and Gareth Lloyd Roderick on the
+topic of the digital image processing of art; this led to Hannah building a small application to
+show a Gaussian mixture model of Williams' work with the intention of being able to geographically
+determine the location of a picture, especially those with a well defined setting especially those
+painted at Crib Goch (figure~\ref{fig:crib-goch}, for example) 
 
-Hannah started to create a prototype for performing geographical analysis, this proved to be a 
-difficult task and one which is still being researched.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{img/crib_goch.jpg}
+\caption[``\emph{Crib Goch}'']{``\emph{Crib Goch}'', Sir John Kyffin Williams}\label{fig:crib-goch}
+\end{figure}
 
-However, the nature of Williams's illness and painting style allows for a second form of analysis:
-temporal. As previously stated it is fairly easy to judge by eye a good approximation of the 
-period in which a Kyffin painting was created. It should, therefore, follow that this process can
-be performed digitally.
+As has been discussed already, it becomes very clear to the human eye that Williams' style changes
+dramatically as time progresses and, whilst it would be interesting to try and compare painted 
+images to photographs of locations, the feasibility of being able to do so, especially given that
+artists tend not to remain brilliantly faithful to the subject of their painting, is just so low
+that it would have been very difficult to get any meaningful results. This makes temporal 
+classification a much more appealing subject to research into.
 
-When I started this project I was given a ``database'' (in reality this was just a spreadsheet) 
-Lloyd had produced, containing information of Williams's paintings, including: title, year,
-category (landscape, portrait, etc.), canvas size and a few additional details which aren't so 
-relevant to the project.
+To help with this Lloyd had produced a spreadsheet of all Williams' work known to the \gls{nlw}, 
+including several collections over the country, but with the majority coming from the \gls{nlw}
+collection. It was a part of Williams' will that the contents of his workshop was to be donated
+to \gls{nlw} on the condition that any destroyed or defaced work was not to be displayed publicly.
 
-The first meeting held was between Lloyd, Hannah and I, in which we discussed the current state of
-the project, what our aims for the project were and what form of help Lloyd could provide to us.
-As one of the objectives of this project is to, eventually, get a paper published, the relevant
-details of the process we would need to go through if we wanted to do so.
+Therefore this spreadsheet is the most comprehensive documents on Williams' work. Unfortunately a
+lot of Williams' work does not have a lot of information on the dates in which it was painted, 
+Llyod had made some good attempts at predicting the year based on when the painting first appeared
+in exhibitions, so not all paintings have a single year associated with them. This spreadsheet 
+does contain a lot of other useful meta-data as well as the year or year range in which the work 
+was created, including canvas size and painting type. Not all of this meta-data was useful or 
+relevant to temporal analysis, but is useful to the general study of Williams' work.
 
-The second meeting was between Hannah, Lloyd, Lorna M. Hughes (Lloyd's supervisor) and I. Again we
-discussed the state of the project. Lloyd had also produced a better version of his ``database'' 
-to be more machine readable and succinct. A lot of information came from this meeting;
+\subsection{Meetings with members of the National Library of Wales}
 
-\begin{itemize}
-\item The ``cut-off'' point between early and late is around 1973.
-\item The size of the canvas might be a useful data point to use in classification, as Williams sold
-more paintings he would have had the money available for larger canvases and the paint for said
-canvas.
-\item It is a little dubious as to whether some dates can be trusted. One painting owned by the
-NLW was stated to be his last painting, but Lorna believes it was painted much earlier and claimed
-to be his last to improve the sale price.
-\item Lloyd may have found date markings on some paintings. These again may not be accurate, but
-may prove to increase the sample size.
-\item It should be easy to provide a ``no later than'' estimate for each painting from the art
-historians.
-\item Paul (?) should be able to produce some exemplars for us as a ground truth.
-\item Lloyd may be able to find more paintings in the hands of private collectors to increase the 
-sample size.
-\item Lloyd had been playing around with ImageJ to do some basic graph plotting. This might be 
-useful to look at further to expand my own work.
-\end{itemize}
-
-There were also more detailed discussions about publications, particularly in a digital humanities
-journal.
+There have been two meetings to discuss the interdisciplinary work with members the National 
+Library of Wales as well as a tour around the stores to view the \gls{nlw} collection of Williams'
+work.
 
 
-\subsection{Future Work}
+\subsubsection{Meeting of the 31\textsuperscript{st} October, 2011}
+This meeting was between Lloyd, Hannah and I to discuss the state of the project particularly the
+aims Hannah and I had for the project and when Lloyd's expectations and aspirations for the joint
+work. Notably both our aspirations included being able to publish a paper before the submission of
+the project, or, failing that, over the summer following the submission of the project.
 
-There are several projects that could continue on from this project.
+This also provided an opportunity to discuss some of the artistic details with a more 
+knowledgeable source which helped with the implementation of certain analysis techniques as well
+as discussing more elements of Williams' life.
 
-One was to use the Learning/Teaching development fund to produce a web-based front-end for of some
-of my analysis.
 
-Another venture was to look into PhD funding to build up a 3D map of some of Williams's paintings
-and being able to display it (perhaps via HTML5 and WebGL) so they can explore the painting 
-digitally how it is meant to be in real life.
+\subsubsection{Meeting of the 18\textsuperscript{th} February, 2012}
+This meeting was between Lloyd, Hannah and Lorna Hughes (Lloyd's PhD supervisor), again to discuss
+the state of the project, but was also used to discuss finer details of the potential of 
+publishing a paper. Lloyd was also able to provide a cleaner version of his spreadsheet.
 
-Research into stroke analysis between different brush types (e.g. paintbrush, palette knife, etc.)
-and being able to recognise the different implements would be another potential avenue to research
-into.
+More artistic details were discussed in the meeting, particular retaining to the application of
+expert knowledge to the temporal classification of Williams' work. It was shortly after this 
+meeting that Dr. Paul Joyner was contacted to provided artistic exemplars for many years in 
+Williams' career.
+
+Some other points were brought up with regards to Williams' work, such as the artistic cut-off 
+point between early and late in Williams' career is around 1973. The theory that the canvas size
+would be proportional to the year it was painted in due to the expense of paint on larger 
+canvases.
+
+It was also mentioned that the validity of some dates may be dubious, it might be the case that 
+certain painting were said to be painted later than they actually were to increase the sale price.
 
 
 \section{Existing Work}
 
 \subsection{Edge-Orientated Gradients}\label{sec:existing-hogs}
-As Kyffin Williams's work is highly texturally, looking at the edge orientation of the image is
+As Williams's work is highly texturally, looking at the edge orientation of the image is
 likely to be a valuable technique to use.
 
 One technique recommended by Hannah was to look at \gls{hog}. The suggested paper outlined the use
@@ -255,9 +263,9 @@ $$
 
 Obviously, when applying this as an analysis technique to paintings, there are some points which
 are completely irrelevant. Passing a detector window and running through a Linear \gls{svm} are
-the obvious two. Normalisation is another unneeded step; computing performance isn't likely to be
-a large issue for this project; so long as the techniques complete within a semi-reasonable amount
-of time.
+the obvious two. Normalisation is another unneeded step as time complexity isn't a problem which
+needs to be thoroughly considered, as long as the analysis completes within a reasonable amount of
+time.
 
 The leaves the act of computing the gradients (again, this can be done without Gaussian smoothing
 as that reduces accuracy) which should a simple matter implemented by earlier techniques. Binning 
@@ -331,7 +339,7 @@ Analysis is one of the biggest sections of this project and involves creating te
 will allow comparison of paintings in a way which will allow some form of classification to be
 performed on them.
 
-Typically I would expect this to produce some form of high-dimension state space in which each
+Typically it is expected that this produces some form of high-dimension state space in which each
 painting is a point in the state space. From this state space the distance between one painting
 and another can be easily resolved using a distance measure like Manhattan distance 
 \eqref{eq:manhattan_distance}, euclidean distance \eqref{eq:euclidean_distance} or a distance 
