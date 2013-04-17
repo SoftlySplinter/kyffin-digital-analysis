@@ -260,10 +260,11 @@ certain cardinal directions; typically $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and
 (from $\pi$ to $2\pi$ becomes a repeat of any of those directions, only in reverse and are, 
 therefore, covered already).
 
-To do this we can use steerable filters $S(\theta)$ (shown in figure~\ref{fig:steerable-filters}). 
-With these we adjust the angle they are designed to match ($\theta$), which will then give the 
-degree to which a gradient matches that angle. To complete the binning by orientation, this value 
-will then have a threshold applied, then added to the bin if the value is above the threshold.
+To do this steerable filters $S(\theta)$ can be used (shown in figure~\ref{fig:steerable-filters}). 
+The angle of the filter ($\theta$) is manipulated to match the four cardinal directions, which 
+will then give the degree to which a gradient matches that angle. A histogram is created with a
+bin for each value of $\theta$, these bins are added to if the value of a given filtered pixel is
+above a threshold, helping to prevent the overlapping of orientations.
 
 \begin{figure}[h]
 $$
@@ -302,6 +303,10 @@ canning the results for edge orientation is desirable.
 
 There is the obvious trade off that steerable filters can only work in four directions which
 does affect the performance quite severely.
+
+It should be noted that, in implementation, the histogram actually has double the amount of bins
+as it is easier and more efficient to generate a \gls{opencv} histogram of the filtered image with
+two bins than to iterate over the filtered image keeping a count.
 
 \subsection{Gabor Filters}
 To increase the orientations matched from steerable filters without the need for increasingly 
@@ -346,6 +351,12 @@ filters for}\label{fig:gabor-init}
 
 The actual Gabor filters are then produced for all values in $\theta$ at runtime and applied to
 the images in turn.
+
+To aid with the implementation of the Gabor filter and to ensure all the maths was implemented 
+correctly an example snippet of MATLAB code\cite{Yang2010Gabor} (Listings~\ref{lst:gabor}) was 
+converted to Python and cleaned up slightly to improve the readability of the code. This was a 
+fairly trivial task to do, but did involve learning some array manipulation functionality offered
+by numpy.
 
 \section{Brush-Stroke Analysis}
 
@@ -491,7 +502,22 @@ Weka is a collection of machine learning algorithms\cite{Hall2009WEKA}, used pre
 data mining. Due to the number of machine learning techniques it provides it was interesting to
 input data from the analysis techniques into Weka.
 
-%TODO More on Weka
+Unfortunately, it seems that the data provided to Weka is not well suited to most of the methods 
+in the tool-kit. The data was, perhaps unsurprisingly, ill suited to regression techniques; each
+parameter has such a variable set of values that it is difficult to perform regression on these
+parameters.
+
+Similarly, Neural Networks also perform badly, again it seems that so many of the parameters can
+take on such widely different values, even in the same year group, that it is difficult to build
+a model to suit the data.
+
+In the end Weka proved to be more time consuming than it was worth and, though it did provide a 
+few interesting results, the variation in data proved just too much for it.
+
+$k$-Nearest Neighbour does not suffer from this flaw as it does not need to build a model based on
+the data. It purely classifies on the distance between points in feature space. This does make it
+simple and usually too much so for machine learning techniques, but in this case, it turns out to 
+be one of the best choices.
 
 
 \subsubsection{Attribute-Relation File Format (ARFF)}
@@ -631,23 +657,6 @@ clustering algorithms ($k$-Means Clustering, for example).
 \label{eq:sce}
 \forall_{d \in D}\;C_d = \frac{1}{k}\sum^{k}_{i=1}{x_{i_{d}}}
 \end{equation}
-
-%\begin{figure}[h]
-%\begin{algorithmic}
-%\Function{StatisticalClassifyExemplar}{$examples$}
-%\ForAll{$example \in examples$}
-%\ForAll{$feature \in example_{features}$}
-%\State $average_{feature} \gets average_{feature} + example_{feature}$
-%\EndFor
-%\EndFor
-%\ForAll{$feature \in average$}
-%\State$average_{feature} \gets \frac{average_{feature}}{\Call{Length}{examples}}$
-%\EndFor
-%\State \Return $average$
-%\EndFunction
-%\end{algorithmic}
-%\caption{Psuedocode for generating a Statistically Classified Exemplar}\label{fig:sce-psuedo}
-%\end{figure}
 
 This may become a long operation depending on how many dimensions the feature space has. A
 technique like \gls{pca} may be useful to help cut down the number of dimensions needed that this

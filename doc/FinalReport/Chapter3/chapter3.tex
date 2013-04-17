@@ -59,9 +59,7 @@ To simplify the classification stage a $k$-Nearest Neighbour classifier is used 
 which is easy to implement and makes no assumptions about the underlying patterns in the data, 
 merely the other paintings which are similarly located in the feature space which should be 
 similarly located to paintings from around the same period of time is the analysis technique is
-performing well.
-
-Figure \ref{img:classification-overview} give a pictorial view of this process.
+performing well. Figure \ref{img:classification-overview} shows this process.
 
 \begin{figure}[h]
 \centering
@@ -80,7 +78,8 @@ each data point which can then have validation performed on it. This architectur
 figure~\ref{fig:basic-arch}.
 
 \begin{figure}[h]
-\includegraphics[width=\linewidth]{img/basic-arch}
+\centering
+\includegraphics[scale=0.4]{img/basic-arch}
 \caption{Basic Overall Architecture}\label{fig:basic-arch}
 \end{figure}
 
@@ -94,7 +93,7 @@ Figure~\ref{fig:factory-arch} shows the design after adding in the factory metho
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{img/factory-arch}
+\includegraphics[scale=0.4]{img/factory-arch}
 \caption{Overall Architecture with Factory Methods}\label{fig:factory-arch}
 \end{figure}
 
@@ -111,7 +110,7 @@ Figure~\ref{fig:interfaces-arch} depicts the design after adding in these parts.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{img/interfaces-arch}
+\includegraphics[scale=0.4]{img/interfaces-arch}
 \caption{Overall architecture with Interfaces for Analysers and Classifiers}\label{fig:interfaces-arch}
 \end{figure}
 
@@ -138,10 +137,31 @@ the importance of other sections of work. Initially this was a part of the desig
 as a part of the design in the progress report; shown in figure~\ref{fig:prog-design}. This also 
 includes details of which methods each interface would include.
 
-These methods inevitably changed as the design evolved; mainly to add extra functionality whilst
-keeping the re-use of code down, as good object-orientated design should do.
 
-\begin{figure}[h]
+\begin{figure}[h!]
+\centering
 \includegraphics[width=\textwidth]{../ProgressReport/img/design.png}
 \caption{Initial Design from the Progress Report}\label{fig:prog-design}
+\end{figure}
+
+It should also be noted that of the time of writing the progress report some of the classes had
+different names, these were later refractory to better describe the functionality they perform.
+Figure~\ref{fig:uml} shows a better version of the class design with these changes in mind and
+with the GUI elements removed to keep the design simplistic.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{img/uml}
+\caption{Overall class design}\label{fig:uml}
+\end{figure}
+
+These methods inevitably changed as the design evolved; mainly to add extra functionality whilst
+keeping the re-use of code down, as good object-orientated design should do. The evolutionary 
+nature of the methodology allowed for this. Figure~\ref{fig:uml-final} shows the updates to the
+class design.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{img/uml-final}
+\caption{Final class design}\label{fig:uml-final}
 \end{figure}

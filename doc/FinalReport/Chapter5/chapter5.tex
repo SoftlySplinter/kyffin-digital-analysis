@@ -9,6 +9,25 @@ As this is a research-based project, it is difficult to perform any for of unit,
 requirements testing. Most testing is based on validating the results of analysis and 
 classification techniques.
 
+There is, however, a sense in which the validation of analysis techniques is a form of testing,
+higher correlations would suggest that a given analysis technique is both implemented properly and
+that it represents the data well.
+
+There is also a sense in which testing that a technique does what it says it will is both 
+difficult and somewhat unnecessary. One would expect to see the correlation increase as more
+complex analysis techniques are implemented so if a recently implemented technique gives a lower
+correlation that a previous technique then this might be considered as a failing test.
+
+If the correlation is improved by the analysis then, even if the technique isn't working 
+completely as advertised, it is still doing something right. It was common for the analysis to be
+``tinkered'' with to try and improve the performance of the analysis so commonly any errors were
+picked up at this point.
+
+All analysis techniques were performed across two machines and typically acted similarly. The only
+discrepancies noticed was on techniques which heavily relied on floating point numbers; usually a
+few of the correlations were out by a proportionally tiny amount. This is believed to be because 
+one system has a 32-bit operating system and the other a 64-bit.
+
 
 \section{Validation}
 Cross-validation is a statistical concept used to assess how the results of statistical analysis
