@@ -76,6 +76,7 @@ from different collections remotely, using digital images.
 \centering
 \includegraphics[width=0.75\textwidth]{img/lle-cul.jpg}
 \caption[``\emph{Lle Cul, Patagonia}'']{``\emph{Lle Cul, Patagonia}'', Sir John Kyffin Williams 1969}
+\label{fig:lle-cul}
 \end{figure}
 
 Williams's work is well represented in public collections in Wales
@@ -436,22 +437,6 @@ paintings with an unknown year it is difficult to know how accurately the system
 the most part, these paintings have been ignored and those paintings with a known year have made
 up the training and validation set.
 
-Because of the small size of paintings with known years it should be computationally viable to 
-perform leave-one-out cross validation (figure~\ref{fig:loocv}).
-
-\begin{figure}[h]
-\begin{algorithmic}
-\Function{LOOCV}{$data$} \Comment{$data$ is a set of all data points}
-  \ForAll{$item \in data$}
-    \State $classified_{item} \gets$ \Call{Classify}{$item, data \setminus \left\{{item}\right\}$} 
-  \EndFor
-  \Statex
-  \Return $classified$
-\EndFunction
-\end{algorithmic}
-\caption{Pseudocode for Leave-One-Out Cross Validation}\label{fig:loocv}
-\end{figure}
-
 This can be used to evaluate the performance of the analysis technique and classification 
 algorithm. Pearson's product-moment correlation coefficient \eqref{eq:pearsons} between actual year
 and classified year has been suggested to be a good performance measure for this project.
@@ -466,7 +451,7 @@ One of the simplest methods of classification is $k$-Nearest Neighbour from
 this one can take a poll of the years for each neighbour and assign the year of the painting to
 classify to be the average of these years.
 
-Depending which form of average you take (mathematical mean \eqref{eq:mean}, median or mode) will
+Depending which form of average you take (mathematical mean, median or mode) will
 alter the result; although it should be noted that median is very unlikely to give a result on its
 own due to the sparseness of the data.
 
@@ -487,23 +472,14 @@ analysis being performed on Williams's work.
 Weka is a machine learning toolkit which boasts an impressive number of learning techniques. As
 such is makes sense to use it to help classify the results of analysis techniques. This does mean
 adding additional logic to export data in a form Weka understands, but the results from Weka
-will provide a new and detailed insight into our own analysis techniques which $k$-Nearest 
+may provide a new and detailed insight into our own analysis techniques which $k$-Nearest 
 Neighbour cannot.
 
 %\subsubsection{Learning Classifier Systems (LCS)}
 
 \subsection{Exemplars}
-The use of exemplar images would be another way of performing classification. The idea of an 
-exemplar is that a painting is the most representative of a given time period. With the help of
-Lloyd, Lorna and the \gls{nlw} a list of exemplars which can be used as a ground truth to classify
-against has been produced.
-
-The initial idea for digitally producing exemplars is to take the middle painting for a time 
-period, as would be expected. These can then be compared to the ground truths to see how correct
-the analysis technique performed.
-
-However, there is also the potentially to generate a theoretical exemplar from the analysis. This
-might be hard to perform validation against the ground truth upon, but will give some useful data
-on Williams's style and how it changed.
-
-These theoretical exemplars would likely be produced using some form of Gaussian mixture model.
+Another method of classification is to incorporate expert knowledge, making use of the 
+interdisciplinary work with members the \gls{nlw}, instead of a data set as the ground truth for
+the classification technique. This expert knowledge takes the form of a set of exemplar paintings
+for each year in Williams' career and therefore also allows these exemplars to be compared to the
+statistical centre of that year range to allow the comparison digital analysis to human experts.
