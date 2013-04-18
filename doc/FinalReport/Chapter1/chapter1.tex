@@ -64,7 +64,7 @@ The aesthetic of Williams's Welsh landscapes is contrasted by the paintings he
 made following a trip to Patagonia to paint the landscape and people of the
 Welsh communities there in 1968 as part of a Winston Churchill Foundation
 scholarship. The colours and application of paint in pictures produced in
-following this journey (such as \emph{Lle Cul} (figure~\ref{fig:lle-cul}, \emph{Henry Roberts},
+following this journey (such as \emph{Lle Cul} (figure~\ref{fig:lle-cul}), \emph{Henry Roberts},
 \emph{Bryngwyn Patagonia}, \emph{Euros Hughes Irrigating his Fields}, all 1969,
 National Library of Wales) differ starkly from paintings of Welsh landscapes,
 incorporating pinks, purples and oranges. This contrast, combined with the fact
@@ -137,9 +137,9 @@ complex humanities data set.
 
 This project originated through conversations between Hannah Dee and Gareth Lloyd Roderick on the
 topic of the digital image processing of art; this led to Hannah building a small application to
-show a Gaussian mixture model of Williams' work with the intention of being able to geographically
+show a Gaussian mixture model of Williams' work with the ultimate intention of being able to geographically
 determine the location of a picture, especially those with a well defined setting especially those
-painted at Crib Goch (figure~\ref{fig:crib-goch}, for example) 
+painted at Crib Goch, a good example of which is shown in figure~\ref{fig:crib-goch}.
 
 \begin{figure}[h]
 \centering
@@ -186,7 +186,7 @@ as discussing more elements of Williams' life.
 
 
 \subsubsection{Meeting of the 18\textsuperscript{th} February, 2012}
-This meeting was between Lloyd, Hannah and Lorna Hughes (Lloyd's PhD supervisor), again to discuss
+This meeting was between Lloyd, Hannah, Lorna M. Hughes\footnote{Lloyd's PhD supervisor} and I, again to discuss
 the state of the project, but was also used to discuss finer details of the potential of 
 publishing a paper. Lloyd was also able to provide a cleaner version of his spreadsheet.
 
@@ -195,7 +195,7 @@ expert knowledge to the temporal classification of Williams' work. It was shortl
 meeting that Dr. Paul Joyner was contacted to provided artistic exemplars for many years in 
 Williams' career.
 
-Some other points were brought up with regards to Williams' work, such as the artistic cut-off 
+Some other interesting and useful points were brought up with regards to Williams' work; such as the artistic cut-off 
 point between early and late in Williams' career is around 1973. The theory that the canvas size
 would be proportional to the year it was painted in due to the expense of paint on larger 
 canvases.
@@ -299,7 +299,7 @@ Stroke analysis is one of the main goals for this project. It is quite apparent 
 Williams's paintings that his brush-strokes change over time, his early work having lots of
 smaller strokes over the canvas to large bold strokes in his later work.
 
-The first paper I found relating to the analysis of brush-strokes involved moving a circular filter
+The first paper found relating to the analysis of brush-strokes involved moving a circular filter
 across the whole painting to find the ridges of strokes, then filling any unbroken areas. They then
 shrunk these areas to a single pixel line and fitted a $n^{\text{th}}$ order polynomial to this
 line\cite{Berezhnoy2005Authentic}. This method seems fairly simplistic, but could be an interesting
@@ -351,7 +351,7 @@ d_1(\mathbf{p},\mathbf{q}) = \|\mathbf{p}-\mathbf{q}\|_1 = \sum^{n}_{i=0}{|p_i-q
 \end{equation}
 
 \begin{equation}\label{eq:euclidean_distance}
-d_1(\mathbf{p}, \mathbf{q}) = \sqrt{\sum^{n}_{i=0}({q_i-p_i})^2}
+d(\mathbf{p}, \mathbf{q}) = \sqrt{\sum^{n}_{i=0}({q_i-p_i})^2}
 \end{equation}
 
 \subsection{Colour-space Analysis}
