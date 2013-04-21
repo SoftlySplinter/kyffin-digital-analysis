@@ -7,34 +7,34 @@
 
 %You should briefly describe the design method you used and any support tools that you used. You should discuss your choice of implementation tools - programming language, compilers, database management system, program development environment, etc.
 
-This chapter defines the development processes which were used to write this project and how they
-were changed to suit the needs of this project. The decisions behind the choices
+This chapter defines the development processes which were used to aid the production this project and how they
+were changed to suit the needs. The decisions behind the choices
 of development process are also discussed and evaluated.
 
 \section{Introduction}
 This project was developed using a mixture of iterative development and rapid prototyping. As a
-research project it does not need a heavy-weight development process as such a process would be
-too cumbersome to adapt to changing nature of research. Agile methodologies would have also 
+research project it does not need a heavy-weight development process. Such a process would be
+too cumbersome to adapt to the changing nature of research. Agile methodologies would have also 
 provided the adaptability required, but are designed for a team-based approach so would have
 needed a lot of modification to be applicable to a team of one.
 
 Maintenance and testing are known to be the large majority of focus in the methodology chosen,
 experience in the field of software engineering typically focuses an individual on both these 
-topics. However as this was a research project it was unlikely to be used much after the end of 
-the project and if it was to be the author or the supervisor would be able to provide to anyone
-using or extending the project. It was decided that maintenance was not an issue for this project
-and could be, to a reasonable extent, ignored.
+topics. However, as this was a research project it was unlikely to be used much after the end of 
+the project. If it were to be used in further research the author or the supervisor would 
+be available to provide assistance. It was decided that maintenance was not an issue for this project
+and could be disregarded to a reasonable extent. 
 
-Due to the research nature of this project testing would prove to be difficult. Proving that a
+Due to the research nature of this project, testing would prove to be difficult. Proving that a
 given technique would run was relatively straight-forward by leaning on the interpreter (or 
-compiler in cases of any statically typed elements), but proving a technique would do what it was
-expected to do would take so much time out of implementing other techniques that it would be a 
-pointless task, especially when a lot of the techniques would just call external libraries to
+compiler in cases of any statically typed elements). However, proving a technique would do what it was
+expected to do would take so much time out of the implementation of other techniques, that it would be a 
+pointless task. Especially when a lot of the techniques would just call external libraries to
 implement the parts that were likely to fail (e.g. applying filters through \gls{opencv}).
 
-With both these two issues being lesser than usual it was easy to remove a lot of the traditional
-and formal methods from the list of potential methodologies; Waterfall and Spiral models, for 
-example, had too much of a focus on both these parts and on risk management.
+With both these two issues being lesser than usual it was easy to discount a lot of the traditional
+and formal methods from the list of potential methodologies. Waterfall and Spiral models, for 
+example, had too much of a focus on testing and maintenance, and on the management of risk.
 
 Iterative development involves developing a system through repeated cycles, at each iteration 
 design modifications are made and new functionality is added. Iterative development encourages 
@@ -47,7 +47,7 @@ implementation as needed. This fits well as a method for implementing the variou
 the system, they can be rapidly prototyped to get a set of results, then improved to increase the
 performance and/or accuracy of the technique.
 
-The requirements for the iterations were typically decided in the weekly project meetings, typically 
+The requirements for the iterations were typically decided in the weekly project meetings, normally 
 taking the form of completing a given technique before the next meeting. The technique
 was then implemented as a prototype and any adjustments would be made to the system in line with
 the iterative process, including improving existing techniques that might have been earlier 
@@ -73,8 +73,8 @@ changing forms of data. It also has very readable syntax whilst still remaining 
 of lines of code, this makes locating areas which need changing very simple.
 
 Version control was a strong requirement. Having used git for many personal projects the 
-environment was familiar, the decentralised nature of git allowed for the remote working on any
-machine with an internet connect so progress was not delayed with the switching of computers.
+environment was familiar. The decentralised nature of git allowed for the remote working on any
+machine with an internet connection, so progress was not delayed with the switching of computers.
 
 For hosting the GitHub service was used, GitHub is one of the most popular git hosting services
 available and offers free private repositories for students (GitHub is commonly used for Open 
@@ -91,8 +91,8 @@ to allow merging of the two techniques. But the evolution step was focused on th
 A good example of this is when finding out about \emph{cv2} and going back to change all the old
 techniques to use the latest version of \emph{OpenCV}.
 
-Rapid prototyping was modified very little, however, as there was no official client and only met with
-Hannah once a week there was very little client focus and was just used as a tool for rapidly
+Rapid prototyping was modified very little. However, as there was no official client and there were only meetings with
+Hannah once a week, there was very little client focus. This means it was just used as a tool for rapidly
 implementing techniques in a way which could be improved and evolved later on. Although this isn't
 exactly in the spirit of rapid prototyping, it does fit fairly well with iterative development.
 
@@ -100,9 +100,9 @@ For a solo project, there wasn't any focus on team collaboration. Though iterati
 isn't an official agile methodology, it does act quite similarly to one. Therefore it is quite 
 tied to collaborating code as part of the iterative cycle. This project didn't take advantage of
 any of the collaborative parts, nor any review of coding standards. The only review of code was
-of the author's own standards and, whilst these are very high, inexperience into writing Python 
+of the author's own standards. Whilst these are very high, inexperience into writing Python 
 code led to very messy code initially.
 
-The evolutionary approach of the methodology allowed for this code to be cleaned up as and when
-required, especially when modifying existing code later on in the project when more knowledge into
+The evolutionary approach of the methodology allowed for this code to be cleaned up when
+required. Especially when modifying existing code later on in the project, when more knowledge into
 the language had been gained.
