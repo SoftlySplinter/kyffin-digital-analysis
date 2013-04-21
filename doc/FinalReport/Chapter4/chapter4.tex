@@ -4,6 +4,17 @@
 
 %It is more likely that things were more complex than you first thought. In particular, were there any problems or difficulties that you found during implementation that you had to address? Did such problems simply delay you or were they more significant? Your implementation might well be described in the same chapter as Problems (see below).
 
+This chapter outlines the process taken to implement this projects, as well as any issues 
+encountered during this process and how these issues were overcome. Initially a lot of research
+was performed to work out which libraries would suit this project best. A basic framework was then
+created following the design in the previous section.
+
+Analysis techniques were then implemented, starting at colour-space analysis and moving up to 
+complex texture analysis.
+
+Finally this chapter details the techniques used to classify paintings, from a simple nearest
+neighbour algorithm to integrating expert knowledge into the system.
+
 \section{Research into Image Processing Libraries}\label{sec:cv-lib}
 
 Due to the number of libraries out there and lack of experience in the area of computer vision and 
@@ -13,8 +24,8 @@ application to perform Gaussian blur on an image, from this it was easy to gauge
 library and its documentation and could be extrapolated to see how difficult the library in 
 question would be to use for more complex applications.
 
-Table~\ref{tab:libraries-overview} shows an overview of all the libraries which were researched 
-into.
+Table~\ref{tab:libraries-overview} shows an overview of all the libraries which were investigated.
+Listings can be found in Appendix \ref{sec:code}.
 
 \begin{table}[h]
 \begin{tabular}{| c | c | c | c | c | c | c | c |}
@@ -31,7 +42,8 @@ IVT					& \checkmark	& \checkmark	& \checkmark	& 		&	& C++			& Listing~\ref{lst:
 \end{table}
 
 \gls{opencv} appeared to be the most polished of all the libraries researched into, boasting a 
-wide range of features with comprehensive documentation, especially for \gls{cv2}. 
+wide range of features with comprehensive documentation, especially for \gls{cv2}, which, as has
+previously been discussed, is the more recent version of \gls{opencv}. 
 
 \gls{fiji} has a good range of high-level features, especially through their GUI elements, however
 for use as a library it was rather unwieldy and difficult to find the classes which performed 
@@ -40,18 +52,28 @@ but when, after fifteen minutes of struggling with the API images could only be 
 grey-scale output, it was completely discounted.
 
 It should be noted that most of the \gls{fiji} features weren't used at all and the actual code
-seemed to just use ImageJ libraries.
+seemed to just use ImageJ libraries. \Gls{fiji} is often descibed as a distribution of 
+ImageJ\cite{fiji}, the analogy ``As Ubuntu is a distribution of Linux, \gls{fiji} is a 
+distribution of ImageJ'' is commonly used to describe this further.
+
+To continue that analogy, when programming with operating system libraries; it is common only to 
+use the core libraries; not those libraries made to use the kernel more usable. The same logic
+applies with \gls{fiji} and ImageJ; whilst \gls{fiji} provides a cleaner interface in which to use
+the libraries, at its core it is still calling ImageJ methods. On reflection it would have been 
+better to only consider ImageJ rather than the more cluttered \gls{fiji}.
+
 
 \gls{ivt} was somewhat similar to \gls{fiji} in that it had a good range of high-level features, 
-but was less impressive as a library. Despite following the example code it was difficult to 
+but was less impressive as a library. Even following the example code it was difficult to 
 compile against \gls{ivt}, despite using the makefiles provided in their own examples.
 
-It was, therefore, an simple choice with only library being workable for this project. Not only
+It was, therefore, an simple choice with only one library being workable for this project. Not only
 was \gls{opencv} the top choice from the above research, it is also one of the most prevalent
 libraries for computer vision problems.
 
-\gls{cv2} has been added to the above research as it shows how simplified many of the operations 
-became after its discovery towards the end of the project.
+Later in the project, the transition was made to \gls{cv2}, therefore it has been added to the
+above research for completeness. When comparing \gls{opencv} and \gls{cv2} it is apparent that
+\gls{cv2} is much easier to work with and also has much better documentation.
 
 \section{Basic Structure}
 
@@ -60,19 +82,18 @@ One of the more key parts to implement before all others in this project is the 
 data from the initial spreadsheet. The first step of this was to convert it to a \gls{csv} 
 file-type, which is easier to read programatically.
 
-The initial spreadsheet was slightly different from the version depicted below, Lloyd was kind 
-enough to update it so it was easier to handle digitally. In this version of the spreadsheet the
-file names were much longer and were in sub-folders depending on their collection. Extra logic was
-needed to locate the file (a simple matter of concatenating the collection to the file name as a
-directory). The image files in the second version were just flat files which were better placed in
-a separate data directory.
+Initially the spreadsheet has a different format from the version depicted below. In this version 
+the file names tended to be much longer and were in sub-folders depending on their collection. 
+Extra logic was needed to locate the file, though this was a simple matter of concatenating the 
+collection to the file name as a directory. 
 
-The move to the newer version was a good excuse to clean up some of the initial code to use better
-Python programming practises; replacing messy loops with list comprehension where possible, using
-\gls{kwargs} and dictionaries instead of having utility methods, etc.
-
-From the original format show in table~\ref{tab:spreadsheet-format} the data was converted to the 
-\gls{csv} format show in figure~\ref{fig:csv-spreadsheet}.
+Later in the project a new version was provided by Lloyd, the format of which is shown in Table~
+\ref{tab:spreadsheet-format}, this was then converted to a \gls{csv} file format shown in Figure~
+\ref{fig:csv-spreadsheet}. This makes the spreadsheet data easier to parse digitally as there are
+many libraries available to parse \gls{csv} files whereas attempting to parse a specialised 
+spreadsheet format. This was also a good excuse to clean up some of the initial code to 
+use better Python programming practises; replacing messy loops with list comprehension where 
+possible, using \gls{kwargs} and dictionaries instead of having utility methods, etc.
 
 \begin{table}[h]
 \resizebox{\textwidth}{!}{
@@ -100,6 +121,7 @@ resource management as well as showing how the library parsed files.
 
 
 \subsection{Top-Level Classes}
+This section focuses on implementing code based on the design shown in Figure~\ref{fig:uml-final}.
 Being used to Java, the initial instinct was to set up interfaces for the majority of 
 top-level classes (namely the \texttt{Analyser} and \texttt{Classifier} classes). However, 
 Python does not have the concept of interfaces, so normal classes were used to represent these
@@ -127,7 +149,7 @@ Analyser         & \verb+-a+  & \verb+--analyser  +& Switch the analysis techniq
 Machine Learning & \verb+-m+  & \verb+--ml        +& Switch the machine learning technique\\
 Data             & \verb+-d+  & \verb+--csv       +& The data file to use\\
 GUI              & \verb+-g+  & \verb+--gui       +& Switch the GUI visualisation\\
-Binning          & \verb+-5+  & \verb+--bin-years +& Put paintings in 5 year bins\\
+Binning          & \verb+-5+  & \verb+--bin-years +& Round paintings to the nearest 5\textsuperscript{th} year\\
 Export           & \verb+-e+  & \verb+--export    +& Export analysed data\\
 Classify         & \verb+-c+  & \verb+--classify  +& Classify the specified image\\
 \hline
@@ -146,7 +168,8 @@ handling the calls to the factories.
 
 \section{Colour Space Analysis}
 Colour space analysis involves performing statistical analysis on different colour models 
-(\gls{rgb}, \gls{hsv}, etc.). This gives a very simplistic view of the entire image.
+(\gls{rgb}, \gls{hsv}, etc.). This gives a very simplistic view of the entire image, through 
+creating a small histogram representing mean colour over the entire image.
 
 \gls{opencv} offers a method to perform the average across the image, however with a
 further look into the documentation there is also a method which performs both 
@@ -158,14 +181,18 @@ the mean red, green and blue and the standard deviation of red, green and blue).
 
 \subsection{Colour Models}
 There are many colour models to consider with digital image processing. \Gls{rgb} is one of the
-better know colour spaces as it is often how images are captured. It does have a problem in that
+better know colour spaces as it is often how images are captured. It does have a feature in that
 all three values can change when the brightness changes.
 
-As one of the main principals of this project is that Williams' work darkened over time, it
-should follow that \gls{rgb} may not be the best colour model to use.
+As one of the main hypotheses of this project is that Williams' work darkened over time, it
+may follow that \gls{rgb} may not be the best colour model to use.
 
-To account for this it was decided to also use a \gls{hsv} colour model to compare and contrast to
-\gls{rgb}.
+To account for this it was decided to also use a \gls{hsv} colour model to compare and contrast 
+\gls{rgb}. \Gls{rgb} is a colour-model in which a pixel of colour is represented by three 8-bit
+values, one for the intensity of each colour. \Gls{hsv}, in contrast, is a colour model which uses
+a range of $360^\circ$ for the hue and is the only representation of colour in this model. The 
+value defines the lightness of the colour and the saturation defines the degree to which the 
+colour is present.
 
 \gls{opencv} handles colour spaces slightly oddly. Initially it uses a method to load the 
 image, which uses an integer argument as a flag to define whether the image should be loaded in 
@@ -173,17 +200,27 @@ colour or grey-scale.
 
 From this image you then can use a function to convert the colour model of an image, which 
 uses an integer argument as a flag to define a number of different colour spaces.
-
 Once converted, all methods act exactly the same as they would on a \gls{rgb} image.
+
 
 \subsection{Colour Histograms}
 Colour Histograms are a representation of the distribution of colour across an image; this makes
-them very powerful for analysing the colour space of an image.
+them very powerful for analysing the colour space of an image. For digital images, histograms are
+the number of pixels which have a colour in a fixed range of colours. These ranges are typically
+referred to as the bins of a histogram. These bins are arranged so they span the range of colours
+in the entire colour space.
 
 \gls{opencv} provides a number of methods for both calculating and operating upon colour histograms. 
-Here the example code (figure~\ref{lst:opencv_histogram}) from the \gls{opencv} documentation was a
-useful reference as some of the details of creating histograms in \gls{opencv} are not noted implicitly
+Here the example code (Figure~\ref{lst:opencv_histogram}) from the \gls{opencv} documentation was a
+useful reference as some of the details of creating histograms in \gls{opencv} are not noted explicitly
 in the python documentation.
+
+Initially this was performed as a 3D histogram to span three channels of the chosen colour model 
+representation; for an \gls{rgb} representation each dimension represents one of the three primary
+colours - red, green and blue. A low number of bins was also used to keep the memory limits down
+as this was a very large object if the whole range of colour in the model are represented.
+Later on, with the move to \gls{cv2}, this became a less expensive option and it was possible to
+create a 2D histogram for each channel in the colour model.
 
 The distance measure between colour histograms is also handled by \gls{opencv} using a compare histogram
 method. Under the covers this uses a Chi Squared ($\chi^2$) (equation~\ref{eq:chi_squared}) method to
@@ -207,7 +244,8 @@ The Canny edge detector\cite{Canny1986Computational} provided a good output for 
 operators like Sobel provided less useful results and thus provided a worse analysis technique.
 
 From the generated image a histogram was produced with only 2 bins; one bin for the presence of an
-edge, the other for the absence of an edge.
+edge, the other for the absence of an edge. The second bin is just to help with the normalisation
+of distances as it is just the number of pixels in an image minus the number of pixels in bin one.
 
 Open CV provides methods for applying the Canny edge detector to an image so this technique was 
 simple to implement.
@@ -228,7 +266,7 @@ Calculating the edge orientation involves passing a filter over an image which i
 orientation of that gradient. 
 
 There are many forms of filter which can be used to do this. The simplest of which discrete 
-derivative masks (figure~\ref{fig:1x2-ddm}, figure~\ref{fig:1x3-ddm}, etc.), steerable filters 
+derivative masks, steerable filters 
 are a more adjustable implementation of this. There are also more complex filters, like Gabor 
 filters, which provide better flexibility and matching.
 
@@ -244,23 +282,23 @@ values to work out the actual direction of the gradient.
 \theta = {\rm atan2}\left( \frac{\delta f}{\delta x}, \frac{\delta f}{\delta y} \right)
 \end{equation}
 
-\subsubsection{Canning of Histogram of Orientated Gradient Results}\label{sec:hog-canning}
+\subsubsection{Caching of Histogram of Orientated Gradient Results}\label{sec:hog-canning}
 Working out the exact orientation of a gradient is a costly operation and it became useful to
-\emph{can} (persist) the results to allow the technique to complete in a decent amount of time.
+\emph{cache} (persist) the results to allow the technique to complete in a decent amount of time.
 This change was made after the change to \gls{cv2} and was done using numpy methods for
 simplicity. 
 
-Rather than can the resulting histograms it was actually easier to can the output gradients as 
-this allowed histograms with varying bin sizes to be used; this allows a comparison between 
-steerable and Gabor filters to these histograms.
+For speed of execution and in order to experiment with bin sizes it was easier to cache the 
+results from the gradient direction function than to just cache the final histogram result. This
+allows for the ease of comparison between all forms of texture analysis.
 
 \subsection{Steerable Filters}
-Another way of doing this is to change the orientation of the filter and bin the direction into 
+Another way of analysing the distribution of edge orientations to change the orientation of the filter and bin the direction into 
 certain cardinal directions; typically $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$ and $\frac{3\pi}{4}$
 (from $\pi$ to $2\pi$ becomes a repeat of any of those directions, only in reverse and are, 
 therefore, covered already).
 
-To do this steerable filters $S(\theta)$ can be used (shown in figure~\ref{fig:steerable-filters}). 
+To do this steerable filters $S(\theta)$ can be used (shown in Figure~\ref{fig:steerable-filters}). 
 The angle of the filter ($\theta$) is manipulated to match the four cardinal directions, which 
 will then give the degree to which a gradient matches that angle. A histogram is created with a
 bin for each value of $\theta$, these bins are added to if the value of a given filtered pixel is
@@ -298,15 +336,11 @@ $$
 \end{figure}
 
 These have the advantage of being far less complex to compute than edge orientation; the maths and
-histogram creation on a floating point array are long running operations, to the point where
+histogram creation on a floating point array are costly operations, to the point where
 canning the results for edge orientation is desirable.
 
 There is the obvious trade off that steerable filters can only work in four directions which
 does affect the performance quite severely.
-
-It should be noted that, in implementation, the histogram actually has double the amount of bins
-as it is easier and more efficient to generate a \gls{opencv} histogram of the filtered image with
-two bins than to iterate over the filtered image keeping a count.
 
 \subsection{Gabor Filters}
 To increase the orientations matched from steerable filters without the need for increasingly 
@@ -322,20 +356,16 @@ x' &= x \cos \theta + y \sin \theta \nonumber \\
 y' &= x \sin \theta + y \cos \theta \nonumber
 \end{align}
 
-As with steerable filters the results of the filter were passed into a histogram. Initially Gabor
+As with steerable filters the convolution of an image with a set of Gabor filters were accumulated in a histogram. Initially Gabor
 filters were implemented with the same 4 orientations as steerable filters ($0$, $\frac{\pi}{4}$,
-$\frac{\pi}{2}$ and $\frac{3\pi}{4}$), however this has two problems:
+$\frac{\pi}{2}$ and $\frac{3\pi}{4}$), however this has the problem that the variation in orientations is not being utilised.
 
-\begin{enumerate}
-\item The variation in orientations is not being utilised and,
-\item Divide by 0 errors from python.
-\end{enumerate}
-
-To solve both of these issues the way Gabor filters were initialised was changed by adding in a 
+To solve this issue the way Gabor filters were initialised was changed by adding in a 
 parameter which defined the number of orientations that instance of the Gabor filter would have,
-the logic of which is defined in figure~\ref{fig:gabor-init}, note how the range is $1\dots b$, 
-solving the divide by 0 issue as $\theta=0$ and $\theta=\pi$ will produce the same result (both
-matching vertical lines best).
+the logic of which is defined in Figure~\ref{fig:gabor-init}, note that the range is $1\dots b$,
+as $\theta=0$ and $\theta=\pi$ will produce the same result (both matching vertical lines best).
+This helps to prevent certain mathematical issues, particularly those involving passing $\theta$
+in as 0.
 
 \begin{figure}[h]
 \begin{algorithmic}
@@ -352,11 +382,10 @@ filters for}\label{fig:gabor-init}
 The actual Gabor filters are then produced for all values in $\theta$ at runtime and applied to
 the images in turn.
 
-To aid with the implementation of the Gabor filter and to ensure all the maths was implemented 
-correctly an example snippet of MATLAB code\cite{Yang2010Gabor} (Listings~\ref{lst:gabor}) was 
-converted to Python and cleaned up slightly to improve the readability of the code. This was a 
-fairly trivial task to do, but did involve learning some array manipulation functionality offered
-by numpy.
+An example section of MATLAB code which implements Gabor filters shown in Listings~\ref{lst:gabor}
+\cite{Yang2010Gabor} was used as a reference to write the code for the Gabor filters. This code
+was improved to make use of numpy array manipulation functionality as well as to be more readable.
+
 
 \section{Brush-Stroke Analysis}
 
@@ -383,7 +412,7 @@ stroke-width modelling and gap filling to refine the original brush-stroke estim
 The difficulty that would be associated with this section of work is that existing techniques may
 not be applicable to Williams' work due to his use of the palette knife. Whilst there are very
 obviously clear strokes in his work, comparing these strokes to the likes of Van Gogh are unlikely
-to pay off due to the \emph{blockier} strokes of the palette knife. Another reason this analysis
+to pay off due to the \emph{blockier} strokes of the palette knife this is another reason this analysis
 technique was side-lined in favour of exemplars.
 
 
@@ -392,11 +421,11 @@ Ensemble methods are commonly used in statistical and machine learning to improv
 the main concept of an ensemble method is to combine two or more models to produce better results
 than would be gained from a single model.
 
-Practically, ensemble methods just involve running all models in the ensemble, combining them into
-one large histogram and then perform the normal distance measure on them. However, due to some 
+The simplest form of ensemble methods just involve running all models in the ensemble, combining them into
+one large histogram and then performs normal distance measure on them. However, due to some 
 problems with the \gls{cv2} histogram calculation method, it was a lot easier to flatten
 (to collapse a multi-dimensional array into a one-dimensional array) the results from each 
-technique have use this as the model.
+analysis technique making up the ensemble method.
 
 This does affect the performance a little, but it is better than the other solution of adding 
 resulting distance from each model together as the distances are not normalised. This was my 
@@ -430,7 +459,7 @@ The simplest method of classification is to work out which painting in the data 
 feature space to the painting which needs to be classified and classify the year of this painting
 with the year of the nearest painting.
 
-This is effective a $k$-Nearest Neighbour with $k=1$, figure~\ref{fig:1nn} shows the psuedocode
+This is a Nearest Neighbour algorithm with $k=1$, Figure~\ref{fig:1nn} shows the psuedocode
 for this algorithm
 
 \begin{figure}[h]
@@ -444,7 +473,7 @@ for this algorithm
 \end{figure}
 
 From 1-Nearest Neighbour it is a simple matter to change this to a $k$-Nearest Neighbour algorithm
-as figure~\ref{fig:knn} shows.
+as Figure~\ref{fig:knn} shows.
 
 \begin{figure}[h]
 \begin{algorithmic}
@@ -465,10 +494,10 @@ With this, the method of averaging the year can be any statistical method of tak
 implement. Median is less common as it is slightly more complex to implement. Mode is more 
 difficult to implement programmatically, especially given the sparseness of the data. 
 
-$k$-Nearest Neighbour is good for this project as it makes no assumptions about the state of the
-data, it only uses points in feature space to function. Initially, when feature space data wasn't
-stored exclusively in histograms with was useful as it allowed different distance measure to be
-applied without needing to change the classifier.
+However, using mean raises an interesting problem. Mean returns a point, in this case a year, 
+which may not be a year of any painting in the data set. Median and mode will nearly always return
+a year in the dataset. With mean there is an implicit assumption that Williams painted every year
+without a gap whilst our dataset does have these gaps. 
 
 
 \subsection{Leave-One-Out Cross Validation}
@@ -481,26 +510,58 @@ To measure the goodness of fit the Pearson's product-moment correlation coeffici
 calculated on these orderings; this provides us with a performance measure of each classifier. 
 It is also possible to test Pearson's R for statistical significance.
 
-Pearson's correlation is perfect for this project; A perfect correlation of $1$ is achieved by
-having the classified years exactly match the actual years.
+Correlation is the measure of statistical relationship between two sets of data, a correlation of
+$1$ is a perfect match where one set of data is exactly equal to the other. A correlation of $0$
+means there is no identifiable match between the data sets and a correlation of $-1$ is where the
+data sets are opposite to one another. Because the aim is to have the classified exactly equal to
+the actual year, a correlation closer to $1$ means that the classified years are closer as a whole
+to the actual years.
+
+Another measure applied alongside correlation is statistical significance. This is the degree to
+which a statistical result could have occurred by chance given a null hypothesis. This can be applied
+to a correlation to calculate the extent to which the correlation could have been arrived at by 
+chance.
+
+Overall it is best to try and maximise the correlation between two data-sets whilst keeping the
+significance low. Pearson's product-moment correlation is able to generate the correlation between
+two data-sets and also defines a method of generating the statistical significance on top of this.
+numpy's implementation of this provides both the correlation and p-value (significance) as part of
+the return value.
 
 Both of these are easy to implement - leave-one-out cross validation just involves iterating over
 the entire list of known paintings, popping the current painting from the list and running the 
-classifier on it, then pushing it back into the list at it's original position. Pearson's 
-correlation is implemented by numpy with Pearson's R for statistical significance included
-as a part of the method.
+classifier on it, then pushing it back into the list at its original position.
 
-As a part of this matplotlib was used to plot this data graphically; as a scatter plot for
-actual versus classified year and as a histogram for the number of years out the classifier was.
+A plotting library, matplotlib, was used to generate scatter plots of actual year against 
+classified year to represent this data visually. An example of this is shown in Figure~\ref{fig:scatter}
 
-%TODO Scatter plot
-%TODO histogram of years out
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{img/scatter.png}
+\caption{Scatter Plot of Actual Year against Classified Year for Gabor Filters and $k$-Nearest 
+Neighbour ($k=7$)}\label{fig:scatter}
+\end{figure}
 
 \subsection{Weka 3}
 Weka is a collection of machine learning algorithms\cite{Hall2009WEKA}, used predominately for
-data mining. Due to the number of machine learning techniques it provides it was interesting to
+data mining. Due to the number of machine learning techniques it provides, it was interesting to
 input data from the analysis techniques into Weka.
+
+The first classification technique applied through Weka was linear 
+regression\cite[p.717-727]{Russell2010Artificial}: the act of fitting a linear function to the 
+training data-set then classifying new examples using this function. The function can either be
+univariate (a straight line function) or multivariate, where each example is an $n$-element 
+vector. For our data multivariate is more applicable but may require a reduction in the complexity
+of the function to avoid the overfiting of data (where the classifier is to specific to the 
+training data-set and cannot generalise to new examples well).
+
+Another set of classifiers applied to the data-set through Weka were artificial neural 
+networks\cite[p.727-737]{Russell2010Artificial}. Neural networks are biologically inspired 
+classifiers which use layers of nodes or units, which are connected with directed links. The 
+simplest form of neural network, a single-layer feed-forward neural network (preceptron), where
+all input nodes are connected directly to outputs was used. As well as a more complex neural 
+network with a set number of hidden layers - layers of nodes which do not directly correspond to
+the inputs or outputs, but which perform some intermediary function.
 
 Unfortunately, it seems that the data provided to Weka is not well suited to most of the methods 
 in the tool-kit. The data was, perhaps unsurprisingly, ill suited to regression techniques; each
@@ -516,7 +577,7 @@ few interesting results, the variation in data proved just too much for it.
 
 $k$-Nearest Neighbour does not suffer from this flaw as it does not need to build a model based on
 the data. It purely classifies on the distance between points in feature space. This does make it
-simple and usually too much so for machine learning techniques, but in this case, it turns out to 
+simple (and usually too much so) for machine learning techniques, but in this case, it turns out to 
 be one of the best choices.
 
 
@@ -564,7 +625,7 @@ year.
 \subsubsection{Nearest Exemplar Classification}
 The most obvious use for artistic exemplars is to classify a given example using the nearest 
 artistic exemplar, rather than other members of the data set, as depicted in 
-figure~\ref{fig:nearest-exemplar}.
+Figure~\ref{fig:nearest-exemplar}.
 
 \begin{figure}[h]
 \begin{algorithmic}
@@ -607,7 +668,7 @@ classification step.
 The idea of Nearest Exemplar Classification is to classify the unknown example using the nearest
 exemplar to that example in the feature space. This acts as a $k$-Nearest Neighbour with $k=1$ and
 the space of neighbours only including the exemplars, rather than every other example. The 
-psuedocode for this is shown in figure~\ref{fig:nec-psuedo}.
+psuedocode for this is shown in Figure~\ref{fig:nec-psuedo}.
 
 Initially this was implemented so that the examples that were exemplars were also classified, but
 this is a pointless exercise which only skews the results. Additional logic to remove any exemplar

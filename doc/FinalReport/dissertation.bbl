@@ -24,22 +24,24 @@
   welsh language 1500-1850,'' 2004. [Online]. Available:
   \url{http://people.ds.cam.ac.uk/dwew2/hcwl/menu.htm}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent An example of another digital humanities project.
+  \end{quotation}
 
 \bibitem{2012Research}
 \BIBentryALTinterwordspacing
 ``Research programme in digital collections at {NLW},'' Sept. 2012. [Online].
   Available: \url{http://www.llgc.org.uk/research}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Information into the National Library of Wales
+  research scheme into digital collections. \end{quotation}
 
 \bibitem{2013Your}
 \BIBentryALTinterwordspacing
 ``Your paintings - kyffin williams,'' Mar. 2013. [Online]. Available:
-  \url{http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted_by/kyf%
-fin-williams_artists}
+  \url{http://www.bbc.co.uk/arts/yourpaintings/paintings/search/painted_by/kyffin-williams_artists}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent The digital collection of Sir John Kyffin Williams'
+  work. \end{quotation}
 
 \bibitem{Bacardit2013Largescale}
 \BIBentryALTinterwordspacing
@@ -60,7 +62,9 @@ S.~J. Belongie, J.~Malik, and J.~Puzicha, ``Matching shapes,'' in
   IEEE, 2001, pp. 454--461 vol.1. [Online]. Available:
   \url{http://dx.doi.org/10.1109/iccv.2001.937552}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines the concept of Shape Contexts, which have
+  similarities to Circular Histogram of Orientated Gradient Descriptors.
+  \end{quotation}
 
 \bibitem{Berezhnoy2005Authentic}
 \BIBentryALTinterwordspacing
@@ -141,7 +145,11 @@ J.~G. Daugman, ``Uncertainty relation for resolution in space, spatial
   pp. 1160+, July 1985. [Online]. Available:
   \url{http://dx.doi.org/10.1364/josaa.2.001160}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines a method of creating a filter to match a
+  large range of orientations over two dimensions. These filters (named Gabor
+  filters) are commonly applied to image processing problems due to the range
+  of orientations it can match (rather than a restricted range of orientations
+  as most other filters offer). \end{quotation}
 
 \bibitem{Davies2004100}
 \BIBentryALTinterwordspacing
@@ -193,7 +201,10 @@ L.~M. Hughes. (2011) Evaluating and measuring the value: use and impact of
   digital collections. [Online]. Available:
   \url{http://www.worldcat.org/isbn/9781856047203}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Having extensively used a digital collection as
+  part of this project it is interesting to look back on other projects which
+  have made use of digital collections to be able to compare and contrast this
+  project use of digital collections to these other uses. \end{quotation}
 
 \bibitem{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy}
 E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy}: Open source
@@ -223,6 +234,17 @@ J.~Li, L.~Yao, E.~Hendriks, and J.~Z. Wang, ``Rhythmic brushstrokes distinguish
   2013. [Online]. Available:
   \url{http://docs.python.org/2/glossary.html#term-duck-typing}
 \BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Documentation reference for Python's definition of
+  ``duck typing''; a useful programming style which allows flexibility without
+  the need for strict object hierarchies. \end{quotation}
+
+\bibitem{Russell2010Artificial}
+\BIBentryALTinterwordspacing
+S.~J. Russell, P.~Norvig, and E.~Davis, \emph{Artificial intelligence : a
+  modern approach}, 3rd~ed.\hskip 1em plus 0.5em minus 0.4em\relax Prentice
+  Hall, Dec. 2010. [Online]. Available:
+  \url{http://www.worldcat.org/isbn/0136042597} 9780132071482.
+\BIBentrySTDinterwordspacing
 
 
 \bibitem{Unsworth2000Scholarly}
@@ -232,7 +254,9 @@ J.~Unsworth, ``Scholarly primitives: what methods do humanities researchers
   Available:
   \url{http://people.lis.illinois.edu/~unsworth//Kings.5-00/primitives.html}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines the idea of a scholarly primitives (``a
+  finite list of self-understood terms'') in a digital humanities.
+  \end{quotation}
 
 \bibitem{Williams1993Across}
 \BIBentryALTinterwordspacing
@@ -247,9 +271,10 @@ K.~Williams, \emph{Across the straits : an autobiography}.\hskip 1em plus 0.5em
 \BIBentryALTinterwordspacing
 G.~Yang, ``Gabor filter - file exchange - {MATLAB} central,'' Nov. 2010.
   [Online]. Available:
-  \url{http://www.mathworks.co.uk/matlabcentral/fileexchange/23253-gabor-filte%
-r/content/Gabor%20Filter/gabor_fn.m}
+  \url{http://www.mathworks.co.uk/matlabcentral/fileexchange/23253-gabor-filter/content/Gabor%20Filter/gabor_fn.m}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines an example algorithm for Gabor filters in
+  MATLAB. This was converted to Python for the generation of Gabor filters to
+  avoid mathematical errors. \end{quotation}
 
 \end{thebibliography}
