@@ -63,7 +63,7 @@ Welsh.''\cite{Davies2004100}
 blockier style and changed use of colour}\label{late_example}
 \end{figure}
 
-As his life progressed Williams's epilepsy grew steadily worse, especially when exposed to 
+As his life progressed Williams' epilepsy grew steadily worse, especially when exposed to 
 bright light. As a result most of his paintings are of overcast Welsh landscapes and appear to 
 become visibly darker over time\cite{Harris2011How}.
 
@@ -71,7 +71,7 @@ become visibly darker over time\cite{Harris2011How}.
 %to paintings in the collections of the National Library of Wales such as
 %Snowdonian Summits (1970-1990) or Yr Wyddfa a Grib Goch (1950-1960).
 
-The aesthetic of Williams's Welsh landscapes is contrasted by the paintings he
+The aesthetic of Williams' Welsh landscapes is contrasted by the paintings he
 made following a trip to Patagonia to paint the landscape and people of the
 Welsh communities there in 1968 as part of a Winston Churchill Foundation
 scholarship. The colours and application of paint in pictures produced in
@@ -90,7 +90,7 @@ from different collections remotely, using digital images.
 \label{fig:lle-cul}
 \end{figure}
 
-Williams's work is well represented in public collections in Wales
+Williams' work is well represented in public collections in Wales
 (particularly at the National Library of Wales, the National Museums and
 Galleries of Wales and Oriel Ynys M\^{o}n, Anglesey). His pictures, often
 depicting the landscape and people of north-west Wales were also tremendously
@@ -171,8 +171,8 @@ collection. It was a part of Williams' will that the contents of his workshop wa
 to \gls{nlw} on the condition that any destroyed or defaced work was not to be displayed publicly.
 
 Therefore this spreadsheet is the most comprehensive documents on Williams' work. Unfortunately a
-lot of Williams' work does not have a lot of information on the dates in which it was painted, 
-Llyod had made some good attempts at predicting the year based on when the painting first appeared
+lot of Williams' work does not have a lot of information on the dates on which it was painted, 
+Lloyd had made some good attempts at predicting the year based on when the painting first appeared
 in exhibitions, so not all paintings have a single year associated with them. This spreadsheet 
 does contain a lot of other useful meta-data as well as the year or year range in which the work 
 was created, including canvas size and painting type. Not all of this meta-data was useful or 
@@ -187,7 +187,7 @@ work.
 
 \subsubsection{Meeting of the 31\textsuperscript{st} October, 2011}
 This meeting was between Lloyd, Hannah and I to discuss the state of the project particularly the
-aims Hannah and I had for the project and when Lloyd's expectations and aspirations for the joint
+aims Hannah and I had for the project and Lloyd's expectations and aspirations for the joint
 work. Notably both our aspirations included being able to publish a paper before the submission of
 the project, or, failing that, over the summer following the submission of the project.
 
@@ -203,22 +203,22 @@ publishing a paper. Lloyd was also able to provide a cleaner version of his spre
 
 More artistic details were discussed in the meeting, particular retaining to the application of
 expert knowledge to the temporal classification of Williams' work. It was shortly after this 
-meeting that Dr. Paul Joyner was contacted to provided artistic exemplars for many years in 
+meeting that Dr. Paul Joyner was contacted to provide artistic exemplars for many years in 
 Williams' career.
 
 Some other interesting and useful points were brought up with regards to Williams' work; such as the artistic cut-off 
 point between early and late in Williams' career is around 1973. The theory that the canvas size
-would be proportional to the year it was painted in due to the expense of paint on larger 
+would be proportional to the year it was painted is due to the expense of paint on larger 
 canvases.
 
 It was also mentioned that the validity of some dates may be dubious, it might be the case that 
-certain painting were said to be painted later than they actually were to increase the sale price.
+certain paintings were said to be painted later than they actually were to increase the sale price.
 
 
 \section{Existing Work}
 
 \subsection{Edge-Orientated Gradients}\label{sec:existing-hogs}
-As Williams's work is highly texturally, looking at the edge orientation of the image is
+As Williams' work is highly textural, looking at the edge orientation of the image is
 likely to be a valuable technique to use.
 
 One technique recommended by Hannah was to look at \gls{hog}. The suggested paper outlined the use
@@ -235,7 +235,7 @@ gamma compression, but not as much as log compression.
 
 \item Compute gradients. Often the simplest are the better here; Gaussian smoothing followed by 
 discrete derivative masks (e.g.: Figure~\ref{fig:1x2-ddm}, Figure~\ref{fig:1x3-ddm}), etc. For 
-colour this was done for each channel, and take the one with the largest norm.
+colour this was done for each channel, and take the one with the best gradient (the largest norm).
 
 \item Spatial and Orientation binning:
 \begin{itemize}
@@ -244,7 +244,7 @@ colour this was done for each channel, and take the one with the largest norm.
 bins.
 \end{itemize}
 
-\item Normalisation and Descriptor Blocks. Gradients vary over foreground/background, etc. 
+\item Normalisation and Descriptor Blocks. Gradients vary over foreground, background, etc. 
 Typically the blocks were overlapped so that each scalar response contains several components.
 
 \item Pass a detector window across the image.
@@ -279,24 +279,24 @@ the obvious two. Normalisation is another unneeded step as time complexity isn't
 needs to be thoroughly considered, as long as the analysis completes within a reasonable amount of
 time.
 
-The leaves the act of computing the gradients (again, this can be done without Gaussian smoothing
-as that reduces accuracy) which should a simple matter implemented by earlier techniques. Binning 
-by \gls{rhog} or \gls{chog} descriptors, which may prove to the one of the more difficult parts of
+This leaves the act of computing the gradients (again, this can be done without Gaussian smoothing
+as that reduces accuracy) which should have been implemented by earlier techniques. Binning 
+by \gls{rhog} or \gls{chog} descriptors, which may prove to be one of the more difficult parts of
 implementing this technique.
 
 \Gls{rhog} descriptors have similarities to \gls{sift} descriptors, but are used quite 
 differently; \gls{sift} descriptors are optimised for sparse baseline matching whilst \gls{rhog}
 descriptors are optimised for the dense and robust coding of a spatial form. The size of the
-descriptor affects performance when using \gls{rhog}, for paintings it may turn out that a size
+descriptor affects performance when using \gls{rhog}. For paintings it may turn out that a size
 relating to the original size of the painting is a good way of getting around this problem.
 
 \Gls{chog} descriptors become more complex still. They are similar to Shape 
-Context\cite{ Belongie2001Matching}, but differ in one key aspect: in \gls{chog} descriptors each
-spatial cell holds a stack of gradient-weighted orientation cells over an orientation-independent
+Contexts\cite{ Belongie2001Matching}, but differ in one key aspect: in \gls{chog} descriptors each
+spatial cell holds a stack of gradient-weighted orientation cells. This is instead of an orientation-independent
 edge-presence count which Shape Contexts use.
 
 According to the author it is better to think of \gls{chog} descriptors as an advanced form of 
-centre-surround coding as small descriptors with very few radial bins gave the best results.
+centre-surround coding, as small descriptors with very few radial bins gave the best results.
 
 Local contrast normalisation can be performed to help against local variations in the illumination
 of foreground and background.
@@ -307,7 +307,7 @@ technique being just a simple histogram of edge orientations.
 
 \subsection{Brush-stroke Analysis}\label{sec:existing-brush-stroke}
 Stroke analysis is one of the main goals for this project. It is quite apparent from looking at 
-Williams's paintings that his brush-strokes change over time, his early work having lots of
+Williams' paintings that his brush-strokes change over time, his early work having lots of
 smaller strokes over the canvas to large bold strokes in his later work.
 
 The first paper found relating to the analysis of brush-strokes involved moving a circular filter
@@ -342,20 +342,20 @@ algorithm is applied several times, lowering the tolerances for distance within 
 Connected components as a result of this clustering and have noise reduction performed upon them.
 Finally, the two types of brush-strokes are combined.
 
-This technique may need some changing to account for Williams's use of a pallet knife, but
-the overall principals of this technique should work with Williams's paintings.
+This technique may need some changing to account for Williams' use of a pallet knife, but
+the overall principals of this technique should work with Williams' paintings.
 
 
 \section{Analysis Objectives}
 Analysis is one of the biggest sections of this project and involves creating techniques which 
-will allow comparison of paintings in a way which will allow some form of classification to be
-performed on them.
+allow the comparison of paintings. This analysis will produce a result which can be used in a
+classification algorithm.
 
-Typically it is expected that this produces some form of high-dimension state space in which each
+Typically it is expected that this produces some form of high-dimensional state space in which each
 painting is a point in the state space. From this state space the distance between one painting
-and another can be easily resolved using a distance measure like Manhattan distance 
+and another can be easily resolved using a distance measure. Common distance measure include Manhattan distance 
 \eqref{eq:manhattan_distance}, euclidean distance \eqref{eq:euclidean_distance} or a distance 
-measure more specific to the state space should it be needed (e.g.: chi-squared for histograms).
+measure more specific to the state space should it be needed (e.g.: \gls{chi2} for histograms).
 
 \begin{equation}\label{eq:manhattan_distance}
 d_1(\mathbf{p},\mathbf{q}) = \|\mathbf{p}-\mathbf{q}\|_1 = \sum^{n}_{i=0}{|p_i-q_i|}
@@ -396,36 +396,37 @@ method of analysing an image, especially for comparison. As with statistical ana
 will be largely effective by colour model.
 
 \subsection{Texture Analysis}
-As Williams's work is very textural, it follows that a main part of the analysis should
-focus around the texture of his paintings. Unfortunately for this section, it seems unlikely that
-I will be able to get any 3-dimensional models of Williams's paintings. This would have been a nice,
-if rather large, section of the project.
+As Williams' work is very textural, it follows that a main part of the analysis should
+focus around the texture of his paintings. Unfortunately for this section, it was not possible to
+get a hold of 3-dimension models of Williams' paintings. This would have given more
+detailed results but would have taken up more time than was available for the project. Instead this has been 
+suggested as a topic for future research.
 
-Instead it is more sensible to look at the orientation of edges in Williams's work. Some useful 
+Instead it is more sensible to look at the orientation of edges in Williams' work. Some useful 
 pre-existing techniques have already been discussed in section~\ref{sec:existing-hogs}. Histograms
-of edge orientation\cite{Dalal2005Histograms} seem like a promising concept which may prove 
+of orientated gradients\cite{Dalal2005Histograms} seem to be a promising concept which may prove 
 relatively simple to implement.
 
 This section may also help with any work into brush-stroke analysis (see 
 section~\ref{sec:analysis-brush-stroke}).
 
 \subsection{Brush-stroke Analysis}\label{sec:analysis-brush-stroke}
-With Williams's distinctive style and how obviously this style changes over time, the ultimate aim 
+With Williams' distinctive style and how obviously this style changes over time, the ultimate aim 
 of this project is to be able to analyse the brush-strokes\footnote{A slight misnomer as Williams 
 used a palette knife to paint with rather than a traditional brush} in a painting.
 
 From looking at the paintings it is very apparent that in his earlier work he made a lot more 
-strokes than in his later works\footnote{Although this isn't quite true as the canvases he worked
+strokes than in his later work\footnote{Although this isn't quite true as the canvases he worked
 on in his later life tended to be larger}. The strokes in his later work tend to have larger areas
 and span more of the canvas.
 
-If it is possible to calculate a rough amount and size of strokes made in a given painting it 
-should be a reasonable piece of data to classify on. As previously discussed in section~
+If it is possible to calculate a rough number and size of strokes made in a given painting, it
+should provide a reasonable set of data on which to classify this painting. As previously discussed in Section~
 \ref{sec:existing-brush-stroke} there has already been a decent amount of research into determining
 brush-strokes in a painting. 
 
 It would be preferable to try and take one of the techniques discussed in that research and change
-it to suit the needs of the project rather than attempting to create a whole new method of 
+it to suit the needs of the project. Rather than attempting to create a whole new method of 
 brush-stroke recognition.
 
 \subsection{Ensemble Techniques}
@@ -434,16 +435,17 @@ techniques together; a good example would be colour histograms and histograms of
 
 This form of analysis is inspired by the concept of the same name in statistics and machine 
 learning which tend to obtain better predictive performance. It may also be worth while trying to
-weight different techniques so that the techniques which give the best performance affect the 
-result of the ensemble technique more.
+weight the results of techniques so that those which give the best performance affect the overall 
+result of the ensemble more.
 
 
 \section{Classification Objectives}
 The overall objective of classification is to be able to label a painting by Williams as 
 being painted in a given year based on analysis performed on all other paintings with known years.
+The ultimate aim of this is to be able to label a painting by Williams, where the date it was
+painted in is unknown, as being from a given year within a reasonable degree of certainty.
 
-This ties in with the main aim of this project of being able to classify any Williams
-painting, whether it has a known or unknown year, as being from a given year. Evidently for 
+Evidently for 
 paintings with an unknown year it is difficult to know how accurately the system has been, so, for
 the most part, these paintings have been ignored and those paintings with a known year have made
 up the training and validation set.
@@ -477,7 +479,7 @@ detail in section~\ref{sec:bg-weka}.
 % FIXME Find out who Julie is here.
 Another technique suggested by Julie Greensmith is to use \gls{lcs}\cite{Bacardit2013Largescale}, 
 which has an implementation for Weka. This may prove to give very good results for the kind of
-analysis being performed on Williams's work.
+analysis being performed on Williams' work.
 
 \subsubsection{Use of Weka}\label{sec:bg-weka}
 Weka is a machine learning toolkit which boasts an impressive number of learning techniques. As
