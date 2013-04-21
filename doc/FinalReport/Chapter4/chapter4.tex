@@ -223,15 +223,21 @@ Later on, with the move to \gls{cv2}, this became a less expensive option and it
 create a 2D histogram for each channel in the colour model.
 
 The distance measure between colour histograms is also handled by \gls{opencv} using a compare histogram
-method. Under the covers this uses a Chi Squared ($\chi^2$) (Equation~\ref{eq:chi_squared}) method to
-compare to histograms of equal dimensions.
+method. Under the covers this uses a \gls{chi2} (Equation~\ref{eq:chi_squared}) method to
+compare to histograms of equal dimensions. \gls{chi2} is not the only distance measure that can be
+applied to histograms; distance measures like Euclidean and Manhattan distance which have been 
+previously mentioned can also be applied to histograms, but do not include normalisation that 
+\gls{chi2} does so they are less useful to the histograms used in this project.
 
 \begin{equation}\label{eq:chi_squared}
 \chi^2(H_1,H_2) =\sum_I{\frac{(H_1(I) - H_2(I))^2}{H_1(I)}}
 \end{equation}
 
-It should be noted that this method includes normalisation so any histograms passed into $\chi^2$
-do not need to be, themselves, normalised.
+There are other methods of comparing histograms to one another, which \gls{opencv} provides by 
+default, but which are not very well suited to the application. Methods like histogram 
+intersection where, for each bin, the smallest value is chosen between the two histograms; or 
+calculating the correlation between two histograms, are obviously less useful than an actual 
+measure of distance.
 
 
 \section{Texture Analysis}
@@ -446,7 +452,7 @@ better performing techniques affect the results more.
 
 Another method commonly used in machine learning is Boosting, where the model is built 
 incrementally, with the focus being on examples which were mis-classified by the previous models.
-This method does improve accuracy, but is known to over-fit the data set. 
+This method does improve accuracy, but is known to over-fit the dataset. 
 
 
 \section{Classification and Validation}
@@ -455,7 +461,7 @@ on these results and also to validate the results of both so that different meth
 and classification can be compared for performance.
 
 \subsection{$k$-Nearest Neighbour}
-The simplest method of classification is to work out which painting in the data set is closest in
+The simplest method of classification is to work out which painting in the dataset is closest in
 feature space to the painting which needs to be classified and classify the year of this painting
 with the year of the nearest painting.
 
@@ -495,15 +501,15 @@ implement. Median is less common as it is slightly more complex to implement. Mo
 difficult to implement programmatically, especially given the sparseness of the data. 
 
 However, using mean raises an interesting problem. Mean returns a point, in this case a year, 
-which may not be a year of any painting in the data set. Median and mode will nearly always return
+which may not be a year of any painting in the dataset. Median and mode will nearly always return
 a year in the dataset. With mean there is an implicit assumption that Williams painted every year
 without a gap whilst our dataset does have these gaps. 
 
 
 \subsection{Leave-One-Out Cross Validation}
 To validate the classified years from $k$-Nearest Neighbour, this project uses Leave-one-out Cross
-Validation; a technique which involves removing each point from the known data set, applying the
-classification technique to this point against the remaining data set. This produces a list of
+Validation; a technique which involves removing each point from the known dataset, applying the
+classification technique to this point against the remaining dataset. This produces a list of
 classified years against the actual years.
 
 To measure the goodness of fit the Pearson's product-moment correlation coefficient was 
@@ -512,8 +518,8 @@ It is also possible to test Pearson's R for statistical significance.
 
 Correlation is the measure of statistical relationship between two sets of data, a correlation of
 $1$ is a perfect match where one set of data is exactly equal to the other. A correlation of $0$
-means there is no identifiable match between the data sets and a correlation of $-1$ is where the
-data sets are opposite to one another. Because the aim is to have the classified exactly equal to
+means there is no identifiable match between the datasets and a correlation of $-1$ is where the
+datasets are opposite to one another. Because the aim is to have the classified exactly equal to
 the actual year, a correlation closer to $1$ means that the classified years are closer as a whole
 to the actual years.
 
@@ -624,7 +630,7 @@ year.
 
 \subsubsection{Nearest Exemplar Classification}
 The most obvious use for artistic exemplars is to classify a given example using the nearest 
-artistic exemplar, rather than other members of the data set, as depicted in 
+artistic exemplar, rather than other members of the dataset, as depicted in 
 Figure~\ref{fig:nearest-exemplar}.
 
 \begin{figure}[h]
@@ -688,7 +694,7 @@ themselves.
 This proved to give slightly worse correlation per technique than $k$-Nearest Neighbour. This 
 result is to be expected; for a start an artistically classified exemplar is unlikely to be the
 same as a statistically classified exemplar (see Section~\ref{sec:sce}). Also, with fewer examples
-to classify against, any variance in the data set (of which there is a lot) will likely be 
+to classify against, any variance in the dataset (of which there is a lot) will likely be 
 magnified.
 
 Lastly, a painting may be picked as an exemplar by an expert for different reasons than any
@@ -828,5 +834,5 @@ y_{_{5}} = 5\left\lfloor\frac{y}{5} \right\rfloor
 \end{equation}
 
 This does improve the correlation by a little as it helps to counteract the sparseness of the data
-in the data set. Whilst the improvements in correlation are nice, the information lost by rounding
+in the dataset. Whilst the improvements in correlation are nice, the information lost by rounding
 is not really gained back by this increase in correlation.
