@@ -1,13 +1,13 @@
 \chapter{Results}
 
-The section shows the results from running the research on the dataset. These results focus on 
+This chapter shows the results from running the research on the dataset. These results focus on 
 correlation coefficients and the differences between artistic and statistic exemplars.
 
 \section{Correlation Coefficient Results}
 One parameter for our classifier is the choice of $k$ for $k$-Nearest Neighbour. Simply setting 
 $k=1$ has the effect of assigning the year of the nearest painting in feature space to the current
-test painting, whilst setting $k=102$ has the effect of giving the painting the mean year of the 
-entire data set. Obvious, a point between the two is likely to be the best. 
+test painting. Whilst setting $k=102$ has the effect of giving the painting the mean year of the 
+entire data set. Obviously, a point between the two is likely to be the best. 
 
 \begin{figure}[h]
 \centering
@@ -15,8 +15,8 @@ entire data set. Obvious, a point between the two is likely to be the best.
 \caption{Correlation Coefficients $r$ against $k$ values for $k$-Nearest Neighbour}\label{fig:r-graph}
 \end{figure}
 
-From Figure~\ref{fig:r-graph} it is apparent that for many of the features spaces we have that the 
-optimum value of $k$ is around 7 or 8. Table~\ref{tab:r-results} shows the actual results for each 
+From Figure~\ref{fig:r-graph} it is apparent that for many of the feature spaces we have an
+optimum value of $k$ of around 7 or 8. Table~\ref{tab:r-results} shows the actual results for each 
 feature space for a $k$ of 7, where $r$ is the correlation coefficient given by Pearson's, 
 $P(r)$ is the p-value significance of $r$.
 
@@ -49,7 +49,7 @@ Gabor filters: 4 orientations			& 0.441	 & \textless0.001 & 71\% \\
 \section{Ensemble Results}
 Using ensemble methods can both improve and weaken the correlation coefficients depending on the
 techniques used. The inclusion of colour histogram analysis and HSV colour-space statistical
-analysis typically weakens the results, whilst combining \gls{hog} and Gabor filters typically 
+analysis typically weakens the results. Whilst combining \gls{hog} and Gabor filters typically 
 improves the correlation coefficients beyond each technique individually. 
 Table~\ref{tab:ensemble-results} shows some examples of this.
 
@@ -78,8 +78,8 @@ combination of RGB Histograms and \gls{hog} has decreased performance, whilst th
 \newpage
 \section{Exemplar Results}
 The intuition -- that using artistically chosen exemplars could help to exploit knowledge about 
-the way the paintings change over time -- turned out to be incorrect; results for Gabor filters 
-with 4 orientations (the best performing method in our previous experiment) are shown in 
+the way the paintings change over time -- turned out to be incorrect. Results for Gabor filters 
+with 4 orientations (the best performing method in the previous experiment) are shown in 
 Table~\ref{artistic_exemplars}.  Results for the other feature spaces show a similar pattern, the 
 same distance measure ($\chi^2$) has been used throughout. 
 

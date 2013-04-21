@@ -4,74 +4,75 @@
 
 %Have you tested your system on 'real users'? For example, if your system is supposed to solve a problem for a business, then it would be appropriate to present your approach to involve the users in the testing process and to record the results that you obtained. Depending on the level of detail, it is likely that you would put any detailed results in an appendix.
 
-This chapter details the approach to testing and how validation was performed cross-validation was
+This chapter details the approach to testing and how cross-validation was
 performed to evaluate different analysis and classification techniques.
 
 \section{Overall Approach to Testing}
-As this is a research-based project, it is difficult to perform any for of unit, functional or 
-requirements testing. Most testing is based on validating the results of analysis and 
+As this is a research-based project, it is difficult to perform any unit, functional or 
+requirements based-testing. Most testing is based on validating the results of analysis and 
 classification techniques.
 
-There is, however, a sense in which the validation of analysis techniques is a form of testing,
-higher correlations would suggest that a given analysis technique is both implemented properly and
+There is, however, a sense in which the validation of analysis techniques is a form of testing.
+Higher correlations would suggest that a given analysis technique is both implemented properly and
 that it represents the data well.
 
-There is also a sense in which testing that a technique does what it says it will is both 
+There is also a sense in which testing that a technique does what it says it will do, is both 
 difficult and somewhat unnecessary. One would expect to see the correlation increase as more
-complex analysis techniques are implemented so if a recently implemented technique gives a lower
-correlation that a previous technique then this might be considered as a failing test.
+complex analysis techniques are implemented, so if a recently implemented technique gives a lower
+correlation that a previous technique, then this might be considered as a failing test.
 
 If the correlation is improved by the analysis then, even if the technique isn't working 
 completely as advertised, it is still doing something right. It was common for the analysis to be
-``tinkered'' with to try and improve the performance of the analysis so commonly any errors were
+``tinkered'' with to try and improve the performance of the analysis, so commonly any errors were
 picked up at this point.
 
 All analysis techniques were performed across two machines and typically acted similarly. The only
-discrepancies noticed was on techniques which heavily relied on floating point numbers; usually a
-few of the correlations were out by a proportionally tiny amount. This is believed to be because 
-one system has a 32-bit operating system and the other a 64-bit.
+discrepancies noticed were on techniques which heavily relied on floating point numbers. This took the form of 
+a few of the correlations being slightly different between the machines. This is believed to be because 
+one system has a 32-bit operating system and the other is a 64-bit. This would mean that 
+floating point numbers would be slightly more accurate on one machine over the other.
 
 
 \section{Validation}
 Cross-validation is a statistical concept used to assess how the results of statistical analysis
-generalise to an independent data set. Cross-validation is typically applied to machine learning
-classifiers to test if a technique is overfitting the data; that is how specific the technique is
-to the original data set and how it can cope with new examples. For example, a rote learner cannot
-classify any unseen examples as the classification is performed based solely on the training set.
+generalise to an independent dataset. Cross-validation is typically applied to machine learning
+classifiers to test if a technique is overfitting the data. That is how specific the technique is
+to the original data set and how it can cope with new, unseen, examples. For example, a rote learner cannot
+classify any unseen examples, as the classification is performed based solely on the training set.
 
-As the overall goal is to be able to classify any Williams painting it is important that the 
+As the overall goal is to be able to classify any Williams painting, it is important that the 
 program is able to handle new examples, not just those for which the year is known.
 
 There are many forms for calculating cross-validation, usually involving taking sub-samples of the
-original data set and removing them from the training set to create a validation set.
+original dataset and removing them from the training set to create a validation set.
 
-$k$-fold cross-validation is a common method for performing this. It involves splitting the data
-set into $k$ sections or \emph{fold}. Each fold is removed from the data set, the classifier is
-trained on the remaining data, then the fold is classified using the trained data. 
+$k$-fold cross-validation is a common method for performing this. It involves splitting the dataset 
+into $k$ sections or \emph{folds}. Each fold is removed from the dataset, the classifier is
+trained on the remaining data, then the fold is classified using this trained data. 
 
-The other common form of cross-validation is to take random sub-samples from the data set and are
+The other common form of cross-validation is to take random sub-samples from the dataset and are
 removed from the training set and then classified using it. This process is performed repeatedly
-until a good number of samples has been taken. This has advantages and disadvantages over $k$-fold
+until a good number of samples have been taken. This has advantages and disadvantages over $k$-fold
 cross-validation, it has the problem that not all data points are considered during validation,
 but doesn't depend on the size of the data set.
 
 
 \subsection{Leave-One-Out Cross-Validation}
-Leave-one-out cross-validation is a form of $k$-fold cross-validation in which the number of folds
+Leave-one-out cross-validation is a form of $k$-fold cross-validation, in which the number of folds
 is equal to the size of the data set. This leads to the behaviour of leaving a single data point
 each time and classifying it against the rest of the data set. Because data sets in machine 
 learning are typically very large this usually isn't an option due to time complexity.
 
 However, because of the use of $k$-Nearest Neighbour-based classifiers (which need no re-training 
-when data points are added or removed) and a small number of known data points, it is the best 
+when data points are added or removed) and a small number of known data points, it is one of the best 
 method of cross-validation for this project.
 
-Leave-one-out cross-validation provides us with a classified year for each data point and, because
-we only use data points with known years, we can then work out the correlation between actual and
-classified years to get a value of performance.
+Leave-one-out cross-validation provides us with a classified year for each data point. Because
+only data points with known years are used, the correlation between actual and
+classified years can be calculated to get a measure of performance.
 
-To produce this value Pearson's product-moment correlation was used (Equation~\ref{eq:pearsons})
-the best techniques would produce a correlation value closer to $1$ than other techniques. Another
+To produce this value Pearson's product-moment correlation was used (Equation~\ref{eq:pearsons}).
+The best techniques would produce a correlation value closer to $1$ than other techniques. Another
 part of Pearson's is that it is easy to generate statistical significance (the p-value). This
 describes the extent to which the observations could appear by chance in a given single null
 hypothesis.
