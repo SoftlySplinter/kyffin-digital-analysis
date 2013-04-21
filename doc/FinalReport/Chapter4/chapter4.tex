@@ -223,7 +223,7 @@ Later on, with the move to \gls{cv2}, this became a less expensive option and it
 create a 2D histogram for each channel in the colour model.
 
 The distance measure between colour histograms is also handled by \gls{opencv} using a compare histogram
-method. Under the covers this uses a Chi Squared ($\chi^2$) (equation~\ref{eq:chi_squared}) method to
+method. Under the covers this uses a Chi Squared ($\chi^2$) (Equation~\ref{eq:chi_squared}) method to
 compare to histograms of equal dimensions.
 
 \begin{equation}\label{eq:chi_squared}
@@ -275,7 +275,7 @@ mathematically. First pass a mask of the form $\left[\begin{smallmatrix}-1\\0\\1
 by one in the form $\left[\begin{smallmatrix}-1 & 0 & 1\end{smallmatrix}\right]$. These give 
 $\frac{\delta f}{\delta x}$ and $\frac{\delta f}{\delta y}$ respectively.
 
-A gradient direction function, shown in equation~\ref{eq:grad_dir}, can then be used on both these
+A gradient direction function, shown in Equation~\ref{eq:grad_dir}, can then be used on both these
 values to work out the actual direction of the gradient.
 
 \begin{equation} \label{eq:grad_dir}
@@ -672,7 +672,8 @@ psuedocode for this is shown in Figure~\ref{fig:nec-psuedo}.
 
 Initially this was implemented so that the examples that were exemplars were also classified, but
 this is a pointless exercise which only skews the results. Additional logic to remove any exemplar
-which matched the current example.
+which matched the current example was added as paintings were often classified as begin nearest to
+themselves.
 
 \begin{figure}[h]
 \begin{algorithmic}
@@ -686,13 +687,14 @@ which matched the current example.
 
 This proved to give slightly worse correlation per technique than $k$-Nearest Neighbour. This 
 result is to be expected; for a start an artistically classified exemplar is unlikely to be the
-same as a statistically classified exemplar (see section~\ref{sec:sce}). Also, with fewer examples
+same as a statistically classified exemplar (see Section~\ref{sec:sce}). Also, with fewer examples
 to classify against, any variance in the data set (of which there is a lot) will likely be 
 magnified.
 
 Lastly, a painting may be picked as an exemplar by an expert for different reasons than any
 analysis technique that currently exists can give; emotional connections and knowledge of the
-artists history can be very subjective and may not relate to anything put down in paint.
+artists history can be very subjective and may not relate to anything put down in paint, or 
+captured in the feature spaces we investigate.
 
 
 \subsection{Statistically Classified Exemplars}\label{sec:sce}
@@ -700,7 +702,7 @@ artists history can be very subjective and may not relate to anything put down i
 Another approach to exemplars is to work out a theoretical exemplar for a given period; the 
 centroid of paintings within the given feature space for a single year, for example. 
 Figure~\ref{fig:centroid} shows how a centroid is generated for three points in a 2D feature
-space. However, for a high-dimension feature space this method needs to be simplified.
+space. However, for a high-dimensional feature space this method needs to be simplified.
 
 \begin{figure}[h]
 \centering
@@ -709,7 +711,7 @@ space. However, for a high-dimension feature space this method needs to be simpl
 \end{figure}
 
 Equation~\ref{eq:sce} shows how the centroid ($C$) can be generated in a high-dimensional feature 
-space (of $D$ dimensions), this works by taking the mean (equation~\ref{eq:mean}) of each feature 
+space (of $D$ dimensions), this works by taking the mean (Equation~\ref{eq:mean}) of each feature 
 in the set of paintings ($x_1, x_2,\dotsc,x_k$) for a single year, this will give the point in 
 feature space that is most central. This is the same technique used to generate centroids in most 
 clustering algorithms ($k$-Means Clustering, for example).
@@ -720,15 +722,15 @@ clustering algorithms ($k$-Means Clustering, for example).
 \end{equation}
 
 This may become a long operation depending on how many dimensions the feature space has. A
-technique like \gls{pca} may be useful to help cut down the number of dimensions needed that this
+technique like \gls{pca}\cite{Bacardit2013Largescale} may be useful to help cut down the number of dimensions needed that this
 algorithm uses.
 
 Initially, as I wasn't producing histogram results from analysis techniques, this was a little
 complex to do; each analysis technique had to have its own method of generating the centroid and
 returning the data for this centroid. The change to histogram results made everything a lot easier
 and, combined with the mean method from numpy, which can handle the mean along 
-different axes, rather than just over a flattened array. This is the perfect too for the job as
-histograms are returned as numpy arrays and the data passed into the centroid method is now an 
+different axes, rather than just over a flattened array made this process a lot easier to compute,
+especially as histograms from \gls{cv2} are returned as numpy arrays and the data passed into the centroid method is now an 
 array of these histograms. Calculating the mean across the first axis has the effect of 
 calculating the centroid. Equation~\ref{eq:mean-matricies} shows this mathematically on 2D 
 Matrices where $\bar{x}_n$ is the mathematical mean of $x$ along axis $n$.
@@ -755,30 +757,41 @@ x=&\begin{bmatrix}
 \label{eq:mean-matricies}
 \end{align}
 
-Whilst this is a useful theoretical exemplar, it doesn't fit with the idea of an artistic 
+Whilst the mean histogram could be a useful centroid, it doesn't fit with the idea of an artistic 
 exemplar, it is quite possible that the art historians would be able to imagine a theoretical
 painting which suits that year but they were limited to real paintings so it should follow that
-the statistical exemplars can also be constrained in the same fashion.
+the statistical methods are also be constrained in the same fashion.
 
-This could be seen as a form of generalisation. Though this may affect the results for the worse
-it may help prevent overfitting of the classification technique. It also shows which years are 
-commonly chosen as exemplars correctly and incorrectly, this should give a vision of the 
-difference between the artistic and statistic exemplars and where the artistic exemplars are the
-outliers of that particular year.
+A note on terminology; an \emph{artistic exemplar} is an exemplar which the art historians view
+to be the most representative painting. A \emph{centroid} is the mean of a set of analysis over a
+particular year and is a point in feature space, it is not an exemplar as it does not exists as a 
+real painting. A \emph{statistical exemplar} is the nearest real painting to a centroid.
 
-To do this a 1-Nearest Neighbour algorithm is applied to the data for that year from the centroid,
-this, of course, has the effect of picking the painting closest to the centroid, which is then
-used as the exemplar for that year. The same technique used to classify using artistic exemplars
-is then applied, only with these exemplars rather than the ones loaded from the exemplar file.
+Statistical exemplars are generating by applying a nearest neighbour algorithm to all paintings
+where the only neighbour is the centroid. This could be seen as a form of generalisation and may
+help prevent overfitting of a classification technique. It may also show which years in which
+the artistic exemplar commonly matches the statistical exemplars and where they do not. This gives
+a vision of the difference between artistic and statistic exemplars and, perhaps, where the 
+artistic exemplars are the outliers of a particular year.
 
-This then opened up the option to use inheritance to cut down on code repetition. The artistic
-exemplar classifier could be extended by the centroid classifier, with a single method changed to
-generate the centroids instead of reading them from a file. This, in turn, could then be extended
-by the statistical exemplar classified (as described above) so that the 1-Nearest Neighbour
-algorithm could be applied at the end of the generation of exemplars. Here the use of super calls
-in Python gave me a little bit of trouble, listing~\ref{lst:py-super} shows one correct solution
-to this\footnote{There are, of course, other correct methods, but the one listed is one of the 
-better solutions}.
+%This could be seen as a form of generalisation. Though this may affect the results for the worse
+%it may help prevent overfitting of the classification technique. It also shows which years are 
+%commonly chosen as exemplars correctly and incorrectly, this should give a vision of the 
+%difference between the artistic and statistic exemplars and where the artistic exemplars are the
+%outliers of that particular year.
+
+%To do this a Nearest Neighbour algorithm is applied to the data for that year from the centroid,
+%this, of course, has the effect of picking the painting closest to the centroid, which is then
+%used as the exemplar for that year. The same technique used to classify using artistic exemplars
+%is then applied, only with these exemplars rather than the ones loaded from the exemplar file.
+
+By re-using methods from the nearest-exemplar classifier (which uses the artistic exemplars only), 
+the option to use inheritance to cut down on code repetition was made available by extending this
+existing classifier and overriding the method which loaded the statistical exemplars from the 
+\gls{csv} file to generate the centroids and statistical exemplars instead. Here the use of super 
+calls in Python was confusing to a certain extent; listing~\ref{lst:py-super} shows one correct 
+solution to this\footnote{There are, of course, other correct methods, but the one listed is one 
+of the better solutions}.
 
 \begin{lstlisting}[language=python, breaklines=true, label=lst:py-super, 
 caption={Super method calls in Python}, frame=single]
@@ -795,29 +808,20 @@ class Sub(Base):
 \end{lstlisting}
 
 
-\subsection{cv2 and Histogram Results}
-Whilst reading through the numpy and \gls{opencv} it turned out that, until this point, I had been
-using a deprecated version of \gls{opencv}. \gls{cv2} is the new version of \gls{opencv} for 
-python, which provides bindings for \gls{opencv} 2.4 and uses numpy arrays and multi-dimensional 
-arrays to represent all data types rather than in-built data structures.
-
-This makes everything a lot easier to work with as all numpy arrays (with the correct data type)
-can be passed into the \gls{cv2} methods.
-
-
 \section{Filtering}
 One area that was experimented with was the ability to filter paintings by certain pieces of 
 metadata for that painting. Typically with would allow the filtering of just a single type of
 painting (e.g. filtering out any painting which isn't a landscape to remove potential outliers).
 
-Unfortunately, with most techniques this produces worst correlation than not filtering by type,
-this may be due to the limited size of the data set and purely by removing the non-landscape 
+Unfortunately, with most techniques this produces worst Correlation than not filtering by type,
+this may be due to the limited size of the data-set. Removing the non-landscape 
 paintings leaves such a gap in the years that $k$-Nearest Neighbour cannot classify the painting
-correctly.
+correctly. Before filtering the data-set only contained 325 paintings, after filtering down to just
+landscapes this was further reduced to 247 paintings.
 
 A potential way of helping with this (and effectively filtering the data in a slightly different
 fashion) is to round the year ($y$) of a painting to the nearest 5 years ($y_{_{5}}$). The maths 
-to do this is shown in equation~\ref{5-years}. 
+to do this is shown in Equation~\ref{5-years}. 
 
 \begin{equation}\label{5-years}
 y_{_{5}} = 5\left\lfloor\frac{y}{5} \right\rfloor
