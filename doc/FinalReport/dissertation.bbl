@@ -264,6 +264,18 @@ S.~J. Russell, P.~Norvig, and E.~Davis, \emph{Artificial intelligence : a
   intelligence and machine learning techniques that were applied to this
   project. \end{quotation}
 
+\bibitem{Schindelin2012Fiji}
+\BIBentryALTinterwordspacing
+J.~Schindelin, I.~Arganda-Carreras, E.~Frise, V.~Kaynig, M.~Longair,
+  T.~Pietzsch, S.~Preibisch, C.~Rueden, S.~Saalfeld, B.~Schmid, J.-Y.~Y.
+  Tinevez, D.~J.~J. White, V.~Hartenstein, K.~Eliceiri, P.~Tomancak, and
+  A.~Cardona, ``Fiji: an open-source platform for biological-image analysis.''
+  \emph{Nature methods}, vol.~9, no.~7, pp. 676--682, July 2012. [Online].
+  Available: \url{http://dx.doi.org/10.1038/nmeth.2019}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Used as part of referencing FIJI documentation to
+  test out of capabilities and ease of use of the library. \end{quotation}
+
 \bibitem{Trapp1998Gabor}
 \BIBentryALTinterwordspacing
 R.~Trapp, ``Gabor filters,'' Nov. 1998. [Online]. Available:
