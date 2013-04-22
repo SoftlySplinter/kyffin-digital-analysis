@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from setuptools import setup, find_packages
 setup(
     name = "kyffin",
@@ -14,12 +16,19 @@ setup(
     zip_safe = False,
     
     entry_points = {
-        'console_scripts': ['kyffin = kyffin.cli:main']
+        'console_scripts': [
+            'kyffin = kyffin.cli:main',
+            'kyffin-www = kyffin.www:main'
+        ]    
     },
 
     # Requirements
     install_requires = [
         'matplotlib',
-        'scipy'
-    ]
+        'scipy',
+        'liac-arff',
+        'flask',
+    ],
+
+    test_suite = "kyffin.tests",
 )

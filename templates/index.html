@@ -1,0 +1,8 @@
+<!doctype html>
+<title>Kyffin Williams</title>
+<h1>All Paintings</h1>
+<ul>
+{% for year in years %}
+<li><a href="{{ url_for('show_paintings') }}?year={{year}}">{{ year }}</a> ({{ counts[year] }})</li>
+{% endfor %}
+</ul>

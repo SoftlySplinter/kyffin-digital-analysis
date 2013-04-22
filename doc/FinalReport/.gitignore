@@ -1,4 +1,6 @@
 *.log
+*.glo
+*.xdy
 *.aux
 *.blg
 *.toc
@@ -7,3 +9,4 @@
 *.out
 *.lot
 *.lof
+*.lol

@@ -1,0 +1,57 @@
+\section{Conclusions}
+
+
+To the best of the authors knowledge this is the first work that attempts to date work by an artist by 
+year. Similarly, it is believed that this is the first attempt to try and perform digital analysis
+of paintings from a range of catalogue and web images.
+
+The results presented here show that computer vision \emph{can} help with the job of dating art 
+within an artist's body of work. It has been shown that strong, statistically significant 
+correlations between a method's allocation of year and the actual year of painting; as well as the
+ability to classify 70\% of paintings to within their actual year of painting (within a dataset 
+that spans 6 decades). These results are not yet of great use to art historians, but it is hoped 
+that future work will be able to improve upon this. Several statistical avenues remain to be 
+explored: looking into feature combination and selection, and also investigate the potential for 
+treating the year classification problem not as a nearest neighbour problem, but as an ordinal 
+regression problem. 
+
+Future directions will also involve testing the methods presented here on the works of other 
+artists who have shown great stylistic variation over the course of their career: one plan was to 
+build a dataset of, for example, David Hockney works.  Whilst this test has not yet been performed
+it is hoped it would be a success: by avoiding brushstroke detection (which we expect to be artist
+specific) we hope to have developed techniques with application across a broader range of artistic
+styles, and by building techniques which work on catalogue images rather than those captured in 
+controlled conditions, there is a better openness to working with paintings from a wider range of 
+artists.
+
+
+There are several larger projects that could be considered for continuation from this project. 
+Being able to display a graphical representation of the analysis performed, for each painting in a
+publicly-accessible format. This would take the form of a website with HTML5 elements and would be used as an aid for teaching digital 
+image processing.
+
+Another venture was to create a 3D model of Williams' work; due to the highly textural nature of
+his work this could provide more interesting analysis techniques. This is also a novel way of being
+able to showcase an artist's work for those who do not have access to the physical work. Again
+this would ideally use HTML5 elements to make the work available to the general public.
+
+As this project never considered brush-stroke analysis it would be interesting to see how 
+generalised some of the brush-stroke detection algorithms mentioned in 
+Section~\ref{sec:existing-brush-stroke} would work on an artist who primarily used a palette knife. Perhaps more interestingly, how these techniques could be modified to apply them too the palette 
+knife strokes. A further work from this would be the ability to differentiate between different
+painting implements.
+
+
+Unfortunately, there is a sticking point when it comes to this project. Using painting size to 
+classify the year of a painting produces the best correlation of all other analysis techniques.
+There may be a mundane reason for this: cost.
+
+At the beginning of his career Williams would have only been able to afford small canvases, 
+especially with the amount of paint he used. As his career progressed he would have been able
+to afford increasingly large canvases and the paint associated. However, as this project is wanted
+to be generalised to other artists this may not hold true for all catalogues of differing artists.
+
+However, as a paper that is based on the work detailed in this project has been submitted to the
+8th International Symposium on Image and Signal Processing. The author feels reasonably well 
+assured in saying that this project was a great success.
+

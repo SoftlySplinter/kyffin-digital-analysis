@@ -1,0 +1,57 @@
+\chapter{Equations}
+
+\section{Statistical Equations}
+
+\subsection{Mean}
+\begin{equation*}
+\upmu = \frac{1}{N}\sum_{i=1}^{N}x_i
+\end{equation*}
+
+\subsection{Standard Deviation}
+\begin{equation*}
+\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \upmu)^2}
+\end{equation*}
+
+\subsection{Pearson's product-moment coefficient}
+\begin{equation*}
+\rho_{X,Y}={\mathrm{cov}(X,Y) \over \sigma_X \sigma_Y} ={E[(X-\mu_X)(Y-\mu_Y)] \over \sigma_X\sigma_Y}
+\end{equation*}
+
+\section{Distance Equations}
+
+\subsection{Manhattan Distance}
+\begin{equation*}
+d_1(\mathbf{p},\mathbf{q}) = \|\mathbf{p}-\mathbf{q}\|_1 = \sum^{n}_{i=0}{|p_i-q_i|}
+\end{equation*}
+
+\subsection{Euclidean Distance}
+\begin{equation*}
+d_1(\mathbf{p}, \mathbf{q}) = \sqrt{\sum^{n}_{i=0}({q_i-p_i})^2}
+\end{equation*}
+
+\section{Filter Equations}
+
+\subsection{Gradient Direction}
+\begin{equation*}
+\theta = {\rm atan2}\left( \frac{\delta f}{\delta x}, \frac{\delta f}{\delta y} \right)
+\end{equation*}
+
+\subsection{Discrete Derivative Masks}
+\begin{equation*}
+\begin{bmatrix}
+-1 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+-1\\
+0\\
+1
+\end{bmatrix}
+\end{equation*}
+
+\subsection{Gabor Filter}
+\begin{align}
+g(x, y; \lambda, \theta, \psi, \sigma, \gamma) &= \exp \left( -\frac{x'^2+\gamma^2y'^2}{2\sigma^2} \right) \cos \left( 2\pi \frac{x'}{\lambda} + \psi \right)
+\intertext{where:}
+x' &= x \cos \theta + y \sin \theta \nonumber \\
+y' &= x \sin \theta + y \cos \theta \nonumber
+\end{align}
