@@ -9,7 +9,7 @@ def gabor(sigma,theta,g_lambda,psi,gamma):
     sigma_y = sigma/gamma;
  
     # Bounding box
-    nstds = 3;
+    nstds = 30;
     xmax = max(abs(nstds*sigma_x*cos(theta)),abs(nstds*sigma_y*sin(theta)));
     xmax = ceil(max(1,xmax));
     ymax = max(abs(nstds*sigma_x*sin(theta)),abs(nstds*sigma_y*cos(theta)));
@@ -48,7 +48,7 @@ class GaborFilter:
         sigma_y = sigma/gamma
 
         # Bounding box
-        nstds = 3
+        nstds = 30
         max_x = max(
             abs(nstds * sigma_x * cos(theta)), 
             abs(nstds * sigma_y * sin(theta)))
@@ -103,6 +103,6 @@ for i in xrange(0,90, 5):
     
     theta = float(i)*(pi/180)
     print i
-    dst = cv2.filter2D(image, -1, filter.get_filter(1.65,theta,0.5,2.,1.75))
-    cv2.imshow("filtered ", dst)
+#    dst = cv2.filter2D(image, -1, filter.get_filter(1.65,theta,0.5,2.,1.75))
+    cv2.imshow("filtered ", filter.get_filter(1.65, theta, 10., 2., 1.75))
     cv2.waitKey()
