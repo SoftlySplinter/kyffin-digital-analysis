@@ -211,7 +211,15 @@ L.~M. Hughes. (2011) Evaluating and measuring the value: use and impact of
 I.~T. Jolliffe. (2002) Principal component analysis. [Online]. Available:
   \url{http://www.worldcat.org/isbn/9780387954424}
 \BIBentrySTDinterwordspacing
-
+ \begin{quotation}\noindent Defines a mathematical procedure for converting a
+  set of observations, possibly correlated, into a set of principal components.
+  This is done such that the first principal component has the largest possible
+  variance. Each succeeding component in turn has the next highest variance
+  possible, under the constraint that it has to be uncorrelated to the
+  proceeding component. When applied to this project it would allow the
+  dimensions of a high dimensional state space to be put in some order of
+  importance and might allow for the removal of less significant dimensions.
+  \end{quotation}
 
 \bibitem{EricJonesandTravisOliphantandPearuPetersonandothers2001SciPy}
 E.~Jones, T.~Oliphant, P.~Peterson, \emph{et~al.}, ``{SciPy}: Open source
@@ -252,7 +260,17 @@ S.~J. Russell, P.~Norvig, and E.~Davis, \emph{Artificial intelligence : a
   Hall, Dec. 2010. [Online]. Available:
   \url{http://www.worldcat.org/isbn/0136042597} 9780132071482.
 \BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Textbook reference for many common artificial
+  intelligence and machine learning techniques that were applied to this
+  project. \end{quotation}
 
+\bibitem{Trapp1998Gabor}
+\BIBentryALTinterwordspacing
+R.~Trapp, ``Gabor filters,'' Nov. 1998. [Online]. Available:
+  \url{http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/TRAPP1/filter.html}
+\BIBentrySTDinterwordspacing
+ \begin{quotation}\noindent Reference for Gabor filters, which included as nice
+  image to help the visualisation of the filter. \end{quotation}
 
 \bibitem{Unsworth2000Scholarly}
 \BIBentryALTinterwordspacing
