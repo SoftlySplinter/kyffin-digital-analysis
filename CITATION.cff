@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+title: >-
+  Can we date an artist's work from catalogue
+  photographs?
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+- family-names: "Brown"
+  given-names: "Alexander David"
+  affiliation: Aberystwyth University
+- family-names: "Roderick"
+  given-names: "Gareth Lloyd"
+- family-names: "Dee"
+  given-names: "Hannah Mary"
+  orcid: "https://orcid.org/0000-0003-2573-9541"
+- family-names: "Hughs"
+  given-names: "Lorna M."
+  orcid: "https://orcid.org/0000-0001-8928-0341"
+version: 1.0.0
+identifiers:
+  - type: doi
+    value: 10.1109/ISPA.2013.6703803
+date-released: 2013-09-05
+url: "https://github.com/SoftlySplinter/kyffin-digital-analysis"
+abstract: >-
+  Computer vision has addressed many problems in art,
+  but has not yet looked in detail at the way
+  artistic style can develop and evolve over the
+  course of an artist's career. In this paper we take
+  a computational approach to modelling stylistic
+  change in the body of work amassed by Sir John
+  “Kyffin” Williams, a nationally renowned and
+  prolific Welsh artist. Using images gathered from
+  catalogues and online sources, we use a
+  leave-one-out methodology to classify paintings by
+  year; despite the variation in image source, size,
+  and quality we are able to obtain significant
+  correlations between predicted year and actual
+  year, and we are able to guess the age of the
+  painting within 15 years, for around 70% of our
+  dataset. We also investigate the incorporation of
+  expert knowledge within this framework by
+  consdering a subset of paintings chosen as
+  exemplars by a scholar familiar with Williams'
+  work.
+keywords:
+  - Painting
+  - Image color analysis
+  - Histograms
+  - Art
+  - Image edge detection
+  - Libraries
+  - Correlation
